@@ -51,6 +51,9 @@ Public Class RS232
     Public Function read() As String
         Return objSerial.ReadLine()
     End Function
+    Public Function send(bytes() As Byte)
+        objSerial.Write(bytes, 0, bytes.Length)
+    End Function
 
     Public Event RS232Changed As EventHandler(Of RS232ChangedArgs)
     Protected Overridable Sub OnIESChanged(ByVal e As RS232ChangedArgs)

@@ -1,7 +1,19 @@
 ﻿Public Class MainWindow
     Private WithEvents arduino As RS232
     Private Sub MainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'FormUtils.setFormColors(Me)
+        For Each sp As String In My.Computer.Ports.SerialPortNames
+
+            Dim testConnect As New RS232(sp)
+            Try
+                testConnect.open()
+
+                Dim result As String = testConnect.read()
+            Catch ex As Exception
+
+            End Try
+
+
+        Next
         arduino = New RS232("COM3")
         arduino.open()
 
