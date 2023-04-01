@@ -1,28 +1,24 @@
 ﻿Public Class MainWindow
-    Private WithEvents arduino As RS232
+    'Private WithEvents arduino As RS232
+    Private WithEvents Board As BoardInterface = New CSDBoard
     Private Sub MainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        For Each sp As String In My.Computer.Ports.SerialPortNames
-
-            Dim testConnect As New RS232(sp)
-            Try
-                testConnect.open()
-
-                Dim result As String = testConnect.read()
-            Catch ex As Exception
-
-            End Try
-
-
-        Next
-        arduino = New RS232("COM3")
-        arduino.open()
 
     End Sub
 
-    Private Sub arduino_RS232Changed(sender As Object, e As RS232ChangedArgs) Handles arduino.RS232Changed
-        'TextBox1.Text = e.message
+    Private Sub btnConnect_Click(sender As Object, e As EventArgs) Handles btnConnect.Click
+        Try
+            Board.connect()
+            gbMenu.Enabled = True
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
     End Sub
-    Private Sub arduino_RS232Disconnected(sender As Object, e As RS232CompletedArgs) Handles arduino.RS232Completed
-        MessageBox.Show("disconnected")
-    End Sub
+
+    'Private Sub arduino_RS232Changed(sender As Object, e As RS232ChangedArgs) Handles arduino.RS232Changed
+    '    'TextBox1.Text = e.message
+    'End Sub
+    'Private Sub arduino_RS232Disconnected(sender As Object, e As RS232CompletedArgs) Handles arduino.RS232Completed
+    '    MessageBox.Show("disconnected")
+    'End Sub
 End Class

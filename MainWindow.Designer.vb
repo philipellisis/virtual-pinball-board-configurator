@@ -23,69 +23,117 @@ Partial Class MainWindow
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.btnSettings = New System.Windows.Forms.Button()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnConnect = New System.Windows.Forms.Button()
+        Me.btnOutputs = New System.Windows.Forms.Button()
+        Me.btnInputs = New System.Windows.Forms.Button()
+        Me.btnPlunger = New System.Windows.Forms.Button()
+        Me.btnAccel = New System.Windows.Forms.Button()
+        Me.gbMenu = New System.Windows.Forms.GroupBox()
+        Me.gbMenu.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnSettings
         '
         Me.btnSettings.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSettings.Location = New System.Drawing.Point(12, 12)
+        Me.btnSettings.Location = New System.Drawing.Point(7, 38)
+        Me.btnSettings.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnSettings.Name = "btnSettings"
-        Me.btnSettings.Size = New System.Drawing.Size(149, 106)
+        Me.btnSettings.Size = New System.Drawing.Size(224, 163)
         Me.btnSettings.TabIndex = 0
         Me.btnSettings.Text = "Settings"
         Me.btnSettings.UseVisualStyleBackColor = True
         '
-        'ListBox1
+        'btnConnect
         '
-        Me.ListBox1.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.ItemHeight = 17
-        Me.ListBox1.Location = New System.Drawing.Point(12, 177)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(226, 55)
-        Me.ListBox1.TabIndex = 1
+        Me.btnConnect.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnConnect.Location = New System.Drawing.Point(13, 466)
+        Me.btnConnect.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnConnect.Name = "btnConnect"
+        Me.btnConnect.Size = New System.Drawing.Size(224, 85)
+        Me.btnConnect.TabIndex = 3
+        Me.btnConnect.Text = "Connect"
+        Me.btnConnect.UseVisualStyleBackColor = True
         '
-        'Label1
+        'btnOutputs
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Impact", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 161)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(87, 15)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Available Boards"
+        Me.btnOutputs.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnOutputs.Location = New System.Drawing.Point(239, 211)
+        Me.btnOutputs.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnOutputs.Name = "btnOutputs"
+        Me.btnOutputs.Size = New System.Drawing.Size(224, 163)
+        Me.btnOutputs.TabIndex = 4
+        Me.btnOutputs.Text = "Outputs"
+        Me.btnOutputs.UseVisualStyleBackColor = True
         '
-        'Button1
+        'btnInputs
         '
-        Me.Button1.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(244, 177)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(149, 55)
-        Me.Button1.TabIndex = 3
-        Me.Button1.Text = "Connect"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnInputs.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnInputs.Location = New System.Drawing.Point(471, 211)
+        Me.btnInputs.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnInputs.Name = "btnInputs"
+        Me.btnInputs.Size = New System.Drawing.Size(224, 163)
+        Me.btnInputs.TabIndex = 5
+        Me.btnInputs.Text = "Inputs"
+        Me.btnInputs.UseVisualStyleBackColor = True
+        '
+        'btnPlunger
+        '
+        Me.btnPlunger.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPlunger.Location = New System.Drawing.Point(7, 211)
+        Me.btnPlunger.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnPlunger.Name = "btnPlunger"
+        Me.btnPlunger.Size = New System.Drawing.Size(224, 163)
+        Me.btnPlunger.TabIndex = 6
+        Me.btnPlunger.Text = "Plunger"
+        Me.btnPlunger.UseVisualStyleBackColor = True
+        '
+        'btnAccel
+        '
+        Me.btnAccel.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAccel.Location = New System.Drawing.Point(239, 38)
+        Me.btnAccel.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnAccel.Name = "btnAccel"
+        Me.btnAccel.Size = New System.Drawing.Size(224, 163)
+        Me.btnAccel.TabIndex = 7
+        Me.btnAccel.Text = "Accelerometer"
+        Me.btnAccel.UseVisualStyleBackColor = True
+        '
+        'gbMenu
+        '
+        Me.gbMenu.Controls.Add(Me.btnInputs)
+        Me.gbMenu.Controls.Add(Me.btnOutputs)
+        Me.gbMenu.Controls.Add(Me.btnSettings)
+        Me.gbMenu.Controls.Add(Me.btnAccel)
+        Me.gbMenu.Controls.Add(Me.btnPlunger)
+        Me.gbMenu.Enabled = False
+        Me.gbMenu.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbMenu.Location = New System.Drawing.Point(12, 12)
+        Me.gbMenu.Name = "gbMenu"
+        Me.gbMenu.Size = New System.Drawing.Size(801, 407)
+        Me.gbMenu.TabIndex = 8
+        Me.gbMenu.TabStop = False
+        Me.gbMenu.Text = "Menu"
         '
         'MainWindow
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(456, 258)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ListBox1)
-        Me.Controls.Add(Me.btnSettings)
+        Me.ClientSize = New System.Drawing.Size(825, 565)
+        Me.Controls.Add(Me.gbMenu)
+        Me.Controls.Add(Me.btnConnect)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "MainWindow"
-        Me.Text = "Form1"
+        Me.Text = "CSD Configuration Tool"
+        Me.gbMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents btnSettings As Button
-    Friend WithEvents ListBox1 As ListBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnConnect As Button
+    Friend WithEvents btnOutputs As Button
+    Friend WithEvents btnInputs As Button
+    Friend WithEvents btnPlunger As Button
+    Friend WithEvents btnAccel As Button
+    Friend WithEvents gbMenu As GroupBox
 End Class

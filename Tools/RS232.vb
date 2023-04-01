@@ -44,6 +44,8 @@ Public Class RS232
 
         objSerial.ReadTimeout = 500
         objSerial.Open()
+        objSerial.NewLine = vbCr
+
 
         objSerial.DtrEnable = True
     End Sub
@@ -51,9 +53,9 @@ Public Class RS232
     Public Function read() As String
         Return objSerial.ReadLine()
     End Function
-    Public Function send(bytes() As Byte)
+    Public Sub send(bytes() As Byte)
         objSerial.Write(bytes, 0, bytes.Length)
-    End Function
+    End Sub
 
     Public Event RS232Changed As EventHandler(Of RS232ChangedArgs)
     Protected Overridable Sub OnIESChanged(ByVal e As RS232ChangedArgs)
@@ -64,10 +66,10 @@ Public Class RS232
         RaiseEvent RS232Completed(Me, e)
     End Sub
     Private Sub sendRS232Changed(e As RS232ChangedArgs)
-        If Context Is Nothing Then
+        If context Is Nothing Then
             OnIESChanged(e)
         Else
-            ThreadExtensions.ScSend(Context, New Action(Of RS232ChangedArgs)(AddressOf OnIESChanged), e)
+            ThreadExtensions.ScSend(context, New Action(Of RS232ChangedArgs)(AddressOf OnIESChanged), e)
         End If
     End Sub
     Private Sub sendRS232Completed(e As RS232CompletedArgs)

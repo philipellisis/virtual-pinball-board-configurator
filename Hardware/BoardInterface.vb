@@ -5,17 +5,46 @@
     RIGHT
 End Enum
 
+Public Class Configuration
+    Public toySpecialOption(63) As Byte
+    Public turnOffState(63) As Byte
+    Public maxOutputState(63) As Byte
+    Public maxOutputTime(63) As Byte
+    Public plungerMax As Int16
+    Public plungerMin As Int16
+    Public plungerMid As Int16
+    Public solenoidButtonMap(4) As Byte
+    Public solenoidOutputMap(4) As Byte
+    Public orentation As Byte
+End Class
+
+Public Class BoardChangedArgs
+    Public message As String
+    Public status As String
+    Public Sub New(message As String, status As String)
+        Me.message = message
+        Me.status = status
+    End Sub
+End Class
+Public Class BoardCompletedArgs
+    Public message As String
+    Public status As String
+    Public Sub New(message As String, status As String)
+        Me.message = message
+        Me.status = status
+    End Sub
+End Class
 Public Interface BoardInterface
+    Event BoardChanged As EventHandler(Of BoardChangedArgs)
+    Event BoardDisconnected As EventHandler(Of BoardCompletedArgs)
     Sub setOutputValue(output As Integer, value As Integer)
-    Function getOutputValue(output As Integer) As Integer
-    Function getButtonState(Input As Integer) As Boolean
+    Function getOutputValue() As Integer()
+    Function getButtonState() As Boolean()
     Function getPlungerValue() As Integer
     Function getNudgeValue() As System.Drawing.Point
-    Function setPlungerMinMax(max As Integer, min As Integer)
-    Function setOrientation(orientation As ORIENTATION)
-    Function setLeftFlipperButton(button As Integer)
-    Function setRightFlipperButton(button As Integer)
-    Sub setOutputMaxOnTime(output As Integer, valueInMS As Integer)
-    Sub setFlipperLogic(output As Integer, holdValue As Integer, highOutputTime As Integer)
-    Sub setMaxOutputValue(output As Integer, maxValue As Integer)
+    Sub setPlungerMinMax(max As Integer, min As Integer)
+    Sub setConfig(config As Configuration)
+    Function getConfig() As Configuration
+    Sub connect()
+
 End Interface
