@@ -73,6 +73,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Hardware\DummyBoard.vb" />
     <Compile Include="Hardware\CSDBoard.vb" />
     <Compile Include="Hardware\BoardInterface.vb" />
     <Compile Include="MainWindow.vb">
@@ -98,6 +99,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Output.Designer.vb">
+      <DependentUpon>Output.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Output.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Outputs.Designer.vb">
+      <DependentUpon>Outputs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Outputs.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Tools\FormUtils.vb" />
     <Compile Include="Tools\RS232.vb" />
     <Compile Include="Tools\ThreadExtensions.vb" />
@@ -111,6 +124,12 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Output.resx">
+      <DependentUpon>Output.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Outputs.resx">
+      <DependentUpon>Outputs.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,15 +1,28 @@
-﻿Imports System.Runtime.Remoting.Contexts
+﻿Imports System.Drawing.Text
+Imports System.Runtime.Remoting.Contexts
+Imports System.Threading
 
-Public Class CSDBoard
+Public Class DummyBoard
+
     Implements BoardInterface
-    Private WithEvents CSDConnection As RS232
+    Private trd As Thread
+    Private threadContinue As Boolean = False
     Private context As Threading.SynchronizationContext = Threading.SynchronizationContext.Current
     Public Sub setOutputValue(output As Integer, value As Integer) Implements BoardInterface.setOutputValue
         Throw New NotImplementedException()
     End Sub
 
     Public Sub enableAdminFunction(admin As ADMIN) Implements BoardInterface.enableAdminFunction
-        Throw New NotImplementedException()
+        If admin = ADMIN.OUTPUTS Then
+            threadContinue = True
+            trd = New Thread(AddressOf simulateOutputAdmin)
+            trd.IsBackground = True
+            trd.Start()
+
+        End If
+        If admin = ADMIN.OFF Then
+            threadContinue = False
+        End If
     End Sub
     Public Function getOutputValue() As Integer() Implements BoardInterface.getOutputValue
         Throw New NotImplementedException()
@@ -40,19 +53,7 @@ Public Class CSDBoard
     End Function
 
     Public Sub connect() Implements BoardInterface.connect
-        For Each sp As String In My.Computer.Ports.SerialPortNames
 
-            CSDConnection = New RS232(sp)
-            Try
-                CSDConnection.open()
-                CSDConnection.send({0, 251, 0, 0, 0, 0, 0, 0, 0})
-                Dim result As String = CSDConnection.read()
-                If result = "CSD Board Connected" Then Return
-            Catch ex As Exception
-
-            End Try
-        Next
-        Throw New Exception("Unable to connect to any board")
     End Sub
 
     Private Sub OnBoardChanged(ByVal e As BoardChangedArgs)
@@ -79,4 +80,21 @@ Public Class CSDBoard
             ThreadExtensions.ScSend(context, New Action(Of BoardCompletedArgs)(AddressOf OnBoardDisconnected), e)
         End If
     End Sub
+
+    Private Sub simulateOutputAdmin()
+        While threadContinue = True
+            Dim outputString As String = getRandomValue() & ","
+
+            For i As Integer = 1 To 61
+                outputString += "0,"
+            Next
+            outputString += "0"
+            sendBoardChanged(New BoardChangedArgs(outputString, "Connected"))
+            Threading.Thread.Sleep(300)
+        End While
+
+    End Sub
+    Private Function getRandomValue() As String
+        Return (CInt(Math.Ceiling(Rnd() * 255)) + 1).ToString
+    End Function
 End Class

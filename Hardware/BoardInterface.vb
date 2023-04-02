@@ -5,6 +5,18 @@
     RIGHT
 End Enum
 
+Public Enum ADMIN
+    BUTTONS = 1
+    OUTPUTS = 2
+    PLUNGER = 3
+    ACCEL = 4
+    SEND_CONFIG = 5
+    GET_CONFIG = 6
+    SET_PLUNGER = 7
+    OFF = 255
+    CONNECT = 8
+End Enum
+
 Public Class Configuration
     Public toySpecialOption(63) As Byte
     Public turnOffState(63) As Byte
@@ -38,6 +50,8 @@ Public Interface BoardInterface
     Event BoardChanged As EventHandler(Of BoardChangedArgs)
     Event BoardDisconnected As EventHandler(Of BoardCompletedArgs)
     Sub setOutputValue(output As Integer, value As Integer)
+
+    Sub enableAdminFunction(admin As ADMIN)
     Function getOutputValue() As Integer()
     Function getButtonState() As Boolean()
     Function getPlungerValue() As Integer

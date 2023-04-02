@@ -29,6 +29,7 @@ Partial Class MainWindow
         Me.btnPlunger = New System.Windows.Forms.Button()
         Me.btnAccel = New System.Windows.Forms.Button()
         Me.gbMenu = New System.Windows.Forms.GroupBox()
+        Me.cbSimulation = New System.Windows.Forms.CheckBox()
         Me.gbMenu.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -114,11 +115,23 @@ Partial Class MainWindow
         Me.gbMenu.TabStop = False
         Me.gbMenu.Text = "Menu"
         '
+        'cbSimulation
+        '
+        Me.cbSimulation.AutoSize = True
+        Me.cbSimulation.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSimulation.Location = New System.Drawing.Point(19, 425)
+        Me.cbSimulation.Name = "cbSimulation"
+        Me.cbSimulation.Size = New System.Drawing.Size(145, 33)
+        Me.cbSimulation.TabIndex = 9
+        Me.cbSimulation.Text = "Simulation"
+        Me.cbSimulation.UseVisualStyleBackColor = True
+        '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(825, 565)
+        Me.Controls.Add(Me.cbSimulation)
         Me.Controls.Add(Me.gbMenu)
         Me.Controls.Add(Me.btnConnect)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -126,6 +139,7 @@ Partial Class MainWindow
         Me.Text = "CSD Configuration Tool"
         Me.gbMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -136,4 +150,5 @@ Partial Class MainWindow
     Friend WithEvents btnPlunger As Button
     Friend WithEvents btnAccel As Button
     Friend WithEvents gbMenu As GroupBox
+    Friend WithEvents cbSimulation As CheckBox
 End Class
