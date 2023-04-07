@@ -17,6 +17,15 @@ Public Enum ADMIN
     CONNECT = 8
 End Enum
 
+Public Enum MESSAGE_TYPE
+    DEBUG = 0
+    OUTPUTS = 1
+    PLUNGER = 2
+    ACCEL = 3
+    CONFIG = 4
+    BUTTONS = 5
+End Enum
+
 Public Class Configuration
     Public toySpecialOption(63) As Byte
     Public turnOffState(63) As Byte
@@ -32,10 +41,10 @@ End Class
 
 Public Class BoardChangedArgs
     Public message As String
-    Public status As String
-    Public Sub New(message As String, status As String)
+    Public type As MESSAGE_TYPE
+    Public Sub New(message As String, status As MESSAGE_TYPE)
         Me.message = message
-        Me.status = status
+        Me.type = status
     End Sub
 End Class
 Public Class BoardCompletedArgs

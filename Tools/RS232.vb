@@ -1,6 +1,10 @@
 ﻿
+Imports System.CodeDom.Compiler
 Imports System.Runtime.Remoting.Contexts
+Imports System.Text
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports Microsoft.SqlServer.Server
+
 Public Class RS232ChangedArgs
     Public message As String
     Public status As String
@@ -44,16 +48,20 @@ Public Class RS232
 
         objSerial.ReadTimeout = 500
         objSerial.Open()
-        objSerial.NewLine = vbCr
+        objSerial.NewLine = vbCrLf
 
 
         objSerial.DtrEnable = True
+    End Sub
+    Public Sub close()
+        objSerial.Close()
     End Sub
 
     Public Function read() As String
         Return objSerial.ReadLine()
     End Function
     Public Sub send(bytes() As Byte)
+        Console.WriteLine("rs232 actual send Data: " & System.Text.Encoding.Unicode.GetString(bytes))
         objSerial.Write(bytes, 0, bytes.Length)
     End Sub
 
@@ -66,10 +74,12 @@ Public Class RS232
         RaiseEvent RS232Completed(Me, e)
     End Sub
     Private Sub sendRS232Changed(e As RS232ChangedArgs)
-        If context Is Nothing Then
-            OnIESChanged(e)
-        Else
-            ThreadExtensions.ScSend(context, New Action(Of RS232ChangedArgs)(AddressOf OnIESChanged), e)
+        If e.message <> "" Then
+            If context Is Nothing Then
+                OnIESChanged(e)
+            Else
+                ThreadExtensions.ScSend(context, New Action(Of RS232ChangedArgs)(AddressOf OnIESChanged), e)
+            End If
         End If
     End Sub
     Private Sub sendRS232Completed(e As RS232CompletedArgs)
@@ -79,8 +89,21 @@ Public Class RS232
             ThreadExtensions.ScSend(context, New Action(Of RS232CompletedArgs)(AddressOf OnIESCompleted), e)
         End If
     End Sub
+
+    Private lineData As StringBuilder = New StringBuilder
     Private Sub objSerial_DataReceived(sender As Object, e As IO.Ports.SerialDataReceivedEventArgs) 'Handles objSerial.DataReceived
-        sendRS232Changed(New RS232ChangedArgs(objSerial.ReadExisting, "connected"))
+        lineData.Append(objSerial.ReadExisting)
+        Dim splitString = System.Text.RegularExpressions.Regex.Split(lineData.ToString, vbCrLf)
+        If splitString.Length > 1 Then
+            For i As Integer = 0 To splitString.Length - 2
+                Console.WriteLine("rs232 actual Data: " & splitString(i))
+                sendRS232Changed(New RS232ChangedArgs(splitString(i), "connected"))
+            Next
+            lineData.Clear()
+            lineData.Append(splitString(splitString.Length - 1))
+        End If
+
+
     End Sub
 
     Private Sub objSerial_error(sender As Object, e As IO.Ports.SerialErrorReceivedEventArgs) Handles objSerial.ErrorReceived

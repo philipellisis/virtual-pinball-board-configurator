@@ -21,10 +21,13 @@
     End Sub
 
     Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles _board.BoardChanged
-        Dim outputValues As String() = e.message.Split(",")
-        For i As Integer = 0 To 62
-            _userControlList.Item(i).setIntensityValue(CByte(outputValues(i)))
-        Next
+        If e.type = MESSAGE_TYPE.OUTPUTS Then
+            Dim outputValues As String() = e.message.Split(",")
+            For i As Integer = 0 To 62
+                _userControlList.Item(i).setIntensityValue(CByte(outputValues(i)))
+            Next
+        End If
+
     End Sub
 
     Private Sub Outputs_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing

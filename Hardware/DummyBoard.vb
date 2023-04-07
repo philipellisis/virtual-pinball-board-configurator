@@ -6,10 +6,11 @@ Public Class DummyBoard
 
     Implements BoardInterface
     Private trd As Thread
+    Private outputs As Integer() = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
     Private threadContinue As Boolean = False
     Private context As Threading.SynchronizationContext = Threading.SynchronizationContext.Current
     Public Sub setOutputValue(output As Integer, value As Integer) Implements BoardInterface.setOutputValue
-        Throw New NotImplementedException()
+        outputs(output) = value
     End Sub
 
     Public Sub enableAdminFunction(admin As ADMIN) Implements BoardInterface.enableAdminFunction
@@ -83,13 +84,13 @@ Public Class DummyBoard
 
     Private Sub simulateOutputAdmin()
         While threadContinue = True
-            Dim outputString As String = getRandomValue() & ","
+            Dim outputString As String = ""
 
-            For i As Integer = 1 To 61
-                outputString += "0,"
+            For i As Integer = 0 To 61
+                outputString += outputs(i).ToString & ","
             Next
-            outputString += "0"
-            sendBoardChanged(New BoardChangedArgs(outputString, "Connected"))
+            outputString += outputs(62).ToString
+            sendBoardChanged(New BoardChangedArgs(outputString, MESSAGE_TYPE.OUTPUTS))
             Threading.Thread.Sleep(300)
         End While
 
