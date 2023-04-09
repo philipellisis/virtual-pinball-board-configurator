@@ -61,7 +61,12 @@ Public Class RS232
         Return objSerial.ReadLine()
     End Function
     Public Sub send(bytes() As Byte)
-        Console.WriteLine("rs232 actual send Data: " & System.Text.Encoding.Unicode.GetString(bytes))
+        Dim sendStr As String = ""
+        For i As Integer = 0 To bytes.Length - 2
+            sendStr += bytes(i).ToString & ","
+        Next
+        sendStr += bytes(bytes.Length - 1).ToString
+        Console.WriteLine("rs232 actual send Data: " & sendStr)
         objSerial.Write(bytes, 0, bytes.Length)
     End Sub
 

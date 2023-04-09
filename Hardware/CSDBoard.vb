@@ -11,24 +11,14 @@ Public Class CSDBoard
     Public Sub enableAdminFunction(admin As ADMIN) Implements BoardInterface.enableAdminFunction
         CSDConnection.send({0, 250, admin, 0, 0, 0, 0, 0, 0})
     End Sub
-    Public Function getOutputValue() As Integer() Implements BoardInterface.getOutputValue
-        Throw New NotImplementedException()
-    End Function
 
-    Public Function getButtonState() As Boolean() Implements BoardInterface.getButtonState
-        Throw New NotImplementedException()
-    End Function
-
-    Public Function getPlungerValue() As Integer Implements BoardInterface.getPlungerValue
-        Throw New NotImplementedException()
-    End Function
-
-    Public Function getNudgeValue() As Point Implements BoardInterface.getNudgeValue
-        Throw New NotImplementedException()
-    End Function
-
-    Public Sub setPlungerMinMax(max As Integer, min As Integer) Implements BoardInterface.setPlungerMinMax
-        Throw New NotImplementedException()
+    Public Sub setPlungerMinMax(max As UShort, min As UShort, mid As UShort) Implements BoardInterface.setPlungerMinMax
+        Dim result As Byte() = BitConverter.GetBytes(max)
+        Dim result1 As Byte() = BitConverter.GetBytes(min)
+        Dim result2 As Byte() = BitConverter.GetBytes(mid)
+        enableAdminFunction(ADMIN.SET_PLUNGER)
+        Threading.Thread.Sleep(100)
+        CSDConnection.send({result(1), result(0), result1(1), result1(0), result2(1), result2(0)})
     End Sub
 
     Public Sub setConfig(config As Configuration) Implements BoardInterface.setConfig

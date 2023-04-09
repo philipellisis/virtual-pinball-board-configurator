@@ -41,10 +41,45 @@ End Class
 
 Public Class BoardChangedArgs
     Public message As String
+    Public outputs As Byte()
+    Public buttons As Byte()
+    Public plunger As Integer
     Public type As MESSAGE_TYPE
     Public Sub New(message As String, status As MESSAGE_TYPE)
         Me.message = message
         Me.type = status
+        Select Case status
+            Case MESSAGE_TYPE.OUTPUTS
+                Try
+                    Dim outputValues As String() = message.Split(",")
+                    ReDim outputs(outputValues.Length)
+                    For i As Integer = 0 To outputValues.Length - 1
+                        outputs(i) = CByte(outputValues(i))
+                    Next
+                Catch ex As Exception
+                    Me.type = MESSAGE_TYPE.DEBUG
+                End Try
+            Case MESSAGE_TYPE.BUTTONS
+                Try
+                    Dim outputValues As String() = message.Split(",")
+                    ReDim buttons(outputValues.Length)
+                    For i As Integer = 0 To outputValues.Length - 1
+                        buttons(i) = CByte(outputValues(i))
+                    Next
+                Catch ex As Exception
+                    Me.type = MESSAGE_TYPE.DEBUG
+                End Try
+            Case MESSAGE_TYPE.PLUNGER
+                Try
+                    plunger = CInt(message)
+                Catch ex As Exception
+                    Me.type = MESSAGE_TYPE.DEBUG
+                End Try
+            Case Else
+
+        End Select
+
+
     End Sub
 End Class
 Public Class BoardCompletedArgs
@@ -61,11 +96,8 @@ Public Interface BoardInterface
     Sub setOutputValue(output As Integer, value As Integer)
 
     Sub enableAdminFunction(admin As ADMIN)
-    Function getOutputValue() As Integer()
-    Function getButtonState() As Boolean()
-    Function getPlungerValue() As Integer
-    Function getNudgeValue() As System.Drawing.Point
-    Sub setPlungerMinMax(max As Integer, min As Integer)
+
+    Sub setPlungerMinMax(max As UShort, min As UShort, mid As UShort)
     Sub setConfig(config As Configuration)
     Function getConfig() As Configuration
     Sub connect()

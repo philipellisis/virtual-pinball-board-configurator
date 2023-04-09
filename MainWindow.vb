@@ -25,6 +25,16 @@
         outputs.ShowDialog()
     End Sub
 
+    Private Sub btnInputs_Click(sender As Object, e As EventArgs) Handles btnInputs.Click
+        Dim buttons As New Buttons(Board)
+        buttons.ShowDialog()
+    End Sub
+
+    Private Sub btnPlunger_Click(sender As Object, e As EventArgs) Handles btnPlunger.Click
+        Dim plunger As New Plunger(Board)
+        plunger.ShowDialog()
+    End Sub
+
     'Private Sub arduino_RS232Changed(sender As Object, e As RS232ChangedArgs) Handles arduino.RS232Changed
     '    'TextBox1.Text = e.message
     'End Sub

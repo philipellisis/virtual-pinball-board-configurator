@@ -7,6 +7,8 @@ Public Class DummyBoard
     Implements BoardInterface
     Private trd As Thread
     Private outputs As Integer() = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+    Private inputs As Integer() = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+    Private plunger As Integer = 0
     Private threadContinue As Boolean = False
     Private context As Threading.SynchronizationContext = Threading.SynchronizationContext.Current
     Public Sub setOutputValue(output As Integer, value As Integer) Implements BoardInterface.setOutputValue
@@ -21,28 +23,25 @@ Public Class DummyBoard
             trd.Start()
 
         End If
+        If admin = ADMIN.BUTTONS Then
+            threadContinue = True
+            trd = New Thread(AddressOf simulateButtonAdmin)
+            trd.IsBackground = True
+            trd.Start()
+        End If
+        If admin = ADMIN.PLUNGER Then
+            threadContinue = True
+            trd = New Thread(AddressOf simulatePlungerAdmin)
+            trd.IsBackground = True
+            trd.Start()
+        End If
         If admin = ADMIN.OFF Then
             threadContinue = False
         End If
     End Sub
-    Public Function getOutputValue() As Integer() Implements BoardInterface.getOutputValue
-        Throw New NotImplementedException()
-    End Function
 
-    Public Function getButtonState() As Boolean() Implements BoardInterface.getButtonState
-        Throw New NotImplementedException()
-    End Function
+    Public Sub setPlungerMinMax(mmax As UShort, min As UShort, mid As UShort) Implements BoardInterface.setPlungerMinMax
 
-    Public Function getPlungerValue() As Integer Implements BoardInterface.getPlungerValue
-        Throw New NotImplementedException()
-    End Function
-
-    Public Function getNudgeValue() As Point Implements BoardInterface.getNudgeValue
-        Throw New NotImplementedException()
-    End Function
-
-    Public Sub setPlungerMinMax(max As Integer, min As Integer) Implements BoardInterface.setPlungerMinMax
-        Throw New NotImplementedException()
     End Sub
 
     Public Sub setConfig(config As Configuration) Implements BoardInterface.setConfig
@@ -92,6 +91,32 @@ Public Class DummyBoard
             outputString += outputs(62).ToString
             sendBoardChanged(New BoardChangedArgs(outputString, MESSAGE_TYPE.OUTPUTS))
             Threading.Thread.Sleep(300)
+        End While
+
+    End Sub
+    Private Sub simulateButtonAdmin()
+        While threadContinue = True
+            Dim outputString As String = ""
+
+            For i As Integer = 0 To 22
+                outputString += inputs(i).ToString & ","
+            Next
+            outputString += inputs(23).ToString
+            sendBoardChanged(New BoardChangedArgs(outputString, MESSAGE_TYPE.BUTTONS))
+            Threading.Thread.Sleep(300)
+        End While
+
+    End Sub
+    Private Sub simulatePlungerAdmin()
+        While threadContinue = True
+            If plunger <= 975 Then
+                plunger += 50
+            Else
+                plunger = 0
+            End If
+
+            sendBoardChanged(New BoardChangedArgs(plunger.ToString, MESSAGE_TYPE.PLUNGER))
+            Threading.Thread.Sleep(100)
         End While
 
     End Sub
