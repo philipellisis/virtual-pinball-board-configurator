@@ -26,7 +26,7 @@ Public Class CSDBoard
     End Sub
 
     Public Function getConfig() As Configuration Implements BoardInterface.getConfig
-        Throw New NotImplementedException()
+        Dim config As New Configuration
     End Function
 
     Public Sub connect() Implements BoardInterface.connect

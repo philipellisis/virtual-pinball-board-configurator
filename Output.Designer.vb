@@ -25,6 +25,7 @@ Partial Class Output
         Me.tbIntensity = New System.Windows.Forms.TrackBar()
         Me.btnOnOff = New System.Windows.Forms.Button()
         Me.gbMain = New System.Windows.Forms.GroupBox()
+        Me.lblValue = New System.Windows.Forms.Label()
         CType(Me.tbIntensity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbMain.SuspendLayout()
         Me.SuspendLayout()
@@ -32,7 +33,7 @@ Partial Class Output
         'tbIntensity
         '
         Me.tbIntensity.LargeChange = 20
-        Me.tbIntensity.Location = New System.Drawing.Point(6, 25)
+        Me.tbIntensity.Location = New System.Drawing.Point(6, 29)
         Me.tbIntensity.Maximum = 255
         Me.tbIntensity.Name = "tbIntensity"
         Me.tbIntensity.Size = New System.Drawing.Size(491, 69)
@@ -44,23 +45,35 @@ Partial Class Output
         Me.btnOnOff.BackColor = System.Drawing.Color.Red
         Me.btnOnOff.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnOnOff.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.btnOnOff.Location = New System.Drawing.Point(512, 25)
+        Me.btnOnOff.Location = New System.Drawing.Point(512, 54)
         Me.btnOnOff.Name = "btnOnOff"
-        Me.btnOnOff.Size = New System.Drawing.Size(75, 69)
+        Me.btnOnOff.Size = New System.Drawing.Size(75, 40)
         Me.btnOnOff.TabIndex = 1
         Me.btnOnOff.Text = "Off"
         Me.btnOnOff.UseVisualStyleBackColor = False
         '
         'gbMain
         '
+        Me.gbMain.Controls.Add(Me.lblValue)
         Me.gbMain.Controls.Add(Me.tbIntensity)
         Me.gbMain.Controls.Add(Me.btnOnOff)
+        Me.gbMain.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbMain.Location = New System.Drawing.Point(3, 3)
         Me.gbMain.Name = "gbMain"
         Me.gbMain.Size = New System.Drawing.Size(603, 100)
         Me.gbMain.TabIndex = 2
         Me.gbMain.TabStop = False
         Me.gbMain.Text = "Ouput #1"
+        '
+        'lblValue
+        '
+        Me.lblValue.AutoSize = True
+        Me.lblValue.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblValue.Location = New System.Drawing.Point(521, 22)
+        Me.lblValue.Name = "lblValue"
+        Me.lblValue.Size = New System.Drawing.Size(51, 29)
+        Me.lblValue.TabIndex = 3
+        Me.lblValue.Text = "255"
         '
         'Output
         '
@@ -79,4 +92,5 @@ Partial Class Output
     Friend WithEvents tbIntensity As TrackBar
     Friend WithEvents btnOnOff As Button
     Friend WithEvents gbMain As GroupBox
+    Friend WithEvents lblValue As Label
 End Class

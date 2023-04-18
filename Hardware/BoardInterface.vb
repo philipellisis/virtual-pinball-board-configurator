@@ -26,7 +26,7 @@ Public Enum MESSAGE_TYPE
     BUTTONS = 5
 End Enum
 
-Public Class Configuration
+Public Class BoardConfiguration
     Public toySpecialOption(63) As Byte
     Public turnOffState(63) As Byte
     Public maxOutputState(63) As Byte
@@ -37,6 +37,35 @@ Public Class Configuration
     Public solenoidButtonMap(4) As Byte
     Public solenoidOutputMap(4) As Byte
     Public orentation As Byte
+    Public accelerometer As Boolean
+    Public Shared Function stringToConfig(str As String) As BoardConfiguration
+        Dim config As New BoardConfiguration
+        Try
+            Dim configString = str.Split(",")
+            For i = 0 To 62
+                config.toySpecialOption(i) = CByte(configString(i))
+                config.turnOffState(i) = CByte(configString(i + 63))
+                config.maxOutputState(i) = CByte(configString(i + 126))
+                config.maxOutputTime(i) = CByte(configString(i + 189))
+            Next
+            config.plungerMax = CInt(configString(252))
+            config.plungerMin = CInt(configString(253))
+            config.plungerMid = CInt(configString(254))
+
+            For i = 0 To 3
+                config.solenoidButtonMap(i) = CByte(configString(i + 255))
+                config.solenoidOutputMap(i) = CByte(configString(i + 259))
+            Next
+
+            config.orentation = CByte(configString(263))
+            config.accelerometer = CBool(configString(264))
+
+        Catch ex As Exception
+            Console.WriteLine("unable to convert data to configuration: " & ex.Message)
+        End Try
+
+        Return config
+    End Function
 End Class
 
 Public Class BoardChangedArgs
@@ -44,6 +73,7 @@ Public Class BoardChangedArgs
     Public outputs As Byte()
     Public buttons As Byte()
     Public plunger As Integer
+    Public config As BoardConfiguration
     Public type As MESSAGE_TYPE
     Public Sub New(message As String, status As MESSAGE_TYPE)
         Me.message = message
@@ -72,6 +102,12 @@ Public Class BoardChangedArgs
             Case MESSAGE_TYPE.PLUNGER
                 Try
                     plunger = CInt(message)
+                Catch ex As Exception
+                    Me.type = MESSAGE_TYPE.DEBUG
+                End Try
+            Case MESSAGE_TYPE.CONFIG
+                Try
+                    config = BoardConfiguration.stringToConfig(message)
                 Catch ex As Exception
                     Me.type = MESSAGE_TYPE.DEBUG
                 End Try

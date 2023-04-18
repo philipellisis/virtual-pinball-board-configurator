@@ -1,6 +1,7 @@
 ﻿Public Class MainWindow
     'Private WithEvents arduino As RS232
     Private WithEvents Board As BoardInterface
+    Private config As BoardConfiguration
     Private Sub MainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
@@ -14,6 +15,7 @@
             End If
             Board.connect()
             gbMenu.Enabled = True
+            Board.enableAdminFunction(ADMIN.SEND_CONFIG)
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
@@ -34,11 +36,11 @@
         Dim plunger As New Plunger(Board)
         plunger.ShowDialog()
     End Sub
+    Private Sub Board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles Board.BoardChanged
+        If e.type = MESSAGE_TYPE.CONFIG Then
+            config = e.config
+        End If
 
-    'Private Sub arduino_RS232Changed(sender As Object, e As RS232ChangedArgs) Handles arduino.RS232Changed
-    '    'TextBox1.Text = e.message
-    'End Sub
-    'Private Sub arduino_RS232Disconnected(sender As Object, e As RS232CompletedArgs) Handles arduino.RS232Completed
-    '    MessageBox.Show("disconnected")
-    'End Sub
+    End Sub
+
 End Class

@@ -20,6 +20,7 @@ Public Class Output
     Public Sub setIntensityValue(val As Byte)
         If _delayRefresh = False Then
             tbIntensity.Value = val
+            lblValue.Text = val.ToString
             setButton(tbIntensity.Value)
         End If
 
@@ -38,6 +39,7 @@ Public Class Output
         _delayRefresh = True
         'setButton(tbIntensity.Value)
         _intensityValue = tbIntensity.Value
+        lblValue.Text = _intensityValue
         If trd.IsAlive = False Then
             Console.WriteLine("starting new thread")
             trd = New Thread(AddressOf delayRefresh)
