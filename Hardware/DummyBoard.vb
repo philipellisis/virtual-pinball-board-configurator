@@ -35,6 +35,11 @@ Public Class DummyBoard
             trd.IsBackground = True
             trd.Start()
         End If
+        If admin = ADMIN.SEND_CONFIG Then
+            trd = New Thread(AddressOf simulateConfigAdmin)
+            trd.IsBackground = True
+            trd.Start()
+        End If
         If admin = ADMIN.OFF Then
             threadContinue = False
         End If
@@ -44,11 +49,11 @@ Public Class DummyBoard
 
     End Sub
 
-    Public Sub setConfig(config As Configuration) Implements BoardInterface.setConfig
+    Public Sub setConfig(config As BoardConfiguration) Implements BoardInterface.setConfig
         Throw New NotImplementedException()
     End Sub
 
-    Public Function getConfig() As Configuration Implements BoardInterface.getConfig
+    Public Function getConfig() As BoardConfiguration Implements BoardInterface.getConfig
         Throw New NotImplementedException()
     End Function
 
@@ -92,6 +97,41 @@ Public Class DummyBoard
             sendBoardChanged(New BoardChangedArgs(outputString, MESSAGE_TYPE.OUTPUTS))
             Threading.Thread.Sleep(300)
         End While
+
+    End Sub
+
+    Private Sub simulateConfigAdmin()
+        Threading.Thread.Sleep(300)
+        Dim outputString As String = ""
+
+        For i As Integer = 0 To 62
+            outputString += outputs(i).ToString & ","
+        Next
+
+        For i As Integer = 0 To 62
+            outputString += outputs(i).ToString & ","
+        Next
+
+        For i As Integer = 0 To 62
+            outputString += outputs(i).ToString & ","
+        Next
+
+        For i As Integer = 0 To 62
+            outputString += outputs(i).ToString & ","
+        Next
+        outputString += "1000,"
+        outputString += "100,"
+        outputString += "200,"
+        For i As Integer = 0 To 3
+            outputString += outputs(i).ToString & ","
+        Next
+        For i As Integer = 0 To 3
+            outputString += outputs(i).ToString & ","
+        Next
+        outputString += "1,"
+        outputString += "1,END_CONFIG"
+        sendBoardChanged(New BoardChangedArgs(outputString, MESSAGE_TYPE.CONFIG))
+        Threading.Thread.Sleep(300)
 
     End Sub
     Private Sub simulateButtonAdmin()

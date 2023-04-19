@@ -21,12 +21,12 @@ Public Class CSDBoard
         CSDConnection.send({result(1), result(0), result1(1), result1(0), result2(1), result2(0)})
     End Sub
 
-    Public Sub setConfig(config As Configuration) Implements BoardInterface.setConfig
+    Public Sub setConfig(config As BoardConfiguration) Implements BoardInterface.setConfig
         Throw New NotImplementedException()
     End Sub
 
-    Public Function getConfig() As Configuration Implements BoardInterface.getConfig
-        Dim config As New Configuration
+    Public Function getConfig() As BoardConfiguration Implements BoardInterface.getConfig
+        Dim config As New BoardConfiguration
     End Function
 
     Public Sub connect() Implements BoardInterface.connect

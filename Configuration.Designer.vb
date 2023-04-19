@@ -26,29 +26,29 @@ Partial Class Configuration
         Me.tpGeneralSettings = New System.Windows.Forms.TabPage()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.cbAccelEnabled = New System.Windows.Forms.CheckBox()
-        Me.ComboBox8 = New System.Windows.Forms.ComboBox()
+        Me.cbOrientation = New System.Windows.Forms.ComboBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.ComboBox6 = New System.Windows.Forms.ComboBox()
+        Me.cbOutputTrigger4 = New System.Windows.Forms.ComboBox()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.ComboBox7 = New System.Windows.Forms.ComboBox()
+        Me.cbButtonTrigger4 = New System.Windows.Forms.ComboBox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
+        Me.cbOutputTrigger3 = New System.Windows.Forms.ComboBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.ComboBox5 = New System.Windows.Forms.ComboBox()
+        Me.cbButtonTrigger3 = New System.Windows.Forms.ComboBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.cbOutputTrigger2 = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
+        Me.cbButtonTrigger2 = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.cbOutputTrigger1 = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.cbMilliseconds = New System.Windows.Forms.ComboBox()
+        Me.cbButtonTrigger1 = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.tbPlungerMid = New System.Windows.Forms.TextBox()
+        Me.tbPlungerMax = New System.Windows.Forms.TextBox()
+        Me.tbPlungerMin = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -93,7 +93,7 @@ Partial Class Configuration
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.cbAccelEnabled)
-        Me.GroupBox3.Controls.Add(Me.ComboBox8)
+        Me.GroupBox3.Controls.Add(Me.cbOrientation)
         Me.GroupBox3.Controls.Add(Me.Label14)
         Me.GroupBox3.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(15, 233)
@@ -114,16 +114,16 @@ Partial Class Configuration
         Me.cbAccelEnabled.Text = "Accelerometer Enabled"
         Me.cbAccelEnabled.UseVisualStyleBackColor = True
         '
-        'ComboBox8
+        'cbOrientation
         '
-        Me.ComboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox8.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox8.FormattingEnabled = True
-        Me.ComboBox8.Items.AddRange(New Object() {"USB Facing Back", "USB Facing Right", "USB Facing Left", "USB Facing Front"})
-        Me.ComboBox8.Location = New System.Drawing.Point(173, 95)
-        Me.ComboBox8.Name = "ComboBox8"
-        Me.ComboBox8.Size = New System.Drawing.Size(196, 33)
-        Me.ComboBox8.TabIndex = 26
+        Me.cbOrientation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbOrientation.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbOrientation.FormattingEnabled = True
+        Me.cbOrientation.Items.AddRange(New Object() {"USB Facing Back", "USB Facing Right", "USB Facing Left", "USB Facing Front"})
+        Me.cbOrientation.Location = New System.Drawing.Point(173, 95)
+        Me.cbOrientation.Name = "cbOrientation"
+        Me.cbOrientation.Size = New System.Drawing.Size(196, 33)
+        Me.cbOrientation.TabIndex = 26
         '
         'Label14
         '
@@ -137,21 +137,21 @@ Partial Class Configuration
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.ComboBox6)
+        Me.GroupBox2.Controls.Add(Me.cbOutputTrigger4)
         Me.GroupBox2.Controls.Add(Me.Label10)
-        Me.GroupBox2.Controls.Add(Me.ComboBox7)
+        Me.GroupBox2.Controls.Add(Me.cbButtonTrigger4)
         Me.GroupBox2.Controls.Add(Me.Label11)
-        Me.GroupBox2.Controls.Add(Me.ComboBox4)
+        Me.GroupBox2.Controls.Add(Me.cbOutputTrigger3)
         Me.GroupBox2.Controls.Add(Me.Label8)
-        Me.GroupBox2.Controls.Add(Me.ComboBox5)
+        Me.GroupBox2.Controls.Add(Me.cbButtonTrigger3)
         Me.GroupBox2.Controls.Add(Me.Label9)
-        Me.GroupBox2.Controls.Add(Me.ComboBox2)
+        Me.GroupBox2.Controls.Add(Me.cbOutputTrigger2)
         Me.GroupBox2.Controls.Add(Me.Label5)
-        Me.GroupBox2.Controls.Add(Me.ComboBox3)
+        Me.GroupBox2.Controls.Add(Me.cbButtonTrigger2)
         Me.GroupBox2.Controls.Add(Me.Label7)
-        Me.GroupBox2.Controls.Add(Me.ComboBox1)
+        Me.GroupBox2.Controls.Add(Me.cbOutputTrigger1)
         Me.GroupBox2.Controls.Add(Me.Label4)
-        Me.GroupBox2.Controls.Add(Me.cbMilliseconds)
+        Me.GroupBox2.Controls.Add(Me.cbButtonTrigger1)
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(393, 6)
@@ -161,16 +161,16 @@ Partial Class Configuration
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Button Triggers"
         '
-        'ComboBox6
+        'cbOutputTrigger4
         '
-        Me.ComboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox6.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox6.FormattingEnabled = True
-        Me.ComboBox6.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63"})
-        Me.ComboBox6.Location = New System.Drawing.Point(301, 164)
-        Me.ComboBox6.Name = "ComboBox6"
-        Me.ComboBox6.Size = New System.Drawing.Size(76, 33)
-        Me.ComboBox6.TabIndex = 27
+        Me.cbOutputTrigger4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbOutputTrigger4.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbOutputTrigger4.FormattingEnabled = True
+        Me.cbOutputTrigger4.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63"})
+        Me.cbOutputTrigger4.Location = New System.Drawing.Point(301, 164)
+        Me.cbOutputTrigger4.Name = "cbOutputTrigger4"
+        Me.cbOutputTrigger4.Size = New System.Drawing.Size(76, 33)
+        Me.cbOutputTrigger4.TabIndex = 27
         '
         'Label10
         '
@@ -182,16 +182,16 @@ Partial Class Configuration
         Me.Label10.TabIndex = 26
         Me.Label10.Text = "Triggers Output"
         '
-        'ComboBox7
+        'cbButtonTrigger4
         '
-        Me.ComboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox7.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox7.FormattingEnabled = True
-        Me.ComboBox7.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
-        Me.ComboBox7.Location = New System.Drawing.Point(77, 164)
-        Me.ComboBox7.Name = "ComboBox7"
-        Me.ComboBox7.Size = New System.Drawing.Size(76, 33)
-        Me.ComboBox7.TabIndex = 25
+        Me.cbButtonTrigger4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbButtonTrigger4.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbButtonTrigger4.FormattingEnabled = True
+        Me.cbButtonTrigger4.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
+        Me.cbButtonTrigger4.Location = New System.Drawing.Point(77, 164)
+        Me.cbButtonTrigger4.Name = "cbButtonTrigger4"
+        Me.cbButtonTrigger4.Size = New System.Drawing.Size(76, 33)
+        Me.cbButtonTrigger4.TabIndex = 25
         '
         'Label11
         '
@@ -203,16 +203,16 @@ Partial Class Configuration
         Me.Label11.TabIndex = 24
         Me.Label11.Text = "Button"
         '
-        'ComboBox4
+        'cbOutputTrigger3
         '
-        Me.ComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox4.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox4.FormattingEnabled = True
-        Me.ComboBox4.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63"})
-        Me.ComboBox4.Location = New System.Drawing.Point(301, 124)
-        Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(76, 33)
-        Me.ComboBox4.TabIndex = 23
+        Me.cbOutputTrigger3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbOutputTrigger3.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbOutputTrigger3.FormattingEnabled = True
+        Me.cbOutputTrigger3.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63"})
+        Me.cbOutputTrigger3.Location = New System.Drawing.Point(301, 124)
+        Me.cbOutputTrigger3.Name = "cbOutputTrigger3"
+        Me.cbOutputTrigger3.Size = New System.Drawing.Size(76, 33)
+        Me.cbOutputTrigger3.TabIndex = 23
         '
         'Label8
         '
@@ -224,16 +224,16 @@ Partial Class Configuration
         Me.Label8.TabIndex = 22
         Me.Label8.Text = "Triggers Output"
         '
-        'ComboBox5
+        'cbButtonTrigger3
         '
-        Me.ComboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox5.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox5.FormattingEnabled = True
-        Me.ComboBox5.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
-        Me.ComboBox5.Location = New System.Drawing.Point(77, 124)
-        Me.ComboBox5.Name = "ComboBox5"
-        Me.ComboBox5.Size = New System.Drawing.Size(76, 33)
-        Me.ComboBox5.TabIndex = 21
+        Me.cbButtonTrigger3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbButtonTrigger3.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbButtonTrigger3.FormattingEnabled = True
+        Me.cbButtonTrigger3.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
+        Me.cbButtonTrigger3.Location = New System.Drawing.Point(77, 124)
+        Me.cbButtonTrigger3.Name = "cbButtonTrigger3"
+        Me.cbButtonTrigger3.Size = New System.Drawing.Size(76, 33)
+        Me.cbButtonTrigger3.TabIndex = 21
         '
         'Label9
         '
@@ -245,16 +245,16 @@ Partial Class Configuration
         Me.Label9.TabIndex = 20
         Me.Label9.Text = "Button"
         '
-        'ComboBox2
+        'cbOutputTrigger2
         '
-        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox2.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63"})
-        Me.ComboBox2.Location = New System.Drawing.Point(301, 82)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(76, 33)
-        Me.ComboBox2.TabIndex = 19
+        Me.cbOutputTrigger2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbOutputTrigger2.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbOutputTrigger2.FormattingEnabled = True
+        Me.cbOutputTrigger2.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63"})
+        Me.cbOutputTrigger2.Location = New System.Drawing.Point(301, 82)
+        Me.cbOutputTrigger2.Name = "cbOutputTrigger2"
+        Me.cbOutputTrigger2.Size = New System.Drawing.Size(76, 33)
+        Me.cbOutputTrigger2.TabIndex = 19
         '
         'Label5
         '
@@ -266,16 +266,16 @@ Partial Class Configuration
         Me.Label5.TabIndex = 18
         Me.Label5.Text = "Triggers Output"
         '
-        'ComboBox3
+        'cbButtonTrigger2
         '
-        Me.ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox3.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
-        Me.ComboBox3.Location = New System.Drawing.Point(77, 82)
-        Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(76, 33)
-        Me.ComboBox3.TabIndex = 17
+        Me.cbButtonTrigger2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbButtonTrigger2.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbButtonTrigger2.FormattingEnabled = True
+        Me.cbButtonTrigger2.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
+        Me.cbButtonTrigger2.Location = New System.Drawing.Point(77, 82)
+        Me.cbButtonTrigger2.Name = "cbButtonTrigger2"
+        Me.cbButtonTrigger2.Size = New System.Drawing.Size(76, 33)
+        Me.cbButtonTrigger2.TabIndex = 17
         '
         'Label7
         '
@@ -287,16 +287,16 @@ Partial Class Configuration
         Me.Label7.TabIndex = 16
         Me.Label7.Text = "Button"
         '
-        'ComboBox1
+        'cbOutputTrigger1
         '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63"})
-        Me.ComboBox1.Location = New System.Drawing.Point(301, 39)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(76, 33)
-        Me.ComboBox1.TabIndex = 15
+        Me.cbOutputTrigger1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbOutputTrigger1.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbOutputTrigger1.FormattingEnabled = True
+        Me.cbOutputTrigger1.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63"})
+        Me.cbOutputTrigger1.Location = New System.Drawing.Point(301, 39)
+        Me.cbOutputTrigger1.Name = "cbOutputTrigger1"
+        Me.cbOutputTrigger1.Size = New System.Drawing.Size(76, 33)
+        Me.cbOutputTrigger1.TabIndex = 15
         '
         'Label4
         '
@@ -308,16 +308,16 @@ Partial Class Configuration
         Me.Label4.TabIndex = 14
         Me.Label4.Text = "Triggers Output"
         '
-        'cbMilliseconds
+        'cbButtonTrigger1
         '
-        Me.cbMilliseconds.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbMilliseconds.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbMilliseconds.FormattingEnabled = True
-        Me.cbMilliseconds.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
-        Me.cbMilliseconds.Location = New System.Drawing.Point(77, 39)
-        Me.cbMilliseconds.Name = "cbMilliseconds"
-        Me.cbMilliseconds.Size = New System.Drawing.Size(76, 33)
-        Me.cbMilliseconds.TabIndex = 13
+        Me.cbButtonTrigger1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbButtonTrigger1.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbButtonTrigger1.FormattingEnabled = True
+        Me.cbButtonTrigger1.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
+        Me.cbButtonTrigger1.Location = New System.Drawing.Point(77, 39)
+        Me.cbButtonTrigger1.Name = "cbButtonTrigger1"
+        Me.cbButtonTrigger1.Size = New System.Drawing.Size(76, 33)
+        Me.cbButtonTrigger1.TabIndex = 13
         '
         'Label6
         '
@@ -331,9 +331,9 @@ Partial Class Configuration
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.TextBox3)
-        Me.GroupBox1.Controls.Add(Me.TextBox2)
-        Me.GroupBox1.Controls.Add(Me.TextBox1)
+        Me.GroupBox1.Controls.Add(Me.tbPlungerMid)
+        Me.GroupBox1.Controls.Add(Me.tbPlungerMax)
+        Me.GroupBox1.Controls.Add(Me.tbPlungerMin)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
@@ -345,29 +345,29 @@ Partial Class Configuration
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Plunger"
         '
-        'TextBox3
+        'tbPlungerMid
         '
-        Me.TextBox3.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(186, 125)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(100, 32)
-        Me.TextBox3.TabIndex = 5
+        Me.tbPlungerMid.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbPlungerMid.Location = New System.Drawing.Point(186, 125)
+        Me.tbPlungerMid.Name = "tbPlungerMid"
+        Me.tbPlungerMid.Size = New System.Drawing.Size(100, 32)
+        Me.tbPlungerMid.TabIndex = 5
         '
-        'TextBox2
+        'tbPlungerMax
         '
-        Me.TextBox2.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(186, 82)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 32)
-        Me.TextBox2.TabIndex = 4
+        Me.tbPlungerMax.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbPlungerMax.Location = New System.Drawing.Point(186, 82)
+        Me.tbPlungerMax.Name = "tbPlungerMax"
+        Me.tbPlungerMax.Size = New System.Drawing.Size(100, 32)
+        Me.tbPlungerMax.TabIndex = 4
         '
-        'TextBox1
+        'tbPlungerMin
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(186, 40)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 32)
-        Me.TextBox1.TabIndex = 3
+        Me.tbPlungerMin.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbPlungerMin.Location = New System.Drawing.Point(186, 40)
+        Me.tbPlungerMin.Name = "tbPlungerMin"
+        Me.tbPlungerMin.Size = New System.Drawing.Size(100, 32)
+        Me.tbPlungerMin.TabIndex = 3
         '
         'Label3
         '
@@ -463,33 +463,33 @@ Partial Class Configuration
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents Label6 As Label
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents tbPlungerMid As TextBox
+    Friend WithEvents tbPlungerMax As TextBox
+    Friend WithEvents tbPlungerMin As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents tpMainOutputs As TabPage
     Friend WithEvents tpExpansion1 As TabPage
     Friend WithEvents tpExpansion2 As TabPage
-    Friend WithEvents ComboBox6 As ComboBox
+    Friend WithEvents cbOutputTrigger4 As ComboBox
     Friend WithEvents Label10 As Label
-    Friend WithEvents ComboBox7 As ComboBox
+    Friend WithEvents cbButtonTrigger4 As ComboBox
     Friend WithEvents Label11 As Label
-    Friend WithEvents ComboBox4 As ComboBox
+    Friend WithEvents cbOutputTrigger3 As ComboBox
     Friend WithEvents Label8 As Label
-    Friend WithEvents ComboBox5 As ComboBox
+    Friend WithEvents cbButtonTrigger3 As ComboBox
     Friend WithEvents Label9 As Label
-    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents cbOutputTrigger2 As ComboBox
     Friend WithEvents Label5 As Label
-    Friend WithEvents ComboBox3 As ComboBox
+    Friend WithEvents cbButtonTrigger2 As ComboBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents cbOutputTrigger1 As ComboBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents cbMilliseconds As ComboBox
+    Friend WithEvents cbButtonTrigger1 As ComboBox
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents cbAccelEnabled As CheckBox
-    Friend WithEvents ComboBox8 As ComboBox
+    Friend WithEvents cbOrientation As ComboBox
     Friend WithEvents Label14 As Label
     Friend WithEvents Button1 As Button
 End Class

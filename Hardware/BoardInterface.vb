@@ -38,6 +38,22 @@ Public Class BoardConfiguration
     Public solenoidOutputMap(4) As Byte
     Public orentation As Byte
     Public accelerometer As Boolean
+    Public Function getOrientationString() As String
+        If orentation = 0 Then
+            Return "USB Facing Back"
+        End If
+        If orentation = 1 Then
+            Return "USB Facing Right"
+        End If
+        If orentation = 2 Then
+            Return "USB Facing Left"
+        End If
+        If orentation = 3 Then
+            Return "USB Facing Front"
+        End If
+
+
+    End Function
     Public Shared Function stringToConfig(str As String) As BoardConfiguration
         Dim config As New BoardConfiguration
         Try
@@ -134,8 +150,8 @@ Public Interface BoardInterface
     Sub enableAdminFunction(admin As ADMIN)
 
     Sub setPlungerMinMax(max As UShort, min As UShort, mid As UShort)
-    Sub setConfig(config As Configuration)
-    Function getConfig() As Configuration
+    Sub setConfig(config As BoardConfiguration)
+    Function getConfig() As BoardConfiguration
     Sub connect()
 
 End Interface

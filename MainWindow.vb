@@ -43,4 +43,8 @@
 
     End Sub
 
+    Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
+        Dim configMenu As New Configuration(Board, config)
+        configMenu.ShowDialog()
+    End Sub
 End Class

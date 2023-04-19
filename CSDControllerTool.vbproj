@@ -93,9 +93,7 @@
     </Compile>
     <Compile Include="Hardware\DummyBoard.vb" />
     <Compile Include="Hardware\CSDBoard.vb" />
-    <Compile Include="Hardware\BoardInterface.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Hardware\BoardInterface.vb" />
     <Compile Include="MainWindow.vb">
       <SubType>Form</SubType>
     </Compile>
