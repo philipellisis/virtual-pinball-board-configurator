@@ -54,6 +54,10 @@ Public Class BoardConfiguration
 
 
     End Function
+
+    Public Function toConfigString() As String
+
+    End Function
     Public Shared Function stringToConfig(str As String) As BoardConfiguration
         Dim config As New BoardConfiguration
         Try

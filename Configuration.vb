@@ -11,45 +11,52 @@
         _config = config
     End Sub
     Private Sub Configuration_Load(sender As Object, e As EventArgs) Handles Me.Load
-        For i As Integer = 0 To 15
-            Dim userControl As New AdjustmentSlider(_config.maxOutputState(i), _config.turnOffState(i), _config.maxOutputTime(i), _config.toySpecialOption(i))
-            userControl.Location = New Point(1, i * 75)
-            tpMainOutputs.Controls.Add(userControl)
-        Next
-        For i As Integer = 16 To 30
-            Dim userControl As New AdjustmentSlider(_config.maxOutputState(i), _config.turnOffState(i), _config.maxOutputTime(i), _config.toySpecialOption(i))
-            userControl.Location = New Point(300, (i - 16) * 75)
+        Me.SuspendLayout()
+        tpMainOutputs.SuspendLayout()
+
+        For i As Integer = 0 To 30
+            Dim userControl As New AdjustmentSlider(i, _config.maxOutputState(i), _config.turnOffState(i), _config.maxOutputTime(i), _config.toySpecialOption(i))
+            userControl.Location = New Point(1, i * 110)
             tpMainOutputs.Controls.Add(userControl)
         Next
 
         For i As Integer = 31 To 46
-            Dim userControl As New AdjustmentSlider(_config.maxOutputState(i), _config.turnOffState(i), _config.maxOutputTime(i), _config.toySpecialOption(i))
-            userControl.Location = New Point(1, (i - 31) * 75)
+            Dim userControl As New AdjustmentSlider(i, _config.maxOutputState(i), _config.turnOffState(i), _config.maxOutputTime(i), _config.toySpecialOption(i))
+            userControl.Location = New Point(1, (i - 31) * 110)
             tpExpansion1.Controls.Add(userControl)
         Next
+        tpExpansion1.Cursor = Cursors.Default
 
         For i As Integer = 47 To 62
-            Dim userControl As New AdjustmentSlider(_config.maxOutputState(i), _config.turnOffState(i), _config.maxOutputTime(i), _config.toySpecialOption(i))
-            userControl.Location = New Point(1, (i - 47) * 75)
+            Dim userControl As New AdjustmentSlider(i, _config.maxOutputState(i), _config.turnOffState(i), _config.maxOutputTime(i), _config.toySpecialOption(i))
+            userControl.Location = New Point(1, (i - 47) * 110)
             tpExpansion2.Controls.Add(userControl)
         Next
 
-        cbOutputTrigger1.SelectedText = _config.solenoidOutputMap(0)
-        cbOutputTrigger2.SelectedText = _config.solenoidOutputMap(1)
-        cbOutputTrigger3.SelectedText = _config.solenoidOutputMap(2)
-        cbOutputTrigger4.SelectedText = _config.solenoidOutputMap(3)
+        cbOutputTrigger1.SelectedItem = (_config.solenoidOutputMap(0)).ToString
+        cbOutputTrigger2.SelectedItem = (_config.solenoidOutputMap(1)).ToString
+        cbOutputTrigger3.SelectedItem = (_config.solenoidOutputMap(2)).ToString
+        cbOutputTrigger4.SelectedItem = (_config.solenoidOutputMap(3)).ToString
 
-        cbButtonTrigger1.SelectedText = _config.solenoidButtonMap(0)
-        cbButtonTrigger2.SelectedText = _config.solenoidButtonMap(1)
-        cbButtonTrigger3.SelectedText = _config.solenoidButtonMap(2)
-        cbButtonTrigger4.SelectedText = _config.solenoidButtonMap(3)
+        cbButtonTrigger1.SelectedItem = (_config.solenoidButtonMap(0)).ToString
+        cbButtonTrigger2.SelectedItem = (_config.solenoidButtonMap(1)).ToString
+        cbButtonTrigger3.SelectedItem = (_config.solenoidButtonMap(2)).ToString
+        cbButtonTrigger4.SelectedItem = (_config.solenoidButtonMap(3)).ToString
 
         cbAccelEnabled.Checked = _config.accelerometer
-        cbOrientation.SelectedText = _config.getOrientationString
-
+        cbOrientation.SelectedItem = _config.getOrientationString
+        tbPlungerMax.Text = _config.plungerMax.ToString
+        tbPlungerMid.Text = _config.plungerMid.ToString
+        tbPlungerMin.Text = _config.plungerMin.ToString
+        Me.ResumeLayout()
+        tpMainOutputs.ResumeLayout()
     End Sub
 
     Private Sub tpGeneralSettings_Click(sender As Object, e As EventArgs) Handles tpGeneralSettings.Click
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
     End Sub
 End Class
