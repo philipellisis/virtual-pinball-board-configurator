@@ -23,17 +23,17 @@ Partial Class AdjustmentSlider
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.gbMain = New System.Windows.Forms.GroupBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.tbOffValue = New System.Windows.Forms.TrackBar()
+        Me.lblMinValue = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.tbMaxValue = New System.Windows.Forms.TrackBar()
+        Me.lblMaxValue = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.cbCatagory = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cbMilliseconds = New System.Windows.Forms.ComboBox()
-        Me.tbOffValue = New System.Windows.Forms.TrackBar()
-        Me.lblMinValue = New System.Windows.Forms.Label()
-        Me.tbMaxValue = New System.Windows.Forms.TrackBar()
-        Me.lblMaxValue = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.gbMain.SuspendLayout()
         CType(Me.tbOffValue, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMaxValue, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -59,6 +59,66 @@ Partial Class AdjustmentSlider
         Me.gbMain.TabIndex = 0
         Me.gbMain.TabStop = False
         Me.gbMain.Text = "Output #1"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(344, 33)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(137, 25)
+        Me.Label5.TabIndex = 18
+        Me.Label5.Text = "Timed Off Value"
+        '
+        'tbOffValue
+        '
+        Me.tbOffValue.LargeChange = 20
+        Me.tbOffValue.Location = New System.Drawing.Point(340, 65)
+        Me.tbOffValue.Maximum = 255
+        Me.tbOffValue.Name = "tbOffValue"
+        Me.tbOffValue.Size = New System.Drawing.Size(264, 69)
+        Me.tbOffValue.SmallChange = 5
+        Me.tbOffValue.TabIndex = 0
+        '
+        'lblMinValue
+        '
+        Me.lblMinValue.AutoSize = True
+        Me.lblMinValue.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMinValue.Location = New System.Drawing.Point(610, 84)
+        Me.lblMinValue.Name = "lblMinValue"
+        Me.lblMinValue.Size = New System.Drawing.Size(51, 29)
+        Me.lblMinValue.TabIndex = 2
+        Me.lblMinValue.Text = "255"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(12, 33)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(151, 25)
+        Me.Label1.TabIndex = 17
+        Me.Label1.Text = "Max Output Value"
+        '
+        'tbMaxValue
+        '
+        Me.tbMaxValue.LargeChange = 20
+        Me.tbMaxValue.Location = New System.Drawing.Point(12, 65)
+        Me.tbMaxValue.Maximum = 255
+        Me.tbMaxValue.Name = "tbMaxValue"
+        Me.tbMaxValue.Size = New System.Drawing.Size(265, 69)
+        Me.tbMaxValue.SmallChange = 5
+        Me.tbMaxValue.TabIndex = 0
+        '
+        'lblMaxValue
+        '
+        Me.lblMaxValue.AutoSize = True
+        Me.lblMaxValue.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMaxValue.Location = New System.Drawing.Point(283, 84)
+        Me.lblMaxValue.Name = "lblMaxValue"
+        Me.lblMaxValue.Size = New System.Drawing.Size(51, 29)
+        Me.lblMaxValue.TabIndex = 2
+        Me.lblMaxValue.Text = "255"
         '
         'Label4
         '
@@ -110,66 +170,6 @@ Partial Class AdjustmentSlider
         Me.cbMilliseconds.Name = "cbMilliseconds"
         Me.cbMilliseconds.Size = New System.Drawing.Size(98, 33)
         Me.cbMilliseconds.TabIndex = 12
-        '
-        'tbOffValue
-        '
-        Me.tbOffValue.LargeChange = 20
-        Me.tbOffValue.Location = New System.Drawing.Point(340, 65)
-        Me.tbOffValue.Maximum = 255
-        Me.tbOffValue.Name = "tbOffValue"
-        Me.tbOffValue.Size = New System.Drawing.Size(264, 69)
-        Me.tbOffValue.SmallChange = 5
-        Me.tbOffValue.TabIndex = 0
-        '
-        'lblMinValue
-        '
-        Me.lblMinValue.AutoSize = True
-        Me.lblMinValue.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMinValue.Location = New System.Drawing.Point(610, 84)
-        Me.lblMinValue.Name = "lblMinValue"
-        Me.lblMinValue.Size = New System.Drawing.Size(51, 29)
-        Me.lblMinValue.TabIndex = 2
-        Me.lblMinValue.Text = "255"
-        '
-        'tbMaxValue
-        '
-        Me.tbMaxValue.LargeChange = 20
-        Me.tbMaxValue.Location = New System.Drawing.Point(12, 65)
-        Me.tbMaxValue.Maximum = 255
-        Me.tbMaxValue.Name = "tbMaxValue"
-        Me.tbMaxValue.Size = New System.Drawing.Size(265, 69)
-        Me.tbMaxValue.SmallChange = 5
-        Me.tbMaxValue.TabIndex = 0
-        '
-        'lblMaxValue
-        '
-        Me.lblMaxValue.AutoSize = True
-        Me.lblMaxValue.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMaxValue.Location = New System.Drawing.Point(283, 84)
-        Me.lblMaxValue.Name = "lblMaxValue"
-        Me.lblMaxValue.Size = New System.Drawing.Size(51, 29)
-        Me.lblMaxValue.TabIndex = 2
-        Me.lblMaxValue.Text = "255"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 33)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(151, 25)
-        Me.Label1.TabIndex = 17
-        Me.Label1.Text = "Max Output Value"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(344, 33)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(137, 25)
-        Me.Label5.TabIndex = 18
-        Me.Label5.Text = "Timed Off Value"
         '
         'AdjustmentSlider
         '

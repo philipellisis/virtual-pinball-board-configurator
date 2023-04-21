@@ -22,11 +22,13 @@ Public Class CSDBoard
     End Sub
 
     Public Sub setConfig(config As BoardConfiguration) Implements BoardInterface.setConfig
-        Throw New NotImplementedException()
+        enableAdminFunction(ADMIN.GET_CONFIG)
+        Threading.Thread.Sleep(100)
+        CSDConnection.send(config.toConfigBytes(config))
     End Sub
 
-    Public Function getConfig() As BoardConfiguration Implements BoardInterface.getConfig
-        Dim config As New BoardConfiguration
+    Public Function saveConfigToEeprom() Implements BoardInterface.saveConfigToEeprom
+        enableAdminFunction(ADMIN.SAVE_CONFIG)
     End Function
 
     Public Sub connect() Implements BoardInterface.connect
@@ -98,6 +100,8 @@ Public Class CSDBoard
                 sendBoardChanged(New BoardChangedArgs(newMessage, MESSAGE_TYPE.PLUNGER))
             Case "ACCEL"
                 sendBoardChanged(New BoardChangedArgs(newMessage, MESSAGE_TYPE.ACCEL))
+            Case "RESPONSE"
+                sendBoardChanged(New BoardChangedArgs(newMessage, MESSAGE_TYPE.RESPONSE))
             Case Else
                 sendBoardChanged(New BoardChangedArgs(e.message, MESSAGE_TYPE.DEBUG))
         End Select

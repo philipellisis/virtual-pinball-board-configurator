@@ -53,7 +53,7 @@ Public Class DummyBoard
         Throw New NotImplementedException()
     End Sub
 
-    Public Function getConfig() As BoardConfiguration Implements BoardInterface.getConfig
+    Public Function saveConfigToEeprom() Implements BoardInterface.saveConfigToEeprom
         Throw New NotImplementedException()
     End Function
 

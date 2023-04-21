@@ -21,26 +21,30 @@
         If e.type = MESSAGE_TYPE.PLUNGER Then
             pbPlunger.Value = e.plunger + 1
             pbPlunger.Value = e.plunger
+            If maxValue < e.plunger Then
+                maxValue = e.plunger
+                lblMaxValue.Text = e.plunger.ToString
+            End If
+            If minvalue > e.plunger Then
+                minvalue = e.plunger
+                lblMinValue.Text = e.plunger.ToString
+            End If
+            If tempRestingValue > e.plunger - 2 And tempRestingValue < e.plunger + 2 Then
+                restingCount += 1
+            Else
+                tempRestingValue = e.plunger
+                restingCount = 0
+            End If
+
+            If restingCount > 50 Then
+                lblRestingPoint.Text = e.plunger.ToString
+                restingValue = e.plunger
+            End If
         End If
-        If maxValue < e.plunger Then
-            maxValue = e.plunger
-            lblMaxValue.Text = e.plunger.ToString
-        End If
-        If minvalue > e.plunger Then
-            minvalue = e.plunger
-            lblMinValue.Text = e.plunger.ToString
-        End If
-        If tempRestingValue > e.plunger - 2 And tempRestingValue < e.plunger + 2 Then
-            restingCount += 1
-        Else
-            tempRestingValue = e.plunger
-            restingCount = 0
+        If e.type = MESSAGE_TYPE.RESPONSE Then
+            MessageBox.Show(e.message)
         End If
 
-        If restingCount > 50 Then
-            lblRestingPoint.Text = e.plunger.ToString
-            restingValue = e.plunger
-        End If
 
     End Sub
     Private Sub Outputs_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing

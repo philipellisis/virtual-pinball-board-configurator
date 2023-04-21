@@ -52,10 +52,11 @@ Partial Class Configuration
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.tpMainOutputs = New System.Windows.Forms.TabPage()
         Me.tpExpansion1 = New System.Windows.Forms.TabPage()
         Me.tpExpansion2 = New System.Windows.Forms.TabPage()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.tpMainOutputs = New System.Windows.Forms.TabPage()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.btnSaveConfig = New System.Windows.Forms.Button()
         Me.tbMain.SuspendLayout()
         Me.tpGeneralSettings.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -403,6 +404,16 @@ Partial Class Configuration
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Plunger Minimum"
         '
+        'tpMainOutputs
+        '
+        Me.tpMainOutputs.AutoScroll = True
+        Me.tpMainOutputs.BackColor = System.Drawing.SystemColors.Control
+        Me.tpMainOutputs.Location = New System.Drawing.Point(4, 34)
+        Me.tpMainOutputs.Name = "tpMainOutputs"
+        Me.tpMainOutputs.Size = New System.Drawing.Size(1111, 611)
+        Me.tpMainOutputs.TabIndex = 4
+        Me.tpMainOutputs.Text = "Main Outputs"
+        '
         'tpExpansion1
         '
         Me.tpExpansion1.AutoScroll = True
@@ -423,32 +434,34 @@ Partial Class Configuration
         Me.tpExpansion2.TabIndex = 3
         Me.tpExpansion2.Text = "Expansion Board #2"
         '
-        'Button1
+        'btnSave
         '
-        Me.Button1.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(956, 5)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(151, 49)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Save Config"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnSave.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSave.Location = New System.Drawing.Point(661, 5)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(220, 49)
+        Me.btnSave.TabIndex = 1
+        Me.btnSave.Text = "Upload Config"
+        Me.btnSave.UseVisualStyleBackColor = True
         '
-        'tpMainOutputs
+        'btnSaveConfig
         '
-        Me.tpMainOutputs.AutoScroll = True
-        Me.tpMainOutputs.BackColor = System.Drawing.SystemColors.Control
-        Me.tpMainOutputs.Location = New System.Drawing.Point(4, 34)
-        Me.tpMainOutputs.Name = "tpMainOutputs"
-        Me.tpMainOutputs.Size = New System.Drawing.Size(1111, 611)
-        Me.tpMainOutputs.TabIndex = 4
-        Me.tpMainOutputs.Text = "Main Outputs"
+        Me.btnSaveConfig.Enabled = False
+        Me.btnSaveConfig.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSaveConfig.Location = New System.Drawing.Point(887, 5)
+        Me.btnSaveConfig.Name = "btnSaveConfig"
+        Me.btnSaveConfig.Size = New System.Drawing.Size(220, 49)
+        Me.btnSaveConfig.TabIndex = 2
+        Me.btnSaveConfig.Text = "Save Config"
+        Me.btnSaveConfig.UseVisualStyleBackColor = True
         '
         'Configuration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1119, 706)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnSaveConfig)
+        Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.tbMain)
         Me.Name = "Configuration"
         Me.Text = "Configuration"
@@ -496,6 +509,7 @@ Partial Class Configuration
     Friend WithEvents cbAccelEnabled As CheckBox
     Friend WithEvents cbOrientation As ComboBox
     Friend WithEvents Label14 As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnSave As Button
     Friend WithEvents tpMainOutputs As TabPage
+    Friend WithEvents btnSaveConfig As Button
 End Class

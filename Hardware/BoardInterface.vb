@@ -15,6 +15,7 @@ Public Enum ADMIN
     SET_PLUNGER = 7
     OFF = 255
     CONNECT = 8
+    SAVE_CONFIG = 9
 End Enum
 
 Public Enum MESSAGE_TYPE
@@ -24,6 +25,7 @@ Public Enum MESSAGE_TYPE
     ACCEL = 3
     CONFIG = 4
     BUTTONS = 5
+    RESPONSE = 6
 End Enum
 
 Public Class BoardConfiguration
@@ -51,12 +53,48 @@ Public Class BoardConfiguration
         If orentation = 3 Then
             Return "USB Facing Front"
         End If
-
-
+    End Function
+    Public Function setOrientationString(orientation As String)
+        If orientation = "USB Facing Back" Then
+            Me.orentation = 0
+        End If
+        If orientation = "USB Facing Right" Then
+            Me.orentation = 1
+        End If
+        If orientation = "USB Facing Left" Then
+            Me.orentation = 2
+        End If
+        If orientation = "USB Facing Front" Then
+            Me.orentation = 3
+        End If
     End Function
 
-    Public Function toConfigString() As String
+    Public Function toConfigBytes(config As BoardConfiguration) As Byte()
+        Dim configString(267) As Byte
+        For i = 0 To 62
+            configString(i) = config.toySpecialOption(i)
+            configString(i + 63) = config.turnOffState(i)
+            configString(i + 126) = config.maxOutputState(i)
+            configString(i + 189) = config.maxOutputTime(i)
+        Next
+        Dim result As Byte() = BitConverter.GetBytes(config.plungerMax)
+        Dim result2 As Byte() = BitConverter.GetBytes(config.plungerMin)
+        Dim result3 As Byte() = BitConverter.GetBytes(config.plungerMid)
+        configString(252) = result(1)
+        configString(253) = result(0)
+        configString(254) = result2(1)
+        configString(255) = result2(0)
+        configString(256) = result3(1)
+        configString(257) = result3(0)
 
+        For i = 0 To 3
+            configString(i + 258) = config.solenoidButtonMap(i)
+            configString(i + 262) = config.solenoidOutputMap(i)
+        Next
+
+        configString(266) = config.orentation
+        configString(267) = config.accelerometer
+        Return configString
     End Function
     Public Shared Function stringToConfig(str As String) As BoardConfiguration
         Dim config As New BoardConfiguration
@@ -155,7 +193,7 @@ Public Interface BoardInterface
 
     Sub setPlungerMinMax(max As UShort, min As UShort, mid As UShort)
     Sub setConfig(config As BoardConfiguration)
-    Function getConfig() As BoardConfiguration
+    Function saveConfigToEeprom()
     Sub connect()
 
 End Interface
