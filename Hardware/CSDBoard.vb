@@ -107,4 +107,7 @@ Public Class CSDBoard
         End Select
 
     End Sub
+    Public Sub sendRaw(value() As Byte) Implements BoardInterface.sendRaw
+        CSDConnection.send(value)
+    End Sub
 End Class

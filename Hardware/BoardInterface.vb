@@ -196,4 +196,6 @@ Public Interface BoardInterface
     Function saveConfigToEeprom()
     Sub connect()
 
+    Sub sendRaw(value As Byte())
+
 End Interface

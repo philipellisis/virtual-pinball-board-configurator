@@ -47,4 +47,17 @@
         Dim configMenu As New Configuration(Board, config)
         configMenu.ShowDialog()
     End Sub
+
+    Dim output As Boolean
+    Private Sub btnAccel_Click(sender As Object, e As EventArgs) Handles btnAccel.Click
+        For i As Integer = 0 To 1000
+            If output Then
+                Board.sendRaw({0, 200, 1, 0, 0, 0, 0, 0, 0})
+            Else
+                Board.sendRaw({0, 200, 0, 0, 0, 0, 0, 0, 0})
+            End If
+            output = Not output
+        Next
+
+    End Sub
 End Class

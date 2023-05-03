@@ -163,4 +163,8 @@ Public Class DummyBoard
     Private Function getRandomValue() As String
         Return (CInt(Math.Ceiling(Rnd() * 255)) + 1).ToString
     End Function
+
+    Public Sub sendRaw(value() As Byte) Implements BoardInterface.sendRaw
+
+    End Sub
 End Class
