@@ -10,26 +10,30 @@
         _board = board
     End Sub
     Private Sub Outputs_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        For i As Integer = 0 To 20
+        Me.SuspendLayout()
+        tpMain.SuspendLayout()
+
+        For i As Integer = 0 To 30
             Dim userControl As New Output(_board, i)
             userControl.Location = New Point(1, i * 75)
-            Me.Controls.Add(userControl)
+            tpMain.Controls.Add(userControl)
             _userControlList.Add(userControl)
         Next
-        For i As Integer = 0 To 20
-            Dim userControl As New Output(_board, i + 21)
-            userControl.Location = New Point(430, i * 75)
-            Me.Controls.Add(userControl)
+        For i As Integer = 0 To 15
+            Dim userControl As New Output(_board, i + 31)
+            userControl.Location = New Point(1, i * 75)
+            tpExp1.Controls.Add(userControl)
             _userControlList.Add(userControl)
         Next
-        For i As Integer = 0 To 20
-            Dim userControl As New Output(_board, i + 42)
-            userControl.Location = New Point(860, i * 75)
-            Me.Controls.Add(userControl)
+        For i As Integer = 0 To 15
+            Dim userControl As New Output(_board, i + 47)
+            userControl.Location = New Point(1, i * 75)
+            tpExp2.Controls.Add(userControl)
             _userControlList.Add(userControl)
         Next
         _board.enableAdminFunction(ADMIN.OUTPUTS)
-
+        Me.ResumeLayout()
+        tpMain.ResumeLayout()
     End Sub
 
     Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles _board.BoardChanged

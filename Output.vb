@@ -15,7 +15,7 @@ Public Class Output
         ' Add any initialization after the InitializeComponent() call.
         _board = board
         _number = outputNumber
-        gbMain.Text = "Output #" & outputNumber.ToString
+        gbMain.Text = "Output #" & (outputNumber + 1).ToString
     End Sub
     Public Sub setIntensityValue(val As Byte)
         If _delayRefresh = False Then

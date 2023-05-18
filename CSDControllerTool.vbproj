@@ -73,6 +73,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accelerometer.Designer.vb">
+      <DependentUpon>Accelerometer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Accelerometer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AdjustmentSlider.Designer.vb">
       <DependentUpon>AdjustmentSlider.vb</DependentUpon>
     </Compile>
@@ -146,6 +152,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Accelerometer.resx">
+      <DependentUpon>Accelerometer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdjustmentSlider.resx">
       <DependentUpon>AdjustmentSlider.vb</DependentUpon>
     </EmbeddedResource>

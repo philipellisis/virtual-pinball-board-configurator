@@ -131,6 +131,7 @@ Public Class BoardChangedArgs
     Public outputs As Byte()
     Public buttons As Byte()
     Public plunger As Integer
+    Public accel As Drawing.Point
     Public config As BoardConfiguration
     Public type As MESSAGE_TYPE
     Public Sub New(message As String, status As MESSAGE_TYPE)
@@ -160,6 +161,13 @@ Public Class BoardChangedArgs
             Case MESSAGE_TYPE.PLUNGER
                 Try
                     plunger = CInt(message)
+                Catch ex As Exception
+                    Me.type = MESSAGE_TYPE.DEBUG
+                End Try
+            Case MESSAGE_TYPE.ACCEL
+                Try
+                    Dim splitMessage = Split(message, ",")
+                    accel = New Drawing.Point(CDbl(splitMessage(0)), CDbl(splitMessage(1)))
                 Catch ex As Exception
                     Me.type = MESSAGE_TYPE.DEBUG
                 End Try
