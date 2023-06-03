@@ -23,8 +23,9 @@
     Private Sub pbAxis_Paint(sender As Object, e As PaintEventArgs) Handles pbAxis.Paint
         e.Graphics.TranslateTransform(center, center)
         Dim p As Pen = New Pen(Color.BlueViolet)
-        e.Graphics.DrawLine(p, New Point(center, 0), New Point(-center, 0))
-        e.Graphics.DrawLine(p, New Point(0, center), New Point(0, -center))
+        Dim p2 As Pen = New Pen(Color.LightGray)
+        e.Graphics.DrawLine(p2, New Point(center, 0), New Point(-center, 0))
+        e.Graphics.DrawLine(p2, New Point(0, center), New Point(0, -center))
         e.Graphics.DrawLine(p, New Point(currentPoint.X - 10, currentPoint.Y), New Point(currentPoint.X + 10, currentPoint.Y))
         e.Graphics.DrawLine(p, New Point(currentPoint.X, currentPoint.Y - 10), New Point(currentPoint.X, currentPoint.Y + 10))
     End Sub
