@@ -21,6 +21,14 @@ Public Class CSDBoard
         CSDConnection.send({result(1), result(0), result1(1), result1(0), result2(1), result2(0)})
     End Sub
 
+    Public Sub setAccelerometerValues(multiplier As UShort, deadZone As UShort) Implements BoardInterface.setAccelerometerValues
+        Dim result As Byte() = BitConverter.GetBytes(multiplier)
+        Dim result1 As Byte() = BitConverter.GetBytes(deadZone)
+        enableAdminFunction(ADMIN.SET_ACCEL)
+        Threading.Thread.Sleep(100)
+        CSDConnection.send({result(1), result(0), result1(1), result1(0)})
+    End Sub
+
     Public Sub setConfig(config As BoardConfiguration) Implements BoardInterface.setConfig
         enableAdminFunction(ADMIN.GET_CONFIG)
         Threading.Thread.Sleep(100)

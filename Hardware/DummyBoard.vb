@@ -49,6 +49,10 @@ Public Class DummyBoard
 
     End Sub
 
+    Public Sub setAccelerometerValues(multiplier As UShort, deadZone As UShort) Implements BoardInterface.setAccelerometerValues
+
+    End Sub
+
     Public Sub setConfig(config As BoardConfiguration) Implements BoardInterface.setConfig
         Throw New NotImplementedException()
     End Sub

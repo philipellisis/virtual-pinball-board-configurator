@@ -16,6 +16,7 @@ Public Enum ADMIN
     OFF = 255
     CONNECT = 8
     SAVE_CONFIG = 9
+    SET_ACCEL = 10
 End Enum
 
 Public Enum MESSAGE_TYPE
@@ -40,6 +41,8 @@ Public Class BoardConfiguration
     Public solenoidOutputMap(4) As Byte
     Public orentation As Byte
     Public accelerometer As Boolean
+    Public accelerometerMultiplier As Int16
+    Public accelerometerDeadZone As Int16
     Public Function getOrientationString() As String
         If orentation = 0 Then
             Return "USB Facing Back"
@@ -70,7 +73,7 @@ Public Class BoardConfiguration
     End Function
 
     Public Function toConfigBytes(config As BoardConfiguration) As Byte()
-        Dim configString(267) As Byte
+        Dim configString(269) As Byte
         For i = 0 To 62
             configString(i) = config.toySpecialOption(i)
             configString(i + 63) = config.turnOffState(i)
@@ -94,6 +97,8 @@ Public Class BoardConfiguration
 
         configString(266) = config.orentation
         configString(267) = config.accelerometer
+        configString(268) = config.accelerometerMultiplier
+        configString(269) = config.accelerometerDeadZone
         Return configString
     End Function
     Public Shared Function stringToConfig(str As String) As BoardConfiguration
@@ -200,6 +205,8 @@ Public Interface BoardInterface
     Sub enableAdminFunction(admin As ADMIN)
 
     Sub setPlungerMinMax(max As UShort, min As UShort, mid As UShort)
+
+    Sub setAccelerometerValues(multiplier As UShort, deadZone As UShort)
     Sub setConfig(config As BoardConfiguration)
     Function saveConfigToEeprom()
     Sub connect()

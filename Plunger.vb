@@ -1,17 +1,19 @@
 ﻿Public Class Plunger
     Private WithEvents _board As BoardInterface
+    Private _config As BoardConfiguration
     Private maxValue As UShort = 0
     Private minvalue As UShort = 1024
     Private tempRestingValue As UShort = 0
     Private restingValue As UShort = 0
     Private restingCount As UShort = 0
-    Public Sub New(board As BoardInterface)
+    Public Sub New(board As BoardInterface, config As BoardConfiguration)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
         _board = board
+        _config = config
     End Sub
     Private Sub Plunger_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _board.enableAdminFunction(ADMIN.PLUNGER)
@@ -53,5 +55,8 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         _board.setPlungerMinMax(maxValue, minvalue, restingValue)
+        _config.plungerMax = maxValue
+        _config.plungerMin = minvalue
+        _config.plungerMid = restingValue
     End Sub
 End Class
