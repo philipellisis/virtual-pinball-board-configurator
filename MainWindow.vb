@@ -33,7 +33,7 @@
     End Sub
 
     Private Sub btnPlunger_Click(sender As Object, e As EventArgs) Handles btnPlunger.Click
-        Dim plunger As New Plunger(Board)
+        Dim plunger As New Plunger(Board, config)
         plunger.ShowDialog()
     End Sub
     Private Sub Board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles Board.BoardChanged
@@ -50,7 +50,7 @@
 
     Dim output As Boolean
     Private Sub btnAccel_Click(sender As Object, e As EventArgs) Handles btnAccel.Click
-        Dim accelerometer As New Accelerometer(Board)
+        Dim accelerometer As New Accelerometer(Board, config)
         accelerometer.ShowDialog()
 
     End Sub

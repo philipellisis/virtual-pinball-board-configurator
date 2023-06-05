@@ -48,6 +48,8 @@
         tbPlungerMax.Text = _config.plungerMax.ToString
         tbPlungerMid.Text = _config.plungerMid.ToString
         tbPlungerMin.Text = _config.plungerMin.ToString
+        tbMultiplier.Text = _config.accelerometerMultiplier.ToString
+        tbDeadZone.Text = _config.accelerometerDeadZone.ToString
         Me.ResumeLayout()
         tpMainOutputs.ResumeLayout()
     End Sub
@@ -71,6 +73,8 @@
         _config.plungerMax = CShort(tbPlungerMax.Text)
         _config.plungerMid = CShort(tbPlungerMid.Text)
         _config.plungerMin = CShort(tbPlungerMin.Text)
+        _config.accelerometerDeadZone = CShort(tbDeadZone.Text)
+        _config.accelerometerMultiplier = CShort(tbMultiplier.Text)
 
         _board.setConfig(_config)
     End Sub

@@ -56,8 +56,9 @@ Public Class BoardConfiguration
         If orentation = 3 Then
             Return "USB Facing Front"
         End If
+        Return ""
     End Function
-    Public Function setOrientationString(orientation As String)
+    Public Sub setOrientationString(orientation As String)
         If orientation = "USB Facing Back" Then
             Me.orentation = 0
         End If
@@ -70,7 +71,7 @@ Public Class BoardConfiguration
         If orientation = "USB Facing Front" Then
             Me.orentation = 3
         End If
-    End Function
+    End Sub
 
     Public Function toConfigBytes(config As BoardConfiguration) As Byte()
         Dim configString(269) As Byte
@@ -122,6 +123,8 @@ Public Class BoardConfiguration
 
             config.orentation = CByte(configString(263))
             config.accelerometer = CBool(configString(264))
+            config.accelerometerMultiplier = CInt(configString(265))
+            config.accelerometerDeadZone = CInt(configString(266))
 
         Catch ex As Exception
             Console.WriteLine("unable to convert data to configuration: " & ex.Message)
@@ -136,7 +139,8 @@ Public Class BoardChangedArgs
     Public outputs As Byte()
     Public buttons As Byte()
     Public plunger As Integer
-    Public accel As Drawing.Point
+    Public accel As PointF
+    Public accelActual As Point
     Public config As BoardConfiguration
     Public type As MESSAGE_TYPE
     Public Sub New(message As String, status As MESSAGE_TYPE)
@@ -172,7 +176,8 @@ Public Class BoardChangedArgs
             Case MESSAGE_TYPE.ACCEL
                 Try
                     Dim splitMessage = Split(message, ",")
-                    accel = New Drawing.Point(CDbl(splitMessage(0)), CDbl(splitMessage(1)))
+                    accel = New Drawing.PointF(CDbl(splitMessage(0)), CDbl(splitMessage(1)))
+                    accelActual = New Drawing.Point(CInt(splitMessage(2)), CInt(splitMessage(3)))
                 Catch ex As Exception
                     Me.type = MESSAGE_TYPE.DEBUG
                 End Try
@@ -206,7 +211,7 @@ Public Interface BoardInterface
 
     Sub setPlungerMinMax(max As UShort, min As UShort, mid As UShort)
 
-    Sub setAccelerometerValues(multiplier As UShort, deadZone As UShort)
+    Sub setAccelerometerValues(multiplier As UShort, deadZone As UShort, orientation As Byte)
     Sub setConfig(config As BoardConfiguration)
     Function saveConfigToEeprom()
     Sub connect()
