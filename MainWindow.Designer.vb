@@ -30,6 +30,7 @@ Partial Class MainWindow
         Me.btnAccel = New System.Windows.Forms.Button()
         Me.gbMenu = New System.Windows.Forms.GroupBox()
         Me.cbSimulation = New System.Windows.Forms.CheckBox()
+        Me.btnUpdateFirmware = New System.Windows.Forms.Button()
         Me.gbMenu.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -126,11 +127,23 @@ Partial Class MainWindow
         Me.cbSimulation.Text = "Simulation"
         Me.cbSimulation.UseVisualStyleBackColor = True
         '
+        'btnUpdateFirmware
+        '
+        Me.btnUpdateFirmware.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUpdateFirmware.Location = New System.Drawing.Point(589, 466)
+        Me.btnUpdateFirmware.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnUpdateFirmware.Name = "btnUpdateFirmware"
+        Me.btnUpdateFirmware.Size = New System.Drawing.Size(224, 85)
+        Me.btnUpdateFirmware.TabIndex = 10
+        Me.btnUpdateFirmware.Text = "Update Firmware"
+        Me.btnUpdateFirmware.UseVisualStyleBackColor = True
+        '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(825, 565)
+        Me.Controls.Add(Me.btnUpdateFirmware)
         Me.Controls.Add(Me.cbSimulation)
         Me.Controls.Add(Me.gbMenu)
         Me.Controls.Add(Me.btnConnect)
@@ -151,4 +164,5 @@ Partial Class MainWindow
     Friend WithEvents btnAccel As Button
     Friend WithEvents gbMenu As GroupBox
     Friend WithEvents cbSimulation As CheckBox
+    Friend WithEvents btnUpdateFirmware As Button
 End Class

@@ -220,6 +220,10 @@ Public Interface BoardInterface
     Function saveConfigToEeprom()
     Sub connect()
 
+    Sub disconnect()
+
+    Function setBootloader() As String
+
     Sub sendRaw(value As Byte())
 
 End Interface

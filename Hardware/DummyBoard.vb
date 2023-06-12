@@ -64,6 +64,9 @@ Public Class DummyBoard
     Public Sub connect() Implements BoardInterface.connect
 
     End Sub
+    Public Sub disconnect() Implements BoardInterface.disconnect
+
+    End Sub
 
     Private Sub OnBoardChanged(ByVal e As BoardChangedArgs)
         RaiseEvent BoardChanged(Me, e)
@@ -171,4 +174,8 @@ Public Class DummyBoard
     Public Sub sendRaw(value() As Byte) Implements BoardInterface.sendRaw
 
     End Sub
+
+    Public Function setBootloader() As String Implements BoardInterface.setBootloader
+        Return "COM1"
+    End Function
 End Class

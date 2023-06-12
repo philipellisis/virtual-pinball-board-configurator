@@ -1,24 +1,42 @@
-﻿Public Class MainWindow
+﻿Imports System.IO
+Imports CSDControllerTool.My
+Imports CSDControllerTool.My.Resources
+Imports System.Windows.Forms
+
+Public Class MainWindow
     'Private WithEvents arduino As RS232
     Private WithEvents Board As BoardInterface
     Private config As BoardConfiguration
+    Private connected As Boolean
     Private Sub MainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 
     Private Sub btnConnect_Click(sender As Object, e As EventArgs) Handles btnConnect.Click
-        Try
-            If cbSimulation.Checked = True Then
-                Board = New DummyBoard
-            Else
-                Board = New CSDBoard
-            End If
-            Board.connect()
-            gbMenu.Enabled = True
-            Board.enableAdminFunction(ADMIN.SEND_CONFIG)
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        End Try
+        If connected Then
+            Board.disconnect()
+            btnConnect.Text = "Connect"
+            btnUpdateFirmware.Enabled = True
+            gbMenu.Enabled = False
+            connected = False
+        Else
+            Try
+                If cbSimulation.Checked = True Then
+                    Board = New DummyBoard
+                Else
+                    Board = New CSDBoard
+                End If
+                Board.connect()
+                gbMenu.Enabled = True
+                connected = True
+                btnConnect.Text = "Disconnect"
+                btnUpdateFirmware.Enabled = False
+                Board.enableAdminFunction(ADMIN.SEND_CONFIG)
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            End Try
+        End If
+
 
     End Sub
 
@@ -52,6 +70,40 @@
     Private Sub btnAccel_Click(sender As Object, e As EventArgs) Handles btnAccel.Click
         Dim accelerometer As New Accelerometer(Board, config)
         accelerometer.ShowDialog()
+
+    End Sub
+
+    Private Sub btnUpdateFirmware_Click(sender As Object, e As EventArgs) Handles btnUpdateFirmware.Click
+        'AVRResources.avrdude
+        Try
+            Using output As Stream = File.OpenWrite(System.IO.Path.Combine(Application.StartupPath(), "avrdude.exe"))
+                output.Write(AVRResources.avrdude, 0, AVRResources.avrdude.Length)
+            End Using
+            Using output As Stream = File.OpenWrite(System.IO.Path.Combine(Application.StartupPath(), "avrdude.conf"))
+                output.Write(AVRResources.avrdude_conf, 0, AVRResources.avrdude_conf.Length)
+            End Using
+            Using output As Stream = File.OpenWrite(System.IO.Path.Combine(Application.StartupPath(), "joystick.ino.hex"))
+                output.Write(AVRResources.joystick_ino, 0, AVRResources.joystick_ino.Length)
+            End Using
+
+            If cbSimulation.Checked = True Then
+                Board = New DummyBoard
+            Else
+                Board = New CSDBoard
+            End If
+            Dim port As String = Board.setBootloader()
+            If port = "MULTIPLE" Then
+                MessageBox.Show("Ensure that the PinOne is the only COM PORT device plugged into the computer before installing new firmware")
+            End If
+            Dim pHelp As New ProcessStartInfo
+            pHelp.FileName = "avrdude.exe"
+            pHelp.Arguments = "-CC:avrdude.conf -v -patmega32u4 -cavr109 -P" & port & " -b57600 -D -Uflash:w:joystick.ino.hex:i"
+            pHelp.UseShellExecute = True
+            pHelp.WindowStyle = ProcessWindowStyle.Normal
+            Dim proc As Process = Process.Start(pHelp)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
 
     End Sub
 End Class

@@ -53,6 +53,16 @@ Public Class RS232
 
         objSerial.DtrEnable = True
     End Sub
+
+    Public Sub open1200()
+        objSerial.BaudRate = 1200
+        objSerial.Handshake = IO.Ports.Handshake.None
+
+        objSerial.ReadTimeout = 500
+        objSerial.Open()
+        objSerial.NewLine = vbLf
+    End Sub
+
     Public Sub close()
         objSerial.Close()
     End Sub

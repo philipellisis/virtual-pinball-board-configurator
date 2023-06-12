@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.Remoting.Contexts
+Imports System.Threading
 
 Public Class CSDBoard
     Implements BoardInterface
@@ -61,6 +62,13 @@ Public Class CSDBoard
         Next
         Throw New Exception("Unable to connect to any board")
     End Sub
+    Public Sub disconnect() Implements BoardInterface.disconnect
+        Try
+            CSDConnection.close()
+        Catch ex As Exception
+
+        End Try
+    End Sub
 
     Private Sub OnBoardChanged(ByVal e As BoardChangedArgs)
         RaiseEvent BoardChanged(Me, e)
@@ -118,4 +126,29 @@ Public Class CSDBoard
     Public Sub sendRaw(value() As Byte) Implements BoardInterface.sendRaw
         CSDConnection.send(value)
     End Sub
+
+    Public Function setBootloader() As String Implements BoardInterface.setBootloader
+        If My.Computer.Ports.SerialPortNames.Count > 1 Then
+            Return "MULTIPLE"
+        End If
+        For Each sp As String In My.Computer.Ports.SerialPortNames
+
+            CSDConnection = New RS232(sp)
+            Try
+                CSDConnection.open1200()
+                CSDConnection.close()
+                Thread.Sleep(500)
+                If My.Computer.Ports.SerialPortNames.Count > 1 Then
+                    Return "MULTIPLE"
+                End If
+                For Each spBoot As String In My.Computer.Ports.SerialPortNames
+                    Return spBoot
+                Next
+
+            Catch ex As Exception
+                CSDConnection.close()
+            End Try
+        Next
+        Throw New Exception("Unable to connect to any board")
+    End Function
 End Class

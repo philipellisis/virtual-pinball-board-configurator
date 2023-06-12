@@ -85,6 +85,11 @@
     <Compile Include="AdjustmentSlider.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="AVRResources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AVRResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Buttons.Designer.vb">
       <DependentUpon>Buttons.vb</DependentUpon>
     </Compile>
@@ -158,6 +163,11 @@
     <EmbeddedResource Include="AdjustmentSlider.resx">
       <DependentUpon>AdjustmentSlider.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AVRResources.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AVRResources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Buttons.resx">
       <DependentUpon>Buttons.vb</DependentUpon>
     </EmbeddedResource>
@@ -197,6 +207,11 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="resources\avrdude.conf" />
+    <None Include="resources\joystick.ino.hex" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\avrdude.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
