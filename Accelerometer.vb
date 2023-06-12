@@ -28,51 +28,61 @@
     End Sub
 
     Private Sub pbAxis_Paint(sender As Object, e As PaintEventArgs) Handles pbAxis.Paint
-        e.Graphics.TranslateTransform(center, center)
-        Dim p As Pen = New Pen(Color.BlueViolet)
-        Dim p2 As Pen = New Pen(Color.LightGray)
-        Dim p3 As Pen = New Pen(Color.Red)
-        e.Graphics.DrawLine(p2, New Point(center, 0), New Point(-center, 0))
-        e.Graphics.DrawLine(p2, New Point(0, center), New Point(0, -center))
-        e.Graphics.DrawRectangle(p3, New Rectangle(New Point(-deadZone / maxSize * center, -deadZone / maxSize * center), New Size(deadZone * 2 / maxSize * center, deadZone * 2 / maxSize * center)))
-        e.Graphics.DrawLine(p, New Point(currentPoint.X * CUShort(tbMultiplier.Text) - 10, currentPoint.Y * CUShort(tbMultiplier.Text)), New Point(currentPoint.X * CUShort(tbMultiplier.Text) + 10, currentPoint.Y * CUShort(tbMultiplier.Text)))
-        e.Graphics.DrawLine(p, New Point(currentPoint.X * CUShort(tbMultiplier.Text), currentPoint.Y * CUShort(tbMultiplier.Text) - 10), New Point(currentPoint.X * CUShort(tbMultiplier.Text), currentPoint.Y * CUShort(tbMultiplier.Text) + 10))
+        Try
+            e.Graphics.TranslateTransform(center, center)
+            Dim p As Pen = New Pen(Color.BlueViolet)
+            Dim p2 As Pen = New Pen(Color.LightGray)
+            Dim p3 As Pen = New Pen(Color.Red)
+            e.Graphics.DrawLine(p2, New Point(center, 0), New Point(-center, 0))
+            e.Graphics.DrawLine(p2, New Point(0, center), New Point(0, -center))
+            e.Graphics.DrawRectangle(p3, New Rectangle(New Point(-deadZone / maxSize * center, -deadZone / maxSize * center), New Size(deadZone * 2 / maxSize * center, deadZone * 2 / maxSize * center)))
+            e.Graphics.DrawLine(p, New Point(currentPoint.X * CUShort(tbMultiplier.Text) - 10, currentPoint.Y * CUShort(tbMultiplier.Text)), New Point(currentPoint.X * CUShort(tbMultiplier.Text) + 10, currentPoint.Y * CUShort(tbMultiplier.Text)))
+            e.Graphics.DrawLine(p, New Point(currentPoint.X * CUShort(tbMultiplier.Text), currentPoint.Y * CUShort(tbMultiplier.Text) - 10), New Point(currentPoint.X * CUShort(tbMultiplier.Text), currentPoint.Y * CUShort(tbMultiplier.Text) + 10))
+        Catch ex As Exception
+
+        End Try
+
     End Sub
     Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles _board.BoardChanged
-        If e.type = MESSAGE_TYPE.ACCEL Then
-            currentPoint = e.accel
-            If Math.Abs(currentPoint.X * CUShort(tbMultiplier.Text)) > maxSize Then
-                maxSize = Math.Abs(currentPoint.X * CUShort(tbMultiplier.Text))
-            End If
-            If Math.Abs(currentPoint.Y * CUShort(tbMultiplier.Text)) > maxSize Then
-                maxSize = Math.Abs(currentPoint.Y * CUShort(tbMultiplier.Text))
-            End If
-            tbXRaw.Text = currentPoint.X
-            tbYRaw.Text = currentPoint.Y
-            tbX.Text = e.accelActual.X
-            tbY.Text = e.accelActual.Y
-
-            If recordDeadZone Then
-                If currentPoint.X * CUShort(tbMultiplier.Text) > deadZone Then
-                    tbDeadZone.Text = currentPoint.X * CUShort(tbMultiplier.Text)
-                    deadZone = currentPoint.X * CUShort(tbMultiplier.Text)
+        Try
+            If e.type = MESSAGE_TYPE.ACCEL Then
+                currentPoint = e.accel
+                If Math.Abs(currentPoint.X * CUShort(tbMultiplier.Text)) > maxSize Then
+                    maxSize = Math.Abs(currentPoint.X * CUShort(tbMultiplier.Text))
                 End If
-                If currentPoint.Y * CUShort(tbMultiplier.Text) > deadZone Then
-                    tbDeadZone.Text = currentPoint.Y * CUShort(tbMultiplier.Text)
-                    deadZone = currentPoint.Y * CUShort(tbMultiplier.Text)
+                If Math.Abs(currentPoint.Y * CUShort(tbMultiplier.Text)) > maxSize Then
+                    maxSize = Math.Abs(currentPoint.Y * CUShort(tbMultiplier.Text))
                 End If
-            Else
-                deadZone = CUShort(tbDeadZone.Text)
+                tbXRaw.Text = currentPoint.X
+                tbYRaw.Text = currentPoint.Y
+                tbX.Text = e.accelActual.X
+                tbY.Text = e.accelActual.Y
+
+                If recordDeadZone Then
+                    If currentPoint.X * CUShort(tbMultiplier.Text) > deadZone Then
+                        tbDeadZone.Text = currentPoint.X * CUShort(tbMultiplier.Text)
+                        deadZone = currentPoint.X * CUShort(tbMultiplier.Text)
+                    End If
+                    If currentPoint.Y * CUShort(tbMultiplier.Text) > deadZone Then
+                        tbDeadZone.Text = currentPoint.Y * CUShort(tbMultiplier.Text)
+                        deadZone = currentPoint.Y * CUShort(tbMultiplier.Text)
+                    End If
+                Else
+                    deadZone = CUShort(tbDeadZone.Text)
+                End If
+
+                currentPoint.X = currentPoint.X / maxSize * center
+                currentPoint.Y = currentPoint.Y / maxSize * center
+                pbAxis.Invalidate()
+
+
+            ElseIf e.type = MESSAGE_TYPE.RESPONSE Then
+                MessageBox.Show(e.message)
             End If
+        Catch ex As Exception
 
-            currentPoint.X = currentPoint.X / maxSize * center
-            currentPoint.Y = currentPoint.Y / maxSize * center
-            pbAxis.Invalidate()
+        End Try
 
-
-        ElseIf e.type = MESSAGE_TYPE.RESPONSE Then
-            MessageBox.Show(e.message)
-        End If
     End Sub
 
     Private Sub Accelerometer_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing

@@ -74,7 +74,7 @@ Public Class BoardConfiguration
     End Sub
 
     Public Function toConfigBytes(config As BoardConfiguration) As Byte()
-        Dim configString(269) As Byte
+        Dim configString(271) As Byte
         For i = 0 To 62
             configString(i) = config.toySpecialOption(i)
             configString(i + 63) = config.turnOffState(i)
@@ -98,8 +98,12 @@ Public Class BoardConfiguration
 
         configString(266) = config.orentation
         configString(267) = config.accelerometer
-        configString(268) = config.accelerometerMultiplier
-        configString(269) = config.accelerometerDeadZone
+        Dim result4 As Byte() = BitConverter.GetBytes(config.accelerometerMultiplier)
+        Dim result5 As Byte() = BitConverter.GetBytes(config.accelerometerDeadZone)
+        configString(268) = result4(1)
+        configString(269) = result4(0)
+        configString(270) = result5(1)
+        configString(271) = result5(0)
         Return configString
     End Function
     Public Shared Function stringToConfig(str As String) As BoardConfiguration
