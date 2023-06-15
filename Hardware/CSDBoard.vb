@@ -136,13 +136,14 @@ Public Class CSDBoard
             CSDConnection = New RS232(sp)
             Try
                 CSDConnection.open1200()
+                Thread.Sleep(500)
                 CSDConnection.close()
                 Thread.Sleep(500)
-                If My.Computer.Ports.SerialPortNames.Count > 1 Then
-                    Return "MULTIPLE"
-                End If
+                Dim sps = My.Computer.Ports.SerialPortNames
                 For Each spBoot As String In My.Computer.Ports.SerialPortNames
-                    Return spBoot
+                    If spBoot <> sp Then
+                        Return spBoot
+                    End If
                 Next
 
             Catch ex As Exception

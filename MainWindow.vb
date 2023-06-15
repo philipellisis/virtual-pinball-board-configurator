@@ -94,6 +94,7 @@ Public Class MainWindow
             Dim port As String = Board.setBootloader()
             If port = "MULTIPLE" Then
                 MessageBox.Show("Ensure that the PinOne is the only COM PORT device plugged into the computer before installing new firmware")
+                Exit Sub
             End If
             Dim pHelp As New ProcessStartInfo
             pHelp.FileName = "avrdude.exe"
