@@ -75,6 +75,11 @@ Public Class MainWindow
 
     Private Sub btnUpdateFirmware_Click(sender As Object, e As EventArgs) Handles btnUpdateFirmware.Click
         'AVRResources.avrdude
+        If MessageBox.Show("Ensure you only have one CSD board connected before proceeding to install, this will erase all memory from the device and install the latest firmware. Click OK to continue", "Warning", MessageBoxButtons.OKCancel,
+            Nothing, MessageBoxDefaultButton.Button1) = DialogResult.OK Then
+        Else
+            Exit Sub
+        End If
         Try
             Using output As Stream = File.OpenWrite(System.IO.Path.Combine(Application.StartupPath(), "avrdude.exe"))
                 output.Write(AVRResources.avrdude, 0, AVRResources.avrdude.Length)

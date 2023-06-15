@@ -148,6 +148,7 @@ Public Class CSDBoard
 
             Catch ex As Exception
                 CSDConnection.close()
+                Return sp
             End Try
         Next
         Throw New Exception("Unable to connect to any board")
