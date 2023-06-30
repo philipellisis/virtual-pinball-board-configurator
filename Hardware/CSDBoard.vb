@@ -13,13 +13,13 @@ Public Class CSDBoard
         CSDConnection.send({0, 250, admin, 0, 0, 0, 0, 0, 0})
     End Sub
 
-    Public Sub setPlungerMinMax(max As UShort, min As UShort, mid As UShort) Implements BoardInterface.setPlungerMinMax
+    Public Sub setPlungerMinMax(max As UShort, min As UShort, mid As UShort, buttonOption As Byte) Implements BoardInterface.setPlungerMinMax
         Dim result As Byte() = BitConverter.GetBytes(max)
         Dim result1 As Byte() = BitConverter.GetBytes(min)
         Dim result2 As Byte() = BitConverter.GetBytes(mid)
         enableAdminFunction(ADMIN.SET_PLUNGER)
         Threading.Thread.Sleep(100)
-        CSDConnection.send({result(1), result(0), result1(1), result1(0), result2(1), result2(0)})
+        CSDConnection.send({result(1), result(0), result1(1), result1(0), result2(1), result2(0), buttonOption})
     End Sub
 
     Public Sub setAccelerometerValues(multiplier As UShort, deadZone As UShort, orientation As Byte) Implements BoardInterface.setAccelerometerValues

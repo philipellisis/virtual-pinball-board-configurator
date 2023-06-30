@@ -45,7 +45,7 @@ Public Class DummyBoard
         End If
     End Sub
 
-    Public Sub setPlungerMinMax(mmax As UShort, min As UShort, mid As UShort) Implements BoardInterface.setPlungerMinMax
+    Public Sub setPlungerMinMax(mmax As UShort, min As UShort, mid As UShort, buttonOption As Byte) Implements BoardInterface.setPlungerMinMax
 
     End Sub
 

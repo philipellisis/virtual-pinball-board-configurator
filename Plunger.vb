@@ -17,6 +17,12 @@
     End Sub
     Private Sub Plunger_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _board.enableAdminFunction(ADMIN.PLUNGER)
+        If _config.buttonOption = 1 Or _config.buttonOption = 3 Then
+            cbPushOnMax.Checked = True
+        End If
+        If _config.buttonOption >= 2 Then
+            cbPushOnMin.Checked = True
+        End If
     End Sub
 
     Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles _board.BoardChanged
@@ -54,9 +60,19 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        _board.setPlungerMinMax(maxValue, minvalue, restingValue)
+        Dim buttonOption As Byte = 0
+        If cbPushOnMax.Checked And cbPushOnMin.Checked Then
+            buttonOption = 3
+        ElseIf cbPushOnMax.Checked Then
+            buttonOption = 1
+        ElseIf cbPushOnMin.Checked Then
+            buttonOption = 2
+        End If
+        _board.setPlungerMinMax(maxValue, minvalue, restingValue, buttonOption)
         _config.plungerMax = maxValue
         _config.plungerMin = minvalue
         _config.plungerMid = restingValue
+        _config.buttonOption = buttonOption
+
     End Sub
 End Class

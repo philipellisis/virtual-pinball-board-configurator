@@ -43,6 +43,7 @@ Public Class BoardConfiguration
     Public accelerometer As Boolean
     Public accelerometerMultiplier As Int16
     Public accelerometerDeadZone As Int16
+    Public buttonOption As Byte
     Public Function getOrientationString() As String
         If orentation = 0 Then
             Return "USB Facing Back"
@@ -74,7 +75,7 @@ Public Class BoardConfiguration
     End Sub
 
     Public Function toConfigBytes(config As BoardConfiguration) As Byte()
-        Dim configString(271) As Byte
+        Dim configString(272) As Byte
         For i = 0 To 62
             configString(i) = config.toySpecialOption(i)
             configString(i + 63) = config.turnOffState(i)
@@ -104,6 +105,7 @@ Public Class BoardConfiguration
         configString(269) = result4(0)
         configString(270) = result5(1)
         configString(271) = result5(0)
+        configString(272) = buttonOption
         Return configString
     End Function
     Public Shared Function stringToConfig(str As String) As BoardConfiguration
@@ -129,6 +131,7 @@ Public Class BoardConfiguration
             config.accelerometer = CBool(configString(264))
             config.accelerometerMultiplier = CInt(configString(265))
             config.accelerometerDeadZone = CInt(configString(266))
+            config.buttonOption = CByte(configString(267))
 
         Catch ex As Exception
             Console.WriteLine("unable to convert data to configuration: " & ex.Message)
@@ -213,7 +216,7 @@ Public Interface BoardInterface
 
     Sub enableAdminFunction(admin As ADMIN)
 
-    Sub setPlungerMinMax(max As UShort, min As UShort, mid As UShort)
+    Sub setPlungerMinMax(max As UShort, min As UShort, mid As UShort, buttonOption As Byte)
 
     Sub setAccelerometerValues(multiplier As UShort, deadZone As UShort, orientation As Byte)
     Sub setConfig(config As BoardConfiguration)

@@ -50,6 +50,14 @@
         tbPlungerMin.Text = _config.plungerMin.ToString
         tbMultiplier.Text = _config.accelerometerMultiplier.ToString
         tbDeadZone.Text = _config.accelerometerDeadZone.ToString
+
+        If _config.buttonOption = 1 Or _config.buttonOption = 3 Then
+            cbPushOnMax.Checked = True
+        End If
+        If _config.buttonOption >= 2 Then
+            cbPushOnMin.Checked = True
+        End If
+
         Me.ResumeLayout()
         tpMainOutputs.ResumeLayout()
     End Sub
@@ -75,7 +83,15 @@
         _config.plungerMin = CShort(tbPlungerMin.Text)
         _config.accelerometerDeadZone = CShort(tbDeadZone.Text)
         _config.accelerometerMultiplier = CShort(tbMultiplier.Text)
-
+        Dim buttonOption As Byte = 0
+        If cbPushOnMax.Checked And cbPushOnMin.Checked Then
+            buttonOption = 3
+        ElseIf cbPushOnMax.Checked Then
+            buttonOption = 1
+        ElseIf cbPushOnMin.Checked Then
+            buttonOption = 2
+        End If
+        _config.buttonOption = buttonOption
         _board.setConfig(_config)
     End Sub
 
@@ -93,5 +109,9 @@
 
     Private Sub btnSaveConfig_Click(sender As Object, e As EventArgs) Handles btnSaveConfig.Click
         _board.saveConfigToEeprom()
+    End Sub
+
+    Private Sub tpGeneralSettings_Click(sender As Object, e As EventArgs) Handles tpGeneralSettings.Click
+
     End Sub
 End Class

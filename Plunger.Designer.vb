@@ -30,6 +30,8 @@ Partial Class Plunger
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.lblRestingPoint = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.cbPushOnMin = New System.Windows.Forms.CheckBox()
+        Me.cbPushOnMax = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -119,11 +121,35 @@ Partial Class Plunger
         Me.Button1.Text = "Send Calibration Values"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'cbPushOnMin
+        '
+        Me.cbPushOnMin.AutoSize = True
+        Me.cbPushOnMin.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbPushOnMin.Location = New System.Drawing.Point(47, 220)
+        Me.cbPushOnMin.Name = "cbPushOnMin"
+        Me.cbPushOnMin.Size = New System.Drawing.Size(192, 29)
+        Me.cbPushOnMin.TabIndex = 28
+        Me.cbPushOnMin.Text = "Push Button On Min"
+        Me.cbPushOnMin.UseVisualStyleBackColor = True
+        '
+        'cbPushOnMax
+        '
+        Me.cbPushOnMax.AutoSize = True
+        Me.cbPushOnMax.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbPushOnMax.Location = New System.Drawing.Point(47, 255)
+        Me.cbPushOnMax.Name = "cbPushOnMax"
+        Me.cbPushOnMax.Size = New System.Drawing.Size(196, 29)
+        Me.cbPushOnMax.TabIndex = 29
+        Me.cbPushOnMax.Text = "Push Button On Max"
+        Me.cbPushOnMax.UseVisualStyleBackColor = True
+        '
         'Plunger
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(688, 320)
+        Me.Controls.Add(Me.cbPushOnMax)
+        Me.Controls.Add(Me.cbPushOnMin)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
@@ -138,6 +164,7 @@ Partial Class Plunger
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -149,4 +176,6 @@ Partial Class Plunger
     Friend WithEvents lblMaxValue As Label
     Friend WithEvents lblRestingPoint As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents cbPushOnMin As CheckBox
+    Friend WithEvents cbPushOnMax As CheckBox
 End Class
