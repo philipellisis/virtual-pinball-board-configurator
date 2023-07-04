@@ -49,7 +49,7 @@ Public Class DummyBoard
 
     End Sub
 
-    Public Sub setAccelerometerValues(multiplier As UShort, deadZone As UShort, orientation As Byte) Implements BoardInterface.setAccelerometerValues
+    Public Sub setAccelerometerValues(multiplier As UShort, deadZone As UShort, orientation As Byte, tilt As UShort) Implements BoardInterface.setAccelerometerValues
 
     End Sub
 

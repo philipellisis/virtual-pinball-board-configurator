@@ -25,6 +25,7 @@
         tbDeadZone.Text = _config.accelerometerDeadZone
         tbMultiplier.Text = _config.accelerometerMultiplier
         cbOrientation.SelectedItem = _config.getOrientationString
+        tbTilt.Text = _config.accelerometerTilt
     End Sub
 
     Private Sub pbAxis_Paint(sender As Object, e As PaintEventArgs) Handles pbAxis.Paint
@@ -108,6 +109,7 @@
         _config.setOrientationString(cbOrientation.SelectedItem)
         _config.accelerometerMultiplier = CUShort(tbMultiplier.Text)
         _config.accelerometerDeadZone = CUShort(tbDeadZone.Text)
-        _board.setAccelerometerValues(_config.accelerometerMultiplier, _config.accelerometerDeadZone, _config.orentation)
+        _config.accelerometerTilt = CUShort(tbTilt.Text)
+        _board.setAccelerometerValues(_config.accelerometerMultiplier, _config.accelerometerDeadZone, _config.orentation, _config.accelerometerTilt)
     End Sub
 End Class
