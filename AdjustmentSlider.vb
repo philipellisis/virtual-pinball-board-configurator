@@ -1,11 +1,18 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
+﻿Imports System.Threading
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 
 Public Class AdjustmentSlider
 
 
     Private _config As BoardConfiguration
     Private outputNumber As Byte
-    Public Sub New(outputNumber As Byte, config As BoardConfiguration)
+    Private outputOn As Boolean = False
+    Private _delayRefresh As Boolean = False
+    Private _board As BoardInterface
+    Private _intensityValue As Byte = 0
+    Private trd As Thread = New Thread(AddressOf delayRefresh)
+    Private trdCount As Integer = 5
+    Public Sub New(outputNumber As Byte, config As BoardConfiguration, board As BoardInterface)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -32,12 +39,36 @@ Public Class AdjustmentSlider
         cbMilliseconds.SelectedItem = _config.maxOutputTime(outputNumber) * 100
         lblMinValue.Text = tbOffValue.Value
         lblMaxValue.Text = tbMaxValue.Value
+        _board = board
 
     End Sub
 
     Private Sub tbMaxValue_Scroll(sender As Object, e As EventArgs) Handles tbMaxValue.Scroll
         _config.maxOutputState(outputNumber) = tbMaxValue.Value
         lblMaxValue.Text = tbMaxValue.Value
+
+        _delayRefresh = True
+        _intensityValue = tbMaxValue.Value
+        'setButton(tbIntensity.Value)
+        If trd.IsAlive = False Then
+            Console.WriteLine("starting new thread")
+            trd = New Thread(AddressOf delayRefresh)
+            trd.IsBackground = True
+            trd.Start()
+        Else
+            trdCount = 5
+            Console.WriteLine("making thread last longer")
+        End If
+    End Sub
+    Sub delayRefresh()
+        Do Until trdCount = 0
+            Thread.Sleep(100)
+            trdCount -= 1
+        Loop
+        trdCount = 5
+        _board.setOutputValue(outputNumber, _intensityValue)
+        Thread.Sleep(500)
+        _delayRefresh = False
     End Sub
 
     Private Sub tbOffValue_Scroll(sender As Object, e As EventArgs) Handles tbOffValue.Scroll
@@ -56,6 +87,30 @@ Public Class AdjustmentSlider
             _config.toySpecialOption(outputNumber) = 1
         ElseIf cbCatagory.SelectedItem = "RGB" Then
             _config.toySpecialOption(outputNumber) = 2
+        End If
+    End Sub
+
+    Private Sub btnOnOff_Click(sender As Object, e As EventArgs) Handles btnOnOff.Click
+        If outputOn = False Then
+            _board.setOutputValue(outputNumber, tbMaxValue.Value)
+        Else
+            _board.setOutputValue(outputNumber, 0)
+        End If
+    End Sub
+    Public Sub setIntensityValue(val As Byte)
+        If _delayRefresh = False Then
+            setButton(val)
+        End If
+    End Sub
+    Private Sub setButton(val As Integer)
+        If val > 0 Then
+            btnOnOff.Text = "On"
+            btnOnOff.BackColor = Color.DarkGreen
+            outputOn = True
+        Else
+            btnOnOff.Text = "Off"
+            btnOnOff.BackColor = Color.Red
+            outputOn = False
         End If
     End Sub
 End Class

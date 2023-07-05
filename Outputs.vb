@@ -1,6 +1,7 @@
 ﻿Public Class Outputs
     Private _userControlList As New List(Of Output)
     Private WithEvents _board As BoardInterface
+    Private outputOn As Integer = -1
     Public Sub New(board As BoardInterface)
 
         ' This call is required by the designer.
@@ -37,15 +38,32 @@
     End Sub
 
     Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles _board.BoardChanged
-        If e.type = MESSAGE_TYPE.OUTPUTS Then
-            For i As Integer = 0 To 62
-                _userControlList.Item(i).setIntensityValue(e.outputs(i))
-            Next
-        End If
+        Try
+            If e.type = MESSAGE_TYPE.OUTPUTS Then
+                For i As Integer = 0 To 62
+                    _userControlList.Item(i).setIntensityValue(e.outputs(i))
+                Next
+            End If
+        Catch ex As Exception
+
+        End Try
 
     End Sub
 
     Private Sub Outputs_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         _board.enableAdminFunction(ADMIN.OFF)
+    End Sub
+
+    Private Sub tbIntensity_Scroll(sender As Object, e As EventArgs) Handles tbIntensity.Scroll
+        lblValue.Text = tbIntensity.Value.ToString
+        If tbIntensity.Value > 0 Then
+            _board.setOutputValue(tbIntensity.Value - 1, 255)
+
+        End If
+        If outputOn >= 0 Then
+            _board.setOutputValue(outputOn, 0)
+        End If
+        outputOn = tbIntensity.Value - 1
+
     End Sub
 End Class

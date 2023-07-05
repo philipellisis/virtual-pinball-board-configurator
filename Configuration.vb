@@ -1,6 +1,7 @@
 ﻿Public Class Configuration
     Private _config As BoardConfiguration
     Private WithEvents _board As BoardInterface
+    Private _userControlList As New List(Of AdjustmentSlider)
     Sub New(board As BoardInterface, config As BoardConfiguration)
 
         ' This call is required by the designer.
@@ -15,22 +16,26 @@
         tpMainOutputs.SuspendLayout()
 
         For i As Integer = 0 To 30
-            Dim userControl As New AdjustmentSlider(i, _config)
+            Dim userControl As New AdjustmentSlider(i, _config, _board)
             userControl.Location = New Point(1, i * 110)
             tpMainOutputs.Controls.Add(userControl)
+            _userControlList.Add(userControl)
         Next
+        '_userControlList.Item(31).Visible = False
 
         For i As Integer = 31 To 46
-            Dim userControl As New AdjustmentSlider(i, _config)
+            Dim userControl As New AdjustmentSlider(i, _config, _board)
             userControl.Location = New Point(1, (i - 31) * 110)
             tpExpansion1.Controls.Add(userControl)
+            _userControlList.Add(userControl)
         Next
         tpExpansion1.Cursor = Cursors.Default
 
         For i As Integer = 47 To 62
-            Dim userControl As New AdjustmentSlider(i, _config)
+            Dim userControl As New AdjustmentSlider(i, _config, _board)
             userControl.Location = New Point(1, (i - 47) * 110)
             tpExpansion2.Controls.Add(userControl)
+            _userControlList.Add(userControl)
         Next
 
         cbOutputTrigger1.SelectedItem = (_config.solenoidOutputMap(0)).ToString
@@ -57,13 +62,16 @@
         If _config.buttonOption >= 2 Then
             cbPushOnMin.Checked = True
         End If
+        tbTilt.Text = _config.accelerometerTilt.ToString
 
         Me.ResumeLayout()
         tpMainOutputs.ResumeLayout()
+        _board.enableAdminFunction(ADMIN.OUTPUTS)
     End Sub
 
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        _board.enableAdminFunction(ADMIN.OFF)
         _config.solenoidOutputMap(0) = CByte(cbOutputTrigger1.SelectedItem)
         _config.solenoidOutputMap(1) = CByte(cbOutputTrigger2.SelectedItem)
         _config.solenoidOutputMap(2) = CByte(cbOutputTrigger3.SelectedItem)
@@ -92,6 +100,7 @@
             buttonOption = 2
         End If
         _config.buttonOption = buttonOption
+        _config.accelerometerTilt = CShort(tbTilt.Text)
         _board.setConfig(_config)
     End Sub
 
@@ -102,7 +111,14 @@
                 btnSaveConfig.Enabled = True
             End If
             MessageBox.Show(e.message)
+            _board.enableAdminFunction(ADMIN.OUTPUTS)
         End If
+        If e.type = MESSAGE_TYPE.OUTPUTS Then
+            For i As Integer = 0 To 62
+                _userControlList.Item(i).setIntensityValue(e.outputs(i))
+            Next
+        End If
+
 
 
     End Sub
@@ -113,5 +129,9 @@
 
     Private Sub tpGeneralSettings_Click(sender As Object, e As EventArgs) Handles tpGeneralSettings.Click
 
+    End Sub
+
+    Private Sub Configuration_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        _board.enableAdminFunction(ADMIN.OFF)
     End Sub
 End Class

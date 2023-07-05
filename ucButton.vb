@@ -5,7 +5,7 @@
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        rbButton.Text = inputNumber.ToString
+        rbButton.Text = (inputNumber + 1).ToString
     End Sub
 
     Public Sub setButtonValue(value As Byte)

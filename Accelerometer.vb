@@ -3,7 +3,10 @@
     Dim center As Integer
     Dim maxSize As Integer = 250
     Private deadZone As Integer = 0
+    Private tilt As Integer = 0
     Private recordDeadZone As Boolean = False
+    Private recordTilt As Boolean = False
+    Private outputOn As Boolean = False
     Private WithEvents _board As BoardInterface
     Private _config As BoardConfiguration
 
@@ -26,6 +29,13 @@
         tbMultiplier.Text = _config.accelerometerMultiplier
         cbOrientation.SelectedItem = _config.getOrientationString
         tbTilt.Text = _config.accelerometerTilt
+        If _config.accelerometerDeadZone > maxSize Then
+            maxSize = _config.accelerometerDeadZone + 20
+        End If
+        If _config.accelerometerTilt > maxSize Then
+            maxSize = _config.accelerometerTilt + 20
+        End If
+        cbOutputNumber.SelectedItem = "1"
     End Sub
 
     Private Sub pbAxis_Paint(sender As Object, e As PaintEventArgs) Handles pbAxis.Paint
@@ -33,10 +43,12 @@
             e.Graphics.TranslateTransform(center, center)
             Dim p As Pen = New Pen(Color.BlueViolet)
             Dim p2 As Pen = New Pen(Color.LightGray)
-            Dim p3 As Pen = New Pen(Color.Red)
+            Dim p3 As Pen = New Pen(Color.DarkGray)
+            Dim p4 As Pen = New Pen(Color.Red)
             e.Graphics.DrawLine(p2, New Point(center, 0), New Point(-center, 0))
             e.Graphics.DrawLine(p2, New Point(0, center), New Point(0, -center))
             e.Graphics.DrawRectangle(p3, New Rectangle(New Point(-deadZone / maxSize * center, -deadZone / maxSize * center), New Size(deadZone * 2 / maxSize * center, deadZone * 2 / maxSize * center)))
+            e.Graphics.DrawRectangle(p4, New Rectangle(New Point(-tilt / maxSize * center, -tilt / maxSize * center), New Size(tilt * 2 / maxSize * center, tilt * 2 / maxSize * center)))
             e.Graphics.DrawLine(p, New Point(currentPoint.X * CUShort(tbMultiplier.Text) - 10, currentPoint.Y * CUShort(tbMultiplier.Text)), New Point(currentPoint.X * CUShort(tbMultiplier.Text) + 10, currentPoint.Y * CUShort(tbMultiplier.Text)))
             e.Graphics.DrawLine(p, New Point(currentPoint.X * CUShort(tbMultiplier.Text), currentPoint.Y * CUShort(tbMultiplier.Text) - 10), New Point(currentPoint.X * CUShort(tbMultiplier.Text), currentPoint.Y * CUShort(tbMultiplier.Text) + 10))
         Catch ex As Exception
@@ -49,10 +61,10 @@
             If e.type = MESSAGE_TYPE.ACCEL Then
                 currentPoint = e.accel
                 If Math.Abs(currentPoint.X * CUShort(tbMultiplier.Text)) > maxSize Then
-                    maxSize = Math.Abs(currentPoint.X * CUShort(tbMultiplier.Text))
+                    maxSize = Math.Abs(currentPoint.X * CUShort(tbMultiplier.Text)) + 20
                 End If
                 If Math.Abs(currentPoint.Y * CUShort(tbMultiplier.Text)) > maxSize Then
-                    maxSize = Math.Abs(currentPoint.Y * CUShort(tbMultiplier.Text))
+                    maxSize = Math.Abs(currentPoint.Y * CUShort(tbMultiplier.Text)) + 20
                 End If
                 tbXRaw.Text = currentPoint.X
                 tbYRaw.Text = currentPoint.Y
@@ -70,6 +82,19 @@
                     End If
                 Else
                     deadZone = CUShort(tbDeadZone.Text)
+                End If
+
+                If recordTilt Then
+                    If currentPoint.X * CUShort(tbMultiplier.Text) > tilt Then
+                        tbTilt.Text = currentPoint.X * CUShort(tbMultiplier.Text)
+                        tilt = currentPoint.X * CUShort(tbMultiplier.Text)
+                    End If
+                    If currentPoint.Y * CUShort(tbMultiplier.Text) > tilt Then
+                        tbTilt.Text = currentPoint.Y * CUShort(tbMultiplier.Text)
+                        tilt = currentPoint.Y * CUShort(tbMultiplier.Text)
+                    End If
+                Else
+                    tilt = CUShort(tbTilt.Text)
                 End If
 
                 currentPoint.X = currentPoint.X / maxSize * center
@@ -111,5 +136,29 @@
         _config.accelerometerDeadZone = CUShort(tbDeadZone.Text)
         _config.accelerometerTilt = CUShort(tbTilt.Text)
         _board.setAccelerometerValues(_config.accelerometerMultiplier, _config.accelerometerDeadZone, _config.orentation, _config.accelerometerTilt)
+    End Sub
+
+    Private Sub btnTilt_Click(sender As Object, e As EventArgs) Handles btnTilt.Click
+        If recordTilt Then
+            recordTilt = False
+            btnTilt.Text = "Record Tilt Value"
+        Else
+            recordTilt = True
+            btnTilt.Text = "Stop Tilt Value"
+        End If
+    End Sub
+
+    Private Sub btnToggleOutput_Click(sender As Object, e As EventArgs) Handles btnToggleOutput.Click
+        If outputOn Then
+            outputOn = False
+            btnToggleOutput.Text = "Toggle Output On"
+            _board.setOutputValue(cbOutputNumber.SelectedItem - 1, 0)
+            cbOutputNumber.Enabled = True
+        Else
+            outputOn = True
+            _board.setOutputValue(cbOutputNumber.SelectedItem - 1, 255)
+            btnToggleOutput.Text = "Toggle Output Off"
+            cbOutputNumber.Enabled = False
+        End If
     End Sub
 End Class

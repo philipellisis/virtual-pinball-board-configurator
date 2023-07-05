@@ -34,6 +34,7 @@ Partial Class AdjustmentSlider
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cbMilliseconds = New System.Windows.Forms.ComboBox()
+        Me.btnOnOff = New System.Windows.Forms.Button()
         Me.gbMain.SuspendLayout()
         CType(Me.tbOffValue, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMaxValue, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -41,6 +42,7 @@ Partial Class AdjustmentSlider
         '
         'gbMain
         '
+        Me.gbMain.Controls.Add(Me.btnOnOff)
         Me.gbMain.Controls.Add(Me.Label5)
         Me.gbMain.Controls.Add(Me.tbOffValue)
         Me.gbMain.Controls.Add(Me.lblMinValue)
@@ -55,7 +57,7 @@ Partial Class AdjustmentSlider
         Me.gbMain.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbMain.Location = New System.Drawing.Point(3, 3)
         Me.gbMain.Name = "gbMain"
-        Me.gbMain.Size = New System.Drawing.Size(980, 153)
+        Me.gbMain.Size = New System.Drawing.Size(1108, 153)
         Me.gbMain.TabIndex = 0
         Me.gbMain.TabStop = False
         Me.gbMain.Text = "Output #1"
@@ -171,13 +173,25 @@ Partial Class AdjustmentSlider
         Me.cbMilliseconds.Size = New System.Drawing.Size(98, 33)
         Me.cbMilliseconds.TabIndex = 12
         '
+        'btnOnOff
+        '
+        Me.btnOnOff.BackColor = System.Drawing.Color.Red
+        Me.btnOnOff.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnOnOff.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.btnOnOff.Location = New System.Drawing.Point(988, 56)
+        Me.btnOnOff.Name = "btnOnOff"
+        Me.btnOnOff.Size = New System.Drawing.Size(75, 40)
+        Me.btnOnOff.TabIndex = 19
+        Me.btnOnOff.Text = "Off"
+        Me.btnOnOff.UseVisualStyleBackColor = False
+        '
         'AdjustmentSlider
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.gbMain)
         Me.Name = "AdjustmentSlider"
-        Me.Size = New System.Drawing.Size(991, 166)
+        Me.Size = New System.Drawing.Size(1114, 166)
         Me.gbMain.ResumeLayout(False)
         Me.gbMain.PerformLayout()
         CType(Me.tbOffValue, System.ComponentModel.ISupportInitialize).EndInit()
@@ -198,4 +212,5 @@ Partial Class AdjustmentSlider
     Friend WithEvents lblMaxValue As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents btnOnOff As Button
 End Class

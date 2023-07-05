@@ -25,6 +25,8 @@ Partial Class Configuration
         Me.tbMain = New System.Windows.Forms.TabControl()
         Me.tpGeneralSettings = New System.Windows.Forms.TabPage()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.tbTilt = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.tbMultiplier = New System.Windows.Forms.TextBox()
         Me.lblMultiplier = New System.Windows.Forms.Label()
         Me.tbDeadZone = New System.Windows.Forms.TextBox()
@@ -50,6 +52,8 @@ Partial Class Configuration
         Me.cbButtonTrigger1 = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cbPushOnMax = New System.Windows.Forms.CheckBox()
+        Me.cbPushOnMin = New System.Windows.Forms.CheckBox()
         Me.tbPlungerMid = New System.Windows.Forms.TextBox()
         Me.tbPlungerMax = New System.Windows.Forms.TextBox()
         Me.tbPlungerMin = New System.Windows.Forms.TextBox()
@@ -61,8 +65,6 @@ Partial Class Configuration
         Me.tpExpansion2 = New System.Windows.Forms.TabPage()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnSaveConfig = New System.Windows.Forms.Button()
-        Me.cbPushOnMax = New System.Windows.Forms.CheckBox()
-        Me.cbPushOnMin = New System.Windows.Forms.CheckBox()
         Me.tbMain.SuspendLayout()
         Me.tpGeneralSettings.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -81,10 +83,11 @@ Partial Class Configuration
         Me.tbMain.Controls.Add(Me.tpExpansion2)
         Me.tbMain.Cursor = System.Windows.Forms.Cursors.Default
         Me.tbMain.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbMain.HotTrack = True
         Me.tbMain.Location = New System.Drawing.Point(0, 60)
         Me.tbMain.Name = "tbMain"
         Me.tbMain.SelectedIndex = 0
-        Me.tbMain.Size = New System.Drawing.Size(1119, 649)
+        Me.tbMain.Size = New System.Drawing.Size(1228, 777)
         Me.tbMain.TabIndex = 0
         '
         'tpGeneralSettings
@@ -96,13 +99,15 @@ Partial Class Configuration
         Me.tpGeneralSettings.Controls.Add(Me.GroupBox1)
         Me.tpGeneralSettings.Location = New System.Drawing.Point(4, 34)
         Me.tpGeneralSettings.Name = "tpGeneralSettings"
-        Me.tpGeneralSettings.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
-        Me.tpGeneralSettings.Size = New System.Drawing.Size(1111, 611)
+        Me.tpGeneralSettings.Padding = New System.Windows.Forms.Padding(3)
+        Me.tpGeneralSettings.Size = New System.Drawing.Size(1399, 1094)
         Me.tpGeneralSettings.TabIndex = 0
         Me.tpGeneralSettings.Text = "Main Settings"
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.tbTilt)
+        Me.GroupBox3.Controls.Add(Me.Label12)
         Me.GroupBox3.Controls.Add(Me.tbMultiplier)
         Me.GroupBox3.Controls.Add(Me.lblMultiplier)
         Me.GroupBox3.Controls.Add(Me.tbDeadZone)
@@ -113,10 +118,32 @@ Partial Class Configuration
         Me.GroupBox3.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(393, 240)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(388, 263)
+        Me.GroupBox3.Size = New System.Drawing.Size(388, 301)
         Me.GroupBox3.TabIndex = 6
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Accelerometer"
+        '
+        'tbTilt
+        '
+        Me.tbTilt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tbTilt.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbTilt.Location = New System.Drawing.Point(112, 247)
+        Me.tbTilt.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.tbTilt.Name = "tbTilt"
+        Me.tbTilt.Size = New System.Drawing.Size(148, 31)
+        Me.tbTilt.TabIndex = 33
+        '
+        'Label12
+        '
+        Me.Label12.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(10, 252)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(37, 25)
+        Me.Label12.TabIndex = 32
+        Me.Label12.Text = "Tilt"
         '
         'tbMultiplier
         '
@@ -402,6 +429,28 @@ Partial Class Configuration
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Plunger"
         '
+        'cbPushOnMax
+        '
+        Me.cbPushOnMax.AutoSize = True
+        Me.cbPushOnMax.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbPushOnMax.Location = New System.Drawing.Point(11, 206)
+        Me.cbPushOnMax.Name = "cbPushOnMax"
+        Me.cbPushOnMax.Size = New System.Drawing.Size(196, 29)
+        Me.cbPushOnMax.TabIndex = 31
+        Me.cbPushOnMax.Text = "Push Button On Max"
+        Me.cbPushOnMax.UseVisualStyleBackColor = True
+        '
+        'cbPushOnMin
+        '
+        Me.cbPushOnMin.AutoSize = True
+        Me.cbPushOnMin.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbPushOnMin.Location = New System.Drawing.Point(11, 171)
+        Me.cbPushOnMin.Name = "cbPushOnMin"
+        Me.cbPushOnMin.Size = New System.Drawing.Size(192, 29)
+        Me.cbPushOnMin.TabIndex = 30
+        Me.cbPushOnMin.Text = "Push Button On Min"
+        Me.cbPushOnMin.UseVisualStyleBackColor = True
+        '
         'tbPlungerMid
         '
         Me.tbPlungerMid.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -462,7 +511,7 @@ Partial Class Configuration
         Me.tpMainOutputs.BackColor = System.Drawing.SystemColors.Control
         Me.tpMainOutputs.Location = New System.Drawing.Point(4, 34)
         Me.tpMainOutputs.Name = "tpMainOutputs"
-        Me.tpMainOutputs.Size = New System.Drawing.Size(1111, 611)
+        Me.tpMainOutputs.Size = New System.Drawing.Size(1220, 739)
         Me.tpMainOutputs.TabIndex = 4
         Me.tpMainOutputs.Text = "Main Outputs"
         '
@@ -472,7 +521,7 @@ Partial Class Configuration
         Me.tpExpansion1.BackColor = System.Drawing.SystemColors.Control
         Me.tpExpansion1.Location = New System.Drawing.Point(4, 34)
         Me.tpExpansion1.Name = "tpExpansion1"
-        Me.tpExpansion1.Size = New System.Drawing.Size(1111, 611)
+        Me.tpExpansion1.Size = New System.Drawing.Size(1399, 1094)
         Me.tpExpansion1.TabIndex = 2
         Me.tpExpansion1.Text = "Expansion Board #1"
         '
@@ -482,7 +531,7 @@ Partial Class Configuration
         Me.tpExpansion2.BackColor = System.Drawing.SystemColors.Control
         Me.tpExpansion2.Location = New System.Drawing.Point(4, 34)
         Me.tpExpansion2.Name = "tpExpansion2"
-        Me.tpExpansion2.Size = New System.Drawing.Size(1111, 611)
+        Me.tpExpansion2.Size = New System.Drawing.Size(1399, 1094)
         Me.tpExpansion2.TabIndex = 3
         Me.tpExpansion2.Text = "Expansion Board #2"
         '
@@ -507,33 +556,11 @@ Partial Class Configuration
         Me.btnSaveConfig.Text = "Save Config"
         Me.btnSaveConfig.UseVisualStyleBackColor = True
         '
-        'cbPushOnMax
-        '
-        Me.cbPushOnMax.AutoSize = True
-        Me.cbPushOnMax.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbPushOnMax.Location = New System.Drawing.Point(11, 206)
-        Me.cbPushOnMax.Name = "cbPushOnMax"
-        Me.cbPushOnMax.Size = New System.Drawing.Size(196, 29)
-        Me.cbPushOnMax.TabIndex = 31
-        Me.cbPushOnMax.Text = "Push Button On Max"
-        Me.cbPushOnMax.UseVisualStyleBackColor = True
-        '
-        'cbPushOnMin
-        '
-        Me.cbPushOnMin.AutoSize = True
-        Me.cbPushOnMin.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbPushOnMin.Location = New System.Drawing.Point(11, 171)
-        Me.cbPushOnMin.Name = "cbPushOnMin"
-        Me.cbPushOnMin.Size = New System.Drawing.Size(192, 29)
-        Me.cbPushOnMin.TabIndex = 30
-        Me.cbPushOnMin.Text = "Push Button On Min"
-        Me.cbPushOnMin.UseVisualStyleBackColor = True
-        '
         'Configuration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1119, 706)
+        Me.ClientSize = New System.Drawing.Size(1228, 849)
         Me.Controls.Add(Me.btnSaveConfig)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.tbMain)
@@ -592,4 +619,6 @@ Partial Class Configuration
     Friend WithEvents lblDeadZone As Label
     Friend WithEvents cbPushOnMax As CheckBox
     Friend WithEvents cbPushOnMin As CheckBox
+    Friend WithEvents tbTilt As TextBox
+    Friend WithEvents Label12 As Label
 End Class
