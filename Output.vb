@@ -27,11 +27,16 @@ Public Class Output
     End Sub
 
     Private Sub btnOnOff_Click(sender As Object, e As EventArgs) Handles btnOnOff.Click
-        If tbIntensity.Value = 0 Then
-            _board.setOutputValue(_number, 255)
-        Else
-            _board.setOutputValue(_number, 0)
-        End If
+        Try
+            If tbIntensity.Value = 0 Then
+                _board.setOutputValue(_number, 255)
+            Else
+                _board.setOutputValue(_number, 0)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("error setting output value, check to ensure board is connected")
+        End Try
+
 
     End Sub
 
@@ -58,7 +63,12 @@ Public Class Output
             trdCount -= 1
         Loop
         trdCount = 5
-        _board.setOutputValue(_number, _intensityValue)
+        Try
+            _board.setOutputValue(_number, _intensityValue)
+        Catch ex As Exception
+
+        End Try
+
         Thread.Sleep(500)
         _delayRefresh = False
     End Sub

@@ -45,6 +45,7 @@ Public Class BoardConfiguration
     Public accelerometerDeadZone As Int16
     Public buttonOption As Byte
     Public accelerometerTilt As Int16
+    Public accelerometerMax As Int16
     Public Function getOrientationString() As String
         If orentation = 0 Then
             Return "USB Facing Back"
@@ -53,30 +54,34 @@ Public Class BoardConfiguration
             Return "USB Facing Right"
         End If
         If orentation = 2 Then
-            Return "USB Facing Left"
+            Return "USB Facing Front"
         End If
         If orentation = 3 Then
-            Return "USB Facing Front"
+            Return "USB Facing Left"
         End If
         Return ""
     End Function
     Public Sub setOrientationString(orientation As String)
+        Me.orentation = getIntegerFromOrientationString(orientation)
+    End Sub
+    Public Function getIntegerFromOrientationString(orientation As String) As Integer
         If orientation = "USB Facing Back" Then
-            Me.orentation = 0
+            Return 0
         End If
         If orientation = "USB Facing Right" Then
-            Me.orentation = 1
+            Return 1
         End If
         If orientation = "USB Facing Left" Then
-            Me.orentation = 2
+            Return 3
         End If
         If orientation = "USB Facing Front" Then
-            Me.orentation = 3
+            Return 2
         End If
-    End Sub
+        Return 4
+    End Function
 
     Public Function toConfigBytes(config As BoardConfiguration) As Byte()
-        Dim configString(274) As Byte
+        Dim configString(276) As Byte
         For i = 0 To 62
             configString(i) = config.toySpecialOption(i)
             configString(i + 63) = config.turnOffState(i)
@@ -110,6 +115,9 @@ Public Class BoardConfiguration
         Dim result6 As Byte() = BitConverter.GetBytes(config.accelerometerTilt)
         configString(273) = result6(1)
         configString(274) = result6(0)
+        Dim result7 As Byte() = BitConverter.GetBytes(config.accelerometerMax)
+        configString(275) = result7(1)
+        configString(276) = result7(0)
         Return configString
     End Function
     Public Shared Function stringToConfig(str As String) As BoardConfiguration
@@ -137,7 +145,7 @@ Public Class BoardConfiguration
             config.accelerometerDeadZone = CInt(configString(266))
             config.buttonOption = CByte(configString(267))
             config.accelerometerTilt = CInt(configString(268))
-
+            config.accelerometerMax = CInt(configString(269))
         Catch ex As Exception
             Console.WriteLine("unable to convert data to configuration: " & ex.Message)
         End Try
@@ -223,7 +231,7 @@ Public Interface BoardInterface
 
     Sub setPlungerMinMax(max As UShort, min As UShort, mid As UShort, buttonOption As Byte)
 
-    Sub setAccelerometerValues(multiplier As UShort, deadZone As UShort, orientation As Byte, tilt As UShort)
+    Sub setAccelerometerValues(multiplier As UShort, deadZone As UShort, orientation As Byte, tilt As UShort, max As UShort)
     Sub setConfig(config As BoardConfiguration)
     Function saveConfigToEeprom()
     Sub connect()

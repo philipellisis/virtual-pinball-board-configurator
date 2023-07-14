@@ -63,68 +63,89 @@
             cbPushOnMin.Checked = True
         End If
         tbTilt.Text = _config.accelerometerTilt.ToString
+        tbMax.Text = _config.accelerometerMax.ToString
 
         Me.ResumeLayout()
         tpMainOutputs.ResumeLayout()
-        _board.enableAdminFunction(ADMIN.OUTPUTS)
+        Try
+            _board.enableAdminFunction(ADMIN.OUTPUTS)
+        Catch ex As Exception
+            MessageBox.Show("error while setting output mode, check that board is connected.")
+        End Try
+
     End Sub
 
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        _board.enableAdminFunction(ADMIN.OFF)
-        _config.solenoidOutputMap(0) = CByte(cbOutputTrigger1.SelectedItem)
-        _config.solenoidOutputMap(1) = CByte(cbOutputTrigger2.SelectedItem)
-        _config.solenoidOutputMap(2) = CByte(cbOutputTrigger3.SelectedItem)
-        _config.solenoidOutputMap(3) = CByte(cbOutputTrigger4.SelectedItem)
+        Try
+            _board.enableAdminFunction(ADMIN.OFF)
+            _config.solenoidOutputMap(0) = CByte(cbOutputTrigger1.SelectedItem)
+            _config.solenoidOutputMap(1) = CByte(cbOutputTrigger2.SelectedItem)
+            _config.solenoidOutputMap(2) = CByte(cbOutputTrigger3.SelectedItem)
+            _config.solenoidOutputMap(3) = CByte(cbOutputTrigger4.SelectedItem)
 
 
-        _config.solenoidButtonMap(0) = CByte(cbButtonTrigger1.SelectedItem)
-        _config.solenoidButtonMap(1) = CByte(cbButtonTrigger2.SelectedItem)
-        _config.solenoidButtonMap(2) = CByte(cbButtonTrigger3.SelectedItem)
-        _config.solenoidButtonMap(3) = CByte(cbButtonTrigger4.SelectedItem)
+            _config.solenoidButtonMap(0) = CByte(cbButtonTrigger1.SelectedItem)
+            _config.solenoidButtonMap(1) = CByte(cbButtonTrigger2.SelectedItem)
+            _config.solenoidButtonMap(2) = CByte(cbButtonTrigger3.SelectedItem)
+            _config.solenoidButtonMap(3) = CByte(cbButtonTrigger4.SelectedItem)
 
 
-        _config.accelerometer = CByte(cbAccelEnabled.Checked)
-        _config.setOrientationString(cbOrientation.SelectedItem)
-        _config.plungerMax = CShort(tbPlungerMax.Text)
-        _config.plungerMid = CShort(tbPlungerMid.Text)
-        _config.plungerMin = CShort(tbPlungerMin.Text)
-        _config.accelerometerDeadZone = CShort(tbDeadZone.Text)
-        _config.accelerometerMultiplier = CShort(tbMultiplier.Text)
-        Dim buttonOption As Byte = 0
-        If cbPushOnMax.Checked And cbPushOnMin.Checked Then
-            buttonOption = 3
-        ElseIf cbPushOnMax.Checked Then
-            buttonOption = 1
-        ElseIf cbPushOnMin.Checked Then
-            buttonOption = 2
-        End If
-        _config.buttonOption = buttonOption
-        _config.accelerometerTilt = CShort(tbTilt.Text)
-        _board.setConfig(_config)
+            _config.accelerometer = CByte(cbAccelEnabled.Checked)
+            _config.setOrientationString(cbOrientation.SelectedItem)
+            _config.plungerMax = CShort(tbPlungerMax.Text)
+            _config.plungerMid = CShort(tbPlungerMid.Text)
+            _config.plungerMin = CShort(tbPlungerMin.Text)
+            _config.accelerometerDeadZone = CShort(tbDeadZone.Text)
+            _config.accelerometerMultiplier = CShort(tbMultiplier.Text)
+            Dim buttonOption As Byte = 0
+            If cbPushOnMax.Checked And cbPushOnMin.Checked Then
+                buttonOption = 3
+            ElseIf cbPushOnMax.Checked Then
+                buttonOption = 1
+            ElseIf cbPushOnMin.Checked Then
+                buttonOption = 2
+            End If
+            _config.buttonOption = buttonOption
+            _config.accelerometerTilt = CShort(tbTilt.Text)
+            _config.accelerometerMax = CShort(tbMax.Text)
+            _board.setConfig(_config)
+        Catch ex As Exception
+            MessageBox.Show("error saving configuration. Check that board is connected.")
+        End Try
+
     End Sub
 
     Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles _board.BoardChanged
-
-        If e.type = MESSAGE_TYPE.RESPONSE Then
-            If e.message = "SAVE CONFIG SUCCESS" Then
-                btnSaveConfig.Enabled = True
+        Try
+            If e.type = MESSAGE_TYPE.RESPONSE Then
+                If e.message = "SAVE CONFIG SUCCESS" Then
+                    btnSaveConfig.Enabled = True
+                End If
+                MessageBox.Show(e.message)
+                _board.enableAdminFunction(ADMIN.OUTPUTS)
             End If
-            MessageBox.Show(e.message)
-            _board.enableAdminFunction(ADMIN.OUTPUTS)
-        End If
-        If e.type = MESSAGE_TYPE.OUTPUTS Then
-            For i As Integer = 0 To 62
-                _userControlList.Item(i).setIntensityValue(e.outputs(i))
-            Next
-        End If
+            If e.type = MESSAGE_TYPE.OUTPUTS Then
+                For i As Integer = 0 To 62
+                    _userControlList.Item(i).setIntensityValue(e.outputs(i))
+                Next
+            End If
+        Catch ex As Exception
+
+        End Try
+
 
 
 
     End Sub
 
     Private Sub btnSaveConfig_Click(sender As Object, e As EventArgs) Handles btnSaveConfig.Click
-        _board.saveConfigToEeprom()
+        Try
+            _board.saveConfigToEeprom()
+        Catch ex As Exception
+            MessageBox.Show("error saving to eeprom")
+        End Try
+
     End Sub
 
     Private Sub tpGeneralSettings_Click(sender As Object, e As EventArgs) Handles tpGeneralSettings.Click
@@ -132,6 +153,11 @@
     End Sub
 
     Private Sub Configuration_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        _board.enableAdminFunction(ADMIN.OFF)
+        Try
+            _board.enableAdminFunction(ADMIN.OFF)
+        Catch ex As Exception
+            MessageBox.Show("error while exiting admin mode")
+        End Try
+
     End Sub
 End Class

@@ -66,7 +66,12 @@ Public Class AdjustmentSlider
             trdCount -= 1
         Loop
         trdCount = 5
-        _board.setOutputValue(outputNumber, _intensityValue)
+        Try
+            _board.setOutputValue(outputNumber, _intensityValue)
+        Catch ex As Exception
+
+        End Try
+
         Thread.Sleep(500)
         _delayRefresh = False
     End Sub
@@ -91,11 +96,16 @@ Public Class AdjustmentSlider
     End Sub
 
     Private Sub btnOnOff_Click(sender As Object, e As EventArgs) Handles btnOnOff.Click
-        If outputOn = False Then
-            _board.setOutputValue(outputNumber, tbMaxValue.Value)
-        Else
-            _board.setOutputValue(outputNumber, 0)
-        End If
+        Try
+            If outputOn = False Then
+                _board.setOutputValue(outputNumber, tbMaxValue.Value)
+            Else
+                _board.setOutputValue(outputNumber, 0)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("error setting output value, check to ensure board is connected")
+        End Try
+
     End Sub
     Public Sub setIntensityValue(val As Byte)
         If _delayRefresh = False Then

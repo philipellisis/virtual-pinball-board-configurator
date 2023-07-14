@@ -65,6 +65,8 @@ Partial Class Configuration
         Me.tpExpansion2 = New System.Windows.Forms.TabPage()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnSaveConfig = New System.Windows.Forms.Button()
+        Me.tbMax = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.tbMain.SuspendLayout()
         Me.tpGeneralSettings.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -100,12 +102,14 @@ Partial Class Configuration
         Me.tpGeneralSettings.Location = New System.Drawing.Point(4, 34)
         Me.tpGeneralSettings.Name = "tpGeneralSettings"
         Me.tpGeneralSettings.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpGeneralSettings.Size = New System.Drawing.Size(1399, 1094)
+        Me.tpGeneralSettings.Size = New System.Drawing.Size(1220, 739)
         Me.tpGeneralSettings.TabIndex = 0
         Me.tpGeneralSettings.Text = "Main Settings"
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.tbMax)
+        Me.GroupBox3.Controls.Add(Me.Label13)
         Me.GroupBox3.Controls.Add(Me.tbTilt)
         Me.GroupBox3.Controls.Add(Me.Label12)
         Me.GroupBox3.Controls.Add(Me.tbMultiplier)
@@ -118,7 +122,7 @@ Partial Class Configuration
         Me.GroupBox3.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(393, 240)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(388, 301)
+        Me.GroupBox3.Size = New System.Drawing.Size(388, 363)
         Me.GroupBox3.TabIndex = 6
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Accelerometer"
@@ -556,6 +560,28 @@ Partial Class Configuration
         Me.btnSaveConfig.Text = "Save Config"
         Me.btnSaveConfig.UseVisualStyleBackColor = True
         '
+        'tbMax
+        '
+        Me.tbMax.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tbMax.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbMax.Location = New System.Drawing.Point(112, 300)
+        Me.tbMax.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.tbMax.Name = "tbMax"
+        Me.tbMax.Size = New System.Drawing.Size(148, 31)
+        Me.tbMax.TabIndex = 35
+        '
+        'Label13
+        '
+        Me.Label13.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(10, 305)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(45, 25)
+        Me.Label13.TabIndex = 34
+        Me.Label13.Text = "Max"
+        '
         'Configuration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -621,4 +647,6 @@ Partial Class Configuration
     Friend WithEvents cbPushOnMin As CheckBox
     Friend WithEvents tbTilt As TextBox
     Friend WithEvents Label12 As Label
+    Friend WithEvents tbMax As TextBox
+    Friend WithEvents Label13 As Label
 End Class

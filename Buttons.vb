@@ -34,19 +34,34 @@
             Me.Controls.Add(userControl)
             _userControlList.Add(userControl)
         Next
-        _board.enableAdminFunction(ADMIN.BUTTONS)
+        Try
+            _board.enableAdminFunction(ADMIN.BUTTONS)
+        Catch ex As Exception
+            MessageBox.Show("Unable to set to button mode")
+        End Try
+
 
     End Sub
     Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles _board.BoardChanged
-        If e.type = MESSAGE_TYPE.BUTTONS Then
-            For i As Integer = 0 To 23
-                _userControlList.Item(i).setButtonValue(e.buttons(i))
-            Next
-        End If
+        Try
+            If e.type = MESSAGE_TYPE.BUTTONS Then
+                For i As Integer = 0 To 23
+                    _userControlList.Item(i).setButtonValue(e.buttons(i))
+                Next
+            End If
+        Catch ex As Exception
+
+        End Try
+
 
     End Sub
 
     Private Sub Outputs_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        _board.enableAdminFunction(ADMIN.OFF)
+        Try
+            _board.enableAdminFunction(ADMIN.OFF)
+        Catch ex As Exception
+            MessageBox.Show("Unable to set turn off button mode, maybe board is disconnected?")
+        End Try
+
     End Sub
 End Class

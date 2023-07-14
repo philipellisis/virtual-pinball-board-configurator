@@ -4,8 +4,10 @@
     Dim maxSize As Integer = 250
     Private deadZone As Integer = 0
     Private tilt As Integer = 0
+    Private max As Integer = 0
     Private recordDeadZone As Boolean = False
     Private recordTilt As Boolean = False
+    Private recordMax As Boolean = False
     Private outputOn As Boolean = False
     Private WithEvents _board As BoardInterface
     Private _config As BoardConfiguration
@@ -21,21 +23,30 @@
     End Sub
 
     Private Sub Accelerometer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        _board.enableAdminFunction(ADMIN.ACCEL)
-        pbAxis.Size = New Drawing.Size(pbAxis.Size.Width, pbAxis.Size.Width)
-        maxSize = pbAxis.Size.Width / 2
-        center = maxSize
-        tbDeadZone.Text = _config.accelerometerDeadZone
-        tbMultiplier.Text = _config.accelerometerMultiplier
-        cbOrientation.SelectedItem = _config.getOrientationString
-        tbTilt.Text = _config.accelerometerTilt
-        If _config.accelerometerDeadZone > maxSize Then
-            maxSize = _config.accelerometerDeadZone + 20
-        End If
-        If _config.accelerometerTilt > maxSize Then
-            maxSize = _config.accelerometerTilt + 20
-        End If
-        cbOutputNumber.SelectedItem = "1"
+        Try
+            _board.enableAdminFunction(ADMIN.ACCEL)
+            pbAxis.Size = New Drawing.Size(pbAxis.Size.Width, pbAxis.Size.Width)
+            maxSize = pbAxis.Size.Width / 2
+            center = maxSize
+            tbDeadZone.Text = _config.accelerometerDeadZone
+            tbMultiplier.Text = _config.accelerometerMultiplier
+            cbOrientation.SelectedItem = _config.getOrientationString
+            tbTilt.Text = _config.accelerometerTilt
+            tbMax.Text = _config.accelerometerMax
+            If _config.accelerometerDeadZone > maxSize Then
+                maxSize = _config.accelerometerDeadZone + 20
+            End If
+            If _config.accelerometerTilt > maxSize Then
+                maxSize = _config.accelerometerTilt + 20
+            End If
+            If _config.accelerometerMax > maxSize Then
+                maxSize = _config.accelerometerMax + 20
+            End If
+            cbOutputNumber.SelectedItem = "1"
+        Catch ex As Exception
+            MessageBox.Show("error initializing board, check to ensure board is connected.")
+        End Try
+
     End Sub
 
     Private Sub pbAxis_Paint(sender As Object, e As PaintEventArgs) Handles pbAxis.Paint
@@ -44,11 +55,13 @@
             Dim p As Pen = New Pen(Color.BlueViolet)
             Dim p2 As Pen = New Pen(Color.LightGray)
             Dim p3 As Pen = New Pen(Color.DarkGray)
-            Dim p4 As Pen = New Pen(Color.Red)
+            Dim p4 As Pen = New Pen(Color.Yellow)
+            Dim p5 As Pen = New Pen(Color.Red)
             e.Graphics.DrawLine(p2, New Point(center, 0), New Point(-center, 0))
             e.Graphics.DrawLine(p2, New Point(0, center), New Point(0, -center))
             e.Graphics.DrawRectangle(p3, New Rectangle(New Point(-deadZone / maxSize * center, -deadZone / maxSize * center), New Size(deadZone * 2 / maxSize * center, deadZone * 2 / maxSize * center)))
             e.Graphics.DrawRectangle(p4, New Rectangle(New Point(-tilt / maxSize * center, -tilt / maxSize * center), New Size(tilt * 2 / maxSize * center, tilt * 2 / maxSize * center)))
+            e.Graphics.DrawRectangle(p5, New Rectangle(New Point(-max / maxSize * center, -max / maxSize * center), New Size(max * 2 / maxSize * center, max * 2 / maxSize * center)))
             e.Graphics.DrawLine(p, New Point(currentPoint.X * CUShort(tbMultiplier.Text) - 10, currentPoint.Y * CUShort(tbMultiplier.Text)), New Point(currentPoint.X * CUShort(tbMultiplier.Text) + 10, currentPoint.Y * CUShort(tbMultiplier.Text)))
             e.Graphics.DrawLine(p, New Point(currentPoint.X * CUShort(tbMultiplier.Text), currentPoint.Y * CUShort(tbMultiplier.Text) - 10), New Point(currentPoint.X * CUShort(tbMultiplier.Text), currentPoint.Y * CUShort(tbMultiplier.Text) + 10))
         Catch ex As Exception
@@ -60,6 +73,31 @@
         Try
             If e.type = MESSAGE_TYPE.ACCEL Then
                 currentPoint = e.accel
+
+                'Int temp = xValue;
+                'If (_config -> ORIENTATION == 1) Then {
+                '  xValue = yValue;
+                '  yValue = -temp;
+                '} else if (_config->orientation == 2) {
+                '  xValue = -xValue;
+                '  yValue = -yValue;
+                '} else if (_config->orientation == 3) {
+                '  xValue = -yValue;
+                '  yValue = temp;
+                '}
+                Dim orientation As Integer = _config.getIntegerFromOrientationString(cbOrientation.SelectedItem)
+                If orientation = 1 Then
+                    currentPoint.X = -e.accel.Y
+                    currentPoint.Y = e.accel.X
+                ElseIf orientation = 2 Then
+                    currentPoint.X = -e.accel.X
+                    currentPoint.Y = -e.accel.Y
+                ElseIf orientation = 3 Then
+                    currentPoint.X = e.accel.Y
+                    currentPoint.Y = -e.accel.X
+                End If
+
+
                 If Math.Abs(currentPoint.X * CUShort(tbMultiplier.Text)) > maxSize Then
                     maxSize = Math.Abs(currentPoint.X * CUShort(tbMultiplier.Text)) + 20
                 End If
@@ -97,6 +135,19 @@
                     tilt = CUShort(tbTilt.Text)
                 End If
 
+                If recordMax Then
+                    If currentPoint.X * CUShort(tbMultiplier.Text) > max Then
+                        tbMax.Text = currentPoint.X * CUShort(tbMultiplier.Text)
+                        max = currentPoint.X * CUShort(tbMultiplier.Text)
+                    End If
+                    If currentPoint.Y * CUShort(tbMultiplier.Text) > max Then
+                        tbMax.Text = currentPoint.Y * CUShort(tbMultiplier.Text)
+                        max = currentPoint.Y * CUShort(tbMultiplier.Text)
+                    End If
+                Else
+                    max = CUShort(tbMax.Text)
+                End If
+
                 currentPoint.X = currentPoint.X / maxSize * center
                 currentPoint.Y = currentPoint.Y / maxSize * center
                 pbAxis.Invalidate()
@@ -112,7 +163,12 @@
     End Sub
 
     Private Sub Accelerometer_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        _board.enableAdminFunction(ADMIN.OFF)
+        Try
+            _board.enableAdminFunction(ADMIN.OFF)
+        Catch ex As Exception
+            MessageBox.Show("unable to turn off accelerometer mode. Maybe board is disconnected?")
+        End Try
+
     End Sub
 
     Private Sub btnOK_Click(sender As Object, e As EventArgs) Handles btnOK.Click
@@ -131,11 +187,17 @@
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        _config.setOrientationString(cbOrientation.SelectedItem)
-        _config.accelerometerMultiplier = CUShort(tbMultiplier.Text)
-        _config.accelerometerDeadZone = CUShort(tbDeadZone.Text)
-        _config.accelerometerTilt = CUShort(tbTilt.Text)
-        _board.setAccelerometerValues(_config.accelerometerMultiplier, _config.accelerometerDeadZone, _config.orentation, _config.accelerometerTilt)
+
+        Try
+            _config.setOrientationString(cbOrientation.SelectedItem)
+            _config.accelerometerMultiplier = CUShort(tbMultiplier.Text)
+            _config.accelerometerDeadZone = CUShort(tbDeadZone.Text)
+            _config.accelerometerTilt = CUShort(tbTilt.Text)
+            _config.accelerometerMax = CUShort(tbMax.Text)
+            _board.setAccelerometerValues(_config.accelerometerMultiplier, _config.accelerometerDeadZone, _config.orentation, _config.accelerometerTilt, _config.accelerometerMax)
+        Catch ex As Exception
+            MessageBox.Show("error when saving data, maybe board is disconnected?")
+        End Try
     End Sub
 
     Private Sub btnTilt_Click(sender As Object, e As EventArgs) Handles btnTilt.Click
@@ -149,16 +211,31 @@
     End Sub
 
     Private Sub btnToggleOutput_Click(sender As Object, e As EventArgs) Handles btnToggleOutput.Click
-        If outputOn Then
-            outputOn = False
-            btnToggleOutput.Text = "Toggle Output On"
-            _board.setOutputValue(cbOutputNumber.SelectedItem - 1, 0)
-            cbOutputNumber.Enabled = True
+        Try
+            If outputOn Then
+                outputOn = False
+                btnToggleOutput.Text = "Toggle Output On"
+                _board.setOutputValue(cbOutputNumber.SelectedItem - 1, 0)
+                cbOutputNumber.Enabled = True
+            Else
+                outputOn = True
+                _board.setOutputValue(cbOutputNumber.SelectedItem - 1, 255)
+                btnToggleOutput.Text = "Toggle Output Off"
+                cbOutputNumber.Enabled = False
+            End If
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If recordMax Then
+            recordMax = False
+            Button1.Text = "Record Max Value"
         Else
-            outputOn = True
-            _board.setOutputValue(cbOutputNumber.SelectedItem - 1, 255)
-            btnToggleOutput.Text = "Toggle Output Off"
-            cbOutputNumber.Enabled = False
+            recordMax = True
+            Button1.Text = "Stop Max Value"
         End If
     End Sub
 End Class
