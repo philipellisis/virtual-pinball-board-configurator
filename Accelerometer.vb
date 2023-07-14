@@ -11,6 +11,7 @@
     Private outputOn As Boolean = False
     Private WithEvents _board As BoardInterface
     Private _config As BoardConfiguration
+    Dim multiplier As Integer = 100
 
     Public Sub New(board As BoardInterface, config As BoardConfiguration)
 
@@ -29,7 +30,7 @@
             maxSize = pbAxis.Size.Width / 2
             center = maxSize
             tbDeadZone.Text = _config.accelerometerDeadZone
-            tbMultiplier.Text = _config.accelerometerMultiplier
+            cbMultiplier.SelectedItem = _config.getSensitivityString
             cbOrientation.SelectedItem = _config.getOrientationString
             tbTilt.Text = _config.accelerometerTilt
             tbMax.Text = _config.accelerometerMax
@@ -62,8 +63,8 @@
             e.Graphics.DrawRectangle(p3, New Rectangle(New Point(-deadZone / maxSize * center, -deadZone / maxSize * center), New Size(deadZone * 2 / maxSize * center, deadZone * 2 / maxSize * center)))
             e.Graphics.DrawRectangle(p4, New Rectangle(New Point(-tilt / maxSize * center, -tilt / maxSize * center), New Size(tilt * 2 / maxSize * center, tilt * 2 / maxSize * center)))
             e.Graphics.DrawRectangle(p5, New Rectangle(New Point(-max / maxSize * center, -max / maxSize * center), New Size(max * 2 / maxSize * center, max * 2 / maxSize * center)))
-            e.Graphics.DrawLine(p, New Point(currentPoint.X * CUShort(tbMultiplier.Text) - 10, currentPoint.Y * CUShort(tbMultiplier.Text)), New Point(currentPoint.X * CUShort(tbMultiplier.Text) + 10, currentPoint.Y * CUShort(tbMultiplier.Text)))
-            e.Graphics.DrawLine(p, New Point(currentPoint.X * CUShort(tbMultiplier.Text), currentPoint.Y * CUShort(tbMultiplier.Text) - 10), New Point(currentPoint.X * CUShort(tbMultiplier.Text), currentPoint.Y * CUShort(tbMultiplier.Text) + 10))
+            e.Graphics.DrawLine(p, New Point(currentPoint.X * multiplier - 10, currentPoint.Y * multiplier), New Point(currentPoint.X * multiplier + 10, currentPoint.Y * multiplier))
+            e.Graphics.DrawLine(p, New Point(currentPoint.X * multiplier, currentPoint.Y * multiplier - 10), New Point(currentPoint.X * multiplier, currentPoint.Y * multiplier + 10))
         Catch ex As Exception
 
         End Try
@@ -98,11 +99,11 @@
                 End If
 
 
-                If Math.Abs(currentPoint.X * CUShort(tbMultiplier.Text)) > maxSize Then
-                    maxSize = Math.Abs(currentPoint.X * CUShort(tbMultiplier.Text)) + 20
+                If Math.Abs(currentPoint.X * multiplier) > maxSize Then
+                    maxSize = Math.Abs(currentPoint.X * multiplier) + 20
                 End If
-                If Math.Abs(currentPoint.Y * CUShort(tbMultiplier.Text)) > maxSize Then
-                    maxSize = Math.Abs(currentPoint.Y * CUShort(tbMultiplier.Text)) + 20
+                If Math.Abs(currentPoint.Y * multiplier) > maxSize Then
+                    maxSize = Math.Abs(currentPoint.Y * multiplier) + 20
                 End If
                 tbXRaw.Text = currentPoint.X
                 tbYRaw.Text = currentPoint.Y
@@ -110,39 +111,39 @@
                 tbY.Text = e.accelActual.Y
 
                 If recordDeadZone Then
-                    If currentPoint.X * CUShort(tbMultiplier.Text) > deadZone Then
-                        tbDeadZone.Text = currentPoint.X * CUShort(tbMultiplier.Text)
-                        deadZone = currentPoint.X * CUShort(tbMultiplier.Text)
+                    If currentPoint.X * multiplier > deadZone Then
+                        tbDeadZone.Text = currentPoint.X * multiplier
+                        deadZone = currentPoint.X * multiplier
                     End If
-                    If currentPoint.Y * CUShort(tbMultiplier.Text) > deadZone Then
-                        tbDeadZone.Text = currentPoint.Y * CUShort(tbMultiplier.Text)
-                        deadZone = currentPoint.Y * CUShort(tbMultiplier.Text)
+                    If currentPoint.Y * multiplier > deadZone Then
+                        tbDeadZone.Text = currentPoint.Y * multiplier
+                        deadZone = currentPoint.Y * multiplier
                     End If
                 Else
                     deadZone = CUShort(tbDeadZone.Text)
                 End If
 
                 If recordTilt Then
-                    If currentPoint.X * CUShort(tbMultiplier.Text) > tilt Then
-                        tbTilt.Text = currentPoint.X * CUShort(tbMultiplier.Text)
-                        tilt = currentPoint.X * CUShort(tbMultiplier.Text)
+                    If currentPoint.X * multiplier > tilt Then
+                        tbTilt.Text = currentPoint.X * multiplier
+                        tilt = currentPoint.X * multiplier
                     End If
-                    If currentPoint.Y * CUShort(tbMultiplier.Text) > tilt Then
-                        tbTilt.Text = currentPoint.Y * CUShort(tbMultiplier.Text)
-                        tilt = currentPoint.Y * CUShort(tbMultiplier.Text)
+                    If currentPoint.Y * multiplier > tilt Then
+                        tbTilt.Text = currentPoint.Y * multiplier
+                        tilt = currentPoint.Y * multiplier
                     End If
                 Else
                     tilt = CUShort(tbTilt.Text)
                 End If
 
                 If recordMax Then
-                    If currentPoint.X * CUShort(tbMultiplier.Text) > max Then
-                        tbMax.Text = currentPoint.X * CUShort(tbMultiplier.Text)
-                        max = currentPoint.X * CUShort(tbMultiplier.Text)
+                    If currentPoint.X * multiplier > max Then
+                        tbMax.Text = currentPoint.X * multiplier
+                        max = currentPoint.X * multiplier
                     End If
-                    If currentPoint.Y * CUShort(tbMultiplier.Text) > max Then
-                        tbMax.Text = currentPoint.Y * CUShort(tbMultiplier.Text)
-                        max = currentPoint.Y * CUShort(tbMultiplier.Text)
+                    If currentPoint.Y * multiplier > max Then
+                        tbMax.Text = currentPoint.Y * multiplier
+                        max = currentPoint.Y * multiplier
                     End If
                 Else
                     max = CUShort(tbMax.Text)
@@ -181,6 +182,8 @@
             btnDeadZone.Text = "Record Deadzone"
         Else
             recordDeadZone = True
+            tbDeadZone.Text = "0"
+            deadZone = 0
             btnDeadZone.Text = "Stop Deadzone"
         End If
 
@@ -190,7 +193,7 @@
 
         Try
             _config.setOrientationString(cbOrientation.SelectedItem)
-            _config.accelerometerMultiplier = CUShort(tbMultiplier.Text)
+            _config.setSensitivityString(cbMultiplier.SelectedItem)
             _config.accelerometerDeadZone = CUShort(tbDeadZone.Text)
             _config.accelerometerTilt = CUShort(tbTilt.Text)
             _config.accelerometerMax = CUShort(tbMax.Text)
@@ -206,6 +209,8 @@
             btnTilt.Text = "Record Tilt Value"
         Else
             recordTilt = True
+            tbTilt.Text = "0"
+            tilt = 0
             btnTilt.Text = "Stop Tilt Value"
         End If
     End Sub
@@ -235,6 +240,8 @@
             Button1.Text = "Record Max Value"
         Else
             recordMax = True
+            tbMax.Text = "0"
+            max = 0
             Button1.Text = "Stop Max Value"
         End If
     End Sub

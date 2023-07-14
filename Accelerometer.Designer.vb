@@ -33,7 +33,6 @@ Partial Class Accelerometer
         Me.tbDeadZone = New System.Windows.Forms.TextBox()
         Me.lblDeadZone = New System.Windows.Forms.Label()
         Me.lblMultiplier = New System.Windows.Forms.Label()
-        Me.tbMultiplier = New System.Windows.Forms.TextBox()
         Me.ttHelp = New System.Windows.Forms.ToolTip(Me.components)
         Me.tbYRaw = New System.Windows.Forms.TextBox()
         Me.lblYRaw = New System.Windows.Forms.Label()
@@ -50,6 +49,7 @@ Partial Class Accelerometer
         Me.tbMax = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.cbMultiplier = New System.Windows.Forms.ComboBox()
         CType(Me.pbAxis, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -90,7 +90,7 @@ Partial Class Accelerometer
         Me.lblX.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblX.AutoSize = True
         Me.lblX.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblX.Location = New System.Drawing.Point(852, 449)
+        Me.lblX.Location = New System.Drawing.Point(852, 396)
         Me.lblX.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblX.Name = "lblX"
         Me.lblX.Size = New System.Drawing.Size(22, 25)
@@ -102,7 +102,7 @@ Partial Class Accelerometer
         Me.tbX.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbX.Enabled = False
         Me.tbX.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbX.Location = New System.Drawing.Point(881, 440)
+        Me.tbX.Location = New System.Drawing.Point(881, 387)
         Me.tbX.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbX.Name = "tbX"
         Me.tbX.Size = New System.Drawing.Size(148, 31)
@@ -113,7 +113,7 @@ Partial Class Accelerometer
         Me.tbY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbY.Enabled = False
         Me.tbY.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbY.Location = New System.Drawing.Point(880, 485)
+        Me.tbY.Location = New System.Drawing.Point(880, 432)
         Me.tbY.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbY.Name = "tbY"
         Me.tbY.Size = New System.Drawing.Size(148, 31)
@@ -124,7 +124,7 @@ Partial Class Accelerometer
         Me.lblY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblY.AutoSize = True
         Me.lblY.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblY.Location = New System.Drawing.Point(851, 494)
+        Me.lblY.Location = New System.Drawing.Point(851, 441)
         Me.lblY.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblY.Name = "lblY"
         Me.lblY.Size = New System.Drawing.Size(21, 25)
@@ -158,29 +158,19 @@ Partial Class Accelerometer
         Me.lblMultiplier.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblMultiplier.AutoSize = True
         Me.lblMultiplier.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMultiplier.Location = New System.Drawing.Point(778, 313)
+        Me.lblMultiplier.Location = New System.Drawing.Point(726, 580)
         Me.lblMultiplier.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMultiplier.Name = "lblMultiplier"
-        Me.lblMultiplier.Size = New System.Drawing.Size(89, 25)
+        Me.lblMultiplier.Size = New System.Drawing.Size(96, 25)
         Me.lblMultiplier.TabIndex = 9
-        Me.lblMultiplier.Text = "Multiplier"
-        '
-        'tbMultiplier
-        '
-        Me.tbMultiplier.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tbMultiplier.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbMultiplier.Location = New System.Drawing.Point(880, 309)
-        Me.tbMultiplier.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tbMultiplier.Name = "tbMultiplier"
-        Me.tbMultiplier.Size = New System.Drawing.Size(148, 31)
-        Me.tbMultiplier.TabIndex = 10
+        Me.lblMultiplier.Text = "Sensitivity"
         '
         'tbYRaw
         '
         Me.tbYRaw.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbYRaw.Enabled = False
         Me.tbYRaw.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbYRaw.Location = New System.Drawing.Point(880, 574)
+        Me.tbYRaw.Location = New System.Drawing.Point(880, 521)
         Me.tbYRaw.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbYRaw.Name = "tbYRaw"
         Me.tbYRaw.Size = New System.Drawing.Size(148, 31)
@@ -191,7 +181,7 @@ Partial Class Accelerometer
         Me.lblYRaw.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblYRaw.AutoSize = True
         Me.lblYRaw.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblYRaw.Location = New System.Drawing.Point(814, 583)
+        Me.lblYRaw.Location = New System.Drawing.Point(814, 530)
         Me.lblYRaw.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblYRaw.Name = "lblYRaw"
         Me.lblYRaw.Size = New System.Drawing.Size(59, 25)
@@ -203,7 +193,7 @@ Partial Class Accelerometer
         Me.tbXRaw.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbXRaw.Enabled = False
         Me.tbXRaw.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbXRaw.Location = New System.Drawing.Point(880, 529)
+        Me.tbXRaw.Location = New System.Drawing.Point(880, 476)
         Me.tbXRaw.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbXRaw.Name = "tbXRaw"
         Me.tbXRaw.Size = New System.Drawing.Size(148, 31)
@@ -214,7 +204,7 @@ Partial Class Accelerometer
         Me.lblXRaw.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblXRaw.AutoSize = True
         Me.lblXRaw.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblXRaw.Location = New System.Drawing.Point(816, 538)
+        Me.lblXRaw.Location = New System.Drawing.Point(816, 485)
         Me.lblXRaw.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblXRaw.Name = "lblXRaw"
         Me.lblXRaw.Size = New System.Drawing.Size(60, 25)
@@ -259,7 +249,7 @@ Partial Class Accelerometer
         '
         Me.tbTilt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbTilt.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbTilt.Location = New System.Drawing.Point(880, 350)
+        Me.tbTilt.Location = New System.Drawing.Point(880, 303)
         Me.tbTilt.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbTilt.Name = "tbTilt"
         Me.tbTilt.Size = New System.Drawing.Size(148, 31)
@@ -270,7 +260,7 @@ Partial Class Accelerometer
         Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(778, 355)
+        Me.Label1.Location = New System.Drawing.Point(778, 308)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(37, 25)
@@ -317,7 +307,7 @@ Partial Class Accelerometer
         '
         Me.tbMax.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbMax.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbMax.Location = New System.Drawing.Point(880, 391)
+        Me.tbMax.Location = New System.Drawing.Point(880, 344)
         Me.tbMax.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbMax.Name = "tbMax"
         Me.tbMax.Size = New System.Drawing.Size(148, 31)
@@ -328,7 +318,7 @@ Partial Class Accelerometer
         Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(778, 396)
+        Me.Label2.Location = New System.Drawing.Point(778, 349)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(45, 25)
@@ -347,11 +337,24 @@ Partial Class Accelerometer
         Me.Button1.Text = "Record Max Value"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'cbMultiplier
+        '
+        Me.cbMultiplier.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cbMultiplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbMultiplier.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbMultiplier.FormattingEnabled = True
+        Me.cbMultiplier.Items.AddRange(New Object() {"2G (Most Sensitive)", "4G", "8G", "16G (Least Sensitive)"})
+        Me.cbMultiplier.Location = New System.Drawing.Point(829, 572)
+        Me.cbMultiplier.Name = "cbMultiplier"
+        Me.cbMultiplier.Size = New System.Drawing.Size(200, 33)
+        Me.cbMultiplier.TabIndex = 37
+        '
         'Accelerometer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1060, 761)
+        Me.Controls.Add(Me.cbMultiplier)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.tbMax)
         Me.Controls.Add(Me.Label2)
@@ -367,7 +370,6 @@ Partial Class Accelerometer
         Me.Controls.Add(Me.lblYRaw)
         Me.Controls.Add(Me.tbXRaw)
         Me.Controls.Add(Me.lblXRaw)
-        Me.Controls.Add(Me.tbMultiplier)
         Me.Controls.Add(Me.lblMultiplier)
         Me.Controls.Add(Me.tbDeadZone)
         Me.Controls.Add(Me.lblDeadZone)
@@ -396,7 +398,6 @@ Partial Class Accelerometer
     Friend WithEvents tbDeadZone As TextBox
     Friend WithEvents lblDeadZone As Label
     Friend WithEvents lblMultiplier As Label
-    Friend WithEvents tbMultiplier As TextBox
     Friend WithEvents ttHelp As ToolTip
     Friend WithEvents tbYRaw As TextBox
     Friend WithEvents lblYRaw As Label
@@ -413,4 +414,5 @@ Partial Class Accelerometer
     Friend WithEvents tbMax As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents cbMultiplier As ComboBox
 End Class

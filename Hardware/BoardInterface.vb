@@ -41,7 +41,7 @@ Public Class BoardConfiguration
     Public solenoidOutputMap(4) As Byte
     Public orentation As Byte
     Public accelerometer As Boolean
-    Public accelerometerMultiplier As Int16
+    Public accelerometerMultiplier As Byte
     Public accelerometerDeadZone As Int16
     Public buttonOption As Byte
     Public accelerometerTilt As Int16
@@ -80,8 +80,33 @@ Public Class BoardConfiguration
         Return 4
     End Function
 
+    Public Sub setSensitivityString(sensitivity As String)
+        Me.accelerometerMultiplier = getIntegerFromSensitivityString(sensitivity)
+    End Sub
+    Public Function getIntegerFromSensitivityString(sensitivity As String) As Integer
+        If sensitivity = "2G (Most Sensitive)" Then Return 0
+        If sensitivity = "4G" Then Return 1
+        If sensitivity = "8G" Then Return 2
+        If sensitivity = "16G (Least Sensitive)" Then Return 3
+    End Function
+    Public Function getSensitivityString() As String
+        If accelerometerMultiplier = 0 Then
+            Return "2G (Most Sensitive)"
+        End If
+        If accelerometerMultiplier = 1 Then
+            Return "4G"
+        End If
+        If accelerometerMultiplier = 2 Then
+            Return "8G"
+        End If
+        If accelerometerMultiplier = 3 Then
+            Return "16G (Least Sensitive)"
+        End If
+        Return ""
+    End Function
+
     Public Function toConfigBytes(config As BoardConfiguration) As Byte()
-        Dim configString(276) As Byte
+        Dim configString(275) As Byte
         For i = 0 To 62
             configString(i) = config.toySpecialOption(i)
             configString(i + 63) = config.turnOffState(i)
@@ -105,19 +130,17 @@ Public Class BoardConfiguration
 
         configString(266) = config.orentation
         configString(267) = config.accelerometer
-        Dim result4 As Byte() = BitConverter.GetBytes(config.accelerometerMultiplier)
+        configString(268) = config.accelerometerMultiplier
         Dim result5 As Byte() = BitConverter.GetBytes(config.accelerometerDeadZone)
-        configString(268) = result4(1)
-        configString(269) = result4(0)
-        configString(270) = result5(1)
-        configString(271) = result5(0)
-        configString(272) = buttonOption
+        configString(269) = result5(1)
+        configString(270) = result5(0)
+        configString(271) = buttonOption
         Dim result6 As Byte() = BitConverter.GetBytes(config.accelerometerTilt)
-        configString(273) = result6(1)
-        configString(274) = result6(0)
+        configString(272) = result6(1)
+        configString(273) = result6(0)
         Dim result7 As Byte() = BitConverter.GetBytes(config.accelerometerMax)
-        configString(275) = result7(1)
-        configString(276) = result7(0)
+        configString(274) = result7(1)
+        configString(275) = result7(0)
         Return configString
     End Function
     Public Shared Function stringToConfig(str As String) As BoardConfiguration
@@ -141,7 +164,7 @@ Public Class BoardConfiguration
 
             config.orentation = CByte(configString(263))
             config.accelerometer = CBool(configString(264))
-            config.accelerometerMultiplier = CInt(configString(265))
+            config.accelerometerMultiplier = CByte(configString(265))
             config.accelerometerDeadZone = CInt(configString(266))
             config.buttonOption = CByte(configString(267))
             config.accelerometerTilt = CInt(configString(268))
@@ -231,7 +254,7 @@ Public Interface BoardInterface
 
     Sub setPlungerMinMax(max As UShort, min As UShort, mid As UShort, buttonOption As Byte)
 
-    Sub setAccelerometerValues(multiplier As UShort, deadZone As UShort, orientation As Byte, tilt As UShort, max As UShort)
+    Sub setAccelerometerValues(multiplier As Byte, deadZone As UShort, orientation As Byte, tilt As UShort, max As UShort)
     Sub setConfig(config As BoardConfiguration)
     Function saveConfigToEeprom()
     Sub connect()
