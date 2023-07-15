@@ -88,7 +88,7 @@ Public Class MainWindow
                 output.Write(AVRResources.avrdude_conf, 0, AVRResources.avrdude_conf.Length)
             End Using
             Using output As Stream = File.OpenWrite(System.IO.Path.Combine(Application.StartupPath(), "joystick.ino.hex"))
-                output.Write(AVRResources.joystick_ino, 0, AVRResources.joystick_ino.Length)
+                output.Write(AVRResources.PinOne_ino, 0, AVRResources.PinOne_ino.Length)
             End Using
 
             If cbSimulation.Checked = True Then

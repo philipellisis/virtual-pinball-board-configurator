@@ -87,9 +87,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Byte[].
         '''</summary>
-        Friend Shared ReadOnly Property joystick_ino() As Byte()
+        Friend Shared ReadOnly Property PinOne_ino() As Byte()
             Get
-                Dim obj As Object = ResourceManager.GetObject("joystick_ino", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("PinOne_ino", resourceCulture)
                 Return CType(obj,Byte())
             End Get
         End Property

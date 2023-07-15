@@ -208,7 +208,7 @@
     </None>
     <None Include="App.config" />
     <None Include="resources\avrdude.conf" />
-    <None Include="resources\joystick.ino.hex" />
+    <None Include="resources\PinOne.ino.hex" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\avrdude.exe" />
