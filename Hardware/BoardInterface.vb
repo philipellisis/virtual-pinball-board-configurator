@@ -1,4 +1,6 @@
-﻿Public Enum ORIENTATION
+﻿Imports System.Runtime.InteropServices.WindowsRuntime
+
+Public Enum ORIENTATION
     UP
     DOWN
     LEFT
@@ -47,37 +49,45 @@ Public Class BoardConfiguration
     Public accelerometerTilt As Int16
     Public accelerometerMax As Int16
     Public Function getOrientationString() As String
-        If orentation = 0 Then
+        Dim tempOrientation = orentation
+        If tempOrientation > 3 Then
+            tempOrientation -= 4
+        End If
+        If tempOrientation = 0 Then
             Return "USB Facing Back"
         End If
-        If orentation = 1 Then
+        If tempOrientation = 1 Then
             Return "USB Facing Right"
         End If
-        If orentation = 2 Then
+        If tempOrientation = 2 Then
             Return "USB Facing Front"
         End If
-        If orentation = 3 Then
+        If tempOrientation = 3 Then
             Return "USB Facing Left"
         End If
         Return ""
     End Function
-    Public Sub setOrientationString(orientation As String)
-        Me.orentation = getIntegerFromOrientationString(orientation)
+    Public Sub setOrientationString(orientation As String, pins As Boolean)
+        Me.orentation = getIntegerFromOrientationString(orientation, pins)
     End Sub
-    Public Function getIntegerFromOrientationString(orientation As String) As Integer
+    Public Function getIntegerFromOrientationString(orientation As String, pins As Boolean) As Integer
+        Dim returnValue As Byte
         If orientation = "USB Facing Back" Then
-            Return 0
+            returnValue = 0
         End If
         If orientation = "USB Facing Right" Then
-            Return 1
+            returnValue = 1
         End If
         If orientation = "USB Facing Left" Then
-            Return 3
+            returnValue = 3
         End If
         If orientation = "USB Facing Front" Then
-            Return 2
+            returnValue = 2
         End If
-        Return 4
+        If pins Then
+            returnValue += 4
+        End If
+        Return returnValue
     End Function
 
     Public Sub setSensitivityString(sensitivity As String)

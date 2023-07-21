@@ -1,4 +1,8 @@
-﻿Public Class Configuration
+﻿Imports System.IO
+Imports System.Xml
+Imports System.Xml.Serialization
+
+Public Class Configuration
     Private _config As BoardConfiguration
     Private WithEvents _board As BoardInterface
     Private _userControlList As New List(Of AdjustmentSlider)
@@ -64,6 +68,9 @@
         End If
         tbTilt.Text = _config.accelerometerTilt.ToString
         tbMax.Text = _config.accelerometerMax.ToString
+        If _config.orentation > 3 Then
+            cbPinsFacingUp.Checked = True
+        End If
 
         Me.ResumeLayout()
         tpMainOutputs.ResumeLayout()
@@ -92,7 +99,7 @@
 
 
             _config.accelerometer = CByte(cbAccelEnabled.Checked)
-            _config.setOrientationString(cbOrientation.SelectedItem)
+            _config.setOrientationString(cbOrientation.SelectedItem, cbPinsFacingUp.Checked)
             _config.plungerMax = CShort(tbPlungerMax.Text)
             _config.plungerMid = CShort(tbPlungerMid.Text)
             _config.plungerMin = CShort(tbPlungerMin.Text)
@@ -159,5 +166,27 @@
             MessageBox.Show("error while exiting admin mode")
         End Try
 
+    End Sub
+
+    Private Sub btnBackup_Click(sender As Object, e As EventArgs) Handles btnBackup.Click
+        Dim writer As New System.Xml.Serialization.XmlSerializer(GetType(BoardConfiguration))
+        Dim file As New System.IO.StreamWriter(
+            "c:\temp\backup.xml")
+        writer.Serialize(file, _config)
+        file.Close()
+    End Sub
+
+    Private Sub btnRetrieve_Click(sender As Object, e As EventArgs) Handles btnRetrieve.Click
+        Dim xmldoc As New XmlDocument
+        xmldoc.Load("c:\temp\backup.xml")
+        Dim allText As String = xmldoc.InnerXml
+
+        Using currentStringReader As New StringReader(allText)
+            Dim xml As New XmlSerializer(GetType(BoardConfiguration))
+            Dim board As BoardConfiguration = TryCast(xml.Deserialize(currentStringReader), BoardConfiguration)
+            If board.accelerometer Then
+                board = board
+            End If
+        End Using
     End Sub
 End Class

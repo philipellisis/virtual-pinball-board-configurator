@@ -22,6 +22,7 @@ Partial Class MainWindow
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainWindow))
         Me.btnSettings = New System.Windows.Forms.Button()
         Me.btnConnect = New System.Windows.Forms.Button()
         Me.btnOutputs = New System.Windows.Forms.Button()
@@ -126,6 +127,7 @@ Partial Class MainWindow
         Me.cbSimulation.TabIndex = 9
         Me.cbSimulation.Text = "Simulation"
         Me.cbSimulation.UseVisualStyleBackColor = True
+        Me.cbSimulation.Visible = False
         '
         'btnUpdateFirmware
         '
@@ -147,6 +149,7 @@ Partial Class MainWindow
         Me.Controls.Add(Me.cbSimulation)
         Me.Controls.Add(Me.gbMenu)
         Me.Controls.Add(Me.btnConnect)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "MainWindow"
         Me.Text = "CSD Configuration Tool"

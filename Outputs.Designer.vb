@@ -22,6 +22,7 @@ Partial Class Outputs
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Outputs))
         Me.tcMain = New System.Windows.Forms.TabControl()
         Me.tpMain = New System.Windows.Forms.TabPage()
         Me.tpExp1 = New System.Windows.Forms.TabPage()
@@ -65,7 +66,7 @@ Partial Class Outputs
         Me.tpExp1.Location = New System.Drawing.Point(4, 34)
         Me.tpExp1.Name = "tpExp1"
         Me.tpExp1.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpExp1.Size = New System.Drawing.Size(1060, 466)
+        Me.tpExp1.Size = New System.Drawing.Size(1060, 775)
         Me.tpExp1.TabIndex = 1
         Me.tpExp1.Text = "Expansion Board #1"
         Me.tpExp1.UseVisualStyleBackColor = True
@@ -75,7 +76,7 @@ Partial Class Outputs
         Me.tpExp2.AutoScroll = True
         Me.tpExp2.Location = New System.Drawing.Point(4, 34)
         Me.tpExp2.Name = "tpExp2"
-        Me.tpExp2.Size = New System.Drawing.Size(1060, 466)
+        Me.tpExp2.Size = New System.Drawing.Size(1060, 775)
         Me.tpExp2.TabIndex = 2
         Me.tpExp2.Text = "Expansion Board #2"
         Me.tpExp2.UseVisualStyleBackColor = True
@@ -119,6 +120,7 @@ Partial Class Outputs
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.tbIntensity)
         Me.Controls.Add(Me.tcMain)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Outputs"
         Me.Text = "Outputs"
         Me.tcMain.ResumeLayout(False)

@@ -22,6 +22,7 @@ Partial Class Buttons
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Buttons))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
@@ -42,6 +43,7 @@ Partial Class Buttons
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.Label1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Buttons"
         Me.Text = "Buttons"
         Me.ResumeLayout(False)

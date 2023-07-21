@@ -35,15 +35,18 @@
             tbTilt.Text = _config.accelerometerTilt
             tbMax.Text = _config.accelerometerMax
             If _config.accelerometerDeadZone > maxSize Then
-                maxSize = _config.accelerometerDeadZone + 20
+                maxSize = _config.accelerometerDeadZone + 40
             End If
             If _config.accelerometerTilt > maxSize Then
-                maxSize = _config.accelerometerTilt + 20
+                maxSize = _config.accelerometerTilt + 40
             End If
             If _config.accelerometerMax > maxSize Then
-                maxSize = _config.accelerometerMax + 20
+                maxSize = _config.accelerometerMax + 40
             End If
             cbOutputNumber.SelectedItem = "1"
+            If _config.orentation > 3 Then
+                cbPinsFacingUp.Checked = True
+            End If
         Catch ex As Exception
             MessageBox.Show("error initializing board, check to ensure board is connected.")
         End Try
@@ -75,18 +78,29 @@
             If e.type = MESSAGE_TYPE.ACCEL Then
                 currentPoint = e.accel
 
-                'Int temp = xValue;
-                'If (_config -> ORIENTATION == 1) Then {
-                '  xValue = yValue;
-                '  yValue = -temp;
-                '} else if (_config->orientation == 2) {
-                '  xValue = -xValue;
-                '  yValue = -yValue;
-                '} else if (_config->orientation == 3) {
+                'If (_config -> ORIENTATION == Right) Then {
                 '  xValue = -yValue;
                 '  yValue = temp;
+                '} else if (_config->orientation == FORWARD) {
+                '  xValue = -xValue;
+                '  yValue = -yValue;
+                '} else if (_config->orientation == LEFT) {
+                '  xValue = yValue;
+                '  yValue = -temp;
+                '} else if (_config->orientation == UP_BACK) {
+                '  xValue = -xValue;
+                '  yValue = yValue;
+                '} else if (_config->orientation == UP_RIGHT) {
+                '  xValue = -yValue;
+                '  yValue = -temp;
+                '} else if (_config->orientation == UP_FORWARD) {
+                '  xValue = xValue;
+                '  yValue = -yValue;
+                '} else if (_config->orientation == UP_LEFT) {
+                '  xValue = -yValue;
+                '  yValue = -temp;
                 '}
-                Dim orientation As Integer = _config.getIntegerFromOrientationString(cbOrientation.SelectedItem)
+                Dim orientation As Integer = _config.getIntegerFromOrientationString(cbOrientation.SelectedItem, cbPinsFacingUp.Checked)
                 If orientation = 1 Then
                     currentPoint.X = -e.accel.Y
                     currentPoint.Y = e.accel.X
@@ -96,14 +110,26 @@
                 ElseIf orientation = 3 Then
                     currentPoint.X = e.accel.Y
                     currentPoint.Y = -e.accel.X
+                ElseIf orientation = 4 Then
+                    currentPoint.X = -e.accel.X
+                    currentPoint.Y = e.accel.Y
+                ElseIf orientation = 5 Then
+                    currentPoint.X = -e.accel.Y
+                    currentPoint.Y = -e.accel.X
+                ElseIf orientation = 6 Then
+                    currentPoint.X = e.accel.X
+                    currentPoint.Y = -e.accel.Y
+                ElseIf orientation = 7 Then
+                    currentPoint.X = e.accel.Y
+                    currentPoint.Y = e.accel.X
                 End If
 
 
                 If Math.Abs(currentPoint.X * multiplier) > maxSize Then
-                    maxSize = Math.Abs(currentPoint.X * multiplier) + 20
+                    maxSize = Math.Abs(currentPoint.X * multiplier) + 40
                 End If
                 If Math.Abs(currentPoint.Y * multiplier) > maxSize Then
-                    maxSize = Math.Abs(currentPoint.Y * multiplier) + 20
+                    maxSize = Math.Abs(currentPoint.Y * multiplier) + 40
                 End If
                 tbXRaw.Text = currentPoint.X
                 tbYRaw.Text = currentPoint.Y
@@ -192,7 +218,7 @@
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
         Try
-            _config.setOrientationString(cbOrientation.SelectedItem)
+            _config.setOrientationString(cbOrientation.SelectedItem, cbPinsFacingUp.Checked)
             _config.setSensitivityString(cbMultiplier.SelectedItem)
             _config.accelerometerDeadZone = CUShort(tbDeadZone.Text)
             _config.accelerometerTilt = CUShort(tbTilt.Text)

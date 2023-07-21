@@ -23,6 +23,7 @@ Partial Class Accelerometer
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Accelerometer))
         Me.btnOK = New System.Windows.Forms.Button()
         Me.pbAxis = New System.Windows.Forms.PictureBox()
         Me.btnDeadZone = New System.Windows.Forms.Button()
@@ -50,6 +51,7 @@ Partial Class Accelerometer
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.cbMultiplier = New System.Windows.Forms.ComboBox()
+        Me.cbPinsFacingUp = New System.Windows.Forms.CheckBox()
         CType(Me.pbAxis, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -57,7 +59,7 @@ Partial Class Accelerometer
         '
         Me.btnOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnOK.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnOK.Location = New System.Drawing.Point(938, 695)
+        Me.btnOK.Location = New System.Drawing.Point(938, 736)
         Me.btnOK.Name = "btnOK"
         Me.btnOK.Size = New System.Drawing.Size(106, 49)
         Me.btnOK.TabIndex = 0
@@ -215,7 +217,7 @@ Partial Class Accelerometer
         '
         Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSave.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(752, 695)
+        Me.btnSave.Location = New System.Drawing.Point(752, 736)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(171, 49)
         Me.btnSave.TabIndex = 15
@@ -349,11 +351,23 @@ Partial Class Accelerometer
         Me.cbMultiplier.Size = New System.Drawing.Size(200, 33)
         Me.cbMultiplier.TabIndex = 37
         '
+        'cbPinsFacingUp
+        '
+        Me.cbPinsFacingUp.AutoSize = True
+        Me.cbPinsFacingUp.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbPinsFacingUp.Location = New System.Drawing.Point(874, 665)
+        Me.cbPinsFacingUp.Name = "cbPinsFacingUp"
+        Me.cbPinsFacingUp.Size = New System.Drawing.Size(154, 29)
+        Me.cbPinsFacingUp.TabIndex = 39
+        Me.cbPinsFacingUp.Text = "Pins Facing Up"
+        Me.cbPinsFacingUp.UseVisualStyleBackColor = True
+        '
         'Accelerometer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1060, 761)
+        Me.ClientSize = New System.Drawing.Size(1060, 802)
+        Me.Controls.Add(Me.cbPinsFacingUp)
         Me.Controls.Add(Me.cbMultiplier)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.tbMax)
@@ -380,6 +394,7 @@ Partial Class Accelerometer
         Me.Controls.Add(Me.btnDeadZone)
         Me.Controls.Add(Me.pbAxis)
         Me.Controls.Add(Me.btnOK)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Accelerometer"
         Me.Text = "Accelerometer"
         CType(Me.pbAxis, System.ComponentModel.ISupportInitialize).EndInit()
@@ -415,4 +430,5 @@ Partial Class Accelerometer
     Friend WithEvents Label2 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents cbMultiplier As ComboBox
+    Friend WithEvents cbPinsFacingUp As CheckBox
 End Class

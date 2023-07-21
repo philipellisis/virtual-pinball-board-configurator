@@ -22,6 +22,7 @@ Partial Class Plunger
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Plunger))
         Me.pbPlunger = New System.Windows.Forms.ProgressBar()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.lblMinValue = New System.Windows.Forms.Label()
@@ -155,6 +156,7 @@ Partial Class Plunger
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.pbPlunger)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Plunger"
         Me.Text = "Plunger"
         Me.GroupBox1.ResumeLayout(False)
