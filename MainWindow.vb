@@ -2,6 +2,8 @@
 Imports CSDControllerTool.My
 Imports CSDControllerTool.My.Resources
 Imports System.Windows.Forms
+Imports System.Xml
+Imports System.Xml.Serialization
 
 Public Class MainWindow
     'Private WithEvents arduino As RS232
@@ -110,6 +112,46 @@ Public Class MainWindow
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
+
+    End Sub
+
+    Private Sub btnBackup_Click(sender As Object, e As EventArgs) Handles btnBackup.Click
+        Dim configFileLocation As String = System.IO.Path.Combine(Application.StartupPath(), "PinOneSettings.xml")
+        Try
+            Dim writer As New System.Xml.Serialization.XmlSerializer(GetType(BoardConfiguration))
+            Dim file As New System.IO.StreamWriter(configFileLocation)
+            writer.Serialize(file, config)
+            file.Close()
+            MessageBox.Show("Successfully saved configuration file in " & configFileLocation)
+        Catch ex As Exception
+            MessageBox.Show("error saving PinOne configuration file. Ensure you have write access to the location and try again")
+        End Try
+
+
+    End Sub
+
+    Private Sub btnRetrieve_Click(sender As Object, e As EventArgs) Handles btnRetrieve.Click
+        Dim configFileLocation As String = System.IO.Path.Combine(Application.StartupPath(), "PinOneSettings.xml")
+        If File.Exists(configFileLocation) Then
+            Try
+
+                Dim xmldoc As New XmlDocument
+                xmldoc.Load(configFileLocation)
+                Dim allText As String = xmldoc.InnerXml
+
+                Using currentStringReader As New StringReader(allText)
+                    Dim xml As New XmlSerializer(GetType(BoardConfiguration))
+                    Dim board As BoardConfiguration = TryCast(xml.Deserialize(currentStringReader), BoardConfiguration)
+                    config.copyValues(board)
+                End Using
+                MessageBox.Show("Successfully retrieved configuration file in " & configFileLocation & vbNewLine & "Configuration will not be saved to PinOne until you click the save button in the settings screen")
+            Catch ex As Exception
+                MessageBox.Show("error saving PinOne configuration file. Ensure the file exists and try again")
+            End Try
+        Else
+            MessageBox.Show("No configuration file found at " & configFileLocation)
+        End If
+
 
     End Sub
 End Class

@@ -48,6 +48,24 @@ Public Class BoardConfiguration
     Public buttonOption As Byte
     Public accelerometerTilt As Int16
     Public accelerometerMax As Int16
+    Public Sub copyValues(board As BoardConfiguration)
+        Array.Copy(board.toySpecialOption, toySpecialOption, 63)
+        Array.Copy(board.turnOffState, turnOffState, 63)
+        Array.Copy(board.maxOutputState, toySpecialOption, 63)
+        Array.Copy(board.maxOutputTime, maxOutputTime, 63)
+        plungerMax = board.plungerMax
+        plungerMin = board.plungerMin
+        plungerMid = board.plungerMid
+        Array.Copy(board.solenoidButtonMap, solenoidButtonMap, 4)
+        Array.Copy(board.solenoidOutputMap, solenoidOutputMap, 4)
+        orentation = board.orentation
+        accelerometer = board.accelerometer
+        accelerometerMultiplier = board.accelerometerMultiplier
+        accelerometerDeadZone = board.accelerometerDeadZone
+        buttonOption = board.buttonOption
+        accelerometerTilt = board.accelerometerTilt
+        accelerometerMax = board.accelerometerMax
+    End Sub
     Public Function getOrientationString() As String
         Dim tempOrientation = orentation
         If tempOrientation > 3 Then

@@ -32,16 +32,17 @@ Partial Class MainWindow
         Me.gbMenu = New System.Windows.Forms.GroupBox()
         Me.cbSimulation = New System.Windows.Forms.CheckBox()
         Me.btnUpdateFirmware = New System.Windows.Forms.Button()
+        Me.btnRetrieve = New System.Windows.Forms.Button()
+        Me.btnBackup = New System.Windows.Forms.Button()
         Me.gbMenu.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnSettings
         '
         Me.btnSettings.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSettings.Location = New System.Drawing.Point(7, 38)
-        Me.btnSettings.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnSettings.Location = New System.Drawing.Point(5, 25)
         Me.btnSettings.Name = "btnSettings"
-        Me.btnSettings.Size = New System.Drawing.Size(224, 163)
+        Me.btnSettings.Size = New System.Drawing.Size(149, 106)
         Me.btnSettings.TabIndex = 0
         Me.btnSettings.Text = "Settings"
         Me.btnSettings.UseVisualStyleBackColor = True
@@ -49,10 +50,9 @@ Partial Class MainWindow
         'btnConnect
         '
         Me.btnConnect.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnConnect.Location = New System.Drawing.Point(13, 466)
-        Me.btnConnect.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnConnect.Location = New System.Drawing.Point(9, 303)
         Me.btnConnect.Name = "btnConnect"
-        Me.btnConnect.Size = New System.Drawing.Size(224, 85)
+        Me.btnConnect.Size = New System.Drawing.Size(149, 55)
         Me.btnConnect.TabIndex = 3
         Me.btnConnect.Text = "Connect"
         Me.btnConnect.UseVisualStyleBackColor = True
@@ -60,10 +60,9 @@ Partial Class MainWindow
         'btnOutputs
         '
         Me.btnOutputs.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnOutputs.Location = New System.Drawing.Point(239, 211)
-        Me.btnOutputs.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnOutputs.Location = New System.Drawing.Point(159, 137)
         Me.btnOutputs.Name = "btnOutputs"
-        Me.btnOutputs.Size = New System.Drawing.Size(224, 163)
+        Me.btnOutputs.Size = New System.Drawing.Size(149, 106)
         Me.btnOutputs.TabIndex = 4
         Me.btnOutputs.Text = "Outputs"
         Me.btnOutputs.UseVisualStyleBackColor = True
@@ -71,10 +70,9 @@ Partial Class MainWindow
         'btnInputs
         '
         Me.btnInputs.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnInputs.Location = New System.Drawing.Point(471, 211)
-        Me.btnInputs.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnInputs.Location = New System.Drawing.Point(314, 25)
         Me.btnInputs.Name = "btnInputs"
-        Me.btnInputs.Size = New System.Drawing.Size(224, 163)
+        Me.btnInputs.Size = New System.Drawing.Size(149, 106)
         Me.btnInputs.TabIndex = 5
         Me.btnInputs.Text = "Inputs"
         Me.btnInputs.UseVisualStyleBackColor = True
@@ -82,10 +80,9 @@ Partial Class MainWindow
         'btnPlunger
         '
         Me.btnPlunger.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPlunger.Location = New System.Drawing.Point(7, 211)
-        Me.btnPlunger.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnPlunger.Location = New System.Drawing.Point(5, 137)
         Me.btnPlunger.Name = "btnPlunger"
-        Me.btnPlunger.Size = New System.Drawing.Size(224, 163)
+        Me.btnPlunger.Size = New System.Drawing.Size(149, 106)
         Me.btnPlunger.TabIndex = 6
         Me.btnPlunger.Text = "Plunger"
         Me.btnPlunger.UseVisualStyleBackColor = True
@@ -93,16 +90,17 @@ Partial Class MainWindow
         'btnAccel
         '
         Me.btnAccel.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAccel.Location = New System.Drawing.Point(239, 38)
-        Me.btnAccel.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnAccel.Location = New System.Drawing.Point(159, 25)
         Me.btnAccel.Name = "btnAccel"
-        Me.btnAccel.Size = New System.Drawing.Size(224, 163)
+        Me.btnAccel.Size = New System.Drawing.Size(149, 106)
         Me.btnAccel.TabIndex = 7
         Me.btnAccel.Text = "Accelerometer"
         Me.btnAccel.UseVisualStyleBackColor = True
         '
         'gbMenu
         '
+        Me.gbMenu.Controls.Add(Me.btnRetrieve)
+        Me.gbMenu.Controls.Add(Me.btnBackup)
         Me.gbMenu.Controls.Add(Me.btnInputs)
         Me.gbMenu.Controls.Add(Me.btnOutputs)
         Me.gbMenu.Controls.Add(Me.btnSettings)
@@ -110,9 +108,11 @@ Partial Class MainWindow
         Me.gbMenu.Controls.Add(Me.btnPlunger)
         Me.gbMenu.Enabled = False
         Me.gbMenu.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gbMenu.Location = New System.Drawing.Point(12, 12)
+        Me.gbMenu.Location = New System.Drawing.Point(8, 8)
+        Me.gbMenu.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.gbMenu.Name = "gbMenu"
-        Me.gbMenu.Size = New System.Drawing.Size(801, 407)
+        Me.gbMenu.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbMenu.Size = New System.Drawing.Size(534, 265)
         Me.gbMenu.TabIndex = 8
         Me.gbMenu.TabStop = False
         Me.gbMenu.Text = "Menu"
@@ -121,9 +121,10 @@ Partial Class MainWindow
         '
         Me.cbSimulation.AutoSize = True
         Me.cbSimulation.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbSimulation.Location = New System.Drawing.Point(19, 425)
+        Me.cbSimulation.Location = New System.Drawing.Point(13, 276)
+        Me.cbSimulation.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cbSimulation.Name = "cbSimulation"
-        Me.cbSimulation.Size = New System.Drawing.Size(145, 33)
+        Me.cbSimulation.Size = New System.Drawing.Size(97, 24)
         Me.cbSimulation.TabIndex = 9
         Me.cbSimulation.Text = "Simulation"
         Me.cbSimulation.UseVisualStyleBackColor = True
@@ -132,25 +133,45 @@ Partial Class MainWindow
         'btnUpdateFirmware
         '
         Me.btnUpdateFirmware.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUpdateFirmware.Location = New System.Drawing.Point(589, 466)
-        Me.btnUpdateFirmware.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnUpdateFirmware.Location = New System.Drawing.Point(393, 303)
         Me.btnUpdateFirmware.Name = "btnUpdateFirmware"
-        Me.btnUpdateFirmware.Size = New System.Drawing.Size(224, 85)
+        Me.btnUpdateFirmware.Size = New System.Drawing.Size(149, 55)
         Me.btnUpdateFirmware.TabIndex = 10
         Me.btnUpdateFirmware.Text = "Update Firmware"
         Me.btnUpdateFirmware.UseVisualStyleBackColor = True
         '
+        'btnRetrieve
+        '
+        Me.btnRetrieve.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRetrieve.Location = New System.Drawing.Point(316, 192)
+        Me.btnRetrieve.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnRetrieve.Name = "btnRetrieve"
+        Me.btnRetrieve.Size = New System.Drawing.Size(147, 51)
+        Me.btnRetrieve.TabIndex = 9
+        Me.btnRetrieve.Text = "Get Backup"
+        Me.btnRetrieve.UseVisualStyleBackColor = True
+        '
+        'btnBackup
+        '
+        Me.btnBackup.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBackup.Location = New System.Drawing.Point(316, 136)
+        Me.btnBackup.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnBackup.Name = "btnBackup"
+        Me.btnBackup.Size = New System.Drawing.Size(147, 52)
+        Me.btnBackup.TabIndex = 8
+        Me.btnBackup.Text = "Backup Config"
+        Me.btnBackup.UseVisualStyleBackColor = True
+        '
         'MainWindow
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(825, 565)
+        Me.ClientSize = New System.Drawing.Size(550, 367)
         Me.Controls.Add(Me.btnUpdateFirmware)
         Me.Controls.Add(Me.cbSimulation)
         Me.Controls.Add(Me.gbMenu)
         Me.Controls.Add(Me.btnConnect)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "MainWindow"
         Me.Text = "CSD Configuration Tool"
         Me.gbMenu.ResumeLayout(False)
@@ -168,4 +189,6 @@ Partial Class MainWindow
     Friend WithEvents gbMenu As GroupBox
     Friend WithEvents cbSimulation As CheckBox
     Friend WithEvents btnUpdateFirmware As Button
+    Friend WithEvents btnRetrieve As Button
+    Friend WithEvents btnBackup As Button
 End Class

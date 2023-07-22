@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Configuration
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Configuration
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Configuration))
         Me.tbMain = New System.Windows.Forms.TabControl()
@@ -31,8 +31,6 @@ Partial Class Configuration
         Me.Label13 = New System.Windows.Forms.Label()
         Me.tbTilt = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.tbMultiplier = New System.Windows.Forms.TextBox()
-        Me.lblMultiplier = New System.Windows.Forms.Label()
         Me.tbDeadZone = New System.Windows.Forms.TextBox()
         Me.lblDeadZone = New System.Windows.Forms.Label()
         Me.cbAccelEnabled = New System.Windows.Forms.CheckBox()
@@ -69,8 +67,8 @@ Partial Class Configuration
         Me.tpExpansion2 = New System.Windows.Forms.TabPage()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnSaveConfig = New System.Windows.Forms.Button()
-        Me.btnBackup = New System.Windows.Forms.Button()
-        Me.btnRetrieve = New System.Windows.Forms.Button()
+        Me.cbMultiplier = New System.Windows.Forms.ComboBox()
+        Me.lblMultiplier = New System.Windows.Forms.Label()
         Me.tbMain.SuspendLayout()
         Me.tpGeneralSettings.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -91,7 +89,7 @@ Partial Class Configuration
         Me.tbMain.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbMain.HotTrack = True
         Me.tbMain.Location = New System.Drawing.Point(0, 39)
-        Me.tbMain.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tbMain.Margin = New System.Windows.Forms.Padding(2)
         Me.tbMain.Name = "tbMain"
         Me.tbMain.SelectedIndex = 0
         Me.tbMain.Size = New System.Drawing.Size(819, 505)
@@ -105,22 +103,22 @@ Partial Class Configuration
         Me.tpGeneralSettings.Controls.Add(Me.GroupBox2)
         Me.tpGeneralSettings.Controls.Add(Me.GroupBox1)
         Me.tpGeneralSettings.Location = New System.Drawing.Point(4, 26)
-        Me.tpGeneralSettings.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tpGeneralSettings.Margin = New System.Windows.Forms.Padding(2)
         Me.tpGeneralSettings.Name = "tpGeneralSettings"
-        Me.tpGeneralSettings.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tpGeneralSettings.Padding = New System.Windows.Forms.Padding(2)
         Me.tpGeneralSettings.Size = New System.Drawing.Size(811, 475)
         Me.tpGeneralSettings.TabIndex = 0
         Me.tpGeneralSettings.Text = "Main Settings"
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.cbMultiplier)
+        Me.GroupBox3.Controls.Add(Me.lblMultiplier)
         Me.GroupBox3.Controls.Add(Me.cbPinsFacingUp)
         Me.GroupBox3.Controls.Add(Me.tbMax)
         Me.GroupBox3.Controls.Add(Me.Label13)
         Me.GroupBox3.Controls.Add(Me.tbTilt)
         Me.GroupBox3.Controls.Add(Me.Label12)
-        Me.GroupBox3.Controls.Add(Me.tbMultiplier)
-        Me.GroupBox3.Controls.Add(Me.lblMultiplier)
         Me.GroupBox3.Controls.Add(Me.tbDeadZone)
         Me.GroupBox3.Controls.Add(Me.lblDeadZone)
         Me.GroupBox3.Controls.Add(Me.cbAccelEnabled)
@@ -128,9 +126,9 @@ Partial Class Configuration
         Me.GroupBox3.Controls.Add(Me.Label14)
         Me.GroupBox3.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(262, 156)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(2)
         Me.GroupBox3.Size = New System.Drawing.Size(259, 257)
         Me.GroupBox3.TabIndex = 6
         Me.GroupBox3.TabStop = False
@@ -141,7 +139,7 @@ Partial Class Configuration
         Me.cbPinsFacingUp.AutoSize = True
         Me.cbPinsFacingUp.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbPinsFacingUp.Location = New System.Drawing.Point(71, 227)
-        Me.cbPinsFacingUp.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbPinsFacingUp.Margin = New System.Windows.Forms.Padding(2)
         Me.cbPinsFacingUp.Name = "cbPinsFacingUp"
         Me.cbPinsFacingUp.Size = New System.Drawing.Size(109, 22)
         Me.cbPinsFacingUp.TabIndex = 40
@@ -188,28 +186,10 @@ Partial Class Configuration
         Me.Label12.TabIndex = 32
         Me.Label12.Text = "Tilt"
         '
-        'tbMultiplier
-        '
-        Me.tbMultiplier.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbMultiplier.Location = New System.Drawing.Point(75, 127)
-        Me.tbMultiplier.Name = "tbMultiplier"
-        Me.tbMultiplier.Size = New System.Drawing.Size(100, 23)
-        Me.tbMultiplier.TabIndex = 31
-        '
-        'lblMultiplier
-        '
-        Me.lblMultiplier.AutoSize = True
-        Me.lblMultiplier.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMultiplier.Location = New System.Drawing.Point(4, 130)
-        Me.lblMultiplier.Name = "lblMultiplier"
-        Me.lblMultiplier.Size = New System.Drawing.Size(63, 17)
-        Me.lblMultiplier.TabIndex = 30
-        Me.lblMultiplier.Text = "Multiplier"
-        '
         'tbDeadZone
         '
         Me.tbDeadZone.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbDeadZone.Location = New System.Drawing.Point(75, 96)
+        Me.tbDeadZone.Location = New System.Drawing.Point(75, 125)
         Me.tbDeadZone.Name = "tbDeadZone"
         Me.tbDeadZone.Size = New System.Drawing.Size(100, 23)
         Me.tbDeadZone.TabIndex = 29
@@ -218,7 +198,7 @@ Partial Class Configuration
         '
         Me.lblDeadZone.AutoSize = True
         Me.lblDeadZone.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDeadZone.Location = New System.Drawing.Point(5, 99)
+        Me.lblDeadZone.Location = New System.Drawing.Point(5, 128)
         Me.lblDeadZone.Name = "lblDeadZone"
         Me.lblDeadZone.Size = New System.Drawing.Size(64, 17)
         Me.lblDeadZone.TabIndex = 28
@@ -229,7 +209,7 @@ Partial Class Configuration
         Me.cbAccelEnabled.AutoSize = True
         Me.cbAccelEnabled.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbAccelEnabled.Location = New System.Drawing.Point(7, 32)
-        Me.cbAccelEnabled.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbAccelEnabled.Margin = New System.Windows.Forms.Padding(2)
         Me.cbAccelEnabled.Name = "cbAccelEnabled"
         Me.cbAccelEnabled.Size = New System.Drawing.Size(158, 22)
         Me.cbAccelEnabled.TabIndex = 27
@@ -243,7 +223,7 @@ Partial Class Configuration
         Me.cbOrientation.FormattingEnabled = True
         Me.cbOrientation.Items.AddRange(New Object() {"USB Facing Back", "USB Facing Right", "USB Facing Left", "USB Facing Front"})
         Me.cbOrientation.Location = New System.Drawing.Point(115, 62)
-        Me.cbOrientation.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbOrientation.Margin = New System.Windows.Forms.Padding(2)
         Me.cbOrientation.Name = "cbOrientation"
         Me.cbOrientation.Size = New System.Drawing.Size(132, 25)
         Me.cbOrientation.TabIndex = 26
@@ -279,9 +259,9 @@ Partial Class Configuration
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(262, 4)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(2)
         Me.GroupBox2.Size = New System.Drawing.Size(288, 141)
         Me.GroupBox2.TabIndex = 6
         Me.GroupBox2.TabStop = False
@@ -294,7 +274,7 @@ Partial Class Configuration
         Me.cbOutputTrigger4.FormattingEnabled = True
         Me.cbOutputTrigger4.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63"})
         Me.cbOutputTrigger4.Location = New System.Drawing.Point(201, 107)
-        Me.cbOutputTrigger4.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbOutputTrigger4.Margin = New System.Windows.Forms.Padding(2)
         Me.cbOutputTrigger4.Name = "cbOutputTrigger4"
         Me.cbOutputTrigger4.Size = New System.Drawing.Size(52, 25)
         Me.cbOutputTrigger4.TabIndex = 27
@@ -317,7 +297,7 @@ Partial Class Configuration
         Me.cbButtonTrigger4.FormattingEnabled = True
         Me.cbButtonTrigger4.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
         Me.cbButtonTrigger4.Location = New System.Drawing.Point(51, 107)
-        Me.cbButtonTrigger4.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbButtonTrigger4.Margin = New System.Windows.Forms.Padding(2)
         Me.cbButtonTrigger4.Name = "cbButtonTrigger4"
         Me.cbButtonTrigger4.Size = New System.Drawing.Size(52, 25)
         Me.cbButtonTrigger4.TabIndex = 25
@@ -340,7 +320,7 @@ Partial Class Configuration
         Me.cbOutputTrigger3.FormattingEnabled = True
         Me.cbOutputTrigger3.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63"})
         Me.cbOutputTrigger3.Location = New System.Drawing.Point(201, 81)
-        Me.cbOutputTrigger3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbOutputTrigger3.Margin = New System.Windows.Forms.Padding(2)
         Me.cbOutputTrigger3.Name = "cbOutputTrigger3"
         Me.cbOutputTrigger3.Size = New System.Drawing.Size(52, 25)
         Me.cbOutputTrigger3.TabIndex = 23
@@ -363,7 +343,7 @@ Partial Class Configuration
         Me.cbButtonTrigger3.FormattingEnabled = True
         Me.cbButtonTrigger3.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
         Me.cbButtonTrigger3.Location = New System.Drawing.Point(51, 81)
-        Me.cbButtonTrigger3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbButtonTrigger3.Margin = New System.Windows.Forms.Padding(2)
         Me.cbButtonTrigger3.Name = "cbButtonTrigger3"
         Me.cbButtonTrigger3.Size = New System.Drawing.Size(52, 25)
         Me.cbButtonTrigger3.TabIndex = 21
@@ -386,7 +366,7 @@ Partial Class Configuration
         Me.cbOutputTrigger2.FormattingEnabled = True
         Me.cbOutputTrigger2.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63"})
         Me.cbOutputTrigger2.Location = New System.Drawing.Point(201, 53)
-        Me.cbOutputTrigger2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbOutputTrigger2.Margin = New System.Windows.Forms.Padding(2)
         Me.cbOutputTrigger2.Name = "cbOutputTrigger2"
         Me.cbOutputTrigger2.Size = New System.Drawing.Size(52, 25)
         Me.cbOutputTrigger2.TabIndex = 19
@@ -409,7 +389,7 @@ Partial Class Configuration
         Me.cbButtonTrigger2.FormattingEnabled = True
         Me.cbButtonTrigger2.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
         Me.cbButtonTrigger2.Location = New System.Drawing.Point(51, 53)
-        Me.cbButtonTrigger2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbButtonTrigger2.Margin = New System.Windows.Forms.Padding(2)
         Me.cbButtonTrigger2.Name = "cbButtonTrigger2"
         Me.cbButtonTrigger2.Size = New System.Drawing.Size(52, 25)
         Me.cbButtonTrigger2.TabIndex = 17
@@ -432,7 +412,7 @@ Partial Class Configuration
         Me.cbOutputTrigger1.FormattingEnabled = True
         Me.cbOutputTrigger1.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63"})
         Me.cbOutputTrigger1.Location = New System.Drawing.Point(201, 25)
-        Me.cbOutputTrigger1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbOutputTrigger1.Margin = New System.Windows.Forms.Padding(2)
         Me.cbOutputTrigger1.Name = "cbOutputTrigger1"
         Me.cbOutputTrigger1.Size = New System.Drawing.Size(52, 25)
         Me.cbOutputTrigger1.TabIndex = 15
@@ -455,7 +435,7 @@ Partial Class Configuration
         Me.cbButtonTrigger1.FormattingEnabled = True
         Me.cbButtonTrigger1.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
         Me.cbButtonTrigger1.Location = New System.Drawing.Point(51, 25)
-        Me.cbButtonTrigger1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbButtonTrigger1.Margin = New System.Windows.Forms.Padding(2)
         Me.cbButtonTrigger1.Name = "cbButtonTrigger1"
         Me.cbButtonTrigger1.Size = New System.Drawing.Size(52, 25)
         Me.cbButtonTrigger1.TabIndex = 13
@@ -483,9 +463,9 @@ Partial Class Configuration
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(10, 4)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2)
         Me.GroupBox1.Size = New System.Drawing.Size(213, 176)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
@@ -496,7 +476,7 @@ Partial Class Configuration
         Me.cbPushOnMax.AutoSize = True
         Me.cbPushOnMax.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbPushOnMax.Location = New System.Drawing.Point(7, 134)
-        Me.cbPushOnMax.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbPushOnMax.Margin = New System.Windows.Forms.Padding(2)
         Me.cbPushOnMax.Name = "cbPushOnMax"
         Me.cbPushOnMax.Size = New System.Drawing.Size(135, 22)
         Me.cbPushOnMax.TabIndex = 31
@@ -508,7 +488,7 @@ Partial Class Configuration
         Me.cbPushOnMin.AutoSize = True
         Me.cbPushOnMin.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbPushOnMin.Location = New System.Drawing.Point(7, 111)
-        Me.cbPushOnMin.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbPushOnMin.Margin = New System.Windows.Forms.Padding(2)
         Me.cbPushOnMin.Name = "cbPushOnMin"
         Me.cbPushOnMin.Size = New System.Drawing.Size(134, 22)
         Me.cbPushOnMin.TabIndex = 30
@@ -519,7 +499,7 @@ Partial Class Configuration
         '
         Me.tbPlungerMid.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbPlungerMid.Location = New System.Drawing.Point(124, 81)
-        Me.tbPlungerMid.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tbPlungerMid.Margin = New System.Windows.Forms.Padding(2)
         Me.tbPlungerMid.Name = "tbPlungerMid"
         Me.tbPlungerMid.Size = New System.Drawing.Size(68, 24)
         Me.tbPlungerMid.TabIndex = 5
@@ -528,7 +508,7 @@ Partial Class Configuration
         '
         Me.tbPlungerMax.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbPlungerMax.Location = New System.Drawing.Point(124, 53)
-        Me.tbPlungerMax.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tbPlungerMax.Margin = New System.Windows.Forms.Padding(2)
         Me.tbPlungerMax.Name = "tbPlungerMax"
         Me.tbPlungerMax.Size = New System.Drawing.Size(68, 24)
         Me.tbPlungerMax.TabIndex = 4
@@ -537,7 +517,7 @@ Partial Class Configuration
         '
         Me.tbPlungerMin.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbPlungerMin.Location = New System.Drawing.Point(124, 26)
-        Me.tbPlungerMin.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tbPlungerMin.Margin = New System.Windows.Forms.Padding(2)
         Me.tbPlungerMin.Name = "tbPlungerMin"
         Me.tbPlungerMin.Size = New System.Drawing.Size(68, 24)
         Me.tbPlungerMin.TabIndex = 3
@@ -580,7 +560,7 @@ Partial Class Configuration
         Me.tpMainOutputs.AutoScroll = True
         Me.tpMainOutputs.BackColor = System.Drawing.SystemColors.Control
         Me.tpMainOutputs.Location = New System.Drawing.Point(4, 26)
-        Me.tpMainOutputs.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tpMainOutputs.Margin = New System.Windows.Forms.Padding(2)
         Me.tpMainOutputs.Name = "tpMainOutputs"
         Me.tpMainOutputs.Size = New System.Drawing.Size(811, 475)
         Me.tpMainOutputs.TabIndex = 4
@@ -591,7 +571,7 @@ Partial Class Configuration
         Me.tpExpansion1.AutoScroll = True
         Me.tpExpansion1.BackColor = System.Drawing.SystemColors.Control
         Me.tpExpansion1.Location = New System.Drawing.Point(4, 26)
-        Me.tpExpansion1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tpExpansion1.Margin = New System.Windows.Forms.Padding(2)
         Me.tpExpansion1.Name = "tpExpansion1"
         Me.tpExpansion1.Size = New System.Drawing.Size(811, 475)
         Me.tpExpansion1.TabIndex = 2
@@ -602,7 +582,7 @@ Partial Class Configuration
         Me.tpExpansion2.AutoScroll = True
         Me.tpExpansion2.BackColor = System.Drawing.SystemColors.Control
         Me.tpExpansion2.Location = New System.Drawing.Point(4, 26)
-        Me.tpExpansion2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tpExpansion2.Margin = New System.Windows.Forms.Padding(2)
         Me.tpExpansion2.Name = "tpExpansion2"
         Me.tpExpansion2.Size = New System.Drawing.Size(811, 475)
         Me.tpExpansion2.TabIndex = 3
@@ -612,7 +592,7 @@ Partial Class Configuration
         '
         Me.btnSave.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSave.Location = New System.Drawing.Point(441, 3)
-        Me.btnSave.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnSave.Margin = New System.Windows.Forms.Padding(2)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(147, 32)
         Me.btnSave.TabIndex = 1
@@ -624,47 +604,47 @@ Partial Class Configuration
         Me.btnSaveConfig.Enabled = False
         Me.btnSaveConfig.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSaveConfig.Location = New System.Drawing.Point(591, 3)
-        Me.btnSaveConfig.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnSaveConfig.Margin = New System.Windows.Forms.Padding(2)
         Me.btnSaveConfig.Name = "btnSaveConfig"
         Me.btnSaveConfig.Size = New System.Drawing.Size(147, 32)
         Me.btnSaveConfig.TabIndex = 2
         Me.btnSaveConfig.Text = "Save Config"
         Me.btnSaveConfig.UseVisualStyleBackColor = True
         '
-        'btnBackup
+        'cbMultiplier
         '
-        Me.btnBackup.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBackup.Location = New System.Drawing.Point(9, 3)
-        Me.btnBackup.Margin = New System.Windows.Forms.Padding(2)
-        Me.btnBackup.Name = "btnBackup"
-        Me.btnBackup.Size = New System.Drawing.Size(147, 32)
-        Me.btnBackup.TabIndex = 3
-        Me.btnBackup.Text = "Backup Config"
-        Me.btnBackup.UseVisualStyleBackColor = True
+        Me.cbMultiplier.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cbMultiplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbMultiplier.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbMultiplier.FormattingEnabled = True
+        Me.cbMultiplier.Items.AddRange(New Object() {"2G (Most Sensitive)", "4G", "8G", "16G (Least Sensitive)"})
+        Me.cbMultiplier.Location = New System.Drawing.Point(115, 92)
+        Me.cbMultiplier.Margin = New System.Windows.Forms.Padding(2)
+        Me.cbMultiplier.Name = "cbMultiplier"
+        Me.cbMultiplier.Size = New System.Drawing.Size(135, 25)
+        Me.cbMultiplier.TabIndex = 42
         '
-        'btnRetrieve
+        'lblMultiplier
         '
-        Me.btnRetrieve.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRetrieve.Location = New System.Drawing.Point(160, 3)
-        Me.btnRetrieve.Margin = New System.Windows.Forms.Padding(2)
-        Me.btnRetrieve.Name = "btnRetrieve"
-        Me.btnRetrieve.Size = New System.Drawing.Size(147, 32)
-        Me.btnRetrieve.TabIndex = 4
-        Me.btnRetrieve.Text = "Get Backup"
-        Me.btnRetrieve.UseVisualStyleBackColor = True
+        Me.lblMultiplier.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblMultiplier.AutoSize = True
+        Me.lblMultiplier.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMultiplier.Location = New System.Drawing.Point(46, 97)
+        Me.lblMultiplier.Name = "lblMultiplier"
+        Me.lblMultiplier.Size = New System.Drawing.Size(66, 17)
+        Me.lblMultiplier.TabIndex = 41
+        Me.lblMultiplier.Text = "Sensitivity"
         '
         'Configuration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(819, 552)
-        Me.Controls.Add(Me.btnRetrieve)
-        Me.Controls.Add(Me.btnBackup)
         Me.Controls.Add(Me.btnSaveConfig)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.tbMain)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Configuration"
         Me.Text = "Configuration"
         Me.tbMain.ResumeLayout(False)
@@ -714,8 +694,6 @@ Partial Class Configuration
     Friend WithEvents btnSave As Button
     Friend WithEvents tpMainOutputs As TabPage
     Friend WithEvents btnSaveConfig As Button
-    Friend WithEvents tbMultiplier As TextBox
-    Friend WithEvents lblMultiplier As Label
     Friend WithEvents tbDeadZone As TextBox
     Friend WithEvents lblDeadZone As Label
     Friend WithEvents cbPushOnMax As CheckBox
@@ -725,6 +703,6 @@ Partial Class Configuration
     Friend WithEvents tbMax As TextBox
     Friend WithEvents Label13 As Label
     Friend WithEvents cbPinsFacingUp As CheckBox
-    Friend WithEvents btnBackup As Button
-    Friend WithEvents btnRetrieve As Button
+    Friend WithEvents cbMultiplier As ComboBox
+    Friend WithEvents lblMultiplier As Label
 End Class

@@ -57,7 +57,7 @@ Public Class Configuration
         tbPlungerMax.Text = _config.plungerMax.ToString
         tbPlungerMid.Text = _config.plungerMid.ToString
         tbPlungerMin.Text = _config.plungerMin.ToString
-        tbMultiplier.Text = _config.accelerometerMultiplier.ToString
+        cbMultiplier.SelectedItem = _config.getSensitivityString
         tbDeadZone.Text = _config.accelerometerDeadZone.ToString
 
         If _config.buttonOption = 1 Or _config.buttonOption = 3 Then
@@ -104,7 +104,7 @@ Public Class Configuration
             _config.plungerMid = CShort(tbPlungerMid.Text)
             _config.plungerMin = CShort(tbPlungerMin.Text)
             _config.accelerometerDeadZone = CShort(tbDeadZone.Text)
-            _config.accelerometerMultiplier = CShort(tbMultiplier.Text)
+            _config.setSensitivityString(cbMultiplier.SelectedItem)
             Dim buttonOption As Byte = 0
             If cbPushOnMax.Checked And cbPushOnMin.Checked Then
                 buttonOption = 3
@@ -168,25 +168,5 @@ Public Class Configuration
 
     End Sub
 
-    Private Sub btnBackup_Click(sender As Object, e As EventArgs) Handles btnBackup.Click
-        Dim writer As New System.Xml.Serialization.XmlSerializer(GetType(BoardConfiguration))
-        Dim file As New System.IO.StreamWriter(
-            "c:\temp\backup.xml")
-        writer.Serialize(file, _config)
-        file.Close()
-    End Sub
 
-    Private Sub btnRetrieve_Click(sender As Object, e As EventArgs) Handles btnRetrieve.Click
-        Dim xmldoc As New XmlDocument
-        xmldoc.Load("c:\temp\backup.xml")
-        Dim allText As String = xmldoc.InnerXml
-
-        Using currentStringReader As New StringReader(allText)
-            Dim xml As New XmlSerializer(GetType(BoardConfiguration))
-            Dim board As BoardConfiguration = TryCast(xml.Deserialize(currentStringReader), BoardConfiguration)
-            If board.accelerometer Then
-                board = board
-            End If
-        End Using
-    End Sub
 End Class
