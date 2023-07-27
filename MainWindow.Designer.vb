@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class MainWindow
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class MainWindow
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainWindow))
         Me.btnSettings = New System.Windows.Forms.Button()
@@ -30,10 +30,10 @@ Partial Class MainWindow
         Me.btnPlunger = New System.Windows.Forms.Button()
         Me.btnAccel = New System.Windows.Forms.Button()
         Me.gbMenu = New System.Windows.Forms.GroupBox()
-        Me.cbSimulation = New System.Windows.Forms.CheckBox()
-        Me.btnUpdateFirmware = New System.Windows.Forms.Button()
         Me.btnRetrieve = New System.Windows.Forms.Button()
         Me.btnBackup = New System.Windows.Forms.Button()
+        Me.cbSimulation = New System.Windows.Forms.CheckBox()
+        Me.btnUpdateFirmware = New System.Windows.Forms.Button()
         Me.gbMenu.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -109,36 +109,13 @@ Partial Class MainWindow
         Me.gbMenu.Enabled = False
         Me.gbMenu.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbMenu.Location = New System.Drawing.Point(8, 8)
-        Me.gbMenu.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbMenu.Margin = New System.Windows.Forms.Padding(2)
         Me.gbMenu.Name = "gbMenu"
-        Me.gbMenu.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbMenu.Padding = New System.Windows.Forms.Padding(2)
         Me.gbMenu.Size = New System.Drawing.Size(534, 265)
         Me.gbMenu.TabIndex = 8
         Me.gbMenu.TabStop = False
         Me.gbMenu.Text = "Menu"
-        '
-        'cbSimulation
-        '
-        Me.cbSimulation.AutoSize = True
-        Me.cbSimulation.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbSimulation.Location = New System.Drawing.Point(13, 276)
-        Me.cbSimulation.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.cbSimulation.Name = "cbSimulation"
-        Me.cbSimulation.Size = New System.Drawing.Size(97, 24)
-        Me.cbSimulation.TabIndex = 9
-        Me.cbSimulation.Text = "Simulation"
-        Me.cbSimulation.UseVisualStyleBackColor = True
-        Me.cbSimulation.Visible = False
-        '
-        'btnUpdateFirmware
-        '
-        Me.btnUpdateFirmware.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUpdateFirmware.Location = New System.Drawing.Point(393, 303)
-        Me.btnUpdateFirmware.Name = "btnUpdateFirmware"
-        Me.btnUpdateFirmware.Size = New System.Drawing.Size(149, 55)
-        Me.btnUpdateFirmware.TabIndex = 10
-        Me.btnUpdateFirmware.Text = "Update Firmware"
-        Me.btnUpdateFirmware.UseVisualStyleBackColor = True
         '
         'btnRetrieve
         '
@@ -161,6 +138,29 @@ Partial Class MainWindow
         Me.btnBackup.TabIndex = 8
         Me.btnBackup.Text = "Backup Config"
         Me.btnBackup.UseVisualStyleBackColor = True
+        '
+        'cbSimulation
+        '
+        Me.cbSimulation.AutoSize = True
+        Me.cbSimulation.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSimulation.Location = New System.Drawing.Point(13, 276)
+        Me.cbSimulation.Margin = New System.Windows.Forms.Padding(2)
+        Me.cbSimulation.Name = "cbSimulation"
+        Me.cbSimulation.Size = New System.Drawing.Size(97, 24)
+        Me.cbSimulation.TabIndex = 9
+        Me.cbSimulation.Text = "Simulation"
+        Me.cbSimulation.UseVisualStyleBackColor = True
+        Me.cbSimulation.Visible = False
+        '
+        'btnUpdateFirmware
+        '
+        Me.btnUpdateFirmware.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUpdateFirmware.Location = New System.Drawing.Point(393, 303)
+        Me.btnUpdateFirmware.Name = "btnUpdateFirmware"
+        Me.btnUpdateFirmware.Size = New System.Drawing.Size(149, 55)
+        Me.btnUpdateFirmware.TabIndex = 10
+        Me.btnUpdateFirmware.Text = "Update Firmware"
+        Me.btnUpdateFirmware.UseVisualStyleBackColor = True
         '
         'MainWindow
         '

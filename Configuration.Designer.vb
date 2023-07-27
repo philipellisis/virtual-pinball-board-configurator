@@ -69,11 +69,21 @@ Partial Class Configuration
         Me.btnSaveConfig = New System.Windows.Forms.Button()
         Me.cbMultiplier = New System.Windows.Forms.ComboBox()
         Me.lblMultiplier = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.cbAverageReadings = New System.Windows.Forms.ComboBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.cbLaunchButton = New System.Windows.Forms.ComboBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.cbTiltButton = New System.Windows.Forms.ComboBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.cbNightMode = New System.Windows.Forms.ComboBox()
         Me.tbMain.SuspendLayout()
         Me.tpGeneralSettings.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
         'tbMain
@@ -99,6 +109,7 @@ Partial Class Configuration
         '
         Me.tpGeneralSettings.AutoScroll = True
         Me.tpGeneralSettings.BackColor = System.Drawing.SystemColors.Control
+        Me.tpGeneralSettings.Controls.Add(Me.GroupBox4)
         Me.tpGeneralSettings.Controls.Add(Me.GroupBox3)
         Me.tpGeneralSettings.Controls.Add(Me.GroupBox2)
         Me.tpGeneralSettings.Controls.Add(Me.GroupBox1)
@@ -112,6 +123,8 @@ Partial Class Configuration
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.Label17)
+        Me.GroupBox3.Controls.Add(Me.cbTiltButton)
         Me.GroupBox3.Controls.Add(Me.cbMultiplier)
         Me.GroupBox3.Controls.Add(Me.lblMultiplier)
         Me.GroupBox3.Controls.Add(Me.cbPinsFacingUp)
@@ -125,11 +138,11 @@ Partial Class Configuration
         Me.GroupBox3.Controls.Add(Me.cbOrientation)
         Me.GroupBox3.Controls.Add(Me.Label14)
         Me.GroupBox3.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(262, 156)
+        Me.GroupBox3.Location = New System.Drawing.Point(262, 151)
         Me.GroupBox3.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Padding = New System.Windows.Forms.Padding(2)
-        Me.GroupBox3.Size = New System.Drawing.Size(259, 257)
+        Me.GroupBox3.Size = New System.Drawing.Size(259, 293)
         Me.GroupBox3.TabIndex = 6
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Accelerometer"
@@ -138,7 +151,7 @@ Partial Class Configuration
         '
         Me.cbPinsFacingUp.AutoSize = True
         Me.cbPinsFacingUp.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbPinsFacingUp.Location = New System.Drawing.Point(71, 227)
+        Me.cbPinsFacingUp.Location = New System.Drawing.Point(117, 91)
         Me.cbPinsFacingUp.Margin = New System.Windows.Forms.Padding(2)
         Me.cbPinsFacingUp.Name = "cbPinsFacingUp"
         Me.cbPinsFacingUp.Size = New System.Drawing.Size(109, 22)
@@ -150,7 +163,7 @@ Partial Class Configuration
         '
         Me.tbMax.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbMax.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbMax.Location = New System.Drawing.Point(75, 195)
+        Me.tbMax.Location = New System.Drawing.Point(75, 212)
         Me.tbMax.Name = "tbMax"
         Me.tbMax.Size = New System.Drawing.Size(100, 23)
         Me.tbMax.TabIndex = 35
@@ -160,7 +173,7 @@ Partial Class Configuration
         Me.Label13.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(7, 198)
+        Me.Label13.Location = New System.Drawing.Point(7, 215)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(29, 17)
         Me.Label13.TabIndex = 34
@@ -170,7 +183,7 @@ Partial Class Configuration
         '
         Me.tbTilt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbTilt.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbTilt.Location = New System.Drawing.Point(75, 161)
+        Me.tbTilt.Location = New System.Drawing.Point(75, 181)
         Me.tbTilt.Name = "tbTilt"
         Me.tbTilt.Size = New System.Drawing.Size(100, 23)
         Me.tbTilt.TabIndex = 33
@@ -180,7 +193,7 @@ Partial Class Configuration
         Me.Label12.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(7, 164)
+        Me.Label12.Location = New System.Drawing.Point(7, 184)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(26, 17)
         Me.Label12.TabIndex = 32
@@ -189,7 +202,7 @@ Partial Class Configuration
         'tbDeadZone
         '
         Me.tbDeadZone.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbDeadZone.Location = New System.Drawing.Point(75, 125)
+        Me.tbDeadZone.Location = New System.Drawing.Point(75, 151)
         Me.tbDeadZone.Name = "tbDeadZone"
         Me.tbDeadZone.Size = New System.Drawing.Size(100, 23)
         Me.tbDeadZone.TabIndex = 29
@@ -198,7 +211,7 @@ Partial Class Configuration
         '
         Me.lblDeadZone.AutoSize = True
         Me.lblDeadZone.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDeadZone.Location = New System.Drawing.Point(5, 128)
+        Me.lblDeadZone.Location = New System.Drawing.Point(5, 154)
         Me.lblDeadZone.Name = "lblDeadZone"
         Me.lblDeadZone.Size = New System.Drawing.Size(64, 17)
         Me.lblDeadZone.TabIndex = 28
@@ -453,6 +466,10 @@ Partial Class Configuration
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label15)
+        Me.GroupBox1.Controls.Add(Me.cbAverageReadings)
+        Me.GroupBox1.Controls.Add(Me.Label16)
+        Me.GroupBox1.Controls.Add(Me.cbLaunchButton)
         Me.GroupBox1.Controls.Add(Me.cbPushOnMax)
         Me.GroupBox1.Controls.Add(Me.cbPushOnMin)
         Me.GroupBox1.Controls.Add(Me.tbPlungerMid)
@@ -466,7 +483,7 @@ Partial Class Configuration
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2)
-        Me.GroupBox1.Size = New System.Drawing.Size(213, 176)
+        Me.GroupBox1.Size = New System.Drawing.Size(213, 239)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Plunger"
@@ -618,7 +635,7 @@ Partial Class Configuration
         Me.cbMultiplier.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbMultiplier.FormattingEnabled = True
         Me.cbMultiplier.Items.AddRange(New Object() {"2G (Most Sensitive)", "4G", "8G", "16G (Least Sensitive)"})
-        Me.cbMultiplier.Location = New System.Drawing.Point(115, 92)
+        Me.cbMultiplier.Location = New System.Drawing.Point(77, 118)
         Me.cbMultiplier.Margin = New System.Windows.Forms.Padding(2)
         Me.cbMultiplier.Name = "cbMultiplier"
         Me.cbMultiplier.Size = New System.Drawing.Size(135, 25)
@@ -629,11 +646,121 @@ Partial Class Configuration
         Me.lblMultiplier.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblMultiplier.AutoSize = True
         Me.lblMultiplier.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMultiplier.Location = New System.Drawing.Point(46, 97)
+        Me.lblMultiplier.Location = New System.Drawing.Point(8, 123)
         Me.lblMultiplier.Name = "lblMultiplier"
         Me.lblMultiplier.Size = New System.Drawing.Size(66, 17)
         Me.lblMultiplier.TabIndex = 41
         Me.lblMultiplier.Text = "Sensitivity"
+        '
+        'Label15
+        '
+        Me.Label15.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(12, 200)
+        Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(111, 18)
+        Me.Label15.TabIndex = 49
+        Me.Label15.Text = "Average Readings"
+        '
+        'cbAverageReadings
+        '
+        Me.cbAverageReadings.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbAverageReadings.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbAverageReadings.FormattingEnabled = True
+        Me.cbAverageReadings.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130", "131", "132", "133", "134", "135", "136", "137", "138", "139", "140", "141", "142", "143", "144", "145", "146", "147", "148", "149", "150", "151", "152", "153", "154", "155", "156", "157", "158", "159", "160", "161", "162", "163", "164", "165", "166", "167", "168", "169", "170", "171", "172", "173", "174", "175", "176", "177", "178", "179", "180", "181", "182", "183", "184", "185", "186", "187", "188", "189", "190", "191", "192", "193", "194", "195", "196", "197", "198", "199", "200", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215", "216", "217", "218", "219", "220", "221", "222", "223", "224", "225", "226", "227", "228", "229", "230", "231", "232", "233", "234", "235", "236", "237", "238", "239", "240", "241", "242", "243", "244", "245", "246", "247", "248", "249", "250", "251", "252", "253", "254", "255"})
+        Me.cbAverageReadings.Location = New System.Drawing.Point(127, 197)
+        Me.cbAverageReadings.Margin = New System.Windows.Forms.Padding(2)
+        Me.cbAverageReadings.Name = "cbAverageReadings"
+        Me.cbAverageReadings.Size = New System.Drawing.Size(52, 25)
+        Me.cbAverageReadings.TabIndex = 48
+        '
+        'Label16
+        '
+        Me.Label16.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(34, 171)
+        Me.Label16.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(87, 18)
+        Me.Label16.TabIndex = 47
+        Me.Label16.Text = "Launch Button"
+        '
+        'cbLaunchButton
+        '
+        Me.cbLaunchButton.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbLaunchButton.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbLaunchButton.FormattingEnabled = True
+        Me.cbLaunchButton.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
+        Me.cbLaunchButton.Location = New System.Drawing.Point(127, 168)
+        Me.cbLaunchButton.Margin = New System.Windows.Forms.Padding(2)
+        Me.cbLaunchButton.Name = "cbLaunchButton"
+        Me.cbLaunchButton.Size = New System.Drawing.Size(52, 25)
+        Me.cbLaunchButton.TabIndex = 46
+        '
+        'Label17
+        '
+        Me.Label17.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Location = New System.Drawing.Point(8, 250)
+        Me.Label17.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(65, 18)
+        Me.Label17.TabIndex = 44
+        Me.Label17.Text = "Tilt Button"
+        '
+        'cbTiltButton
+        '
+        Me.cbTiltButton.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbTiltButton.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbTiltButton.FormattingEnabled = True
+        Me.cbTiltButton.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
+        Me.cbTiltButton.Location = New System.Drawing.Point(77, 247)
+        Me.cbTiltButton.Margin = New System.Windows.Forms.Padding(2)
+        Me.cbTiltButton.Name = "cbTiltButton"
+        Me.cbTiltButton.Size = New System.Drawing.Size(52, 25)
+        Me.cbTiltButton.TabIndex = 43
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.Label18)
+        Me.GroupBox4.Controls.Add(Me.cbNightMode)
+        Me.GroupBox4.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox4.Location = New System.Drawing.Point(7, 247)
+        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(2)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(2)
+        Me.GroupBox4.Size = New System.Drawing.Size(213, 78)
+        Me.GroupBox4.TabIndex = 50
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Buttons"
+        '
+        'Label18
+        '
+        Me.Label18.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.Location = New System.Drawing.Point(7, 41)
+        Me.Label18.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(110, 18)
+        Me.Label18.TabIndex = 51
+        Me.Label18.Text = "Night Mode Button"
+        '
+        'cbNightMode
+        '
+        Me.cbNightMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbNightMode.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbNightMode.FormattingEnabled = True
+        Me.cbNightMode.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
+        Me.cbNightMode.Location = New System.Drawing.Point(130, 38)
+        Me.cbNightMode.Margin = New System.Windows.Forms.Padding(2)
+        Me.cbNightMode.Name = "cbNightMode"
+        Me.cbNightMode.Size = New System.Drawing.Size(52, 25)
+        Me.cbNightMode.TabIndex = 50
         '
         'Configuration
         '
@@ -655,6 +782,8 @@ Partial Class Configuration
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -705,4 +834,13 @@ Partial Class Configuration
     Friend WithEvents cbPinsFacingUp As CheckBox
     Friend WithEvents cbMultiplier As ComboBox
     Friend WithEvents lblMultiplier As Label
+    Friend WithEvents Label15 As Label
+    Friend WithEvents cbAverageReadings As ComboBox
+    Friend WithEvents Label16 As Label
+    Friend WithEvents cbLaunchButton As ComboBox
+    Friend WithEvents Label17 As Label
+    Friend WithEvents cbTiltButton As ComboBox
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents Label18 As Label
+    Friend WithEvents cbNightMode As ComboBox
 End Class

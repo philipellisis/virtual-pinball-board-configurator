@@ -13,22 +13,22 @@ Public Class CSDBoard
         CSDConnection.send({0, 250, admin, 0, 0, 0, 0, 0, 0})
     End Sub
 
-    Public Sub setPlungerMinMax(max As UShort, min As UShort, mid As UShort, buttonOption As Byte) Implements BoardInterface.setPlungerMinMax
+    Public Sub setPlungerMinMax(max As UShort, min As UShort, mid As UShort, buttonOption As Byte, plungerAverageRead As Byte, plungerLaunchButton As Byte) Implements BoardInterface.setPlungerMinMax
         Dim result As Byte() = BitConverter.GetBytes(max)
         Dim result1 As Byte() = BitConverter.GetBytes(min)
         Dim result2 As Byte() = BitConverter.GetBytes(mid)
         enableAdminFunction(ADMIN.SET_PLUNGER)
         Threading.Thread.Sleep(100)
-        CSDConnection.send({result(1), result(0), result1(1), result1(0), result2(1), result2(0), buttonOption})
+        CSDConnection.send({result(1), result(0), result1(1), result1(0), result2(1), result2(0), buttonOption, plungerAverageRead, plungerLaunchButton})
     End Sub
 
-    Public Sub setAccelerometerValues(multiplier As Byte, deadZone As UShort, orientation As Byte, tilt As UShort, max As UShort) Implements BoardInterface.setAccelerometerValues
+    Public Sub setAccelerometerValues(multiplier As Byte, deadZone As UShort, orientation As Byte, tilt As UShort, max As UShort, tiltButton As Byte) Implements BoardInterface.setAccelerometerValues
         Dim result1 As Byte() = BitConverter.GetBytes(deadZone)
         Dim result2 As Byte() = BitConverter.GetBytes(tilt)
         Dim result3 As Byte() = BitConverter.GetBytes(max)
         enableAdminFunction(ADMIN.SET_ACCEL)
         Threading.Thread.Sleep(100)
-        CSDConnection.send({multiplier, result1(1), result1(0), orientation, result2(1), result2(0), result3(1), result3(0)})
+        CSDConnection.send({multiplier, result1(1), result1(0), orientation, result2(1), result2(0), result3(1), result3(0), tiltButton})
     End Sub
 
     Public Sub setConfig(config As BoardConfiguration) Implements BoardInterface.setConfig
@@ -105,19 +105,24 @@ Public Class CSDBoard
         End If
         Dim newMessage = e.message.Replace(message(0) & ",", "")
         Select Case message(0)
-            Case "DEBUG"
+            Case "DEBUG", "D"
                 sendBoardChanged(New BoardChangedArgs(newMessage, MESSAGE_TYPE.DEBUG))
-            Case "OUTPUTS"
+            Case "OUTPUTS", "O"
                 sendBoardChanged(New BoardChangedArgs(newMessage, MESSAGE_TYPE.OUTPUTS))
-            Case "BUTTONS"
+            Case "BUTTONS", "B"
                 sendBoardChanged(New BoardChangedArgs(newMessage, MESSAGE_TYPE.BUTTONS))
-            Case "CONFIG"
+            Case "CONFIG", "C"
                 sendBoardChanged(New BoardChangedArgs(newMessage, MESSAGE_TYPE.CONFIG))
-            Case "PLUNGER"
+            Case "PLUNGER", "P"
                 sendBoardChanged(New BoardChangedArgs(newMessage, MESSAGE_TYPE.PLUNGER))
-            Case "ACCEL"
+            Case "ACCEL", "A"
                 sendBoardChanged(New BoardChangedArgs(newMessage, MESSAGE_TYPE.ACCEL))
-            Case "RESPONSE"
+            Case "RESPONSE", "R"
+                If newMessage = "S" Then
+                    newMessage = "Save Config Success"
+                ElseIf newMessage = "E" Then
+                    newMessage = "Error while saving config"
+                End If
                 sendBoardChanged(New BoardChangedArgs(newMessage, MESSAGE_TYPE.RESPONSE))
             Case Else
                 sendBoardChanged(New BoardChangedArgs(e.message, MESSAGE_TYPE.DEBUG))
@@ -137,9 +142,9 @@ Public Class CSDBoard
             CSDConnection = New RS232(sp)
             Try
                 CSDConnection.open1200()
-                Thread.Sleep(500)
+                Thread.Sleep(700)
                 CSDConnection.close()
-                Thread.Sleep(500)
+                Thread.Sleep(700)
                 Dim sps = My.Computer.Ports.SerialPortNames
                 For Each spBoot As String In My.Computer.Ports.SerialPortNames
                     If spBoot <> sp Then

@@ -45,11 +45,11 @@ Public Class DummyBoard
         End If
     End Sub
 
-    Public Sub setPlungerMinMax(mmax As UShort, min As UShort, mid As UShort, buttonOption As Byte) Implements BoardInterface.setPlungerMinMax
+    Public Sub setPlungerMinMax(mmax As UShort, min As UShort, mid As UShort, buttonOption As Byte, plungerAverageRead As Byte, plungerLaunchButton As Byte) Implements BoardInterface.setPlungerMinMax
 
     End Sub
 
-    Public Sub setAccelerometerValues(multiplier As Byte, deadZone As UShort, orientation As Byte, tilt As UShort, max As UShort) Implements BoardInterface.setAccelerometerValues
+    Public Sub setAccelerometerValues(multiplier As Byte, deadZone As UShort, orientation As Byte, tilt As UShort, max As UShort, tiltButton As Byte) Implements BoardInterface.setAccelerometerValues
 
     End Sub
 

@@ -32,6 +32,7 @@
             tbDeadZone.Text = _config.accelerometerDeadZone
             cbMultiplier.SelectedItem = _config.getSensitivityString
             cbOrientation.SelectedItem = _config.getOrientationString
+            cbTiltButton.SelectedItem = (_config.tiltButton + 1).ToString
             tbTilt.Text = _config.accelerometerTilt
             tbMax.Text = _config.accelerometerMax
             If _config.accelerometerDeadZone > maxSize Then
@@ -223,7 +224,8 @@
             _config.accelerometerDeadZone = CUShort(tbDeadZone.Text)
             _config.accelerometerTilt = CUShort(tbTilt.Text)
             _config.accelerometerMax = CUShort(tbMax.Text)
-            _board.setAccelerometerValues(_config.accelerometerMultiplier, _config.accelerometerDeadZone, _config.orentation, _config.accelerometerTilt, _config.accelerometerMax)
+            _config.tiltButton = (cbTiltButton.SelectedItem - 1).ToString
+            _board.setAccelerometerValues(_config.accelerometerMultiplier, _config.accelerometerDeadZone, _config.orentation, _config.accelerometerTilt, _config.accelerometerMax, _config.tiltButton)
         Catch ex As Exception
             MessageBox.Show("error when saving data, maybe board is disconnected?")
         End Try

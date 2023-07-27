@@ -72,6 +72,11 @@ Public Class Configuration
             cbPinsFacingUp.Checked = True
         End If
 
+        cbTiltButton.SelectedItem = (_config.tiltButton + 1).ToString
+        cbLaunchButton.SelectedItem = (_config.plungerLaunchButton + 1).ToString
+        cbNightMode.SelectedItem = (_config.nightModeButton + 1).ToString
+        cbAverageReadings.SelectedItem = (_config.plungerAverageRead).ToString
+
         Me.ResumeLayout()
         tpMainOutputs.ResumeLayout()
         Try
@@ -116,6 +121,17 @@ Public Class Configuration
             _config.buttonOption = buttonOption
             _config.accelerometerTilt = CShort(tbTilt.Text)
             _config.accelerometerMax = CShort(tbMax.Text)
+
+            'Byte plungerAverageRead = 10;
+            'Byte nightModeButton = 21;
+            'Byte plungerLaunchButton = 23;
+            'Byte tiltButton = 22;
+
+            _config.tiltButton = cbTiltButton.SelectedItem - 1
+            _config.plungerAverageRead = cbAverageReadings.SelectedItem
+            _config.plungerLaunchButton = cbLaunchButton.SelectedItem - 1
+            _config.nightModeButton = cbNightMode.SelectedItem - 1
+
             _board.setConfig(_config)
         Catch ex As Exception
             MessageBox.Show("error saving configuration. Check that board is connected.")
@@ -126,7 +142,7 @@ Public Class Configuration
     Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles _board.BoardChanged
         Try
             If e.type = MESSAGE_TYPE.RESPONSE Then
-                If e.message = "SAVE CONFIG SUCCESS" Then
+                If e.message = "Save Config Success" Then
                     btnSaveConfig.Enabled = True
                 End If
                 MessageBox.Show(e.message)

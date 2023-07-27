@@ -28,6 +28,9 @@
         If _config.buttonOption >= 2 Then
             cbPushOnMin.Checked = True
         End If
+
+        cbLaunchButton.SelectedItem = (_config.plungerLaunchButton + 1).ToString
+        cbAverageReadings.SelectedItem = (_config.plungerAverageRead).ToString
     End Sub
 
     Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles _board.BoardChanged
@@ -84,11 +87,14 @@
             ElseIf cbPushOnMin.Checked Then
                 buttonOption = 2
             End If
-            _board.setPlungerMinMax(maxValue, minvalue, restingValue, buttonOption)
             _config.plungerMax = maxValue
             _config.plungerMin = minvalue
             _config.plungerMid = restingValue
             _config.buttonOption = buttonOption
+            _config.plungerAverageRead = cbAverageReadings.SelectedItem
+            _config.plungerLaunchButton = cbLaunchButton.SelectedItem - 1
+            _board.setPlungerMinMax(maxValue, minvalue, restingValue, buttonOption, _config.plungerAverageRead, _config.plungerLaunchButton)
+
         Catch ex As Exception
             MessageBox.Show("Error while saving plunger values, check to ensure board is connected")
         End Try

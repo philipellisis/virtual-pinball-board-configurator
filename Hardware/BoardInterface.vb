@@ -48,6 +48,11 @@ Public Class BoardConfiguration
     Public buttonOption As Byte
     Public accelerometerTilt As Int16
     Public accelerometerMax As Int16
+    Public plungerAverageRead As Byte
+    Public nightModeButton As Byte
+    Public plungerLaunchButton As Byte
+    Public tiltButton As Byte
+
     Public Sub copyValues(board As BoardConfiguration)
         Array.Copy(board.toySpecialOption, toySpecialOption, 63)
         Array.Copy(board.turnOffState, turnOffState, 63)
@@ -65,6 +70,10 @@ Public Class BoardConfiguration
         buttonOption = board.buttonOption
         accelerometerTilt = board.accelerometerTilt
         accelerometerMax = board.accelerometerMax
+        plungerAverageRead = board.plungerAverageRead
+        nightModeButton = board.nightModeButton
+        plungerLaunchButton = board.plungerLaunchButton
+        tiltButton = board.tiltButton
     End Sub
     Public Function getOrientationString() As String
         Dim tempOrientation = orentation
@@ -134,7 +143,7 @@ Public Class BoardConfiguration
     End Function
 
     Public Function toConfigBytes(config As BoardConfiguration) As Byte()
-        Dim configString(275) As Byte
+        Dim configString(279) As Byte
         For i = 0 To 62
             configString(i) = config.toySpecialOption(i)
             configString(i + 63) = config.turnOffState(i)
@@ -169,6 +178,10 @@ Public Class BoardConfiguration
         Dim result7 As Byte() = BitConverter.GetBytes(config.accelerometerMax)
         configString(274) = result7(1)
         configString(275) = result7(0)
+        configString(276) = config.plungerAverageRead
+        configString(277) = config.nightModeButton
+        configString(278) = config.plungerLaunchButton
+        configString(279) = config.tiltButton
         Return configString
     End Function
     Public Shared Function stringToConfig(str As String) As BoardConfiguration
@@ -197,6 +210,11 @@ Public Class BoardConfiguration
             config.buttonOption = CByte(configString(267))
             config.accelerometerTilt = CInt(configString(268))
             config.accelerometerMax = CInt(configString(269))
+
+            config.plungerAverageRead = CByte(configString(270))
+            config.nightModeButton = CByte(configString(271))
+            config.plungerLaunchButton = CByte(configString(272))
+            config.tiltButton = CByte(configString(273))
         Catch ex As Exception
             Console.WriteLine("unable to convert data to configuration: " & ex.Message)
         End Try
@@ -280,9 +298,9 @@ Public Interface BoardInterface
 
     Sub enableAdminFunction(admin As ADMIN)
 
-    Sub setPlungerMinMax(max As UShort, min As UShort, mid As UShort, buttonOption As Byte)
+    Sub setPlungerMinMax(max As UShort, min As UShort, mid As UShort, buttonOption As Byte, plungerAverageRead As Byte, plungerLaunchButton As Byte)
 
-    Sub setAccelerometerValues(multiplier As Byte, deadZone As UShort, orientation As Byte, tilt As UShort, max As UShort)
+    Sub setAccelerometerValues(multiplier As Byte, deadZone As UShort, orientation As Byte, tilt As UShort, max As UShort, tiltButton As Byte)
     Sub setConfig(config As BoardConfiguration)
     Function saveConfigToEeprom()
     Sub connect()
