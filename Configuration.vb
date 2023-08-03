@@ -74,7 +74,14 @@ Public Class Configuration
 
         cbTiltButton.SelectedItem = (_config.tiltButton + 1).ToString
         cbLaunchButton.SelectedItem = (_config.plungerLaunchButton + 1).ToString
-        cbNightMode.SelectedItem = (_config.nightModeButton + 1).ToString
+        If _config.nightModeButton > 23 Then
+            cbNightMode.SelectedItem = (_config.nightModeButton - 24 + 1).ToString
+            rbNightModePush.Checked = True
+        Else
+            cbNightMode.SelectedItem = (_config.nightModeButton + 1).ToString
+            rbNightModeToggle.Checked = True
+        End If
+
         cbAverageReadings.SelectedItem = (_config.plungerAverageRead).ToString
 
         Me.ResumeLayout()
@@ -130,7 +137,12 @@ Public Class Configuration
             _config.tiltButton = cbTiltButton.SelectedItem - 1
             _config.plungerAverageRead = cbAverageReadings.SelectedItem
             _config.plungerLaunchButton = cbLaunchButton.SelectedItem - 1
-            _config.nightModeButton = cbNightMode.SelectedItem - 1
+            If rbNightModePush.Checked Then
+                _config.nightModeButton = cbNightMode.SelectedItem - 1 + 24
+            Else
+                _config.nightModeButton = cbNightMode.SelectedItem - 1
+            End If
+
 
             _board.setConfig(_config)
         Catch ex As Exception
@@ -183,6 +195,5 @@ Public Class Configuration
         End Try
 
     End Sub
-
 
 End Class
