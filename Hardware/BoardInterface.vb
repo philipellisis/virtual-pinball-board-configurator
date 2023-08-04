@@ -19,6 +19,7 @@ Public Enum ADMIN
     CONNECT = 8
     SAVE_CONFIG = 9
     SET_ACCEL = 10
+    GET_VERSION = 11
 End Enum
 
 Public Enum MESSAGE_TYPE
@@ -29,6 +30,7 @@ Public Enum MESSAGE_TYPE
     CONFIG = 4
     BUTTONS = 5
     RESPONSE = 6
+    VERSION = 7
 End Enum
 
 Public Class BoardConfiguration
@@ -227,6 +229,7 @@ Public Class BoardChangedArgs
     Public message As String
     Public outputs As Byte()
     Public buttons As Byte()
+    Public version As Integer() = {0, 0, 0}
     Public plunger As Integer
     Public accel As PointF
     Public accelActual As Point
@@ -276,6 +279,11 @@ Public Class BoardChangedArgs
                 Catch ex As Exception
                     Me.type = MESSAGE_TYPE.DEBUG
                 End Try
+            Case MESSAGE_TYPE.VERSION
+                Dim versionString As String() = message.Split(".")
+                version(0) = CInt(versionString(0))
+                version(1) = CInt(versionString(1))
+                version(2) = CInt(versionString(2))
             Case Else
 
         End Select

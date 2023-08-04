@@ -30,26 +30,30 @@ Partial Class Plunger
         Me.lblMaxValue = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.lblRestingPoint = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnSendCalibration = New System.Windows.Forms.Button()
         Me.cbPushOnMin = New System.Windows.Forms.CheckBox()
         Me.cbPushOnMax = New System.Windows.Forms.CheckBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cbLaunchButton = New System.Windows.Forms.ComboBox()
         Me.cbAverageReadings = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnStartCalibration = New System.Windows.Forms.Button()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.lblCurrent = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
         'pbPlunger
         '
         Me.pbPlunger.Location = New System.Drawing.Point(55, 32)
-        Me.pbPlunger.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.pbPlunger.Margin = New System.Windows.Forms.Padding(2)
         Me.pbPlunger.MarqueeAnimationSpeed = 1
         Me.pbPlunger.Maximum = 1024
         Me.pbPlunger.Name = "pbPlunger"
-        Me.pbPlunger.Size = New System.Drawing.Size(396, 31)
+        Me.pbPlunger.Size = New System.Drawing.Size(530, 31)
         Me.pbPlunger.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         Me.pbPlunger.TabIndex = 0
         Me.pbPlunger.Value = 200
@@ -58,10 +62,10 @@ Partial Class Plunger
         '
         Me.GroupBox1.Controls.Add(Me.lblMinValue)
         Me.GroupBox1.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(54, 80)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Location = New System.Drawing.Point(183, 80)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2)
         Me.GroupBox1.Size = New System.Drawing.Size(124, 47)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
@@ -82,10 +86,10 @@ Partial Class Plunger
         '
         Me.GroupBox2.Controls.Add(Me.lblMaxValue)
         Me.GroupBox2.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(193, 80)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox2.Location = New System.Drawing.Point(322, 80)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(2)
         Me.GroupBox2.Size = New System.Drawing.Size(124, 47)
         Me.GroupBox2.TabIndex = 2
         Me.GroupBox2.TabStop = False
@@ -106,10 +110,10 @@ Partial Class Plunger
         '
         Me.GroupBox3.Controls.Add(Me.lblRestingPoint)
         Me.GroupBox3.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(335, 80)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox3.Location = New System.Drawing.Point(464, 80)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(2)
         Me.GroupBox3.Size = New System.Drawing.Size(124, 47)
         Me.GroupBox3.TabIndex = 3
         Me.GroupBox3.TabStop = False
@@ -126,23 +130,24 @@ Partial Class Plunger
         Me.lblRestingPoint.TabIndex = 2
         Me.lblRestingPoint.Text = "1000"
         '
-        'Button1
+        'btnSendCalibration
         '
-        Me.Button1.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(335, 131)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(123, 53)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Send Calibration Values"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnSendCalibration.Enabled = False
+        Me.btnSendCalibration.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSendCalibration.Location = New System.Drawing.Point(465, 136)
+        Me.btnSendCalibration.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnSendCalibration.Name = "btnSendCalibration"
+        Me.btnSendCalibration.Size = New System.Drawing.Size(123, 53)
+        Me.btnSendCalibration.TabIndex = 4
+        Me.btnSendCalibration.Text = "Send Calibration"
+        Me.btnSendCalibration.UseVisualStyleBackColor = True
         '
         'cbPushOnMin
         '
         Me.cbPushOnMin.AutoSize = True
         Me.cbPushOnMin.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbPushOnMin.Location = New System.Drawing.Point(193, 134)
-        Me.cbPushOnMin.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbPushOnMin.Margin = New System.Windows.Forms.Padding(2)
         Me.cbPushOnMin.Name = "cbPushOnMin"
         Me.cbPushOnMin.Size = New System.Drawing.Size(134, 22)
         Me.cbPushOnMin.TabIndex = 28
@@ -154,7 +159,7 @@ Partial Class Plunger
         Me.cbPushOnMax.AutoSize = True
         Me.cbPushOnMax.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbPushOnMax.Location = New System.Drawing.Point(193, 163)
-        Me.cbPushOnMax.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbPushOnMax.Margin = New System.Windows.Forms.Padding(2)
         Me.cbPushOnMax.Name = "cbPushOnMax"
         Me.cbPushOnMax.Size = New System.Drawing.Size(135, 22)
         Me.cbPushOnMax.TabIndex = 29
@@ -163,10 +168,9 @@ Partial Class Plunger
         '
         'Label3
         '
-        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(31, 134)
+        Me.Label3.Location = New System.Drawing.Point(33, 136)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(87, 18)
@@ -199,34 +203,70 @@ Partial Class Plunger
         '
         'Label1
         '
-        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(9, 163)
+        Me.Label1.Location = New System.Drawing.Point(10, 163)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(111, 18)
         Me.Label1.TabIndex = 45
         Me.Label1.Text = "Average Readings"
         '
+        'btnStartCalibration
+        '
+        Me.btnStartCalibration.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnStartCalibration.Location = New System.Drawing.Point(338, 136)
+        Me.btnStartCalibration.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnStartCalibration.Name = "btnStartCalibration"
+        Me.btnStartCalibration.Size = New System.Drawing.Size(123, 53)
+        Me.btnStartCalibration.TabIndex = 46
+        Me.btnStartCalibration.Text = "Calibrate Plunger"
+        Me.btnStartCalibration.UseVisualStyleBackColor = True
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.lblCurrent)
+        Me.GroupBox4.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox4.Location = New System.Drawing.Point(52, 80)
+        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(2)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(2)
+        Me.GroupBox4.Size = New System.Drawing.Size(124, 47)
+        Me.GroupBox4.TabIndex = 2
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Current Value"
+        '
+        'lblCurrent
+        '
+        Me.lblCurrent.AutoSize = True
+        Me.lblCurrent.Location = New System.Drawing.Point(79, 21)
+        Me.lblCurrent.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblCurrent.Name = "lblCurrent"
+        Me.lblCurrent.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblCurrent.Size = New System.Drawing.Size(42, 20)
+        Me.lblCurrent.TabIndex = 0
+        Me.lblCurrent.Text = "1000"
+        '
         'Plunger
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(510, 208)
+        Me.ClientSize = New System.Drawing.Size(612, 206)
+        Me.Controls.Add(Me.GroupBox4)
+        Me.Controls.Add(Me.btnStartCalibration)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cbAverageReadings)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.cbLaunchButton)
         Me.Controls.Add(Me.cbPushOnMax)
         Me.Controls.Add(Me.cbPushOnMin)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnSendCalibration)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.pbPlunger)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Plunger"
         Me.Text = "Plunger"
         Me.GroupBox1.ResumeLayout(False)
@@ -235,6 +275,8 @@ Partial Class Plunger
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -247,11 +289,14 @@ Partial Class Plunger
     Friend WithEvents lblMinValue As Label
     Friend WithEvents lblMaxValue As Label
     Friend WithEvents lblRestingPoint As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnSendCalibration As Button
     Friend WithEvents cbPushOnMin As CheckBox
     Friend WithEvents cbPushOnMax As CheckBox
     Friend WithEvents Label3 As Label
     Friend WithEvents cbLaunchButton As ComboBox
     Friend WithEvents cbAverageReadings As ComboBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents btnStartCalibration As Button
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents lblCurrent As Label
 End Class

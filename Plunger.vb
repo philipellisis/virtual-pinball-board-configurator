@@ -3,9 +3,11 @@
     Private _config As BoardConfiguration
     Private maxValue As UShort = 0
     Private minvalue As UShort = 1024
-    Private tempRestingValue As UShort = 0
+    'Private tempRestingValue As UShort = 0
     Private restingValue As UShort = 0
     Private restingCount As UShort = 0
+    Private plungerCalibrationState = 0
+    Private timer As New Stopwatch
     Public Sub New(board As BoardInterface, config As BoardConfiguration)
 
         ' This call is required by the designer.
@@ -21,6 +23,10 @@
         Catch ex As Exception
             MessageBox.Show("Error entering plunger mode. Ensure board is connected")
         End Try
+
+        lblMaxValue.Text = _config.plungerMax.ToString
+        lblMinValue.Text = _config.plungerMin.ToString
+        lblRestingPoint.Text = _config.plungerMid.ToString
 
         If _config.buttonOption = 1 Or _config.buttonOption = 3 Then
             cbPushOnMax.Checked = True
@@ -38,27 +44,33 @@
             If e.type = MESSAGE_TYPE.PLUNGER Then
                 pbPlunger.Value = e.plunger + 1
                 pbPlunger.Value = e.plunger
-                If maxValue < e.plunger Then
-                    maxValue = e.plunger
-                    lblMaxValue.Text = e.plunger.ToString
+                lblCurrent.Text = e.plunger.ToString
+                If plungerCalibrationState = 1 Then
+                    If maxValue < e.plunger Then
+                        maxValue = e.plunger
+                        lblMaxValue.Text = e.plunger.ToString
+                    End If
+                    If minvalue > e.plunger Then
+                        minvalue = e.plunger
+                        lblMinValue.Text = e.plunger.ToString
+                    End If
+                    If timer.ElapsedMilliseconds > 5000 Then
+                        MessageBox.Show("leave plunger in resting position, and click OK to continue")
+                        timer.Restart()
+                        plungerCalibrationState = 2
+                    End If
                 End If
-                If minvalue > e.plunger Then
-                    minvalue = e.plunger
-                    lblMinValue.Text = e.plunger.ToString
-                End If
-                If tempRestingValue > e.plunger - 2 And tempRestingValue < e.plunger + 2 Then
-                    restingCount += 1
-                Else
-                    tempRestingValue = e.plunger
-                    restingCount = 0
-                End If
+                If plungerCalibrationState = 2 Then
+                    If timer.ElapsedMilliseconds > 1000 Then
+                        lblRestingPoint.Text = e.plunger.ToString
+                        restingValue = e.plunger
+                        plungerCalibrationState = 3
+                        btnSendCalibration.Enabled = True
+                    End If
 
-                If restingCount > 50 Then
-                    lblRestingPoint.Text = e.plunger.ToString
-                    restingValue = e.plunger
                 End If
             End If
-            If e.type = MESSAGE_TYPE.RESPONSE Then
+                If e.type = MESSAGE_TYPE.RESPONSE Then
                 MessageBox.Show(e.message)
             End If
         Catch ex As Exception
@@ -77,7 +89,7 @@
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub btnSendCalibration_Click(sender As Object, e As EventArgs) Handles btnSendCalibration.Click
         Try
             Dim buttonOption As Byte = 0
             If cbPushOnMax.Checked And cbPushOnMin.Checked Then
@@ -100,5 +112,13 @@
         End Try
 
 
+    End Sub
+
+    Private Sub btnStartCalibration_Click(sender As Object, e As EventArgs) Handles btnStartCalibration.Click
+        MessageBox.Show("Move plunger to max and minimum values, values will be recorded for the next 5 seconds")
+
+        timer.Start()
+        timer.Restart()
+        plungerCalibrationState = 1
     End Sub
 End Class

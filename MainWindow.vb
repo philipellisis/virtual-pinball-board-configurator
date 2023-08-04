@@ -6,6 +6,7 @@ Imports System.Xml
 Imports System.Xml.Serialization
 
 Public Class MainWindow
+    Private version As Integer() = {1, 6, 0}
     'Private WithEvents arduino As RS232
     Private WithEvents Board As BoardInterface
     Private config As BoardConfiguration
@@ -59,6 +60,23 @@ Public Class MainWindow
     Private Sub Board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles Board.BoardChanged
         If e.type = MESSAGE_TYPE.CONFIG Then
             config = e.config
+            If config.accelerometer = False Then
+                btnAccel.Enabled = False
+            Else
+                btnAccel.Enabled = True
+            End If
+            Board.enableAdminFunction(ADMIN.GET_VERSION)
+        End If
+        If e.type = MESSAGE_TYPE.VERSION Then
+            If e.version(0) > version(0) Then
+                MessageBox.Show("PinOne board is behind UI on major version, please disconnect and update firmware before continuing.")
+            End If
+            If e.version(1) > version(1) Then
+                MessageBox.Show("PinOne board is behind on UI in minor version, Some features might not work properly. It is recommended to disconnect and update firmware before continuing.")
+            End If
+            If e.version(2) > version(2) Then
+                MessageBox.Show("PinOne board is behind on UI in a bug fix version, it is recommended to disconnect and update firmware before continuing to ensure all features work properly.")
+            End If
         End If
 
     End Sub
@@ -77,7 +95,7 @@ Public Class MainWindow
 
     Private Sub btnUpdateFirmware_Click(sender As Object, e As EventArgs) Handles btnUpdateFirmware.Click
         'AVRResources.avrdude
-        If MessageBox.Show("Ensure you only have one CSD board connected before proceeding to install, this will erase all memory from the device and install the latest firmware. Click OK to continue", "Warning", MessageBoxButtons.OKCancel,
+        If MessageBox.Show("Ensure you only have one CSD board connected before proceeding to install, this will install the latest firmware. Click OK to continue", "Warning", MessageBoxButtons.OKCancel,
             Nothing, MessageBoxDefaultButton.Button1) = DialogResult.OK Then
         Else
             Exit Sub

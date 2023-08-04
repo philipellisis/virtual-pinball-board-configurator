@@ -117,6 +117,8 @@ Public Class CSDBoard
                 sendBoardChanged(New BoardChangedArgs(newMessage, MESSAGE_TYPE.PLUNGER))
             Case "ACCEL", "A"
                 sendBoardChanged(New BoardChangedArgs(newMessage, MESSAGE_TYPE.ACCEL))
+            Case "VERSION", "V"
+                sendBoardChanged(New BoardChangedArgs(newMessage, MESSAGE_TYPE.VERSION))
             Case "RESPONSE", "R"
                 If newMessage = "S" Then
                     newMessage = "Save Config Success"
@@ -134,29 +136,34 @@ Public Class CSDBoard
     End Sub
 
     Public Function setBootloader() As String Implements BoardInterface.setBootloader
-        If My.Computer.Ports.SerialPortNames.Count > 1 Then
+        Dim currentPorts As New Dictionary(Of String, String)
+        For Each sp As String In My.Computer.Ports.SerialPortNames
+            If Not currentPorts.ContainsKey(sp) Then
+                currentPorts.Add(sp, sp)
+            End If
+        Next
+        If currentPorts.Count > 1 Then
             Return "MULTIPLE"
         End If
-        For Each sp As String In My.Computer.Ports.SerialPortNames
 
-            CSDConnection = New RS232(sp)
-            Try
-                CSDConnection.open1200()
-                Thread.Sleep(700)
-                CSDConnection.close()
-                Thread.Sleep(700)
-                Dim sps = My.Computer.Ports.SerialPortNames
-                For Each spBoot As String In My.Computer.Ports.SerialPortNames
-                    If spBoot <> sp Then
-                        Return spBoot
-                    End If
-                Next
+        CSDConnection = New RS232(currentPorts.First().Key)
+        Try
+            CSDConnection.open1200()
+            Thread.Sleep(700)
+            CSDConnection.close()
+            Thread.Sleep(700)
+            Dim sps = My.Computer.Ports.SerialPortNames
+            For Each spBoot As String In My.Computer.Ports.SerialPortNames
+                If Not currentPorts.ContainsKey(spBoot) Then
+                    Return spBoot
+                End If
+            Next
 
-            Catch ex As Exception
-                CSDConnection.close()
-                Return sp
-            End Try
-        Next
+        Catch ex As Exception
+            CSDConnection.close()
+            Return currentPorts.First().Key
+        End Try
+
         Throw New Exception("Unable to connect to any board")
     End Function
 End Class
