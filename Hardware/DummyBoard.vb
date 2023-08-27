@@ -49,6 +49,10 @@ Public Class DummyBoard
 
     End Sub
 
+    Public Sub setButtonValue(button As Integer) Implements BoardInterface.setButtonValue
+
+    End Sub
+
     Public Sub setAccelerometerValues(multiplier As Byte, deadZone As UShort, orientation As Byte, tilt As UShort, max As UShort, tiltButton As Byte) Implements BoardInterface.setAccelerometerValues
 
     End Sub

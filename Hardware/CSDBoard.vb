@@ -9,6 +9,10 @@ Public Class CSDBoard
         CSDConnection.send({0, 252, output, value, 0, 0, 0, 0, 0})
     End Sub
 
+    Public Sub setButtonValue(button As Integer) Implements BoardInterface.setButtonValue
+        CSDConnection.send({0, 253, button, 0, 0, 0, 0, 0, 0})
+    End Sub
+
     Public Sub enableAdminFunction(admin As ADMIN) Implements BoardInterface.enableAdminFunction
         CSDConnection.send({0, 250, admin, 0, 0, 0, 0, 0, 0})
     End Sub

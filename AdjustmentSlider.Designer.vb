@@ -23,6 +23,7 @@ Partial Class AdjustmentSlider
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.gbMain = New System.Windows.Forms.GroupBox()
+        Me.btnOnOff = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.tbOffValue = New System.Windows.Forms.TrackBar()
         Me.lblMinValue = New System.Windows.Forms.Label()
@@ -34,7 +35,6 @@ Partial Class AdjustmentSlider
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cbMilliseconds = New System.Windows.Forms.ComboBox()
-        Me.btnOnOff = New System.Windows.Forms.Button()
         Me.gbMain.SuspendLayout()
         CType(Me.tbOffValue, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMaxValue, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -61,6 +61,18 @@ Partial Class AdjustmentSlider
         Me.gbMain.TabIndex = 0
         Me.gbMain.TabStop = False
         Me.gbMain.Text = "Output #1"
+        '
+        'btnOnOff
+        '
+        Me.btnOnOff.BackColor = System.Drawing.Color.Red
+        Me.btnOnOff.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnOnOff.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.btnOnOff.Location = New System.Drawing.Point(988, 56)
+        Me.btnOnOff.Name = "btnOnOff"
+        Me.btnOnOff.Size = New System.Drawing.Size(75, 40)
+        Me.btnOnOff.TabIndex = 19
+        Me.btnOnOff.Text = "Off"
+        Me.btnOnOff.UseVisualStyleBackColor = False
         '
         'Label5
         '
@@ -137,10 +149,10 @@ Partial Class AdjustmentSlider
         Me.cbCatagory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbCatagory.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbCatagory.FormattingEnabled = True
-        Me.cbCatagory.Items.AddRange(New Object() {"Normal", "Noisy", "RGB"})
+        Me.cbCatagory.Items.AddRange(New Object() {"Normal", "Noisy", "Light Show Medium", "Light Show High", "Shared"})
         Me.cbCatagory.Location = New System.Drawing.Point(829, 110)
         Me.cbCatagory.Name = "cbCatagory"
-        Me.cbCatagory.Size = New System.Drawing.Size(98, 33)
+        Me.cbCatagory.Size = New System.Drawing.Size(234, 33)
         Me.cbCatagory.TabIndex = 15
         '
         'Label3
@@ -172,18 +184,6 @@ Partial Class AdjustmentSlider
         Me.cbMilliseconds.Name = "cbMilliseconds"
         Me.cbMilliseconds.Size = New System.Drawing.Size(98, 33)
         Me.cbMilliseconds.TabIndex = 12
-        '
-        'btnOnOff
-        '
-        Me.btnOnOff.BackColor = System.Drawing.Color.Red
-        Me.btnOnOff.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnOnOff.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.btnOnOff.Location = New System.Drawing.Point(988, 56)
-        Me.btnOnOff.Name = "btnOnOff"
-        Me.btnOnOff.Size = New System.Drawing.Size(75, 40)
-        Me.btnOnOff.TabIndex = 19
-        Me.btnOnOff.Text = "Off"
-        Me.btnOnOff.UseVisualStyleBackColor = False
         '
         'AdjustmentSlider
         '

@@ -304,6 +304,8 @@ Public Interface BoardInterface
     Event BoardDisconnected As EventHandler(Of BoardCompletedArgs)
     Sub setOutputValue(output As Integer, value As Integer)
 
+    Sub setButtonValue(button As Integer)
+
     Sub enableAdminFunction(admin As ADMIN)
 
     Sub setPlungerMinMax(max As UShort, min As UShort, mid As UShort, buttonOption As Byte, plungerAverageRead As Byte, plungerLaunchButton As Byte)

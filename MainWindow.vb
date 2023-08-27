@@ -6,7 +6,7 @@ Imports System.Xml
 Imports System.Xml.Serialization
 
 Public Class MainWindow
-    Private version As Integer() = {1, 6, 0}
+    Private version As Integer() = {1, 7, 0}
     'Private WithEvents arduino As RS232
     Private WithEvents Board As BoardInterface
     Private config As BoardConfiguration
@@ -68,14 +68,23 @@ Public Class MainWindow
             Board.enableAdminFunction(ADMIN.GET_VERSION)
         End If
         If e.type = MESSAGE_TYPE.VERSION Then
-            If e.version(0) > version(0) Then
+            If e.version(0) < version(0) Then
                 MessageBox.Show("PinOne board is behind UI on major version, please disconnect and update firmware before continuing.")
             End If
-            If e.version(1) > version(1) Then
+            If e.version(1) < version(1) Then
                 MessageBox.Show("PinOne board is behind on UI in minor version, Some features might not work properly. It is recommended to disconnect and update firmware before continuing.")
             End If
-            If e.version(2) > version(2) Then
+            If e.version(2) < version(2) Then
                 MessageBox.Show("PinOne board is behind on UI in a bug fix version, it is recommended to disconnect and update firmware before continuing to ensure all features work properly.")
+            End If
+            If e.version(0) > version(0) Then
+                MessageBox.Show("PinOne board is ahead UI on major version, please disconnect and install the latest config tool from www.clevelandsoftwaredesign.com")
+            End If
+            If e.version(1) > version(1) Then
+                MessageBox.Show("PinOne board is ahead on UI in minor version, Some features might not work properly. It is recommended to disconnect and install the latest config tool from www.clevelandsoftwaredesign.com")
+            End If
+            If e.version(2) > version(2) Then
+                MessageBox.Show("PinOne board is ahead on UI in a bug fix version, it is recommended to disconnect and update the config tool from www.clevelandsoftwaredesign.com before continuing to ensure all features work properly.")
             End If
         End If
 

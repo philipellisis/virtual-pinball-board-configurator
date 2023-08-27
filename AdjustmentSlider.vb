@@ -33,7 +33,17 @@ Public Class AdjustmentSlider
         ElseIf _config.toySpecialOption(outputNumber) = 1 Then
             cbCatagory.SelectedItem = "Noisy"
         ElseIf _config.toySpecialOption(outputNumber) = 2 Then
-            cbCatagory.SelectedItem = "RGB"
+            cbCatagory.SelectedItem = "Light Show Medium"
+        ElseIf _config.toySpecialOption(outputNumber) = 3 Then
+            cbCatagory.SelectedItem = "Light Show High"
+        ElseIf _config.toySpecialOption(outputNumber) = 4 Then
+            cbCatagory.SelectedItem = "Shared"
+        End If
+        If outputNumber > 9 Then
+            cbCatagory.Items.Remove("Shared")
+        End If
+        If outputNumber > 3 And outputNumber < 15 Then
+            tbMaxValue.Enabled = False
         End If
         cbCatagory.SelectedItem = _config.toySpecialOption(outputNumber)
         cbMilliseconds.SelectedItem = _config.maxOutputTime(outputNumber) * 100
@@ -90,8 +100,12 @@ Public Class AdjustmentSlider
             _config.toySpecialOption(outputNumber) = 0
         ElseIf cbCatagory.SelectedItem = "Noisy" Then
             _config.toySpecialOption(outputNumber) = 1
-        ElseIf cbCatagory.SelectedItem = "RGB" Then
+        ElseIf cbCatagory.SelectedItem = "Light Show Medium" Then
             _config.toySpecialOption(outputNumber) = 2
+        ElseIf cbCatagory.SelectedItem = "Light Show High" Then
+            _config.toySpecialOption(outputNumber) = 3
+        ElseIf cbCatagory.SelectedItem = "Shared" Then
+            _config.toySpecialOption(outputNumber) = 4
         End If
     End Sub
 
@@ -122,5 +136,9 @@ Public Class AdjustmentSlider
             btnOnOff.BackColor = Color.Red
             outputOn = False
         End If
+    End Sub
+
+    Private Sub gbMain_Enter(sender As Object, e As EventArgs) Handles gbMain.Enter
+
     End Sub
 End Class

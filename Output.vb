@@ -16,6 +16,9 @@ Public Class Output
         _board = board
         _number = outputNumber
         gbMain.Text = "Output #" & (outputNumber + 1).ToString
+        If outputNumber > 3 And outputNumber < 15 Then
+            tbIntensity.Enabled = False
+        End If
     End Sub
     Public Sub setIntensityValue(val As Byte)
         If _delayRefresh = False Then
