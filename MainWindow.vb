@@ -49,7 +49,7 @@ Public Class MainWindow
     End Sub
 
     Private Sub btnInputs_Click(sender As Object, e As EventArgs) Handles btnInputs.Click
-        Dim buttons As New Buttons(Board)
+        Dim buttons As New Buttons(Board, config)
         buttons.ShowDialog()
     End Sub
 

@@ -34,7 +34,6 @@ Partial Class MainWindow
         Me.btnBackup = New System.Windows.Forms.Button()
         Me.cbSimulation = New System.Windows.Forms.CheckBox()
         Me.btnUpdateFirmware = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.gbMenu.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -106,7 +105,6 @@ Partial Class MainWindow
         '
         'gbMenu
         '
-        Me.gbMenu.Controls.Add(Me.Button1)
         Me.gbMenu.Controls.Add(Me.btnRetrieve)
         Me.gbMenu.Controls.Add(Me.btnBackup)
         Me.gbMenu.Controls.Add(Me.btnInputs)
@@ -118,7 +116,7 @@ Partial Class MainWindow
         Me.gbMenu.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbMenu.Location = New System.Drawing.Point(12, 12)
         Me.gbMenu.Name = "gbMenu"
-        Me.gbMenu.Size = New System.Drawing.Size(971, 408)
+        Me.gbMenu.Size = New System.Drawing.Size(734, 408)
         Me.gbMenu.TabIndex = 8
         Me.gbMenu.TabStop = False
         Me.gbMenu.Text = "Menu"
@@ -158,7 +156,7 @@ Partial Class MainWindow
         'btnUpdateFirmware
         '
         Me.btnUpdateFirmware.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUpdateFirmware.Location = New System.Drawing.Point(590, 466)
+        Me.btnUpdateFirmware.Location = New System.Drawing.Point(482, 466)
         Me.btnUpdateFirmware.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnUpdateFirmware.Name = "btnUpdateFirmware"
         Me.btnUpdateFirmware.Size = New System.Drawing.Size(224, 85)
@@ -166,22 +164,11 @@ Partial Class MainWindow
         Me.btnUpdateFirmware.Text = "Update Firmware"
         Me.btnUpdateFirmware.UseVisualStyleBackColor = True
         '
-        'Button1
-        '
-        Me.Button1.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(703, 38)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(224, 163)
-        Me.Button1.TabIndex = 10
-        Me.Button1.Text = "Calibrate Steam Controller"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1016, 565)
+        Me.ClientSize = New System.Drawing.Size(827, 565)
         Me.Controls.Add(Me.btnUpdateFirmware)
         Me.Controls.Add(Me.cbSimulation)
         Me.Controls.Add(Me.gbMenu)
@@ -207,5 +194,4 @@ Partial Class MainWindow
     Friend WithEvents btnUpdateFirmware As Button
     Friend WithEvents btnRetrieve As Button
     Friend WithEvents btnBackup As Button
-    Friend WithEvents Button1 As Button
 End Class

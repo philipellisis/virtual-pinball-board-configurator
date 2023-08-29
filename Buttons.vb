@@ -1,13 +1,16 @@
 ﻿Public Class Buttons
     Private _userControlList As New List(Of ucButton)
     Private WithEvents _board As BoardInterface
-    Public Sub New(board As BoardInterface)
+    Private _config As BoardConfiguration
+    Private buttonArray() = {7, 6, 5, 8, 25, 26, 27, 28, 29, 30, 32, 31, 7, 7, 7, 33, 34, 7, 3, 4, 1, 2, 7, 24, 7, 7}
+    Public Sub New(board As BoardInterface, config As BoardConfiguration)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
         _board = board
+        _config = config
     End Sub
     Private Sub Buttons_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         For i As Integer = 0 To 5
@@ -62,6 +65,97 @@
         Catch ex As Exception
             MessageBox.Show("Unable to set turn off button mode, maybe board is disconnected?")
         End Try
+
+    End Sub
+
+    Private Sub btn1_Click(sender As Object, e As EventArgs) Handles btn1.Click
+        sendButton(0)
+    End Sub
+    Private Sub sendButton(value As Integer)
+        Try
+            _board.setButtonValue(value)
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub btn2_Click(sender As Object, e As EventArgs) Handles btn2.Click
+        sendButton(1)
+    End Sub
+
+    Private Sub btn3_Click(sender As Object, e As EventArgs) Handles btn3.Click
+        sendButton(2)
+    End Sub
+
+    Private Sub btn4_Click(sender As Object, e As EventArgs) Handles btn4.Click
+        sendButton(3)
+    End Sub
+
+    Private Sub btn5_Click(sender As Object, e As EventArgs) Handles btn5.Click
+        sendButton(4)
+    End Sub
+
+    Private Sub btn6_Click(sender As Object, e As EventArgs) Handles btn6.Click
+        sendButton(5)
+    End Sub
+
+    Private Sub btn7_Click(sender As Object, e As EventArgs) Handles btn7.Click
+        sendButton(6)
+    End Sub
+
+    Private Sub bnt8_Click(sender As Object, e As EventArgs) Handles bnt8.Click
+        sendButton(7)
+    End Sub
+
+    Private Sub btn9_Click(sender As Object, e As EventArgs) Handles btn9.Click
+        sendButton(8)
+    End Sub
+
+    Private Sub bnt24_Click(sender As Object, e As EventArgs) Handles bnt24.Click
+        sendButton(_config.plungerLaunchButton)
+    End Sub
+
+    Private Sub btn25_Click(sender As Object, e As EventArgs) Handles btn25.Click
+        sendButton(24)
+    End Sub
+
+    Private Sub btn26_Click(sender As Object, e As EventArgs) Handles btn26.Click
+        sendButton(25)
+    End Sub
+
+    Private Sub btn27_Click(sender As Object, e As EventArgs) Handles btn27.Click
+        sendButton(26)
+    End Sub
+
+    Private Sub bnt28_Click(sender As Object, e As EventArgs) Handles bnt28.Click
+        sendButton(27)
+    End Sub
+
+    Private Sub btn31_Click(sender As Object, e As EventArgs) Handles btn31.Click
+        sendButton(30)
+    End Sub
+
+    Private Sub btn32_Click(sender As Object, e As EventArgs) Handles btn32.Click
+        sendButton(31)
+    End Sub
+
+    Private Sub btn30_Click(sender As Object, e As EventArgs) Handles btn30.Click
+        sendButton(29)
+    End Sub
+
+    Private Sub btn29_Click(sender As Object, e As EventArgs) Handles btn29.Click
+        sendButton(28)
+    End Sub
+
+    Private Sub btn34_Click(sender As Object, e As EventArgs) Handles btn34.Click
+        sendButton(33)
+    End Sub
+
+    Private Sub btn33_Click(sender As Object, e As EventArgs) Handles btn33.Click
+        sendButton(32)
+    End Sub
+
+    Private Sub btnStartSteamMapping_Click(sender As Object, e As EventArgs) Handles btnStartSteamMapping.Click
 
     End Sub
 End Class
