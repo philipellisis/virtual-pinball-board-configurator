@@ -4,6 +4,8 @@ Imports CSDControllerTool.My.Resources
 Imports System.Windows.Forms
 Imports System.Xml
 Imports System.Xml.Serialization
+Imports System.Runtime.InteropServices
+Imports System.Threading
 
 Public Class MainWindow
     Private version As Integer() = {1, 7, 0}
@@ -12,7 +14,11 @@ Public Class MainWindow
     Private config As BoardConfiguration
     Private connected As Boolean
     Private Sub MainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        cbComPort.Items.Add("Auto")
+        For Each sp As String In My.Computer.Ports.SerialPortNames
+            cbComPort.Items.Add(sp)
+        Next
+        cbComPort.SelectedItem = "Auto"
     End Sub
 
     Private Sub btnConnect_Click(sender As Object, e As EventArgs) Handles btnConnect.Click
@@ -20,6 +26,7 @@ Public Class MainWindow
             Board.disconnect()
             btnConnect.Text = "Connect"
             btnUpdateFirmware.Enabled = True
+            cbComPort.Enabled = True
             gbMenu.Enabled = False
             connected = False
         Else
@@ -29,11 +36,12 @@ Public Class MainWindow
                 Else
                     Board = New CSDBoard
                 End If
-                Board.connect()
+                Board.connect(cbComPort.SelectedItem)
                 gbMenu.Enabled = True
                 connected = True
                 btnConnect.Text = "Disconnect"
                 btnUpdateFirmware.Enabled = False
+                cbComPort.Enabled = False
                 Board.enableAdminFunction(ADMIN.SEND_CONFIG)
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
@@ -104,7 +112,8 @@ Public Class MainWindow
 
     Private Sub btnUpdateFirmware_Click(sender As Object, e As EventArgs) Handles btnUpdateFirmware.Click
         'AVRResources.avrdude
-        If MessageBox.Show("Ensure you only have one CSD board connected before proceeding to install, this will install the latest firmware. Click OK to continue", "Warning", MessageBoxButtons.OKCancel,
+
+        If MessageBox.Show("Ensure you only have one CSD board connected before proceeding to install or you have the correct COM port selected, this will install the latest firmware. Click OK to continue", "Warning", MessageBoxButtons.OKCancel,
             Nothing, MessageBoxDefaultButton.Button1) = DialogResult.OK Then
         Else
             Exit Sub
@@ -125,7 +134,7 @@ Public Class MainWindow
             Else
                 Board = New CSDBoard
             End If
-            Dim port As String = Board.setBootloader()
+            Dim port As String = Board.setBootloader(cbComPort.SelectedItem)
             If port = "MULTIPLE" Then
                 MessageBox.Show("Ensure that the PinOne is the only COM PORT device plugged into the computer before installing new firmware")
                 Exit Sub

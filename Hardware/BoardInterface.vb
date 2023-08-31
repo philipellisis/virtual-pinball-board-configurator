@@ -313,11 +313,11 @@ Public Interface BoardInterface
     Sub setAccelerometerValues(multiplier As Byte, deadZone As UShort, orientation As Byte, tilt As UShort, max As UShort, tiltButton As Byte)
     Sub setConfig(config As BoardConfiguration)
     Function saveConfigToEeprom()
-    Sub connect()
+    Sub connect(port As String)
 
     Sub disconnect()
 
-    Function setBootloader() As String
+    Function setBootloader(port As String) As String
 
     Sub sendRaw(value As Byte())
 

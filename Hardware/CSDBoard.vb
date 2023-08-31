@@ -45,10 +45,29 @@ Public Class CSDBoard
         enableAdminFunction(ADMIN.SAVE_CONFIG)
     End Function
 
-    Public Sub connect() Implements BoardInterface.connect
-        For Each sp As String In My.Computer.Ports.SerialPortNames
+    Public Sub connect(port As String) Implements BoardInterface.connect
+        If port = "Auto" Then
+            For Each sp As String In My.Computer.Ports.SerialPortNames
 
-            CSDConnection = New RS232(sp)
+                CSDConnection = New RS232(sp)
+                Try
+                    CSDConnection.open()
+                    enableAdminFunction(ADMIN.CONNECT)
+                    'CSDConnection.send({0, 251, 0, 0, 0, 0, 0, 0, 0})
+                    Do While True
+                        Dim result As String = CSDConnection.read()
+                        If result = "DEBUG,CSD Board Connected" Then
+                            CSDConnection.ReceiveDataEvents = True
+                            Return
+                        End If
+                    Loop
+
+                Catch ex As Exception
+                    CSDConnection.close()
+                End Try
+            Next
+        Else
+            CSDConnection = New RS232(port)
             Try
                 CSDConnection.open()
                 enableAdminFunction(ADMIN.CONNECT)
@@ -64,7 +83,8 @@ Public Class CSDBoard
             Catch ex As Exception
                 CSDConnection.close()
             End Try
-        Next
+        End If
+
         Throw New Exception("Unable to connect to any board")
     End Sub
     Public Sub disconnect() Implements BoardInterface.disconnect
@@ -139,18 +159,23 @@ Public Class CSDBoard
         CSDConnection.send(value)
     End Sub
 
-    Public Function setBootloader() As String Implements BoardInterface.setBootloader
+    Public Function setBootloader(port As String) As String Implements BoardInterface.setBootloader
         Dim currentPorts As New Dictionary(Of String, String)
+
         For Each sp As String In My.Computer.Ports.SerialPortNames
             If Not currentPorts.ContainsKey(sp) Then
                 currentPorts.Add(sp, sp)
             End If
         Next
-        If currentPorts.Count > 1 Then
+        If currentPorts.Count > 1 And port = "Auto" Then
             Return "MULTIPLE"
         End If
+        If port = "Auto" Then
+            CSDConnection = New RS232(currentPorts.First().Key)
+        Else
+            CSDConnection = New RS232(port)
+        End If
 
-        CSDConnection = New RS232(currentPorts.First().Key)
         Try
             CSDConnection.open1200()
             Thread.Sleep(700)

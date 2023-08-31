@@ -65,7 +65,7 @@ Public Class DummyBoard
         Throw New NotImplementedException()
     End Function
 
-    Public Sub connect() Implements BoardInterface.connect
+    Public Sub connect(port As String) Implements BoardInterface.connect
 
     End Sub
     Public Sub disconnect() Implements BoardInterface.disconnect
@@ -179,7 +179,7 @@ Public Class DummyBoard
 
     End Sub
 
-    Public Function setBootloader() As String Implements BoardInterface.setBootloader
+    Public Function setBootloader(port As String) As String Implements BoardInterface.setBootloader
         Return "COM1"
     End Function
 End Class

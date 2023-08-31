@@ -3,6 +3,7 @@
     Private WithEvents _board As BoardInterface
     Private _config As BoardConfiguration
     Private buttonArray() = {7, 6, 5, 8, 25, 26, 27, 28, 29, 30, 32, 31, 7, 7, 7, 33, 34, 7, 3, 4, 1, 2, 7, 24, 7, 7}
+    Private steamConfig As String = "030047518f0e00000692000000000000,Clev Soft PinOne,crc:5147,platform:Windows,a:b6,b:b5,x:b4,y:b7,dpleft:b24,dpright:b25,dpup:b26,dpdown:b27,leftx:a0,lefty:~a1,righty:a2,leftshoulder:b2,lefttrigger:b3,rightshoulder:b0,righttrigger:b1,start:b23,steam:1,"
     Public Sub New(board As BoardInterface, config As BoardConfiguration)
 
         ' This call is required by the designer.
