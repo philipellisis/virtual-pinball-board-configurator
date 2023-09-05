@@ -73,6 +73,7 @@ Public Class Configuration
         End If
 
         cbTiltButton.SelectedItem = (_config.tiltButton + 1).ToString
+        cbShiftButton.SelectedItem = (_config.shiftButton + 1).ToString
         cbLaunchButton.SelectedItem = (_config.plungerLaunchButton + 1).ToString
         If _config.nightModeButton > 23 Then
             cbNightMode.SelectedItem = (_config.nightModeButton - 24 + 1).ToString
@@ -134,6 +135,7 @@ Public Class Configuration
             'Byte plungerLaunchButton = 23;
             'Byte tiltButton = 22;
 
+            _config.shiftButton = cbShiftButton.SelectedItem - 1
             _config.tiltButton = cbTiltButton.SelectedItem - 1
             _config.plungerAverageRead = cbAverageReadings.SelectedItem
             _config.plungerLaunchButton = cbLaunchButton.SelectedItem - 1

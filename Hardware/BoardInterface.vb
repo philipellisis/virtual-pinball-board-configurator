@@ -54,6 +54,7 @@ Public Class BoardConfiguration
     Public nightModeButton As Byte
     Public plungerLaunchButton As Byte
     Public tiltButton As Byte
+    Public shiftButton As Byte
 
     Public Sub copyValues(board As BoardConfiguration)
         Array.Copy(board.toySpecialOption, toySpecialOption, 63)
@@ -76,6 +77,7 @@ Public Class BoardConfiguration
         nightModeButton = board.nightModeButton
         plungerLaunchButton = board.plungerLaunchButton
         tiltButton = board.tiltButton
+        shiftButton = board.shiftButton
     End Sub
     Public Function getOrientationString() As String
         Dim tempOrientation = orentation
@@ -145,7 +147,7 @@ Public Class BoardConfiguration
     End Function
 
     Public Function toConfigBytes(config As BoardConfiguration) As Byte()
-        Dim configString(279) As Byte
+        Dim configString(280) As Byte
         For i = 0 To 62
             configString(i) = config.toySpecialOption(i)
             configString(i + 63) = config.turnOffState(i)
@@ -184,6 +186,7 @@ Public Class BoardConfiguration
         configString(277) = config.nightModeButton
         configString(278) = config.plungerLaunchButton
         configString(279) = config.tiltButton
+        configString(280) = config.shiftButton
         Return configString
     End Function
     Public Shared Function stringToConfig(str As String) As BoardConfiguration
@@ -217,6 +220,7 @@ Public Class BoardConfiguration
             config.nightModeButton = CByte(configString(271))
             config.plungerLaunchButton = CByte(configString(272))
             config.tiltButton = CByte(configString(273))
+            config.shiftButton = CByte(configString(274))
         Catch ex As Exception
             Console.WriteLine("unable to convert data to configuration: " & ex.Message)
         End Try

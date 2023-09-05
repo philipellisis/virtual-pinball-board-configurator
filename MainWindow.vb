@@ -8,7 +8,7 @@ Imports System.Runtime.InteropServices
 Imports System.Threading
 
 Public Class MainWindow
-    Private version As Integer() = {1, 7, 0}
+    Private version As Integer() = {1, 8, 0}
     'Private WithEvents arduino As RS232
     Private WithEvents Board As BoardInterface
     Private config As BoardConfiguration
