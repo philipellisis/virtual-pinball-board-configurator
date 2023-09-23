@@ -1,5 +1,5 @@
 ﻿Public Class Plunger
-    Private WithEvents _board As BoardInterface
+    Private _board As BoardInterface
     Private _config As BoardConfiguration
     Private maxValue As UShort = 0
     Private minvalue As UShort = 1024
@@ -37,9 +37,10 @@
 
         cbLaunchButton.SelectedItem = (_config.plungerLaunchButton + 1).ToString
         cbAverageReadings.SelectedItem = (_config.plungerAverageRead).ToString
+        AddHandler _board.BoardChanged, AddressOf _board_BoardChanged
     End Sub
 
-    Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles _board.BoardChanged
+    Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs)
         Try
             If e.type = MESSAGE_TYPE.PLUNGER Then
                 pbPlunger.Value = e.plunger + 1
@@ -70,7 +71,7 @@
 
                 End If
             End If
-                If e.type = MESSAGE_TYPE.RESPONSE Then
+            If e.type = MESSAGE_TYPE.RESPONSE Then
                 MessageBox.Show(e.message)
             End If
         Catch ex As Exception
@@ -83,6 +84,7 @@
     Private Sub Outputs_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Try
             _board.enableAdminFunction(ADMIN.OFF)
+            RemoveHandler _board.BoardChanged, AddressOf _board_BoardChanged
         Catch ex As Exception
             MessageBox.Show("Error exiting admin mode. Check to ensure board is connected")
         End Try

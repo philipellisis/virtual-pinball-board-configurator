@@ -4,7 +4,7 @@ Imports System.Xml.Serialization
 
 Public Class Configuration
     Private _config As BoardConfiguration
-    Private WithEvents _board As BoardInterface
+    Private _board As BoardInterface
     Private _userControlList As New List(Of AdjustmentSlider)
     Sub New(board As BoardInterface, config As BoardConfiguration)
 
@@ -18,6 +18,7 @@ Public Class Configuration
     Private Sub Configuration_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.SuspendLayout()
         tpMainOutputs.SuspendLayout()
+
 
         For i As Integer = 0 To 30
             Dim userControl As New AdjustmentSlider(i, _config, _board)
@@ -73,7 +74,12 @@ Public Class Configuration
         End If
 
         cbTiltButton.SelectedItem = (_config.tiltButton + 1).ToString
-        cbShiftButton.SelectedItem = (_config.shiftButton + 1).ToString
+        If _config.shiftButton = 99 Then
+            cbShiftButton.SelectedItem = "0"
+        Else
+            cbShiftButton.SelectedItem = (_config.shiftButton + 1).ToString
+        End If
+
         cbLaunchButton.SelectedItem = (_config.plungerLaunchButton + 1).ToString
         If _config.nightModeButton > 23 Then
             cbNightMode.SelectedItem = (_config.nightModeButton - 24 + 1).ToString
@@ -88,6 +94,7 @@ Public Class Configuration
         Me.ResumeLayout()
         tpMainOutputs.ResumeLayout()
         Try
+            AddHandler _board.BoardChanged, AddressOf _board_BoardChanged
             _board.enableAdminFunction(ADMIN.OUTPUTS)
         Catch ex As Exception
             MessageBox.Show("error while setting output mode, check that board is connected.")
@@ -134,8 +141,12 @@ Public Class Configuration
             'Byte nightModeButton = 21;
             'Byte plungerLaunchButton = 23;
             'Byte tiltButton = 22;
+            If cbShiftButton.SelectedItem = 0 Then
+                _config.shiftButton = 99
+            Else
+                _config.shiftButton = cbShiftButton.SelectedItem - 1
+            End If
 
-            _config.shiftButton = cbShiftButton.SelectedItem - 1
             _config.tiltButton = cbTiltButton.SelectedItem - 1
             _config.plungerAverageRead = cbAverageReadings.SelectedItem
             _config.plungerLaunchButton = cbLaunchButton.SelectedItem - 1
@@ -153,7 +164,7 @@ Public Class Configuration
 
     End Sub
 
-    Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles _board.BoardChanged
+    Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs)
         Try
             If e.type = MESSAGE_TYPE.RESPONSE Then
                 If e.message = "Save Config Success" Then
@@ -192,6 +203,7 @@ Public Class Configuration
     Private Sub Configuration_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Try
             _board.enableAdminFunction(ADMIN.OFF)
+            RemoveHandler _board.BoardChanged, AddressOf _board_BoardChanged
         Catch ex As Exception
             MessageBox.Show("error while exiting admin mode")
         End Try

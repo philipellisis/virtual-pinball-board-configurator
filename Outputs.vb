@@ -1,6 +1,6 @@
 ﻿Public Class Outputs
     Private _userControlList As New List(Of Output)
-    Private WithEvents _board As BoardInterface
+    Private _board As BoardInterface
     Private outputOn As Integer = -1
     Public Sub New(board As BoardInterface)
 
@@ -13,6 +13,8 @@
     Private Sub Outputs_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.SuspendLayout()
         tpMain.SuspendLayout()
+
+
 
         For i As Integer = 0 To 30
             Dim userControl As New Output(_board, i)
@@ -35,9 +37,10 @@
         _board.enableAdminFunction(ADMIN.OUTPUTS)
         Me.ResumeLayout()
         tpMain.ResumeLayout()
+        AddHandler _board.BoardChanged, AddressOf _board_BoardChanged
     End Sub
 
-    Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles _board.BoardChanged
+    Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs)
         Try
             If e.type = MESSAGE_TYPE.OUTPUTS Then
                 For i As Integer = 0 To 62
@@ -52,6 +55,7 @@
 
     Private Sub Outputs_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         _board.enableAdminFunction(ADMIN.OFF)
+        RemoveHandler _board.BoardChanged, AddressOf _board_BoardChanged
     End Sub
 
     Private Sub tbIntensity_Scroll(sender As Object, e As EventArgs) Handles tbIntensity.Scroll

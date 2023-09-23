@@ -1,4 +1,6 @@
-﻿Public Class Accelerometer
+﻿Imports System.ComponentModel
+
+Public Class Accelerometer
     Dim currentPoint As New Drawing.PointF(0, 0)
     Dim center As Integer
     Dim maxSize As Integer = 250
@@ -9,7 +11,7 @@
     Private recordTilt As Boolean = False
     Private recordMax As Boolean = False
     Private outputOn As Boolean = False
-    Private WithEvents _board As BoardInterface
+    Private _board As BoardInterface
     Private _config As BoardConfiguration
     Dim multiplier As Integer = 100
 
@@ -25,6 +27,7 @@
 
     Private Sub Accelerometer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
+            AddHandler _board.BoardChanged, AddressOf _board_BoardChanged
             _board.enableAdminFunction(ADMIN.ACCEL)
             pbAxis.Size = New Drawing.Size(pbAxis.Size.Width, pbAxis.Size.Width)
             maxSize = pbAxis.Size.Width / 2
@@ -74,7 +77,7 @@
         End Try
 
     End Sub
-    Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles _board.BoardChanged
+    Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs)
         Try
             If e.type = MESSAGE_TYPE.ACCEL Then
                 currentPoint = e.accel
@@ -272,5 +275,9 @@
             max = 0
             Button1.Text = "Stop Max Value"
         End If
+    End Sub
+
+    Private Sub Accelerometer_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        RemoveHandler _board.BoardChanged, AddressOf _board_BoardChanged
     End Sub
 End Class

@@ -1,6 +1,6 @@
 ﻿Public Class Buttons
     Private _userControlList As New List(Of ucButton)
-    Private WithEvents _board As BoardInterface
+    Private _board As BoardInterface
     Private _config As BoardConfiguration
     Private buttonArray() = {7, 6, 5, 8, 25, 26, 27, 28, 29, 30, 32, 31, 7, 7, 7, 33, 34, 7, 3, 4, 1, 2, 7, 24, 7, 7}
     Private steamConfig As String = "030047518f0e00000692000000000000,Clev Soft PinOne,crc:5147,platform:Windows,a:b6,b:b5,x:b4,y:b7,dpleft:b24,dpright:b25,dpup:b26,dpdown:b27,leftx:a0,lefty:~a1,righty:a2,leftshoulder:b2,lefttrigger:b3,rightshoulder:b0,righttrigger:b1,start:b23,steam:1,"
@@ -43,10 +43,10 @@
         Catch ex As Exception
             MessageBox.Show("Unable to set to button mode")
         End Try
-
+        AddHandler _board.BoardChanged, AddressOf _board_BoardChanged
 
     End Sub
-    Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles _board.BoardChanged
+    Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs)
         Try
             If e.type = MESSAGE_TYPE.BUTTONS Then
                 For i As Integer = 0 To 23
@@ -63,6 +63,7 @@
     Private Sub Outputs_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Try
             _board.enableAdminFunction(ADMIN.OFF)
+            RemoveHandler _board.BoardChanged, AddressOf _board_BoardChanged
         Catch ex As Exception
             MessageBox.Show("Unable to set turn off button mode, maybe board is disconnected?")
         End Try

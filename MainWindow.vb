@@ -8,6 +8,12 @@ Imports System.Runtime.InteropServices
 Imports System.Threading
 
 Public Class MainWindow
+    Private configWindow As Configuration
+    Private AccelerometerWindow As Accelerometer
+    Private PlungerWindow As Plunger
+    Private ButtonsWindow As Buttons
+    Private OutputsWindow As Outputs
+
     Private version As Integer() = {1, 8, 0}
     'Private WithEvents arduino As RS232
     Private WithEvents Board As BoardInterface
@@ -52,18 +58,24 @@ Public Class MainWindow
     End Sub
 
     Private Sub btnOutputs_Click(sender As Object, e As EventArgs) Handles btnOutputs.Click
-        Dim outputs As New Outputs(Board)
-        outputs.ShowDialog()
+        If OutputsWindow Is Nothing Then
+            OutputsWindow = New Outputs(Board)
+        End If
+        OutputsWindow.ShowDialog()
     End Sub
 
     Private Sub btnInputs_Click(sender As Object, e As EventArgs) Handles btnInputs.Click
-        Dim buttons As New Buttons(Board, config)
-        buttons.ShowDialog()
+        If ButtonsWindow Is Nothing Then
+            ButtonsWindow = New Buttons(Board, config)
+        End If
+        ButtonsWindow.ShowDialog()
     End Sub
 
     Private Sub btnPlunger_Click(sender As Object, e As EventArgs) Handles btnPlunger.Click
-        Dim plunger As New Plunger(Board, config)
-        plunger.ShowDialog()
+        If PlungerWindow Is Nothing Then
+            PlungerWindow = New Plunger(Board, config)
+        End If
+        PlungerWindow.ShowDialog()
     End Sub
     Private Sub Board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles Board.BoardChanged
         If e.type = MESSAGE_TYPE.CONFIG Then
@@ -99,14 +111,19 @@ Public Class MainWindow
     End Sub
 
     Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
-        Dim configMenu As New Configuration(Board, config)
-        configMenu.ShowDialog()
+        If configWindow Is Nothing Then
+            configWindow = New Configuration(Board, config)
+        End If
+        configWindow.ShowDialog()
     End Sub
 
     Dim output As Boolean
     Private Sub btnAccel_Click(sender As Object, e As EventArgs) Handles btnAccel.Click
-        Dim accelerometer As New Accelerometer(Board, config)
-        accelerometer.ShowDialog()
+        If AccelerometerWindow Is Nothing Then
+            AccelerometerWindow = New Accelerometer(Board, config)
+        End If
+
+        AccelerometerWindow.ShowDialog()
 
     End Sub
 
