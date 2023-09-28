@@ -6,14 +6,17 @@ Public Class CSDBoard
     Private WithEvents CSDConnection As RS232
     Private context As Threading.SynchronizationContext = Threading.SynchronizationContext.Current
     Public Sub setOutputValue(output As Integer, value As Integer) Implements BoardInterface.setOutputValue
+        Threading.Thread.Sleep(100)
         CSDConnection.send({0, 252, output, value, 0, 0, 0, 0, 0})
     End Sub
 
     Public Sub setButtonValue(button As Integer) Implements BoardInterface.setButtonValue
+        Threading.Thread.Sleep(100)
         CSDConnection.send({0, 253, button, 0, 0, 0, 0, 0, 0})
     End Sub
 
     Public Sub enableAdminFunction(admin As ADMIN) Implements BoardInterface.enableAdminFunction
+        Threading.Thread.Sleep(100)
         CSDConnection.send({0, 250, admin, 0, 0, 0, 0, 0, 0})
     End Sub
 
@@ -42,6 +45,7 @@ Public Class CSDBoard
     End Sub
 
     Public Function saveConfigToEeprom() Implements BoardInterface.saveConfigToEeprom
+        Threading.Thread.Sleep(100)
         enableAdminFunction(ADMIN.SAVE_CONFIG)
     End Function
 

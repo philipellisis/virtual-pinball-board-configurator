@@ -362,7 +362,7 @@ Partial Class Buttons
         Me.GroupBox5.Controls.Add(Me.btn29)
         Me.GroupBox5.Controls.Add(Me.bnt24)
         Me.GroupBox5.Controls.Add(Me.btn31)
-        Me.GroupBox5.Location = New System.Drawing.Point(307, 12)
+        Me.GroupBox5.Location = New System.Drawing.Point(365, 12)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(469, 264)
         Me.GroupBox5.TabIndex = 35
@@ -372,7 +372,7 @@ Partial Class Buttons
         'btnStartSteamMapping
         '
         Me.btnStartSteamMapping.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnStartSteamMapping.Location = New System.Drawing.Point(681, 281)
+        Me.btnStartSteamMapping.Location = New System.Drawing.Point(739, 281)
         Me.btnStartSteamMapping.Margin = New System.Windows.Forms.Padding(2)
         Me.btnStartSteamMapping.Name = "btnStartSteamMapping"
         Me.btnStartSteamMapping.Size = New System.Drawing.Size(95, 68)
@@ -386,7 +386,7 @@ Partial Class Buttons
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(801, 360)
+        Me.ClientSize = New System.Drawing.Size(856, 360)
         Me.Controls.Add(Me.btnStartSteamMapping)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.Label1)

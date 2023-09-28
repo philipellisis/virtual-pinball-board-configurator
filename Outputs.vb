@@ -1,6 +1,6 @@
 ﻿Public Class Outputs
     Private _userControlList As New List(Of Output)
-    Private _board As BoardInterface
+    Public _board As BoardInterface
     Private outputOn As Integer = -1
     Public Sub New(board As BoardInterface)
 

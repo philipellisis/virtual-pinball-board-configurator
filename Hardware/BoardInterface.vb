@@ -55,6 +55,7 @@ Public Class BoardConfiguration
     Public plungerLaunchButton As Byte
     Public tiltButton As Byte
     Public shiftButton As Byte
+    Public buttonKeys(28) As Byte
 
     Public Sub copyValues(board As BoardConfiguration)
         Array.Copy(board.toySpecialOption, toySpecialOption, 63)
@@ -78,6 +79,7 @@ Public Class BoardConfiguration
         plungerLaunchButton = board.plungerLaunchButton
         tiltButton = board.tiltButton
         shiftButton = board.shiftButton
+        Array.Copy(board.buttonKeys, buttonKeys, 28)
     End Sub
     Public Function getOrientationString() As String
         Dim tempOrientation = orentation
@@ -147,7 +149,7 @@ Public Class BoardConfiguration
     End Function
 
     Public Function toConfigBytes(config As BoardConfiguration) As Byte()
-        Dim configString(280) As Byte
+        Dim configString(308) As Byte
         For i = 0 To 62
             configString(i) = config.toySpecialOption(i)
             configString(i + 63) = config.turnOffState(i)
@@ -187,6 +189,9 @@ Public Class BoardConfiguration
         configString(278) = config.plungerLaunchButton
         configString(279) = config.tiltButton
         configString(280) = config.shiftButton
+        For i = 0 To 27
+            configString(i + 281) = config.buttonKeys(i)
+        Next
         Return configString
     End Function
     Public Shared Function stringToConfig(str As String) As BoardConfiguration
@@ -218,9 +223,16 @@ Public Class BoardConfiguration
 
             config.plungerAverageRead = CByte(configString(270))
             config.nightModeButton = CByte(configString(271))
+            If config.nightModeButton > 28 Then config.nightModeButton = 23
             config.plungerLaunchButton = CByte(configString(272))
             config.tiltButton = CByte(configString(273))
+            If config.tiltButton > 28 Then config.tiltButton = 22
             config.shiftButton = CByte(configString(274))
+            If config.shiftButton > 28 Then config.shiftButton = 2
+            For i = 0 To 27
+                config.buttonKeys(i) = CByte(configString(i + 275))
+                If config.buttonKeys(i) = 255 Then config.buttonKeys(i) = 0
+            Next
         Catch ex As Exception
             Console.WriteLine("unable to convert data to configuration: " & ex.Message)
         End Try

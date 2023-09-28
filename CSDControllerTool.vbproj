@@ -165,6 +165,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tools\FormUtils.vb" />
+    <Compile Include="Tools\KeyboardEventMapper.vb" />
     <Compile Include="Tools\RS232.vb" />
     <Compile Include="Tools\ThreadExtensions.vb" />
     <Compile Include="ucButton.Designer.vb">

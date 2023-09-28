@@ -19,6 +19,7 @@
     End Sub
     Private Sub Plunger_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
+            AddHandler _board.BoardChanged, AddressOf _board_BoardChanged
             _board.enableAdminFunction(ADMIN.PLUNGER)
         Catch ex As Exception
             MessageBox.Show("Error entering plunger mode. Ensure board is connected")
@@ -37,7 +38,7 @@
 
         cbLaunchButton.SelectedItem = (_config.plungerLaunchButton + 1).ToString
         cbAverageReadings.SelectedItem = (_config.plungerAverageRead).ToString
-        AddHandler _board.BoardChanged, AddressOf _board_BoardChanged
+
     End Sub
 
     Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs)

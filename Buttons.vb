@@ -1,4 +1,7 @@
-﻿Public Class Buttons
+﻿
+
+Public Class Buttons
+
     Private _userControlList As New List(Of ucButton)
     Private _board As BoardInterface
     Private _config As BoardConfiguration
@@ -14,36 +17,38 @@
         _config = config
     End Sub
     Private Sub Buttons_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        For i As Integer = 0 To 5
-            Dim userControl As New ucButton(i)
-            userControl.Location = New Point(1, i * 25 + 50)
+        For i As Integer = 0 To 27
+            Dim userControl As New ucButton(i, _config)
+            userControl.Location = New Point(1, i * 33 + 40)
             Me.Controls.Add(userControl)
             _userControlList.Add(userControl)
         Next
-        For i As Integer = 0 To 5
-            Dim userControl As New ucButton(i + 6)
-            userControl.Location = New Point(60, i * 25 + 50)
-            Me.Controls.Add(userControl)
-            _userControlList.Add(userControl)
-        Next
-        For i As Integer = 0 To 5
-            Dim userControl As New ucButton(i + 12)
-            userControl.Location = New Point(120, i * 25 + 50)
-            Me.Controls.Add(userControl)
-            _userControlList.Add(userControl)
-        Next
-        For i As Integer = 0 To 5
-            Dim userControl As New ucButton(i + 18)
-            userControl.Location = New Point(180, i * 25 + 50)
-            Me.Controls.Add(userControl)
-            _userControlList.Add(userControl)
-        Next
+
+        'For i As Integer = 0 To 5
+        '    Dim userControl As New ucButton(i + 6)
+        '    userControl.Location = New Point(60, i * 25 + 50)
+        '    Me.Controls.Add(userControl)
+        '    _userControlList.Add(userControl)
+        'Next
+        'For i As Integer = 0 To 5
+        '    Dim userControl As New ucButton(i + 12)
+        '    userControl.Location = New Point(120, i * 25 + 50)
+        '    Me.Controls.Add(userControl)
+        '    _userControlList.Add(userControl)
+        'Next
+        'For i As Integer = 0 To 5
+        '    Dim userControl As New ucButton(i + 18)
+        '    userControl.Location = New Point(180, i * 25 + 50)
+        '    Me.Controls.Add(userControl)
+        '    _userControlList.Add(userControl)
+        'Next
         Try
             _board.enableAdminFunction(ADMIN.BUTTONS)
         Catch ex As Exception
             MessageBox.Show("Unable to set to button mode")
         End Try
         AddHandler _board.BoardChanged, AddressOf _board_BoardChanged
+        Me.KeyPreview = True
 
     End Sub
     Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs)
@@ -59,6 +64,8 @@
 
 
     End Sub
+
+
 
     Private Sub Outputs_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Try
@@ -160,4 +167,16 @@
     Private Sub btnStartSteamMapping_Click(sender As Object, e As EventArgs) Handles btnStartSteamMapping.Click
 
     End Sub
+
+    Private Sub Buttons_KeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles MyBase.PreviewKeyDown
+        For Each control In _userControlList
+            control.setKeyDown(e.KeyCode)
+        Next
+    End Sub
+    Protected Overrides Function ProcessDialogKey(keyData As Keys) As Boolean
+        For Each control In _userControlList
+            control.setKeyDown(keyData)
+        Next
+        Return MyBase.ProcessDialogKey(keyData)
+    End Function
 End Class

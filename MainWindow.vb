@@ -16,7 +16,7 @@ Public Class MainWindow
 
     Private version As Integer() = {1, 8, 0}
     'Private WithEvents arduino As RS232
-    Private WithEvents Board As BoardInterface
+    Private Board As BoardInterface
     Private config As BoardConfiguration
     Private connected As Boolean
     Private Sub MainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -48,6 +48,7 @@ Public Class MainWindow
                 btnConnect.Text = "Disconnect"
                 btnUpdateFirmware.Enabled = False
                 cbComPort.Enabled = False
+                AddHandler Board.BoardChanged, AddressOf Board_BoardChanged
                 Board.enableAdminFunction(ADMIN.SEND_CONFIG)
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
@@ -58,26 +59,32 @@ Public Class MainWindow
     End Sub
 
     Private Sub btnOutputs_Click(sender As Object, e As EventArgs) Handles btnOutputs.Click
-        If OutputsWindow Is Nothing Then
-            OutputsWindow = New Outputs(Board)
-        End If
+        RemoveHandler Board.BoardChanged, AddressOf Board_BoardChanged
+
+        OutputsWindow = New Outputs(Board)
+
         OutputsWindow.ShowDialog()
+        AddHandler Board.BoardChanged, AddressOf Board_BoardChanged
     End Sub
 
     Private Sub btnInputs_Click(sender As Object, e As EventArgs) Handles btnInputs.Click
-        If ButtonsWindow Is Nothing Then
-            ButtonsWindow = New Buttons(Board, config)
-        End If
+        RemoveHandler Board.BoardChanged, AddressOf Board_BoardChanged
+
+        ButtonsWindow = New Buttons(Board, config)
+
         ButtonsWindow.ShowDialog()
+        AddHandler Board.BoardChanged, AddressOf Board_BoardChanged
     End Sub
 
     Private Sub btnPlunger_Click(sender As Object, e As EventArgs) Handles btnPlunger.Click
-        If PlungerWindow Is Nothing Then
-            PlungerWindow = New Plunger(Board, config)
-        End If
+        RemoveHandler Board.BoardChanged, AddressOf Board_BoardChanged
+
+        PlungerWindow = New Plunger(Board, config)
+
         PlungerWindow.ShowDialog()
+        AddHandler Board.BoardChanged, AddressOf Board_BoardChanged
     End Sub
-    Private Sub Board_BoardChanged(sender As Object, e As BoardChangedArgs) Handles Board.BoardChanged
+    Private Sub Board_BoardChanged(sender As Object, e As BoardChangedArgs)
         If e.type = MESSAGE_TYPE.CONFIG Then
             config = e.config
             If config.accelerometer = False Then
@@ -111,19 +118,23 @@ Public Class MainWindow
     End Sub
 
     Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
-        If configWindow Is Nothing Then
-            configWindow = New Configuration(Board, config)
-        End If
+        RemoveHandler Board.BoardChanged, AddressOf Board_BoardChanged
+
+        configWindow = New Configuration(Board, config)
+
         configWindow.ShowDialog()
+        AddHandler Board.BoardChanged, AddressOf Board_BoardChanged
     End Sub
 
     Dim output As Boolean
     Private Sub btnAccel_Click(sender As Object, e As EventArgs) Handles btnAccel.Click
-        If AccelerometerWindow Is Nothing Then
-            AccelerometerWindow = New Accelerometer(Board, config)
-        End If
+        RemoveHandler Board.BoardChanged, AddressOf Board_BoardChanged
+
+        AccelerometerWindow = New Accelerometer(Board, config)
+
 
         AccelerometerWindow.ShowDialog()
+        AddHandler Board.BoardChanged, AddressOf Board_BoardChanged
 
     End Sub
 
@@ -207,4 +218,5 @@ Public Class MainWindow
 
 
     End Sub
+
 End Class
