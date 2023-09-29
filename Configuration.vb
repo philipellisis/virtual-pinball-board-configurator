@@ -69,8 +69,11 @@ Public Class Configuration
         End If
         tbTilt.Text = _config.accelerometerTilt.ToString
         tbMax.Text = _config.accelerometerMax.ToString
-        If _config.orentation > 3 Then
+        If (_config.orentation > 3 And _config.orentation < 8) Or (_config.orentation > 11) Then
             cbPinsFacingUp.Checked = True
+        End If
+        If (_config.orentation > 7) Then
+            cbSideMounted.Checked = True
         End If
 
         cbTiltButton.SelectedItem = (_config.tiltButton + 1).ToString
@@ -119,7 +122,7 @@ Public Class Configuration
 
 
             _config.accelerometer = CByte(cbAccelEnabled.Checked)
-            _config.setOrientationString(cbOrientation.SelectedItem, cbPinsFacingUp.Checked)
+            _config.setOrientationString(cbOrientation.SelectedItem, cbPinsFacingUp.Checked, cbSideMounted.Checked)
             _config.plungerMax = CShort(tbPlungerMax.Text)
             _config.plungerMid = CShort(tbPlungerMid.Text)
             _config.plungerMin = CShort(tbPlungerMin.Text)
@@ -162,14 +165,13 @@ Public Class Configuration
             MessageBox.Show("error saving configuration. Check that board is connected.")
         End Try
 
+
+
     End Sub
 
     Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs)
         Try
             If e.type = MESSAGE_TYPE.RESPONSE Then
-                If e.message = "Save Config Success" Then
-                    btnSaveConfig.Enabled = True
-                End If
                 MessageBox.Show(e.message)
                 _board.enableAdminFunction(ADMIN.OUTPUTS)
             End If
@@ -187,14 +189,6 @@ Public Class Configuration
 
     End Sub
 
-    Private Sub btnSaveConfig_Click(sender As Object, e As EventArgs) Handles btnSaveConfig.Click
-        Try
-            _board.saveConfigToEeprom()
-        Catch ex As Exception
-            MessageBox.Show("error saving to eeprom")
-        End Try
-
-    End Sub
 
     Private Sub tpGeneralSettings_Click(sender As Object, e As EventArgs) Handles tpGeneralSettings.Click
 

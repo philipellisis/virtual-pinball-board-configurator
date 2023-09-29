@@ -83,6 +83,9 @@ Public Class BoardConfiguration
     End Sub
     Public Function getOrientationString() As String
         Dim tempOrientation = orentation
+        If tempOrientation > 7 Then
+            tempOrientation -= 8
+        End If
         If tempOrientation > 3 Then
             tempOrientation -= 4
         End If
@@ -100,10 +103,10 @@ Public Class BoardConfiguration
         End If
         Return ""
     End Function
-    Public Sub setOrientationString(orientation As String, pins As Boolean)
-        Me.orentation = getIntegerFromOrientationString(orientation, pins)
+    Public Sub setOrientationString(orientation As String, pins As Boolean, sideMounted As Boolean)
+        Me.orentation = getIntegerFromOrientationString(orientation, pins, sideMounted)
     End Sub
-    Public Function getIntegerFromOrientationString(orientation As String, pins As Boolean) As Integer
+    Public Function getIntegerFromOrientationString(orientation As String, pins As Boolean, sideMounted As Boolean) As Integer
         Dim returnValue As Byte
         If orientation = "USB Facing Back" Then
             returnValue = 0
@@ -119,6 +122,9 @@ Public Class BoardConfiguration
         End If
         If pins Then
             returnValue += 4
+        End If
+        If sideMounted Then
+            returnValue += 8
         End If
         Return returnValue
     End Function

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Buttons
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Buttons
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Buttons))
         Me.Label1 = New System.Windows.Forms.Label()
@@ -49,7 +49,7 @@ Partial Class Buttons
         Me.btn33 = New System.Windows.Forms.Button()
         Me.btn34 = New System.Windows.Forms.Button()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.btnStartSteamMapping = New System.Windows.Forms.Button()
+        Me.btnSendCalibration = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -61,20 +61,18 @@ Partial Class Buttons
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Impact", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(8, 6)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label1.Location = New System.Drawing.Point(12, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(117, 23)
+        Me.Label1.Size = New System.Drawing.Size(171, 35)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Button Status"
         '
         'btn2
         '
         Me.btn2.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn2.Location = New System.Drawing.Point(348, 29)
-        Me.btn2.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn2.Location = New System.Drawing.Point(522, 45)
         Me.btn2.Name = "btn2"
-        Me.btn2.Size = New System.Drawing.Size(57, 46)
+        Me.btn2.Size = New System.Drawing.Size(86, 71)
         Me.btn2.TabIndex = 10
         Me.btn2.Text = "Right Magna"
         Me.btn2.UseVisualStyleBackColor = True
@@ -82,10 +80,9 @@ Partial Class Buttons
         'btn1
         '
         Me.btn1.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn1.Location = New System.Drawing.Point(348, 78)
-        Me.btn1.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn1.Location = New System.Drawing.Point(522, 120)
         Me.btn1.Name = "btn1"
-        Me.btn1.Size = New System.Drawing.Size(57, 46)
+        Me.btn1.Size = New System.Drawing.Size(86, 71)
         Me.btn1.TabIndex = 11
         Me.btn1.Text = "Right Flipper"
         Me.btn1.UseVisualStyleBackColor = True
@@ -93,10 +90,9 @@ Partial Class Buttons
         'btn3
         '
         Me.btn3.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn3.Location = New System.Drawing.Point(24, 78)
-        Me.btn3.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn3.Location = New System.Drawing.Point(36, 120)
         Me.btn3.Name = "btn3"
-        Me.btn3.Size = New System.Drawing.Size(60, 46)
+        Me.btn3.Size = New System.Drawing.Size(90, 71)
         Me.btn3.TabIndex = 13
         Me.btn3.Text = "Left Flipper"
         Me.btn3.UseVisualStyleBackColor = True
@@ -104,10 +100,9 @@ Partial Class Buttons
         'btn4
         '
         Me.btn4.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn4.Location = New System.Drawing.Point(24, 29)
-        Me.btn4.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn4.Location = New System.Drawing.Point(36, 45)
         Me.btn4.Name = "btn4"
-        Me.btn4.Size = New System.Drawing.Size(60, 46)
+        Me.btn4.Size = New System.Drawing.Size(90, 71)
         Me.btn4.TabIndex = 12
         Me.btn4.Text = "Left Magna"
         Me.btn4.UseVisualStyleBackColor = True
@@ -115,10 +110,9 @@ Partial Class Buttons
         'btn5
         '
         Me.btn5.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn5.Location = New System.Drawing.Point(8, 14)
-        Me.btn5.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn5.Location = New System.Drawing.Point(12, 22)
         Me.btn5.Name = "btn5"
-        Me.btn5.Size = New System.Drawing.Size(65, 22)
+        Me.btn5.Size = New System.Drawing.Size(98, 34)
         Me.btn5.TabIndex = 14
         Me.btn5.Text = "Button 5"
         Me.btn5.UseVisualStyleBackColor = True
@@ -126,10 +120,9 @@ Partial Class Buttons
         'btn9
         '
         Me.btn9.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn9.Location = New System.Drawing.Point(174, 20)
-        Me.btn9.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn9.Location = New System.Drawing.Point(261, 31)
         Me.btn9.Name = "btn9"
-        Me.btn9.Size = New System.Drawing.Size(56, 43)
+        Me.btn9.Size = New System.Drawing.Size(84, 66)
         Me.btn9.TabIndex = 18
         Me.btn9.Text = "Fire Button"
         Me.btn9.UseVisualStyleBackColor = True
@@ -137,10 +130,9 @@ Partial Class Buttons
         'btn32
         '
         Me.btn32.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn32.Location = New System.Drawing.Point(294, 138)
-        Me.btn32.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn32.Location = New System.Drawing.Point(441, 212)
         Me.btn32.Name = "btn32"
-        Me.btn32.Size = New System.Drawing.Size(85, 25)
+        Me.btn32.Size = New System.Drawing.Size(128, 38)
         Me.btn32.TabIndex = 19
         Me.btn32.Text = "Nudge Up"
         Me.btn32.UseVisualStyleBackColor = True
@@ -148,10 +140,9 @@ Partial Class Buttons
         'btn30
         '
         Me.btn30.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn30.Location = New System.Drawing.Point(337, 167)
-        Me.btn30.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn30.Location = New System.Drawing.Point(506, 257)
         Me.btn30.Name = "btn30"
-        Me.btn30.Size = New System.Drawing.Size(51, 44)
+        Me.btn30.Size = New System.Drawing.Size(76, 68)
         Me.btn30.TabIndex = 20
         Me.btn30.Text = "Nudge Right"
         Me.btn30.UseVisualStyleBackColor = True
@@ -159,10 +150,9 @@ Partial Class Buttons
         'btn29
         '
         Me.btn29.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn29.Location = New System.Drawing.Point(282, 167)
-        Me.btn29.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn29.Location = New System.Drawing.Point(423, 257)
         Me.btn29.Name = "btn29"
-        Me.btn29.Size = New System.Drawing.Size(51, 44)
+        Me.btn29.Size = New System.Drawing.Size(76, 68)
         Me.btn29.TabIndex = 21
         Me.btn29.Text = "Nudge Left"
         Me.btn29.UseVisualStyleBackColor = True
@@ -170,10 +160,9 @@ Partial Class Buttons
         'btn31
         '
         Me.btn31.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn31.Location = New System.Drawing.Point(294, 215)
-        Me.btn31.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn31.Location = New System.Drawing.Point(441, 331)
         Me.btn31.Name = "btn31"
-        Me.btn31.Size = New System.Drawing.Size(85, 25)
+        Me.btn31.Size = New System.Drawing.Size(128, 38)
         Me.btn31.TabIndex = 22
         Me.btn31.Text = "Nudge Down"
         Me.btn31.UseVisualStyleBackColor = True
@@ -181,10 +170,9 @@ Partial Class Buttons
         'bnt24
         '
         Me.bnt24.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.bnt24.Location = New System.Drawing.Point(272, 56)
-        Me.bnt24.Margin = New System.Windows.Forms.Padding(2)
+        Me.bnt24.Location = New System.Drawing.Point(408, 86)
         Me.bnt24.Name = "bnt24"
-        Me.bnt24.Size = New System.Drawing.Size(61, 49)
+        Me.bnt24.Size = New System.Drawing.Size(92, 75)
         Me.bnt24.TabIndex = 23
         Me.bnt24.Text = "Plunger Button"
         Me.bnt24.UseVisualStyleBackColor = True
@@ -192,10 +180,9 @@ Partial Class Buttons
         'btn25
         '
         Me.btn25.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn25.Location = New System.Drawing.Point(8, 40)
-        Me.btn25.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn25.Location = New System.Drawing.Point(12, 62)
         Me.btn25.Name = "btn25"
-        Me.btn25.Size = New System.Drawing.Size(65, 22)
+        Me.btn25.Size = New System.Drawing.Size(98, 34)
         Me.btn25.TabIndex = 24
         Me.btn25.Text = "Button 25"
         Me.btn25.UseVisualStyleBackColor = True
@@ -205,11 +192,9 @@ Partial Class Buttons
         Me.GroupBox1.Controls.Add(Me.btn25)
         Me.GroupBox1.Controls.Add(Me.btn5)
         Me.GroupBox1.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(88, 95)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2)
+        Me.GroupBox1.Location = New System.Drawing.Point(132, 146)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2)
-        Me.GroupBox1.Size = New System.Drawing.Size(83, 70)
+        Me.GroupBox1.Size = New System.Drawing.Size(124, 108)
         Me.GroupBox1.TabIndex = 28
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Button 5"
@@ -219,11 +204,9 @@ Partial Class Buttons
         Me.GroupBox2.Controls.Add(Me.btn26)
         Me.GroupBox2.Controls.Add(Me.btn6)
         Me.GroupBox2.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(174, 95)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(2)
+        Me.GroupBox2.Location = New System.Drawing.Point(261, 146)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(2)
-        Me.GroupBox2.Size = New System.Drawing.Size(83, 70)
+        Me.GroupBox2.Size = New System.Drawing.Size(124, 108)
         Me.GroupBox2.TabIndex = 29
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Button 6"
@@ -231,10 +214,9 @@ Partial Class Buttons
         'btn26
         '
         Me.btn26.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn26.Location = New System.Drawing.Point(8, 40)
-        Me.btn26.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn26.Location = New System.Drawing.Point(12, 62)
         Me.btn26.Name = "btn26"
-        Me.btn26.Size = New System.Drawing.Size(65, 22)
+        Me.btn26.Size = New System.Drawing.Size(98, 34)
         Me.btn26.TabIndex = 24
         Me.btn26.Text = "Button 26"
         Me.btn26.UseVisualStyleBackColor = True
@@ -242,10 +224,9 @@ Partial Class Buttons
         'btn6
         '
         Me.btn6.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn6.Location = New System.Drawing.Point(8, 14)
-        Me.btn6.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn6.Location = New System.Drawing.Point(12, 22)
         Me.btn6.Name = "btn6"
-        Me.btn6.Size = New System.Drawing.Size(65, 22)
+        Me.btn6.Size = New System.Drawing.Size(98, 34)
         Me.btn6.TabIndex = 14
         Me.btn6.Text = "Button 6"
         Me.btn6.UseVisualStyleBackColor = True
@@ -255,11 +236,9 @@ Partial Class Buttons
         Me.GroupBox3.Controls.Add(Me.btn27)
         Me.GroupBox3.Controls.Add(Me.btn7)
         Me.GroupBox3.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(88, 169)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(2)
+        Me.GroupBox3.Location = New System.Drawing.Point(132, 260)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(2)
-        Me.GroupBox3.Size = New System.Drawing.Size(83, 70)
+        Me.GroupBox3.Size = New System.Drawing.Size(124, 108)
         Me.GroupBox3.TabIndex = 30
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Button 7"
@@ -267,10 +246,9 @@ Partial Class Buttons
         'btn27
         '
         Me.btn27.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn27.Location = New System.Drawing.Point(8, 40)
-        Me.btn27.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn27.Location = New System.Drawing.Point(12, 62)
         Me.btn27.Name = "btn27"
-        Me.btn27.Size = New System.Drawing.Size(65, 22)
+        Me.btn27.Size = New System.Drawing.Size(98, 34)
         Me.btn27.TabIndex = 24
         Me.btn27.Text = "Button 27"
         Me.btn27.UseVisualStyleBackColor = True
@@ -278,10 +256,9 @@ Partial Class Buttons
         'btn7
         '
         Me.btn7.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn7.Location = New System.Drawing.Point(8, 14)
-        Me.btn7.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn7.Location = New System.Drawing.Point(12, 22)
         Me.btn7.Name = "btn7"
-        Me.btn7.Size = New System.Drawing.Size(65, 22)
+        Me.btn7.Size = New System.Drawing.Size(98, 34)
         Me.btn7.TabIndex = 14
         Me.btn7.Text = "Button 7"
         Me.btn7.UseVisualStyleBackColor = True
@@ -291,11 +268,9 @@ Partial Class Buttons
         Me.GroupBox4.Controls.Add(Me.bnt28)
         Me.GroupBox4.Controls.Add(Me.bnt8)
         Me.GroupBox4.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(174, 169)
-        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(2)
+        Me.GroupBox4.Location = New System.Drawing.Point(261, 260)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(2)
-        Me.GroupBox4.Size = New System.Drawing.Size(83, 70)
+        Me.GroupBox4.Size = New System.Drawing.Size(124, 108)
         Me.GroupBox4.TabIndex = 30
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Button 8"
@@ -303,10 +278,9 @@ Partial Class Buttons
         'bnt28
         '
         Me.bnt28.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.bnt28.Location = New System.Drawing.Point(8, 40)
-        Me.bnt28.Margin = New System.Windows.Forms.Padding(2)
+        Me.bnt28.Location = New System.Drawing.Point(12, 62)
         Me.bnt28.Name = "bnt28"
-        Me.bnt28.Size = New System.Drawing.Size(65, 22)
+        Me.bnt28.Size = New System.Drawing.Size(98, 34)
         Me.bnt28.TabIndex = 24
         Me.bnt28.Text = "Button 28"
         Me.bnt28.UseVisualStyleBackColor = True
@@ -314,10 +288,9 @@ Partial Class Buttons
         'bnt8
         '
         Me.bnt8.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.bnt8.Location = New System.Drawing.Point(8, 14)
-        Me.bnt8.Margin = New System.Windows.Forms.Padding(2)
+        Me.bnt8.Location = New System.Drawing.Point(12, 22)
         Me.bnt8.Name = "bnt8"
-        Me.bnt8.Size = New System.Drawing.Size(65, 22)
+        Me.bnt8.Size = New System.Drawing.Size(98, 34)
         Me.bnt8.TabIndex = 14
         Me.bnt8.Text = "Button 8"
         Me.bnt8.UseVisualStyleBackColor = True
@@ -325,10 +298,9 @@ Partial Class Buttons
         'btn33
         '
         Me.btn33.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn33.Location = New System.Drawing.Point(260, 29)
-        Me.btn33.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn33.Location = New System.Drawing.Point(390, 45)
         Me.btn33.Name = "btn33"
-        Me.btn33.Size = New System.Drawing.Size(85, 25)
+        Me.btn33.Size = New System.Drawing.Size(128, 38)
         Me.btn33.TabIndex = 31
         Me.btn33.Text = "Plunger Push"
         Me.btn33.UseVisualStyleBackColor = True
@@ -336,10 +308,9 @@ Partial Class Buttons
         'btn34
         '
         Me.btn34.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn34.Location = New System.Drawing.Point(261, 107)
-        Me.btn34.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn34.Location = New System.Drawing.Point(392, 165)
         Me.btn34.Name = "btn34"
-        Me.btn34.Size = New System.Drawing.Size(85, 25)
+        Me.btn34.Size = New System.Drawing.Size(128, 38)
         Me.btn34.TabIndex = 32
         Me.btn34.Text = "Plunger Pull"
         Me.btn34.UseVisualStyleBackColor = True
@@ -362,36 +333,36 @@ Partial Class Buttons
         Me.GroupBox5.Controls.Add(Me.btn29)
         Me.GroupBox5.Controls.Add(Me.bnt24)
         Me.GroupBox5.Controls.Add(Me.btn31)
-        Me.GroupBox5.Location = New System.Drawing.Point(365, 12)
+        Me.GroupBox5.Location = New System.Drawing.Point(548, 18)
+        Me.GroupBox5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(469, 264)
+        Me.GroupBox5.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox5.Size = New System.Drawing.Size(704, 406)
         Me.GroupBox5.TabIndex = 35
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Send Button Presses"
         '
-        'btnStartSteamMapping
+        'btnSendCalibration
         '
-        Me.btnStartSteamMapping.Font = New System.Drawing.Font("Impact", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnStartSteamMapping.Location = New System.Drawing.Point(739, 281)
-        Me.btnStartSteamMapping.Margin = New System.Windows.Forms.Padding(2)
-        Me.btnStartSteamMapping.Name = "btnStartSteamMapping"
-        Me.btnStartSteamMapping.Size = New System.Drawing.Size(95, 68)
-        Me.btnStartSteamMapping.TabIndex = 36
-        Me.btnStartSteamMapping.Text = "Start Steam Button Mapping"
-        Me.btnStartSteamMapping.UseVisualStyleBackColor = True
-        Me.btnStartSteamMapping.Visible = False
+        Me.btnSendCalibration.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSendCalibration.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSendCalibration.Location = New System.Drawing.Point(1070, 432)
+        Me.btnSendCalibration.Name = "btnSendCalibration"
+        Me.btnSendCalibration.Size = New System.Drawing.Size(184, 82)
+        Me.btnSendCalibration.TabIndex = 36
+        Me.btnSendCalibration.Text = "Save Config"
+        Me.btnSendCalibration.UseVisualStyleBackColor = True
         '
         'Buttons
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(856, 360)
-        Me.Controls.Add(Me.btnStartSteamMapping)
+        Me.ClientSize = New System.Drawing.Size(1284, 706)
+        Me.Controls.Add(Me.btnSendCalibration)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.Label1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Buttons"
         Me.Text = "Buttons"
         Me.GroupBox1.ResumeLayout(False)
@@ -430,5 +401,5 @@ Partial Class Buttons
     Friend WithEvents btn33 As Button
     Friend WithEvents btn34 As Button
     Friend WithEvents GroupBox5 As GroupBox
-    Friend WithEvents btnStartSteamMapping As Button
+    Friend WithEvents btnSendCalibration As Button
 End Class

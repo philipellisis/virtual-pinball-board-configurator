@@ -108,6 +108,19 @@ Public Class KeyboardEventMapper
     Const VK_RCONTROL = &HA3&
     Const VK_LMENU = &HA4&
     Const VK_RMENU = &HA5&
+    Const VK_OEM_1 = &HBA&
+    Const VK_OEM_PLUS = &HBB&
+    Const VK_OEM_COMMA = &HBC&
+    Const VK_OEM_MINUS = &HBD&
+    Const VK_OEM_PERIOD = &HBE&
+    Const VK_OEM_2 = &HBF&
+    Const VK_OEM_3 = &HC0&
+    Const VK_OEM_4 = &HDB&
+    Const VK_OEM_5 = &HDC&
+    Const VK_OEM_6 = &HDD&
+    Const VK_OEM_7 = &HDE&
+
+
 
 
 
@@ -216,7 +229,19 @@ Public Class KeyboardEventMapper
         If (GetAsyncKeyState(VK_RCONTROL) And &H8000) Then Return 132
         If (GetAsyncKeyState(VK_LMENU) And &H8000) Then Return 130
         If (GetAsyncKeyState(VK_RMENU) And &H8000) Then Return 134
-        Return CByte(originalNumber.ToString)
+        If (GetAsyncKeyState(VK_OEM_1) And &H8000) Then Return 59
+        If (GetAsyncKeyState(VK_OEM_PLUS) And &H8000) Then Return 61
+        If (GetAsyncKeyState(VK_OEM_COMMA) And &H8000) Then Return 44
+        If (GetAsyncKeyState(VK_OEM_MINUS) And &H8000) Then Return 45
+        If (GetAsyncKeyState(VK_OEM_PERIOD) And &H8000) Then Return 46
+        If (GetAsyncKeyState(VK_OEM_2) And &H8000) Then Return 47
+        If (GetAsyncKeyState(VK_OEM_3) And &H8000) Then Return 126
+        If (GetAsyncKeyState(VK_OEM_4) And &H8000) Then Return 91
+        If (GetAsyncKeyState(VK_OEM_5) And &H8000) Then Return 92
+        If (GetAsyncKeyState(VK_OEM_6) And &H8000) Then Return 93
+        If (GetAsyncKeyState(VK_OEM_7) And &H8000) Then Return 34
+
+        Return CByte(originalNumber)
     End Function
 
     Public Shared Function NumberToText(number As Byte) As String
@@ -335,6 +360,18 @@ Public Class KeyboardEventMapper
         If number = 130 Then Return "Left ALT key"
         If number = 134 Then Return "Right ALT key"
         If number = 0 Then Return "None"
+        If number = 59 Then Return "; key"
+        If number = 61 Then Return "= key"
+        If number = 44 Then Return ", key"
+        If number = 45 Then Return "- key"
+        If number = 46 Then Return ". Key"
+        If number = 47 Then Return "/ key"
+        If number = 126 Then Return "~ key"
+        If number = 91 Then Return "[ key"
+        If number = 92 Then Return "\ key"
+        If number = 93 Then Return " ] key"
+        If number = 34 Then Return "' key"
+
         Return number.ToString()
     End Function
 End Class

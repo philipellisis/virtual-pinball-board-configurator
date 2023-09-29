@@ -54,6 +54,7 @@ Partial Class Accelerometer
         Me.cbPinsFacingUp = New System.Windows.Forms.CheckBox()
         Me.cbTiltButton = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.cbSideMounted = New System.Windows.Forms.CheckBox()
         CType(Me.pbAxis, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -61,10 +62,9 @@ Partial Class Accelerometer
         '
         Me.btnOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnOK.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnOK.Location = New System.Drawing.Point(625, 517)
-        Me.btnOK.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnOK.Location = New System.Drawing.Point(938, 795)
         Me.btnOK.Name = "btnOK"
-        Me.btnOK.Size = New System.Drawing.Size(71, 32)
+        Me.btnOK.Size = New System.Drawing.Size(106, 49)
         Me.btnOK.TabIndex = 0
         Me.btnOK.Text = "Exit"
         Me.btnOK.UseVisualStyleBackColor = True
@@ -72,10 +72,9 @@ Partial Class Accelerometer
         'pbAxis
         '
         Me.pbAxis.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.pbAxis.Location = New System.Drawing.Point(93, 20)
-        Me.pbAxis.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.pbAxis.Location = New System.Drawing.Point(140, 31)
         Me.pbAxis.Name = "pbAxis"
-        Me.pbAxis.Size = New System.Drawing.Size(357, 350)
+        Me.pbAxis.Size = New System.Drawing.Size(534, 536)
         Me.pbAxis.TabIndex = 1
         Me.pbAxis.TabStop = False
         '
@@ -83,9 +82,10 @@ Partial Class Accelerometer
         '
         Me.btnDeadZone.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnDeadZone.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDeadZone.Location = New System.Drawing.Point(543, 18)
+        Me.btnDeadZone.Location = New System.Drawing.Point(814, 28)
+        Me.btnDeadZone.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnDeadZone.Name = "btnDeadZone"
-        Me.btnDeadZone.Size = New System.Drawing.Size(147, 46)
+        Me.btnDeadZone.Size = New System.Drawing.Size(220, 71)
         Me.btnDeadZone.TabIndex = 2
         Me.btnDeadZone.Text = "Record Dead Zone"
         Me.btnDeadZone.UseVisualStyleBackColor = True
@@ -95,9 +95,10 @@ Partial Class Accelerometer
         Me.lblX.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblX.AutoSize = True
         Me.lblX.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblX.Location = New System.Drawing.Point(568, 257)
+        Me.lblX.Location = New System.Drawing.Point(852, 395)
+        Me.lblX.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblX.Name = "lblX"
-        Me.lblX.Size = New System.Drawing.Size(13, 17)
+        Me.lblX.Size = New System.Drawing.Size(22, 25)
         Me.lblX.TabIndex = 3
         Me.lblX.Text = "X"
         '
@@ -106,9 +107,10 @@ Partial Class Accelerometer
         Me.tbX.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbX.Enabled = False
         Me.tbX.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbX.Location = New System.Drawing.Point(587, 252)
+        Me.tbX.Location = New System.Drawing.Point(880, 388)
+        Me.tbX.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbX.Name = "tbX"
-        Me.tbX.Size = New System.Drawing.Size(100, 23)
+        Me.tbX.Size = New System.Drawing.Size(148, 31)
         Me.tbX.TabIndex = 4
         '
         'tbY
@@ -116,9 +118,10 @@ Partial Class Accelerometer
         Me.tbY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbY.Enabled = False
         Me.tbY.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbY.Location = New System.Drawing.Point(587, 281)
+        Me.tbY.Location = New System.Drawing.Point(880, 432)
+        Me.tbY.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbY.Name = "tbY"
-        Me.tbY.Size = New System.Drawing.Size(100, 23)
+        Me.tbY.Size = New System.Drawing.Size(148, 31)
         Me.tbY.TabIndex = 6
         '
         'lblY
@@ -126,9 +129,10 @@ Partial Class Accelerometer
         Me.lblY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblY.AutoSize = True
         Me.lblY.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblY.Location = New System.Drawing.Point(567, 287)
+        Me.lblY.Location = New System.Drawing.Point(850, 442)
+        Me.lblY.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblY.Name = "lblY"
-        Me.lblY.Size = New System.Drawing.Size(14, 17)
+        Me.lblY.Size = New System.Drawing.Size(21, 25)
         Me.lblY.TabIndex = 5
         Me.lblY.Text = "Y"
         '
@@ -136,9 +140,10 @@ Partial Class Accelerometer
         '
         Me.tbDeadZone.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbDeadZone.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbDeadZone.Location = New System.Drawing.Point(587, 172)
+        Me.tbDeadZone.Location = New System.Drawing.Point(880, 265)
+        Me.tbDeadZone.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbDeadZone.Name = "tbDeadZone"
-        Me.tbDeadZone.Size = New System.Drawing.Size(100, 23)
+        Me.tbDeadZone.Size = New System.Drawing.Size(148, 31)
         Me.tbDeadZone.TabIndex = 8
         '
         'lblDeadZone
@@ -146,9 +151,10 @@ Partial Class Accelerometer
         Me.lblDeadZone.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblDeadZone.AutoSize = True
         Me.lblDeadZone.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDeadZone.Location = New System.Drawing.Point(519, 175)
+        Me.lblDeadZone.Location = New System.Drawing.Point(778, 269)
+        Me.lblDeadZone.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDeadZone.Name = "lblDeadZone"
-        Me.lblDeadZone.Size = New System.Drawing.Size(64, 17)
+        Me.lblDeadZone.Size = New System.Drawing.Size(95, 25)
         Me.lblDeadZone.TabIndex = 7
         Me.lblDeadZone.Text = "Dead Zone"
         '
@@ -157,9 +163,10 @@ Partial Class Accelerometer
         Me.lblMultiplier.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblMultiplier.AutoSize = True
         Me.lblMultiplier.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMultiplier.Location = New System.Drawing.Point(484, 377)
+        Me.lblMultiplier.Location = New System.Drawing.Point(726, 580)
+        Me.lblMultiplier.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMultiplier.Name = "lblMultiplier"
-        Me.lblMultiplier.Size = New System.Drawing.Size(66, 17)
+        Me.lblMultiplier.Size = New System.Drawing.Size(96, 25)
         Me.lblMultiplier.TabIndex = 9
         Me.lblMultiplier.Text = "Sensitivity"
         '
@@ -168,9 +175,10 @@ Partial Class Accelerometer
         Me.tbYRaw.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbYRaw.Enabled = False
         Me.tbYRaw.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbYRaw.Location = New System.Drawing.Point(587, 339)
+        Me.tbYRaw.Location = New System.Drawing.Point(880, 522)
+        Me.tbYRaw.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbYRaw.Name = "tbYRaw"
-        Me.tbYRaw.Size = New System.Drawing.Size(100, 23)
+        Me.tbYRaw.Size = New System.Drawing.Size(148, 31)
         Me.tbYRaw.TabIndex = 14
         '
         'lblYRaw
@@ -178,9 +186,10 @@ Partial Class Accelerometer
         Me.lblYRaw.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblYRaw.AutoSize = True
         Me.lblYRaw.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblYRaw.Location = New System.Drawing.Point(543, 344)
+        Me.lblYRaw.Location = New System.Drawing.Point(814, 529)
+        Me.lblYRaw.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblYRaw.Name = "lblYRaw"
-        Me.lblYRaw.Size = New System.Drawing.Size(39, 17)
+        Me.lblYRaw.Size = New System.Drawing.Size(59, 25)
         Me.lblYRaw.TabIndex = 13
         Me.lblYRaw.Text = "Y Raw"
         '
@@ -189,9 +198,10 @@ Partial Class Accelerometer
         Me.tbXRaw.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbXRaw.Enabled = False
         Me.tbXRaw.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbXRaw.Location = New System.Drawing.Point(587, 309)
+        Me.tbXRaw.Location = New System.Drawing.Point(880, 475)
+        Me.tbXRaw.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbXRaw.Name = "tbXRaw"
-        Me.tbXRaw.Size = New System.Drawing.Size(100, 23)
+        Me.tbXRaw.Size = New System.Drawing.Size(148, 31)
         Me.tbXRaw.TabIndex = 12
         '
         'lblXRaw
@@ -199,9 +209,10 @@ Partial Class Accelerometer
         Me.lblXRaw.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblXRaw.AutoSize = True
         Me.lblXRaw.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblXRaw.Location = New System.Drawing.Point(544, 315)
+        Me.lblXRaw.Location = New System.Drawing.Point(816, 485)
+        Me.lblXRaw.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblXRaw.Name = "lblXRaw"
-        Me.lblXRaw.Size = New System.Drawing.Size(38, 17)
+        Me.lblXRaw.Size = New System.Drawing.Size(60, 25)
         Me.lblXRaw.TabIndex = 11
         Me.lblXRaw.Text = "X Raw"
         '
@@ -209,10 +220,9 @@ Partial Class Accelerometer
         '
         Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSave.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(501, 517)
-        Me.btnSave.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnSave.Location = New System.Drawing.Point(752, 795)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(114, 32)
+        Me.btnSave.Size = New System.Drawing.Size(171, 49)
         Me.btnSave.TabIndex = 15
         Me.btnSave.Text = "Save Config"
         Me.btnSave.UseVisualStyleBackColor = True
@@ -224,10 +234,9 @@ Partial Class Accelerometer
         Me.cbOrientation.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbOrientation.FormattingEnabled = True
         Me.cbOrientation.Items.AddRange(New Object() {"USB Facing Back", "USB Facing Right", "USB Facing Left", "USB Facing Front"})
-        Me.cbOrientation.Location = New System.Drawing.Point(553, 401)
-        Me.cbOrientation.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbOrientation.Location = New System.Drawing.Point(830, 617)
         Me.cbOrientation.Name = "cbOrientation"
-        Me.cbOrientation.Size = New System.Drawing.Size(136, 25)
+        Me.cbOrientation.Size = New System.Drawing.Size(202, 33)
         Me.cbOrientation.TabIndex = 28
         '
         'Label14
@@ -235,10 +244,9 @@ Partial Class Accelerometer
         Me.Label14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(441, 403)
-        Me.Label14.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label14.Location = New System.Drawing.Point(662, 620)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(114, 18)
+        Me.Label14.Size = New System.Drawing.Size(161, 25)
         Me.Label14.TabIndex = 27
         Me.Label14.Text = "Device Orientation"
         '
@@ -246,9 +254,10 @@ Partial Class Accelerometer
         '
         Me.tbTilt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbTilt.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbTilt.Location = New System.Drawing.Point(587, 197)
+        Me.tbTilt.Location = New System.Drawing.Point(880, 303)
+        Me.tbTilt.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbTilt.Name = "tbTilt"
-        Me.tbTilt.Size = New System.Drawing.Size(100, 23)
+        Me.tbTilt.Size = New System.Drawing.Size(148, 31)
         Me.tbTilt.TabIndex = 30
         '
         'Label1
@@ -256,9 +265,10 @@ Partial Class Accelerometer
         Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(519, 200)
+        Me.Label1.Location = New System.Drawing.Point(778, 308)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(26, 17)
+        Me.Label1.Size = New System.Drawing.Size(37, 25)
         Me.Label1.TabIndex = 29
         Me.Label1.Text = "Tilt"
         '
@@ -266,9 +276,10 @@ Partial Class Accelerometer
         '
         Me.btnTilt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnTilt.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnTilt.Location = New System.Drawing.Point(543, 68)
+        Me.btnTilt.Location = New System.Drawing.Point(814, 105)
+        Me.btnTilt.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnTilt.Name = "btnTilt"
-        Me.btnTilt.Size = New System.Drawing.Size(147, 46)
+        Me.btnTilt.Size = New System.Drawing.Size(220, 71)
         Me.btnTilt.TabIndex = 31
         Me.btnTilt.Text = "Record Tilt Value"
         Me.btnTilt.UseVisualStyleBackColor = True
@@ -277,9 +288,10 @@ Partial Class Accelerometer
         '
         Me.btnToggleOutput.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnToggleOutput.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnToggleOutput.Location = New System.Drawing.Point(93, 380)
+        Me.btnToggleOutput.Location = New System.Drawing.Point(140, 585)
+        Me.btnToggleOutput.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnToggleOutput.Name = "btnToggleOutput"
-        Me.btnToggleOutput.Size = New System.Drawing.Size(147, 46)
+        Me.btnToggleOutput.Size = New System.Drawing.Size(220, 71)
         Me.btnToggleOutput.TabIndex = 32
         Me.btnToggleOutput.Text = "Toggle Output On"
         Me.btnToggleOutput.UseVisualStyleBackColor = True
@@ -291,19 +303,19 @@ Partial Class Accelerometer
         Me.cbOutputNumber.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbOutputNumber.FormattingEnabled = True
         Me.cbOutputNumber.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63"})
-        Me.cbOutputNumber.Location = New System.Drawing.Point(245, 394)
-        Me.cbOutputNumber.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbOutputNumber.Location = New System.Drawing.Point(368, 606)
         Me.cbOutputNumber.Name = "cbOutputNumber"
-        Me.cbOutputNumber.Size = New System.Drawing.Size(102, 25)
+        Me.cbOutputNumber.Size = New System.Drawing.Size(151, 33)
         Me.cbOutputNumber.TabIndex = 33
         '
         'tbMax
         '
         Me.tbMax.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbMax.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbMax.Location = New System.Drawing.Point(587, 224)
+        Me.tbMax.Location = New System.Drawing.Point(880, 345)
+        Me.tbMax.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbMax.Name = "tbMax"
-        Me.tbMax.Size = New System.Drawing.Size(100, 23)
+        Me.tbMax.Size = New System.Drawing.Size(148, 31)
         Me.tbMax.TabIndex = 35
         '
         'Label2
@@ -311,9 +323,10 @@ Partial Class Accelerometer
         Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(519, 227)
+        Me.Label2.Location = New System.Drawing.Point(778, 349)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(29, 17)
+        Me.Label2.Size = New System.Drawing.Size(45, 25)
         Me.Label2.TabIndex = 34
         Me.Label2.Text = "Max"
         '
@@ -321,9 +334,10 @@ Partial Class Accelerometer
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(543, 117)
+        Me.Button1.Location = New System.Drawing.Point(814, 180)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(147, 46)
+        Me.Button1.Size = New System.Drawing.Size(220, 71)
         Me.Button1.TabIndex = 36
         Me.Button1.Text = "Record Max Value"
         Me.Button1.UseVisualStyleBackColor = True
@@ -335,20 +349,18 @@ Partial Class Accelerometer
         Me.cbMultiplier.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbMultiplier.FormattingEnabled = True
         Me.cbMultiplier.Items.AddRange(New Object() {"2G (Most Sensitive)", "4G", "8G", "16G (Least Sensitive)"})
-        Me.cbMultiplier.Location = New System.Drawing.Point(553, 372)
-        Me.cbMultiplier.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbMultiplier.Location = New System.Drawing.Point(830, 572)
         Me.cbMultiplier.Name = "cbMultiplier"
-        Me.cbMultiplier.Size = New System.Drawing.Size(135, 25)
+        Me.cbMultiplier.Size = New System.Drawing.Size(200, 33)
         Me.cbMultiplier.TabIndex = 37
         '
         'cbPinsFacingUp
         '
         Me.cbPinsFacingUp.AutoSize = True
         Me.cbPinsFacingUp.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbPinsFacingUp.Location = New System.Drawing.Point(581, 430)
-        Me.cbPinsFacingUp.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbPinsFacingUp.Location = New System.Drawing.Point(872, 662)
         Me.cbPinsFacingUp.Name = "cbPinsFacingUp"
-        Me.cbPinsFacingUp.Size = New System.Drawing.Size(109, 22)
+        Me.cbPinsFacingUp.Size = New System.Drawing.Size(154, 29)
         Me.cbPinsFacingUp.TabIndex = 39
         Me.cbPinsFacingUp.Text = "Pins Facing Up"
         Me.cbPinsFacingUp.UseVisualStyleBackColor = True
@@ -359,10 +371,9 @@ Partial Class Accelerometer
         Me.cbTiltButton.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbTiltButton.FormattingEnabled = True
         Me.cbTiltButton.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
-        Me.cbTiltButton.Location = New System.Drawing.Point(635, 456)
-        Me.cbTiltButton.Margin = New System.Windows.Forms.Padding(2)
+        Me.cbTiltButton.Location = New System.Drawing.Point(952, 734)
         Me.cbTiltButton.Name = "cbTiltButton"
-        Me.cbTiltButton.Size = New System.Drawing.Size(52, 25)
+        Me.cbTiltButton.Size = New System.Drawing.Size(76, 33)
         Me.cbTiltButton.TabIndex = 40
         '
         'Label3
@@ -370,18 +381,29 @@ Partial Class Accelerometer
         Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(566, 459)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label3.Location = New System.Drawing.Point(849, 738)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(65, 18)
+        Me.Label3.Size = New System.Drawing.Size(94, 25)
         Me.Label3.TabIndex = 41
         Me.Label3.Text = "Tilt Button"
         '
+        'cbSideMounted
+        '
+        Me.cbSideMounted.AutoSize = True
+        Me.cbSideMounted.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSideMounted.Location = New System.Drawing.Point(872, 697)
+        Me.cbSideMounted.Name = "cbSideMounted"
+        Me.cbSideMounted.Size = New System.Drawing.Size(171, 29)
+        Me.cbSideMounted.TabIndex = 42
+        Me.cbSideMounted.Text = "Mounted on Side"
+        Me.cbSideMounted.UseVisualStyleBackColor = True
+        '
         'Accelerometer
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(707, 560)
+        Me.ClientSize = New System.Drawing.Size(1060, 862)
+        Me.Controls.Add(Me.cbSideMounted)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.cbTiltButton)
         Me.Controls.Add(Me.cbPinsFacingUp)
@@ -412,7 +434,6 @@ Partial Class Accelerometer
         Me.Controls.Add(Me.pbAxis)
         Me.Controls.Add(Me.btnOK)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "Accelerometer"
         Me.Text = "Accelerometer"
         CType(Me.pbAxis, System.ComponentModel.ISupportInitialize).EndInit()
@@ -451,4 +472,5 @@ Partial Class Accelerometer
     Friend WithEvents cbPinsFacingUp As CheckBox
     Friend WithEvents cbTiltButton As ComboBox
     Friend WithEvents Label3 As Label
+    Friend WithEvents cbSideMounted As CheckBox
 End Class

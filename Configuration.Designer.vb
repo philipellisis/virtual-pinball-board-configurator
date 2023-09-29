@@ -26,6 +26,8 @@ Partial Class Configuration
         Me.tbMain = New System.Windows.Forms.TabControl()
         Me.tpGeneralSettings = New System.Windows.Forms.TabPage()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.cbShiftButton = New System.Windows.Forms.ComboBox()
         Me.rbNightModePush = New System.Windows.Forms.RadioButton()
         Me.rbNightModeToggle = New System.Windows.Forms.RadioButton()
         Me.Label18 = New System.Windows.Forms.Label()
@@ -79,9 +81,7 @@ Partial Class Configuration
         Me.tpExpansion1 = New System.Windows.Forms.TabPage()
         Me.tpExpansion2 = New System.Windows.Forms.TabPage()
         Me.btnSave = New System.Windows.Forms.Button()
-        Me.btnSaveConfig = New System.Windows.Forms.Button()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.cbShiftButton = New System.Windows.Forms.ComboBox()
+        Me.cbSideMounted = New System.Windows.Forms.CheckBox()
         Me.tbMain.SuspendLayout()
         Me.tpGeneralSettings.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -118,7 +118,7 @@ Partial Class Configuration
         Me.tpGeneralSettings.Controls.Add(Me.GroupBox1)
         Me.tpGeneralSettings.Location = New System.Drawing.Point(4, 34)
         Me.tpGeneralSettings.Name = "tpGeneralSettings"
-        Me.tpGeneralSettings.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tpGeneralSettings.Padding = New System.Windows.Forms.Padding(3)
         Me.tpGeneralSettings.Size = New System.Drawing.Size(1220, 739)
         Me.tpGeneralSettings.TabIndex = 0
         Me.tpGeneralSettings.Text = "Main Settings"
@@ -138,6 +138,28 @@ Partial Class Configuration
         Me.GroupBox4.TabIndex = 50
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Buttons"
+        '
+        'Label19
+        '
+        Me.Label19.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.Location = New System.Drawing.Point(79, 236)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(106, 25)
+        Me.Label19.TabIndex = 55
+        Me.Label19.Text = "Shift Button"
+        '
+        'cbShiftButton
+        '
+        Me.cbShiftButton.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbShiftButton.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbShiftButton.FormattingEnabled = True
+        Me.cbShiftButton.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
+        Me.cbShiftButton.Location = New System.Drawing.Point(200, 232)
+        Me.cbShiftButton.Name = "cbShiftButton"
+        Me.cbShiftButton.Size = New System.Drawing.Size(76, 33)
+        Me.cbShiftButton.TabIndex = 54
         '
         'rbNightModePush
         '
@@ -187,6 +209,7 @@ Partial Class Configuration
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.cbSideMounted)
         Me.GroupBox3.Controls.Add(Me.Label17)
         Me.GroupBox3.Controls.Add(Me.cbTiltButton)
         Me.GroupBox3.Controls.Add(Me.cbMultiplier)
@@ -259,7 +282,7 @@ Partial Class Configuration
         '
         Me.cbPinsFacingUp.AutoSize = True
         Me.cbPinsFacingUp.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbPinsFacingUp.Location = New System.Drawing.Point(176, 140)
+        Me.cbPinsFacingUp.Location = New System.Drawing.Point(38, 140)
         Me.cbPinsFacingUp.Name = "cbPinsFacingUp"
         Me.cbPinsFacingUp.Size = New System.Drawing.Size(154, 29)
         Me.cbPinsFacingUp.TabIndex = 40
@@ -731,52 +754,29 @@ Partial Class Configuration
         'btnSave
         '
         Me.btnSave.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(662, 5)
+        Me.btnSave.Location = New System.Drawing.Point(996, 5)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(220, 49)
         Me.btnSave.TabIndex = 1
-        Me.btnSave.Text = "Upload Config"
+        Me.btnSave.Text = "Save Config"
         Me.btnSave.UseVisualStyleBackColor = True
         '
-        'btnSaveConfig
+        'cbSideMounted
         '
-        Me.btnSaveConfig.Enabled = False
-        Me.btnSaveConfig.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSaveConfig.Location = New System.Drawing.Point(886, 5)
-        Me.btnSaveConfig.Name = "btnSaveConfig"
-        Me.btnSaveConfig.Size = New System.Drawing.Size(220, 49)
-        Me.btnSaveConfig.TabIndex = 2
-        Me.btnSaveConfig.Text = "Save Config"
-        Me.btnSaveConfig.UseVisualStyleBackColor = True
-        '
-        'Label19
-        '
-        Me.Label19.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(79, 236)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(106, 25)
-        Me.Label19.TabIndex = 55
-        Me.Label19.Text = "Shift Button"
-        '
-        'cbShiftButton
-        '
-        Me.cbShiftButton.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbShiftButton.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbShiftButton.FormattingEnabled = True
-        Me.cbShiftButton.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
-        Me.cbShiftButton.Location = New System.Drawing.Point(200, 232)
-        Me.cbShiftButton.Name = "cbShiftButton"
-        Me.cbShiftButton.Size = New System.Drawing.Size(76, 33)
-        Me.cbShiftButton.TabIndex = 54
+        Me.cbSideMounted.AutoSize = True
+        Me.cbSideMounted.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSideMounted.Location = New System.Drawing.Point(207, 140)
+        Me.cbSideMounted.Name = "cbSideMounted"
+        Me.cbSideMounted.Size = New System.Drawing.Size(171, 29)
+        Me.cbSideMounted.TabIndex = 45
+        Me.cbSideMounted.Text = "Mounted on Side"
+        Me.cbSideMounted.UseVisualStyleBackColor = True
         '
         'Configuration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1228, 849)
-        Me.Controls.Add(Me.btnSaveConfig)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.tbMain)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -830,7 +830,6 @@ Partial Class Configuration
     Friend WithEvents Label14 As Label
     Friend WithEvents btnSave As Button
     Friend WithEvents tpMainOutputs As TabPage
-    Friend WithEvents btnSaveConfig As Button
     Friend WithEvents tbDeadZone As TextBox
     Friend WithEvents lblDeadZone As Label
     Friend WithEvents cbPushOnMax As CheckBox
@@ -855,4 +854,5 @@ Partial Class Configuration
     Friend WithEvents rbNightModeToggle As RadioButton
     Friend WithEvents Label19 As Label
     Friend WithEvents cbShiftButton As ComboBox
+    Friend WithEvents cbSideMounted As CheckBox
 End Class

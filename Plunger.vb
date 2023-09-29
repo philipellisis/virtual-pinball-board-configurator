@@ -74,6 +74,7 @@
             End If
             If e.type = MESSAGE_TYPE.RESPONSE Then
                 MessageBox.Show(e.message)
+                _board.enableAdminFunction(ADMIN.PLUNGER)
             End If
         Catch ex As Exception
 
@@ -108,8 +109,7 @@
             _config.buttonOption = buttonOption
             _config.plungerAverageRead = cbAverageReadings.SelectedItem
             _config.plungerLaunchButton = cbLaunchButton.SelectedItem - 1
-            _board.setPlungerMinMax(maxValue, minvalue, restingValue, buttonOption, _config.plungerAverageRead, _config.plungerLaunchButton)
-
+            _board.setConfig(_config)
         Catch ex As Exception
             MessageBox.Show("Error while saving plunger values, check to ensure board is connected")
         End Try

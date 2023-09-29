@@ -58,6 +58,10 @@ Public Class Buttons
                     _userControlList.Item(i).setButtonValue(e.buttons(i))
                 Next
             End If
+            If e.type = MESSAGE_TYPE.RESPONSE Then
+                MessageBox.Show(e.message)
+                _board.enableAdminFunction(ADMIN.BUTTONS)
+            End If
         Catch ex As Exception
 
         End Try
@@ -164,9 +168,6 @@ Public Class Buttons
         sendButton(32)
     End Sub
 
-    Private Sub btnStartSteamMapping_Click(sender As Object, e As EventArgs) Handles btnStartSteamMapping.Click
-
-    End Sub
 
     Private Sub Buttons_KeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles MyBase.PreviewKeyDown
         For Each control In _userControlList
@@ -179,4 +180,13 @@ Public Class Buttons
         Next
         Return MyBase.ProcessDialogKey(keyData)
     End Function
+
+    Private Sub btnSendCalibration_Click(sender As Object, e As EventArgs) Handles btnSendCalibration.Click
+        Try
+            _board.setConfig(_config)
+        Catch ex As Exception
+            MessageBox.Show("Error while saving plunger values, check to ensure board is connected")
+        End Try
+
+    End Sub
 End Class

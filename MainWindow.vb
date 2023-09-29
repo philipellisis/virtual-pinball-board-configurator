@@ -208,7 +208,7 @@ Public Class MainWindow
                     Dim board As BoardConfiguration = TryCast(xml.Deserialize(currentStringReader), BoardConfiguration)
                     config.copyValues(board)
                 End Using
-                MessageBox.Show("Successfully retrieved configuration file in " & configFileLocation & vbNewLine & "Configuration will not be saved to PinOne until you click the save button in the settings screen")
+                MessageBox.Show("Successfully retrieved configuration file in " & configFileLocation & vbNewLine & "Configuration will not be saved to PinOne until you click the 'upload config' button in the settings screen")
             Catch ex As Exception
                 MessageBox.Show("error saving PinOne configuration file. Ensure the file exists and try again")
             End Try

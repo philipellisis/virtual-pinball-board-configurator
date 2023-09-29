@@ -48,8 +48,11 @@ Public Class Accelerometer
                 maxSize = _config.accelerometerMax + 40
             End If
             cbOutputNumber.SelectedItem = "1"
-            If _config.orentation > 3 Then
+            If (_config.orentation > 3 And _config.orentation < 8) Or (_config.orentation > 11) Then
                 cbPinsFacingUp.Checked = True
+            End If
+            If (_config.orentation > 7) Then
+                cbSideMounted.Checked = True
             End If
         Catch ex As Exception
             MessageBox.Show("error initializing board, check to ensure board is connected.")
@@ -104,26 +107,26 @@ Public Class Accelerometer
                 '  xValue = -yValue;
                 '  yValue = -temp;
                 '}
-                Dim orientation As Integer = _config.getIntegerFromOrientationString(cbOrientation.SelectedItem, cbPinsFacingUp.Checked)
-                If orientation = 1 Then
+                Dim orientation As Integer = _config.getIntegerFromOrientationString(cbOrientation.SelectedItem, cbPinsFacingUp.Checked, cbSideMounted.Checked)
+                If orientation = 1 Or orientation = 9 Then
                     currentPoint.X = -e.accel.Y
                     currentPoint.Y = e.accel.X
-                ElseIf orientation = 2 Then
+                ElseIf orientation = 2 Or orientation = 10 Then
                     currentPoint.X = -e.accel.X
                     currentPoint.Y = -e.accel.Y
-                ElseIf orientation = 3 Then
+                ElseIf orientation = 3 Or orientation = 11 Then
                     currentPoint.X = e.accel.Y
                     currentPoint.Y = -e.accel.X
-                ElseIf orientation = 4 Then
+                ElseIf orientation = 4 Or orientation = 12 Then
                     currentPoint.X = -e.accel.X
                     currentPoint.Y = e.accel.Y
-                ElseIf orientation = 5 Then
+                ElseIf orientation = 5 Or orientation = 13 Then
                     currentPoint.X = -e.accel.Y
                     currentPoint.Y = -e.accel.X
-                ElseIf orientation = 6 Then
+                ElseIf orientation = 6 Or orientation = 14 Then
                     currentPoint.X = e.accel.X
                     currentPoint.Y = -e.accel.Y
-                ElseIf orientation = 7 Then
+                ElseIf orientation = 7 Or orientation = 15 Then
                     currentPoint.X = e.accel.Y
                     currentPoint.Y = e.accel.X
                 End If
@@ -186,6 +189,7 @@ Public Class Accelerometer
 
             ElseIf e.type = MESSAGE_TYPE.RESPONSE Then
                 MessageBox.Show(e.message)
+                _board.enableAdminFunction(ADMIN.ACCEL)
             End If
         Catch ex As Exception
 
@@ -222,13 +226,13 @@ Public Class Accelerometer
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
         Try
-            _config.setOrientationString(cbOrientation.SelectedItem, cbPinsFacingUp.Checked)
+            _config.setOrientationString(cbOrientation.SelectedItem, cbPinsFacingUp.Checked, cbSideMounted.Checked)
             _config.setSensitivityString(cbMultiplier.SelectedItem)
             _config.accelerometerDeadZone = CUShort(tbDeadZone.Text)
             _config.accelerometerTilt = CUShort(tbTilt.Text)
             _config.accelerometerMax = CUShort(tbMax.Text)
             _config.tiltButton = (cbTiltButton.SelectedItem - 1).ToString
-            _board.setAccelerometerValues(_config.accelerometerMultiplier, _config.accelerometerDeadZone, _config.orentation, _config.accelerometerTilt, _config.accelerometerMax, _config.tiltButton)
+            _board.setConfig(_config)
         Catch ex As Exception
             MessageBox.Show("error when saving data, maybe board is disconnected?")
         End Try
