@@ -60,7 +60,7 @@ Public Class BoardConfiguration
     Public Sub copyValues(board As BoardConfiguration)
         Array.Copy(board.toySpecialOption, toySpecialOption, 63)
         Array.Copy(board.turnOffState, turnOffState, 63)
-        Array.Copy(board.maxOutputState, toySpecialOption, 63)
+        Array.Copy(board.maxOutputState, maxOutputState, 63)
         Array.Copy(board.maxOutputTime, maxOutputTime, 63)
         plungerMax = board.plungerMax
         plungerMin = board.plungerMin
