@@ -14,7 +14,7 @@ Public Class MainWindow
     Private ButtonsWindow As Buttons
     Private OutputsWindow As Outputs
 
-    Private version As Integer() = {1, 9, 0}
+    Private version As Integer() = {1, 10, 0}
     'Private WithEvents arduino As RS232
     Private Board As BoardInterface
     Private config As BoardConfiguration
