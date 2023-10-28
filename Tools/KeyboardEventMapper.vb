@@ -119,6 +119,9 @@ Public Class KeyboardEventMapper
     Const VK_OEM_5 = &HDC&
     Const VK_OEM_6 = &HDD&
     Const VK_OEM_7 = &HDE&
+    Const VK_VOLUME_MUTE = &HAD&
+    Const VK_VOLUME_DOWN = &HAE&
+    Const VK_VOLUME_UP = &HAF&
 
 
 
@@ -153,32 +156,32 @@ Public Class KeyboardEventMapper
         If (GetAsyncKeyState(VK_7) And &H8000) Then Return 55
         If (GetAsyncKeyState(VK_8) And &H8000) Then Return 56
         If (GetAsyncKeyState(VK_9) And &H8000) Then Return 57
-        If (GetAsyncKeyState(VK_A) And &H8000) Then Return 65
-        If (GetAsyncKeyState(VK_B) And &H8000) Then Return 66
-        If (GetAsyncKeyState(VK_C) And &H8000) Then Return 67
-        If (GetAsyncKeyState(VK_D) And &H8000) Then Return 68
-        If (GetAsyncKeyState(VK_E) And &H8000) Then Return 69
-        If (GetAsyncKeyState(VK_F) And &H8000) Then Return 70
-        If (GetAsyncKeyState(VK_G) And &H8000) Then Return 71
-        If (GetAsyncKeyState(VK_H) And &H8000) Then Return 72
-        If (GetAsyncKeyState(VK_I) And &H8000) Then Return 73
-        If (GetAsyncKeyState(VK_J) And &H8000) Then Return 74
-        If (GetAsyncKeyState(VK_K) And &H8000) Then Return 75
-        If (GetAsyncKeyState(VK_L) And &H8000) Then Return 76
-        If (GetAsyncKeyState(VK_M) And &H8000) Then Return 77
-        If (GetAsyncKeyState(VK_N) And &H8000) Then Return 78
-        If (GetAsyncKeyState(VK_O) And &H8000) Then Return 79
-        If (GetAsyncKeyState(VK_P) And &H8000) Then Return 80
-        If (GetAsyncKeyState(VK_Q) And &H8000) Then Return 81
-        If (GetAsyncKeyState(VK_R) And &H8000) Then Return 82
-        If (GetAsyncKeyState(VK_S) And &H8000) Then Return 83
-        If (GetAsyncKeyState(VK_T) And &H8000) Then Return 84
-        If (GetAsyncKeyState(VK_U) And &H8000) Then Return 85
-        If (GetAsyncKeyState(VK_V) And &H8000) Then Return 86
-        If (GetAsyncKeyState(VK_W) And &H8000) Then Return 87
-        If (GetAsyncKeyState(VK_X) And &H8000) Then Return 88
-        If (GetAsyncKeyState(VK_Y) And &H8000) Then Return 89
-        If (GetAsyncKeyState(VK_Z) And &H8000) Then Return 90
+        If (GetAsyncKeyState(VK_A) And &H8000) Then Return 97
+        If (GetAsyncKeyState(VK_B) And &H8000) Then Return 98
+        If (GetAsyncKeyState(VK_C) And &H8000) Then Return 99
+        If (GetAsyncKeyState(VK_D) And &H8000) Then Return 100
+        If (GetAsyncKeyState(VK_E) And &H8000) Then Return 101
+        If (GetAsyncKeyState(VK_F) And &H8000) Then Return 102
+        If (GetAsyncKeyState(VK_G) And &H8000) Then Return 103
+        If (GetAsyncKeyState(VK_H) And &H8000) Then Return 104
+        If (GetAsyncKeyState(VK_I) And &H8000) Then Return 105
+        If (GetAsyncKeyState(VK_J) And &H8000) Then Return 106
+        If (GetAsyncKeyState(VK_K) And &H8000) Then Return 107
+        If (GetAsyncKeyState(VK_L) And &H8000) Then Return 108
+        If (GetAsyncKeyState(VK_M) And &H8000) Then Return 109
+        If (GetAsyncKeyState(VK_N) And &H8000) Then Return 110
+        If (GetAsyncKeyState(VK_O) And &H8000) Then Return 111
+        If (GetAsyncKeyState(VK_P) And &H8000) Then Return 112
+        If (GetAsyncKeyState(VK_Q) And &H8000) Then Return 113
+        If (GetAsyncKeyState(VK_R) And &H8000) Then Return 114
+        If (GetAsyncKeyState(VK_S) And &H8000) Then Return 115
+        If (GetAsyncKeyState(VK_T) And &H8000) Then Return 116
+        If (GetAsyncKeyState(VK_U) And &H8000) Then Return 117
+        If (GetAsyncKeyState(VK_V) And &H8000) Then Return 118
+        If (GetAsyncKeyState(VK_W) And &H8000) Then Return 119
+        If (GetAsyncKeyState(VK_X) And &H8000) Then Return 120
+        If (GetAsyncKeyState(VK_Y) And &H8000) Then Return 121
+        If (GetAsyncKeyState(VK_Z) And &H8000) Then Return 122
         If (GetAsyncKeyState(VK_LWIN) And &H8000) Then Return 131
         If (GetAsyncKeyState(VK_RWIN) And &H8000) Then Return 135
         If (GetAsyncKeyState(VK_NUMPAD0) And &H8000) Then Return 234
@@ -240,7 +243,9 @@ Public Class KeyboardEventMapper
         If (GetAsyncKeyState(VK_OEM_5) And &H8000) Then Return 92
         If (GetAsyncKeyState(VK_OEM_6) And &H8000) Then Return 93
         If (GetAsyncKeyState(VK_OEM_7) And &H8000) Then Return 34
-
+        'If (GetAsyncKeyState(VK_VOLUME_MUTE) And &H8000) Then Return 127
+        'If (GetAsyncKeyState(VK_VOLUME_DOWN) And &H8000) Then Return 128
+        'If (GetAsyncKeyState(VK_VOLUME_UP) And &H8000) Then Return 129
         Return CByte(originalNumber)
     End Function
 
@@ -279,32 +284,32 @@ Public Class KeyboardEventMapper
         If number = 57 Then Return "9 key"
         If number = 59 Then Return "; key"
         If number = 61 Then Return "= key"
-        If number = 65 Then Return "A key"
-        If number = 66 Then Return "B key"
-        If number = 67 Then Return "C key"
-        If number = 68 Then Return "D key"
-        If number = 69 Then Return "E key"
-        If number = 70 Then Return "F key"
-        If number = 71 Then Return "G key"
-        If number = 72 Then Return "H key"
-        If number = 73 Then Return "I key"
-        If number = 74 Then Return "J key"
-        If number = 75 Then Return "K key"
-        If number = 76 Then Return "L key"
-        If number = 77 Then Return "M key"
-        If number = 78 Then Return "N key"
-        If number = 79 Then Return "O key"
-        If number = 80 Then Return "P key"
-        If number = 81 Then Return "Q key"
-        If number = 82 Then Return "R key"
-        If number = 83 Then Return "S key"
-        If number = 84 Then Return "T key"
-        If number = 85 Then Return "U key"
-        If number = 86 Then Return "V key"
-        If number = 87 Then Return "W key"
-        If number = 88 Then Return "X key"
-        If number = 89 Then Return "Y key"
-        If number = 90 Then Return "Z key"
+        If number = 97 Then Return "A key"
+        If number = 98 Then Return "B key"
+        If number = 99 Then Return "C key"
+        If number = 100 Then Return "D key"
+        If number = 101 Then Return "E key"
+        If number = 102 Then Return "F key"
+        If number = 103 Then Return "G key"
+        If number = 104 Then Return "H key"
+        If number = 105 Then Return "I key"
+        If number = 106 Then Return "J key"
+        If number = 107 Then Return "K key"
+        If number = 108 Then Return "L key"
+        If number = 109 Then Return "M key"
+        If number = 110 Then Return "N key"
+        If number = 111 Then Return "O key"
+        If number = 112 Then Return "P key"
+        If number = 113 Then Return "Q key"
+        If number = 114 Then Return "R key"
+        If number = 115 Then Return "S key"
+        If number = 116 Then Return "T key"
+        If number = 117 Then Return "U key"
+        If number = 118 Then Return "V key"
+        If number = 119 Then Return "W key"
+        If number = 120 Then Return "X key"
+        If number = 121 Then Return "Y key"
+        If number = 122 Then Return "Z key"
         If number = 91 Then Return "[ key"
         If number = 92 Then Return "\ key"
         If number = 93 Then Return "] key"
@@ -371,7 +376,9 @@ Public Class KeyboardEventMapper
         If number = 92 Then Return "\ key"
         If number = 93 Then Return " ] key"
         If number = 34 Then Return "' key"
-
+        'If number = 127 Then Return "Mute key"
+        'If number = 128 Then Return "Volume Down key"
+        'If number = 129 Then Return "Volume Up key"
         Return number.ToString()
     End Function
 End Class

@@ -229,7 +229,7 @@ Public Class BoardConfiguration
 
             config.plungerAverageRead = CByte(configString(270))
             config.nightModeButton = CByte(configString(271))
-            If config.nightModeButton > 28 Then config.nightModeButton = 23
+            If config.nightModeButton > 47 Then config.nightModeButton = 23
             config.plungerLaunchButton = CByte(configString(272))
             config.tiltButton = CByte(configString(273))
             If config.tiltButton > 28 Then config.tiltButton = 22
