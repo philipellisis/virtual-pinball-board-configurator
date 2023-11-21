@@ -191,7 +191,6 @@ Public Class CSDBoard
                     Return spBoot
                 End If
             Next
-
         Catch ex As Exception
             CSDConnection.close()
             Return currentPorts.First().Key
