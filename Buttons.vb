@@ -17,12 +17,18 @@ Public Class Buttons
         _config = config
     End Sub
     Private Sub Buttons_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        For i As Integer = 0 To 27
+        For i As Integer = 0 To 31
             Dim userControl As New ucButton(i, _config)
             userControl.Location = New Point(1, i * 33 + 40)
             Me.Controls.Add(userControl)
             _userControlList.Add(userControl)
         Next
+
+        If _config.disableButtonPressWhenKeyboardEnabled = True Then
+            cbDisableJoystick.Checked = True
+        Else
+            cbDisableJoystick.Checked = False
+        End If
 
         'For i As Integer = 0 To 5
         '    Dim userControl As New ucButton(i + 6)
@@ -54,7 +60,7 @@ Public Class Buttons
     Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs)
         Try
             If e.type = MESSAGE_TYPE.BUTTONS Then
-                For i As Integer = 0 To 23
+                For i As Integer = 0 To 31
                     _userControlList.Item(i).setButtonValue(e.buttons(i))
                 Next
             End If
@@ -183,6 +189,11 @@ Public Class Buttons
 
     Private Sub btnSendCalibration_Click(sender As Object, e As EventArgs) Handles btnSendCalibration.Click
         Try
+            If cbDisableJoystick.Checked = True Then
+                _config.disableButtonPressWhenKeyboardEnabled = True
+            Else
+                _config.disableButtonPressWhenKeyboardEnabled = False
+            End If
             _board.setConfig(_config)
         Catch ex As Exception
             MessageBox.Show("Error while saving plunger values, check to ensure board is connected")

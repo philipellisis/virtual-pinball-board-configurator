@@ -50,6 +50,7 @@ Partial Class Buttons
         Me.btn34 = New System.Windows.Forms.Button()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.btnSendCalibration = New System.Windows.Forms.Button()
+        Me.cbDisableJoystick = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -353,12 +354,24 @@ Partial Class Buttons
         Me.btnSendCalibration.Text = "Save Config"
         Me.btnSendCalibration.UseVisualStyleBackColor = True
         '
+        'cbDisableJoystick
+        '
+        Me.cbDisableJoystick.AutoSize = True
+        Me.cbDisableJoystick.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbDisableJoystick.Location = New System.Drawing.Point(548, 446)
+        Me.cbDisableJoystick.Name = "cbDisableJoystick"
+        Me.cbDisableJoystick.Size = New System.Drawing.Size(338, 29)
+        Me.cbDisableJoystick.TabIndex = 43
+        Me.cbDisableJoystick.Text = "Disable joystick for keyboard buttons"
+        Me.cbDisableJoystick.UseVisualStyleBackColor = True
+        '
         'Buttons
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(1284, 706)
+        Me.Controls.Add(Me.cbDisableJoystick)
         Me.Controls.Add(Me.btnSendCalibration)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.Label1)
@@ -402,4 +415,5 @@ Partial Class Buttons
     Friend WithEvents btn34 As Button
     Friend WithEvents GroupBox5 As GroupBox
     Friend WithEvents btnSendCalibration As Button
+    Friend WithEvents cbDisableJoystick As CheckBox
 End Class

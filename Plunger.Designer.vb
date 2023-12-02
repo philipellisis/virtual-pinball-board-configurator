@@ -40,6 +40,9 @@ Partial Class Plunger
         Me.btnStartCalibration = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.lblCurrent = New System.Windows.Forms.Label()
+        Me.cbPlungerQuickRelease = New System.Windows.Forms.CheckBox()
+        Me.cbDisablePlungerNonMoving = New System.Windows.Forms.CheckBox()
+        Me.cbDisableAccel = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -124,7 +127,7 @@ Partial Class Plunger
         '
         Me.btnSendCalibration.Enabled = False
         Me.btnSendCalibration.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSendCalibration.Location = New System.Drawing.Point(698, 209)
+        Me.btnSendCalibration.Location = New System.Drawing.Point(722, 328)
         Me.btnSendCalibration.Name = "btnSendCalibration"
         Me.btnSendCalibration.Size = New System.Drawing.Size(184, 82)
         Me.btnSendCalibration.TabIndex = 4
@@ -198,7 +201,7 @@ Partial Class Plunger
         'btnStartCalibration
         '
         Me.btnStartCalibration.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnStartCalibration.Location = New System.Drawing.Point(507, 209)
+        Me.btnStartCalibration.Location = New System.Drawing.Point(514, 328)
         Me.btnStartCalibration.Name = "btnStartCalibration"
         Me.btnStartCalibration.Size = New System.Drawing.Size(184, 82)
         Me.btnStartCalibration.TabIndex = 46
@@ -226,11 +229,47 @@ Partial Class Plunger
         Me.lblCurrent.TabIndex = 0
         Me.lblCurrent.Text = "1000"
         '
+        'cbPlungerQuickRelease
+        '
+        Me.cbPlungerQuickRelease.AutoSize = True
+        Me.cbPlungerQuickRelease.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbPlungerQuickRelease.Location = New System.Drawing.Point(579, 244)
+        Me.cbPlungerQuickRelease.Name = "cbPlungerQuickRelease"
+        Me.cbPlungerQuickRelease.Size = New System.Drawing.Size(219, 29)
+        Me.cbPlungerQuickRelease.TabIndex = 47
+        Me.cbPlungerQuickRelease.Text = "Plunger Quick Release"
+        Me.cbPlungerQuickRelease.UseVisualStyleBackColor = True
+        '
+        'cbDisablePlungerNonMoving
+        '
+        Me.cbDisablePlungerNonMoving.AutoSize = True
+        Me.cbDisablePlungerNonMoving.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbDisablePlungerNonMoving.Location = New System.Drawing.Point(579, 209)
+        Me.cbDisablePlungerNonMoving.Name = "cbDisablePlungerNonMoving"
+        Me.cbDisablePlungerNonMoving.Size = New System.Drawing.Size(303, 29)
+        Me.cbDisablePlungerNonMoving.TabIndex = 48
+        Me.cbDisablePlungerNonMoving.Text = "Disable Plunger when not Moving"
+        Me.cbDisablePlungerNonMoving.UseVisualStyleBackColor = True
+        '
+        'cbDisableAccel
+        '
+        Me.cbDisableAccel.AutoSize = True
+        Me.cbDisableAccel.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbDisableAccel.Location = New System.Drawing.Point(579, 279)
+        Me.cbDisableAccel.Name = "cbDisableAccel"
+        Me.cbDisableAccel.Size = New System.Drawing.Size(334, 29)
+        Me.cbDisableAccel.TabIndex = 49
+        Me.cbDisableAccel.Text = "Disable Accelerometer on Movement"
+        Me.cbDisableAccel.UseVisualStyleBackColor = True
+        '
         'Plunger
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(918, 317)
+        Me.ClientSize = New System.Drawing.Size(918, 422)
+        Me.Controls.Add(Me.cbDisableAccel)
+        Me.Controls.Add(Me.cbDisablePlungerNonMoving)
+        Me.Controls.Add(Me.cbPlungerQuickRelease)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.btnStartCalibration)
         Me.Controls.Add(Me.Label1)
@@ -277,4 +316,7 @@ Partial Class Plunger
     Friend WithEvents btnStartCalibration As Button
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents lblCurrent As Label
+    Friend WithEvents cbPlungerQuickRelease As CheckBox
+    Friend WithEvents cbDisablePlungerNonMoving As CheckBox
+    Friend WithEvents cbDisableAccel As CheckBox
 End Class
