@@ -55,7 +55,14 @@ Public Class BoardConfiguration
     Public plungerLaunchButton As Byte
     Public tiltButton As Byte
     Public shiftButton As Byte
-    Public buttonKeys(28) As Byte
+    Public buttonKeys(32) As Byte
+    Public disableAccelOnPlungerMove As Boolean
+    Public enablePlungerQuickRelease As Boolean
+    Public disablePlungerWhenNotInUse As Boolean
+    Public disableButtonPressWhenKeyboardEnabled As Boolean
+
+
+
 
     Public Sub copyValues(board As BoardConfiguration)
         Array.Copy(board.toySpecialOption, toySpecialOption, 63)
@@ -80,6 +87,11 @@ Public Class BoardConfiguration
         tiltButton = board.tiltButton
         shiftButton = board.shiftButton
         Array.Copy(board.buttonKeys, buttonKeys, 28)
+
+        disableAccelOnPlungerMove = board.disableAccelOnPlungerMove
+        enablePlungerQuickRelease = board.enablePlungerQuickRelease
+        disablePlungerWhenNotInUse = board.disablePlungerWhenNotInUse
+        disableButtonPressWhenKeyboardEnabled = board.disableButtonPressWhenKeyboardEnabled
     End Sub
     Public Function getOrientationString() As String
         Dim tempOrientation = orentation
@@ -155,7 +167,7 @@ Public Class BoardConfiguration
     End Function
 
     Public Function toConfigBytes(config As BoardConfiguration) As Byte()
-        Dim configString(308) As Byte
+        Dim configString(316) As Byte
         For i = 0 To 62
             configString(i) = config.toySpecialOption(i)
             configString(i + 63) = config.turnOffState(i)
@@ -195,9 +207,15 @@ Public Class BoardConfiguration
         configString(278) = config.plungerLaunchButton
         configString(279) = config.tiltButton
         configString(280) = config.shiftButton
-        For i = 0 To 27
+        For i = 0 To 31
             configString(i + 281) = config.buttonKeys(i)
         Next
+
+        configString(313) = config.disableAccelOnPlungerMove
+        configString(314) = config.enablePlungerQuickRelease
+        configString(315) = config.disablePlungerWhenNotInUse
+        configString(316) = config.disableButtonPressWhenKeyboardEnabled
+
         Return configString
     End Function
     Public Shared Function stringToConfig(str As String) As BoardConfiguration
@@ -235,10 +253,16 @@ Public Class BoardConfiguration
             If config.tiltButton > 28 Then config.tiltButton = 22
             config.shiftButton = CByte(configString(274))
             If config.shiftButton > 28 Then config.shiftButton = 2
-            For i = 0 To 27
+            For i = 0 To 31
                 config.buttonKeys(i) = CByte(configString(i + 275))
                 If config.buttonKeys(i) = 255 Then config.buttonKeys(i) = 0
             Next
+
+            config.disableAccelOnPlungerMove = CByte(configString(307))
+            config.enablePlungerQuickRelease = CByte(configString(308))
+            config.disablePlungerWhenNotInUse = CByte(configString(309))
+            config.disableButtonPressWhenKeyboardEnabled = CByte(configString(310))
+
         Catch ex As Exception
             Console.WriteLine("unable to convert data to configuration: " & ex.Message)
         End Try

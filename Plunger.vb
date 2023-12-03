@@ -29,6 +29,10 @@
         lblMinValue.Text = _config.plungerMin.ToString
         lblRestingPoint.Text = _config.plungerMid.ToString
 
+        cbDisablePlungerNonMoving.Checked = _config.disablePlungerWhenNotInUse
+        cbDisableAccel.Checked = _config.disableAccelOnPlungerMove
+        cbPlungerQuickRelease.Checked = _config.enablePlungerQuickRelease
+
         If _config.buttonOption = 1 Or _config.buttonOption = 3 Then
             cbPushOnMax.Checked = True
         End If
@@ -38,7 +42,7 @@
 
         cbLaunchButton.SelectedItem = (_config.plungerLaunchButton + 1).ToString
         cbAverageReadings.SelectedItem = (_config.plungerAverageRead).ToString
-
+        btnSendCalibration.Enabled = False
     End Sub
 
     Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs)
@@ -103,9 +107,14 @@
             ElseIf cbPushOnMin.Checked Then
                 buttonOption = 2
             End If
-            _config.plungerMax = maxValue
-            _config.plungerMin = minvalue
-            _config.plungerMid = restingValue
+
+            _config.disablePlungerWhenNotInUse = cbDisablePlungerNonMoving.Checked
+            _config.disableAccelOnPlungerMove = cbDisableAccel.Checked
+            _config.enablePlungerQuickRelease = cbPlungerQuickRelease.Checked
+
+            _config.plungerMax = CShort(lblMaxValue.Text)
+            _config.plungerMin = CShort(lblMinValue.Text)
+            _config.plungerMid = CShort(lblRestingPoint.Text)
             _config.buttonOption = buttonOption
             _config.plungerAverageRead = cbAverageReadings.SelectedItem
             _config.plungerLaunchButton = cbLaunchButton.SelectedItem - 1
@@ -119,9 +128,14 @@
 
     Private Sub btnStartCalibration_Click(sender As Object, e As EventArgs) Handles btnStartCalibration.Click
         MessageBox.Show("Move plunger to max and minimum values, values will be recorded for the next 5 seconds")
-
+        maxValue = 0
+        minvalue = 1024
         timer.Start()
         timer.Restart()
         plungerCalibrationState = 1
+    End Sub
+
+    Private Sub formChanged(sender As Object, e As EventArgs) Handles cbLaunchButton.SelectedIndexChanged, cbAverageReadings.SelectedIndexChanged, cbDisableAccel.CheckedChanged, cbDisablePlungerNonMoving.CheckedChanged, cbPlungerQuickRelease.CheckedChanged, cbPushOnMax.CheckedChanged, cbPushOnMin.CheckedChanged
+        btnSendCalibration.Enabled = True
     End Sub
 End Class
