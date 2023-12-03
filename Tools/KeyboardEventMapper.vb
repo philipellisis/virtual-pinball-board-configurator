@@ -239,9 +239,9 @@ Public Class KeyboardEventMapper
         If (GetAsyncKeyState(VK_OEM_PERIOD) And &H8000) Then Return 55
         If (GetAsyncKeyState(VK_OEM_2) And &H8000) Then Return 56
         If (GetAsyncKeyState(VK_OEM_3) And &H8000) Then Return 53
-        If (GetAsyncKeyState(VK_OEM_4) And &H8000) Then Return 255
+        If (GetAsyncKeyState(VK_OEM_4) And &H8000) Then Return 47
         If (GetAsyncKeyState(VK_OEM_5) And &H8000) Then Return 49
-        If (GetAsyncKeyState(VK_OEM_6) And &H8000) Then Return 255
+        If (GetAsyncKeyState(VK_OEM_6) And &H8000) Then Return 48
         If (GetAsyncKeyState(VK_OEM_7) And &H8000) Then Return 52
         If (GetAsyncKeyState(VK_VOLUME_MUTE) And &H8000) Then Return 252
         If (GetAsyncKeyState(VK_VOLUME_DOWN) And &H8000) Then Return 253
