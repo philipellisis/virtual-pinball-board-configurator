@@ -171,7 +171,7 @@ Partial Class Plunger
         Me.cbLaunchButton.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbLaunchButton.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbLaunchButton.FormattingEnabled = True
-        Me.cbLaunchButton.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
+        Me.cbLaunchButton.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
         Me.cbLaunchButton.Location = New System.Drawing.Point(186, 202)
         Me.cbLaunchButton.Name = "cbLaunchButton"
         Me.cbLaunchButton.Size = New System.Drawing.Size(76, 33)

@@ -54,7 +54,12 @@
     End Sub
 
     Private Sub Outputs_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        _board.enableAdminFunction(ADMIN.OFF)
+        Try
+            _board.enableAdminFunction(ADMIN.OFF)
+        Catch ex As Exception
+            MessageBox.Show("error while communicating with PinOne")
+        End Try
+
         RemoveHandler _board.BoardChanged, AddressOf _board_BoardChanged
     End Sub
 

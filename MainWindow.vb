@@ -14,7 +14,7 @@ Public Class MainWindow
     Private ButtonsWindow As Buttons
     Private OutputsWindow As Outputs
 
-    Private version As Integer() = {1, 12, 0}
+    Private version As Integer() = {1, 13, 0}
     'Private WithEvents arduino As RS232
     Private Board As BoardInterface
     Private config As BoardConfiguration
@@ -173,6 +173,19 @@ Public Class MainWindow
             pHelp.UseShellExecute = True
             pHelp.WindowStyle = ProcessWindowStyle.Normal
             Dim proc As Process = Process.Start(pHelp)
+
+            ' Wait for the process to exit
+            proc.WaitForExit()
+
+            ' Check the exit code
+            If proc.ExitCode = 0 Then
+                MessageBox.Show("Successfully updated firmware")
+                Exit Sub
+            Else
+                MessageBox.Show("Firmware was not updated! You can find steps for troubleshooting firmware updates here:" & vbLf & "https://pinball-docs.clevelandsoftwaredesign.com/docs/PinOne/Troubleshooting/firmware/")
+            End If
+
+
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
