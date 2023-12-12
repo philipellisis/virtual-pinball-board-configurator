@@ -60,6 +60,9 @@ Public Class BoardConfiguration
     Public enablePlungerQuickRelease As Boolean
     Public disablePlungerWhenNotInUse As Boolean
     Public disableButtonPressWhenKeyboardEnabled As Boolean
+    Public buttonKeyDebounce(24) As Byte
+    Public buttonDebounceCounter As Byte
+    Public enablePlunger As Byte
 
 
 
@@ -86,12 +89,15 @@ Public Class BoardConfiguration
         plungerLaunchButton = board.plungerLaunchButton
         tiltButton = board.tiltButton
         shiftButton = board.shiftButton
-        Array.Copy(board.buttonKeys, buttonKeys, 28)
-
+        Array.Copy(board.buttonKeys, buttonKeys, 32)
         disableAccelOnPlungerMove = board.disableAccelOnPlungerMove
         enablePlungerQuickRelease = board.enablePlungerQuickRelease
         disablePlungerWhenNotInUse = board.disablePlungerWhenNotInUse
         disableButtonPressWhenKeyboardEnabled = board.disableButtonPressWhenKeyboardEnabled
+
+        Array.Copy(board.buttonKeyDebounce, buttonKeyDebounce, 24)
+        buttonDebounceCounter = board.buttonDebounceCounter
+        enablePlunger = board.enablePlunger
     End Sub
     Public Function getOrientationString() As String
         Dim tempOrientation = orentation
@@ -167,7 +173,7 @@ Public Class BoardConfiguration
     End Function
 
     Public Function toConfigBytes(config As BoardConfiguration) As Byte()
-        Dim configString(316) As Byte
+        Dim configString(350) As Byte
         For i = 0 To 62
             configString(i) = config.toySpecialOption(i)
             configString(i + 63) = config.turnOffState(i)
@@ -216,6 +222,13 @@ Public Class BoardConfiguration
         configString(315) = config.disablePlungerWhenNotInUse
         configString(316) = config.disableButtonPressWhenKeyboardEnabled
 
+        For i = 0 To 23
+            configString(i + 317) = config.buttonKeyDebounce(i)
+        Next
+
+        configString(341) = config.buttonDebounceCounter
+        configString(342) = config.enablePlunger
+
         Return configString
     End Function
     Public Shared Function stringToConfig(str As String) As BoardConfiguration
@@ -262,6 +275,15 @@ Public Class BoardConfiguration
             config.enablePlungerQuickRelease = CByte(configString(308))
             config.disablePlungerWhenNotInUse = CByte(configString(309))
             config.disableButtonPressWhenKeyboardEnabled = CByte(configString(310))
+
+            For i = 0 To 23
+                config.buttonKeyDebounce(i) = CByte(configString(i + 311))
+                If config.buttonKeyDebounce(i) = 255 Then config.buttonKeyDebounce(i) = 0
+            Next
+
+            config.buttonDebounceCounter = CByte(configString(335))
+            If config.buttonDebounceCounter = 255 Then config.buttonDebounceCounter = 0
+            config.enablePlunger = CBool(configString(336))
 
         Catch ex As Exception
             Console.WriteLine("unable to convert data to configuration: " & ex.Message)

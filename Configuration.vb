@@ -54,6 +54,7 @@ Public Class Configuration
         cbButtonTrigger4.SelectedItem = (_config.solenoidButtonMap(3)).ToString
 
         cbAccelEnabled.Checked = _config.accelerometer
+        cbPlungerEnabled.Checked = _config.enablePlunger
         cbOrientation.SelectedItem = _config.getOrientationString
         tbPlungerMax.Text = _config.plungerMax.ToString
         tbPlungerMid.Text = _config.plungerMid.ToString
@@ -122,6 +123,7 @@ Public Class Configuration
 
 
             _config.accelerometer = CByte(cbAccelEnabled.Checked)
+            _config.enablePlunger = CByte(cbPlungerEnabled.Checked)
             _config.setOrientationString(cbOrientation.SelectedItem, cbPinsFacingUp.Checked, cbSideMounted.Checked)
             _config.plungerMax = CShort(tbPlungerMax.Text)
             _config.plungerMid = CShort(tbPlungerMid.Text)
