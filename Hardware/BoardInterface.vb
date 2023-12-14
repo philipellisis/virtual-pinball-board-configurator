@@ -173,7 +173,7 @@ Public Class BoardConfiguration
     End Function
 
     Public Function toConfigBytes(config As BoardConfiguration) As Byte()
-        Dim configString(350) As Byte
+        Dim configString(343) As Byte
         For i = 0 To 62
             configString(i) = config.toySpecialOption(i)
             configString(i + 63) = config.turnOffState(i)
@@ -228,6 +228,7 @@ Public Class BoardConfiguration
 
         configString(341) = config.buttonDebounceCounter
         configString(342) = config.enablePlunger
+        configString(343) = 42
 
         Return configString
     End Function
@@ -235,6 +236,7 @@ Public Class BoardConfiguration
         Dim config As New BoardConfiguration
         Try
             Dim configString = str.Split(",")
+            Console.WriteLine("configString length is " & configString.Length)
             For i = 0 To 62
                 config.toySpecialOption(i) = CByte(configString(i))
                 config.turnOffState(i) = CByte(configString(i + 63))
@@ -284,6 +286,7 @@ Public Class BoardConfiguration
             config.buttonDebounceCounter = CByte(configString(335))
             If config.buttonDebounceCounter = 255 Then config.buttonDebounceCounter = 0
             config.enablePlunger = CBool(configString(336))
+
 
         Catch ex As Exception
             Console.WriteLine("unable to convert data to configuration: " & ex.Message)

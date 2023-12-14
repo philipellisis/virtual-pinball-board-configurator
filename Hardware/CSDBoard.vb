@@ -41,7 +41,26 @@ Public Class CSDBoard
     Public Sub setConfig(config As BoardConfiguration) Implements BoardInterface.setConfig
         enableAdminFunction(ADMIN.GET_CONFIG)
         Threading.Thread.Sleep(100)
-        CSDConnection.send(config.toConfigBytes(config))
+        Dim bytesToSend As Byte() = config.toConfigBytes(config)
+
+        Dim chunkSize As Integer = 50
+        Dim waitTime As Integer = 100 ' Wait time in milliseconds
+
+        For i As Integer = 0 To bytesToSend.Length - 1 Step chunkSize
+            ' Determine the size of the current chunk
+            Dim currentChunkSize As Integer = Math.Min(chunkSize, bytesToSend.Length - i)
+            Dim currentChunk(currentChunkSize - 1) As Byte
+
+            ' Copy the current chunk from the main array
+            Array.Copy(bytesToSend, i, currentChunk, 0, currentChunkSize)
+
+            ' Send the current chunk
+            CSDConnection.send(currentChunk)
+
+            ' Wait for specified time
+            Threading.Thread.Sleep(waitTime)
+        Next
+
     End Sub
 
     Public Function saveConfigToEeprom() Implements BoardInterface.saveConfigToEeprom

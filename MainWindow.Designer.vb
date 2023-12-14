@@ -30,12 +30,14 @@ Partial Class MainWindow
         Me.btnPlunger = New System.Windows.Forms.Button()
         Me.btnAccel = New System.Windows.Forms.Button()
         Me.gbMenu = New System.Windows.Forms.GroupBox()
+        Me.btnSaveConfig = New System.Windows.Forms.Button()
         Me.btnRetrieve = New System.Windows.Forms.Button()
         Me.btnBackup = New System.Windows.Forms.Button()
         Me.cbSimulation = New System.Windows.Forms.CheckBox()
         Me.btnUpdateFirmware = New System.Windows.Forms.Button()
         Me.cbComPort = New System.Windows.Forms.ComboBox()
         Me.lblValue = New System.Windows.Forms.Label()
+        Me.btnAbout = New System.Windows.Forms.Button()
         Me.gbMenu.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -107,6 +109,7 @@ Partial Class MainWindow
         '
         'gbMenu
         '
+        Me.gbMenu.Controls.Add(Me.btnSaveConfig)
         Me.gbMenu.Controls.Add(Me.btnRetrieve)
         Me.gbMenu.Controls.Add(Me.btnBackup)
         Me.gbMenu.Controls.Add(Me.btnInputs)
@@ -123,12 +126,22 @@ Partial Class MainWindow
         Me.gbMenu.TabStop = False
         Me.gbMenu.Text = "Menu"
         '
+        'btnSaveConfig
+        '
+        Me.btnSaveConfig.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSaveConfig.Location = New System.Drawing.Point(585, 296)
+        Me.btnSaveConfig.Name = "btnSaveConfig"
+        Me.btnSaveConfig.Size = New System.Drawing.Size(109, 78)
+        Me.btnSaveConfig.TabIndex = 10
+        Me.btnSaveConfig.Text = "Save Config"
+        Me.btnSaveConfig.UseVisualStyleBackColor = True
+        '
         'btnRetrieve
         '
         Me.btnRetrieve.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRetrieve.Location = New System.Drawing.Point(474, 295)
         Me.btnRetrieve.Name = "btnRetrieve"
-        Me.btnRetrieve.Size = New System.Drawing.Size(220, 78)
+        Me.btnRetrieve.Size = New System.Drawing.Size(109, 78)
         Me.btnRetrieve.TabIndex = 9
         Me.btnRetrieve.Text = "Get Backup"
         Me.btnRetrieve.UseVisualStyleBackColor = True
@@ -186,11 +199,23 @@ Partial Class MainWindow
         Me.lblValue.TabIndex = 25
         Me.lblValue.Text = "COM Port"
         '
+        'btnAbout
+        '
+        Me.btnAbout.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAbout.Location = New System.Drawing.Point(246, 468)
+        Me.btnAbout.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnAbout.Name = "btnAbout"
+        Me.btnAbout.Size = New System.Drawing.Size(104, 83)
+        Me.btnAbout.TabIndex = 11
+        Me.btnAbout.Text = "About"
+        Me.btnAbout.UseVisualStyleBackColor = True
+        '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(827, 565)
+        Me.Controls.Add(Me.btnAbout)
         Me.Controls.Add(Me.lblValue)
         Me.Controls.Add(Me.cbComPort)
         Me.Controls.Add(Me.btnUpdateFirmware)
@@ -220,4 +245,6 @@ Partial Class MainWindow
     Friend WithEvents btnBackup As Button
     Friend WithEvents cbComPort As ComboBox
     Friend WithEvents lblValue As Label
+    Friend WithEvents btnSaveConfig As Button
+    Friend WithEvents btnAbout As Button
 End Class

@@ -114,6 +114,9 @@ Public Class MainWindow
                 MessageBox.Show("PinOne board is ahead on UI in a bug fix version, it is recommended to disconnect and update the config tool from www.clevelandsoftwaredesign.com before continuing to ensure all features work properly.")
             End If
         End If
+        If e.type = MESSAGE_TYPE.RESPONSE Then
+            MessageBox.Show(e.message)
+        End If
 
     End Sub
 
@@ -232,4 +235,11 @@ Public Class MainWindow
 
     End Sub
 
+    Private Sub btnSaveConfig_Click(sender As Object, e As EventArgs) Handles btnSaveConfig.Click
+        Board.setConfig(config)
+    End Sub
+
+    Private Sub btnAbout_Click(sender As Object, e As EventArgs) Handles btnAbout.Click
+        MessageBox.Show("Version " & version(0).ToString & "." & version(1).ToString & "." & version(2).ToString)
+    End Sub
 End Class
