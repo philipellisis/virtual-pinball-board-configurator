@@ -171,8 +171,8 @@ Public Class MainWindow
                 Exit Sub
             End If
             Dim pHelp As New ProcessStartInfo
-            pHelp.FileName = "avrdude.exe"
-            pHelp.Arguments = "-CC:avrdude.conf -v -patmega32u4 -cavr109 -P" & port & " -b57600 -D -Uflash:w:joystick.ino.hex:i"
+            pHelp.FileName = ".\avrdude.exe"
+            pHelp.Arguments = "-Cavrdude.conf -v -patmega32u4 -cavr109 -P" & port & " -b57600 -D -Uflash:w:.\joystick.ino.hex:i"
             pHelp.UseShellExecute = True
             pHelp.WindowStyle = ProcessWindowStyle.Normal
             Dim proc As Process = Process.Start(pHelp)
