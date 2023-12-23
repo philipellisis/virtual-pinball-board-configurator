@@ -13,6 +13,12 @@
 
         ' Add any initialization after the InitializeComponent() call.
         rbButton.Text = (inputNumber + 1).ToString
+        If inputNumber < 24 Then
+            cbDebounce.Checked = config.buttonKeyDebounce(inputNumber)
+        Else
+            cbDebounce.Enabled = False
+        End If
+
     End Sub
 
     Public Sub setButtonValue(value As Byte)
@@ -60,5 +66,13 @@
     Private Sub btnRemove_Click(sender As Object, e As EventArgs) Handles btnRemove.Click
         tbKeyboard.Text = "None"
         _config.buttonKeys(_inputNumber) = 0
+    End Sub
+
+    Private Sub cbDebounce_CheckedChanged(sender As Object, e As EventArgs) Handles cbDebounce.CheckedChanged
+        If cbDebounce.Checked Then
+            _config.buttonKeyDebounce(_inputNumber) = 1
+        Else
+            _config.buttonKeyDebounce(_inputNumber) = 0
+        End If
     End Sub
 End Class

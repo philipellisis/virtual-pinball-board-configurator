@@ -33,6 +33,7 @@ Partial Class Configuration
         Me.Label18 = New System.Windows.Forms.Label()
         Me.cbNightMode = New System.Windows.Forms.ComboBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.cbSideMounted = New System.Windows.Forms.CheckBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.cbTiltButton = New System.Windows.Forms.ComboBox()
         Me.cbMultiplier = New System.Windows.Forms.ComboBox()
@@ -81,7 +82,7 @@ Partial Class Configuration
         Me.tpExpansion1 = New System.Windows.Forms.TabPage()
         Me.tpExpansion2 = New System.Windows.Forms.TabPage()
         Me.btnSave = New System.Windows.Forms.Button()
-        Me.cbSideMounted = New System.Windows.Forms.CheckBox()
+        Me.cbPlungerEnabled = New System.Windows.Forms.CheckBox()
         Me.tbMain.SuspendLayout()
         Me.tpGeneralSettings.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -132,7 +133,7 @@ Partial Class Configuration
         Me.GroupBox4.Controls.Add(Me.Label18)
         Me.GroupBox4.Controls.Add(Me.cbNightMode)
         Me.GroupBox4.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(10, 380)
+        Me.GroupBox4.Location = New System.Drawing.Point(10, 407)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(320, 303)
         Me.GroupBox4.TabIndex = 50
@@ -231,6 +232,17 @@ Partial Class Configuration
         Me.GroupBox3.TabIndex = 6
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Accelerometer"
+        '
+        'cbSideMounted
+        '
+        Me.cbSideMounted.AutoSize = True
+        Me.cbSideMounted.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSideMounted.Location = New System.Drawing.Point(207, 140)
+        Me.cbSideMounted.Name = "cbSideMounted"
+        Me.cbSideMounted.Size = New System.Drawing.Size(171, 29)
+        Me.cbSideMounted.TabIndex = 45
+        Me.cbSideMounted.Text = "Mounted on Side"
+        Me.cbSideMounted.UseVisualStyleBackColor = True
         '
         'Label17
         '
@@ -581,6 +593,7 @@ Partial Class Configuration
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.cbPlungerEnabled)
         Me.GroupBox1.Controls.Add(Me.Label15)
         Me.GroupBox1.Controls.Add(Me.cbAverageReadings)
         Me.GroupBox1.Controls.Add(Me.Label16)
@@ -596,7 +609,7 @@ Partial Class Configuration
         Me.GroupBox1.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(15, 6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(320, 368)
+        Me.GroupBox1.Size = New System.Drawing.Size(320, 384)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Plunger"
@@ -606,7 +619,7 @@ Partial Class Configuration
         Me.Label15.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(18, 308)
+        Me.Label15.Location = New System.Drawing.Point(18, 341)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(157, 25)
         Me.Label15.TabIndex = 49
@@ -618,7 +631,7 @@ Partial Class Configuration
         Me.cbAverageReadings.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbAverageReadings.FormattingEnabled = True
         Me.cbAverageReadings.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130", "131", "132", "133", "134", "135", "136", "137", "138", "139", "140", "141", "142", "143", "144", "145", "146", "147", "148", "149", "150", "151", "152", "153", "154", "155", "156", "157", "158", "159", "160", "161", "162", "163", "164", "165", "166", "167", "168", "169", "170", "171", "172", "173", "174", "175", "176", "177", "178", "179", "180", "181", "182", "183", "184", "185", "186", "187", "188", "189", "190", "191", "192", "193", "194", "195", "196", "197", "198", "199", "200", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215", "216", "217", "218", "219", "220", "221", "222", "223", "224", "225", "226", "227", "228", "229", "230", "231", "232", "233", "234", "235", "236", "237", "238", "239", "240", "241", "242", "243", "244", "245", "246", "247", "248", "249", "250", "251", "252", "253", "254", "255"})
-        Me.cbAverageReadings.Location = New System.Drawing.Point(190, 303)
+        Me.cbAverageReadings.Location = New System.Drawing.Point(190, 336)
         Me.cbAverageReadings.Name = "cbAverageReadings"
         Me.cbAverageReadings.Size = New System.Drawing.Size(76, 33)
         Me.cbAverageReadings.TabIndex = 48
@@ -628,7 +641,7 @@ Partial Class Configuration
         Me.Label16.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(51, 263)
+        Me.Label16.Location = New System.Drawing.Point(51, 296)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(127, 25)
         Me.Label16.TabIndex = 47
@@ -640,7 +653,7 @@ Partial Class Configuration
         Me.cbLaunchButton.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbLaunchButton.FormattingEnabled = True
         Me.cbLaunchButton.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
-        Me.cbLaunchButton.Location = New System.Drawing.Point(190, 258)
+        Me.cbLaunchButton.Location = New System.Drawing.Point(190, 291)
         Me.cbLaunchButton.Name = "cbLaunchButton"
         Me.cbLaunchButton.Size = New System.Drawing.Size(76, 33)
         Me.cbLaunchButton.TabIndex = 46
@@ -649,7 +662,7 @@ Partial Class Configuration
         '
         Me.cbPushOnMax.AutoSize = True
         Me.cbPushOnMax.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbPushOnMax.Location = New System.Drawing.Point(10, 206)
+        Me.cbPushOnMax.Location = New System.Drawing.Point(10, 239)
         Me.cbPushOnMax.Name = "cbPushOnMax"
         Me.cbPushOnMax.Size = New System.Drawing.Size(196, 29)
         Me.cbPushOnMax.TabIndex = 31
@@ -660,7 +673,7 @@ Partial Class Configuration
         '
         Me.cbPushOnMin.AutoSize = True
         Me.cbPushOnMin.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbPushOnMin.Location = New System.Drawing.Point(10, 171)
+        Me.cbPushOnMin.Location = New System.Drawing.Point(10, 204)
         Me.cbPushOnMin.Name = "cbPushOnMin"
         Me.cbPushOnMin.Size = New System.Drawing.Size(192, 29)
         Me.cbPushOnMin.TabIndex = 30
@@ -670,7 +683,7 @@ Partial Class Configuration
         'tbPlungerMid
         '
         Me.tbPlungerMid.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbPlungerMid.Location = New System.Drawing.Point(186, 125)
+        Me.tbPlungerMid.Location = New System.Drawing.Point(186, 158)
         Me.tbPlungerMid.Name = "tbPlungerMid"
         Me.tbPlungerMid.Size = New System.Drawing.Size(100, 32)
         Me.tbPlungerMid.TabIndex = 5
@@ -678,7 +691,7 @@ Partial Class Configuration
         'tbPlungerMax
         '
         Me.tbPlungerMax.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbPlungerMax.Location = New System.Drawing.Point(186, 82)
+        Me.tbPlungerMax.Location = New System.Drawing.Point(186, 115)
         Me.tbPlungerMax.Name = "tbPlungerMax"
         Me.tbPlungerMax.Size = New System.Drawing.Size(100, 32)
         Me.tbPlungerMax.TabIndex = 4
@@ -686,7 +699,7 @@ Partial Class Configuration
         'tbPlungerMin
         '
         Me.tbPlungerMin.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbPlungerMin.Location = New System.Drawing.Point(186, 40)
+        Me.tbPlungerMin.Location = New System.Drawing.Point(186, 73)
         Me.tbPlungerMin.Name = "tbPlungerMin"
         Me.tbPlungerMin.Size = New System.Drawing.Size(100, 32)
         Me.tbPlungerMin.TabIndex = 3
@@ -695,7 +708,7 @@ Partial Class Configuration
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(6, 131)
+        Me.Label3.Location = New System.Drawing.Point(6, 164)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(148, 25)
         Me.Label3.TabIndex = 2
@@ -705,7 +718,7 @@ Partial Class Configuration
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 86)
+        Me.Label2.Location = New System.Drawing.Point(6, 119)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(156, 25)
         Me.Label2.TabIndex = 1
@@ -715,7 +728,7 @@ Partial Class Configuration
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(6, 46)
+        Me.Label1.Location = New System.Drawing.Point(6, 79)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(152, 25)
         Me.Label1.TabIndex = 0
@@ -761,16 +774,16 @@ Partial Class Configuration
         Me.btnSave.Text = "Save Config"
         Me.btnSave.UseVisualStyleBackColor = True
         '
-        'cbSideMounted
+        'cbPlungerEnabled
         '
-        Me.cbSideMounted.AutoSize = True
-        Me.cbSideMounted.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbSideMounted.Location = New System.Drawing.Point(207, 140)
-        Me.cbSideMounted.Name = "cbSideMounted"
-        Me.cbSideMounted.Size = New System.Drawing.Size(171, 29)
-        Me.cbSideMounted.TabIndex = 45
-        Me.cbSideMounted.Text = "Mounted on Side"
-        Me.cbSideMounted.UseVisualStyleBackColor = True
+        Me.cbPlungerEnabled.AutoSize = True
+        Me.cbPlungerEnabled.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbPlungerEnabled.Location = New System.Drawing.Point(11, 36)
+        Me.cbPlungerEnabled.Name = "cbPlungerEnabled"
+        Me.cbPlungerEnabled.Size = New System.Drawing.Size(167, 29)
+        Me.cbPlungerEnabled.TabIndex = 50
+        Me.cbPlungerEnabled.Text = "Plunger Enabled"
+        Me.cbPlungerEnabled.UseVisualStyleBackColor = True
         '
         'Configuration
         '
@@ -855,4 +868,5 @@ Partial Class Configuration
     Friend WithEvents Label19 As Label
     Friend WithEvents cbShiftButton As ComboBox
     Friend WithEvents cbSideMounted As CheckBox
+    Friend WithEvents cbPlungerEnabled As CheckBox
 End Class

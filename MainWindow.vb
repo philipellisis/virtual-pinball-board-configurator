@@ -14,7 +14,7 @@ Public Class MainWindow
     Private ButtonsWindow As Buttons
     Private OutputsWindow As Outputs
 
-    Private version As Integer() = {1, 12, 0}
+    Private version As Integer() = {1, 13, 0}
     'Private WithEvents arduino As RS232
     Private Board As BoardInterface
     Private config As BoardConfiguration
@@ -114,6 +114,9 @@ Public Class MainWindow
                 MessageBox.Show("PinOne board is ahead on UI in a bug fix version, it is recommended to disconnect and update the config tool from www.clevelandsoftwaredesign.com before continuing to ensure all features work properly.")
             End If
         End If
+        If e.type = MESSAGE_TYPE.RESPONSE Then
+            MessageBox.Show(e.message)
+        End If
 
     End Sub
 
@@ -168,11 +171,24 @@ Public Class MainWindow
                 Exit Sub
             End If
             Dim pHelp As New ProcessStartInfo
-            pHelp.FileName = "avrdude.exe"
-            pHelp.Arguments = "-CC:avrdude.conf -v -patmega32u4 -cavr109 -P" & port & " -b57600 -D -Uflash:w:joystick.ino.hex:i"
+            pHelp.FileName = ".\avrdude.exe"
+            pHelp.Arguments = "-Cavrdude.conf -v -patmega32u4 -cavr109 -P" & port & " -b57600 -D -Uflash:w:.\joystick.ino.hex:i"
             pHelp.UseShellExecute = True
             pHelp.WindowStyle = ProcessWindowStyle.Normal
             Dim proc As Process = Process.Start(pHelp)
+
+            ' Wait for the process to exit
+            proc.WaitForExit()
+
+            ' Check the exit code
+            If proc.ExitCode = 0 Then
+                MessageBox.Show("Successfully updated firmware")
+                Exit Sub
+            Else
+                MessageBox.Show("Firmware was not updated! You can find steps for troubleshooting firmware updates here:" & vbLf & "https://pinball-docs.clevelandsoftwaredesign.com/docs/PinOne/Troubleshooting/firmware/")
+            End If
+
+
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
@@ -219,4 +235,11 @@ Public Class MainWindow
 
     End Sub
 
+    Private Sub btnSaveConfig_Click(sender As Object, e As EventArgs) Handles btnSaveConfig.Click
+        Board.setConfig(config)
+    End Sub
+
+    Private Sub btnAbout_Click(sender As Object, e As EventArgs) Handles btnAbout.Click
+        MessageBox.Show("Version " & version(0).ToString & "." & version(1).ToString & "." & version(2).ToString)
+    End Sub
 End Class

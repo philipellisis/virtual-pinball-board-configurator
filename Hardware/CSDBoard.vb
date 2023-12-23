@@ -41,7 +41,26 @@ Public Class CSDBoard
     Public Sub setConfig(config As BoardConfiguration) Implements BoardInterface.setConfig
         enableAdminFunction(ADMIN.GET_CONFIG)
         Threading.Thread.Sleep(100)
-        CSDConnection.send(config.toConfigBytes(config))
+        Dim bytesToSend As Byte() = config.toConfigBytes(config)
+
+        Dim chunkSize As Integer = 50
+        Dim waitTime As Integer = 100 ' Wait time in milliseconds
+
+        For i As Integer = 0 To bytesToSend.Length - 1 Step chunkSize
+            ' Determine the size of the current chunk
+            Dim currentChunkSize As Integer = Math.Min(chunkSize, bytesToSend.Length - i)
+            Dim currentChunk(currentChunkSize - 1) As Byte
+
+            ' Copy the current chunk from the main array
+            Array.Copy(bytesToSend, i, currentChunk, 0, currentChunkSize)
+
+            ' Send the current chunk
+            CSDConnection.send(currentChunk)
+
+            ' Wait for specified time
+            Threading.Thread.Sleep(waitTime)
+        Next
+
     End Sub
 
     Public Function saveConfigToEeprom() Implements BoardInterface.saveConfigToEeprom
@@ -165,6 +184,7 @@ Public Class CSDBoard
 
     Public Function setBootloader(port As String) As String Implements BoardInterface.setBootloader
         Dim currentPorts As New Dictionary(Of String, String)
+        Dim initialPortToOpen As String
 
         For Each sp As String In My.Computer.Ports.SerialPortNames
             If Not currentPorts.ContainsKey(sp) Then
@@ -175,17 +195,56 @@ Public Class CSDBoard
             Return "MULTIPLE"
         End If
         If port = "Auto" Then
+            initialPortToOpen = currentPorts.First().Key
             CSDConnection = New RS232(currentPorts.First().Key)
         Else
+            initialPortToOpen = port
             CSDConnection = New RS232(port)
         End If
 
         Try
+            Dim foundPort = False
+            Dim tryCounter = 0
+            Dim portAdded As String
             CSDConnection.open1200()
-            Thread.Sleep(700)
+
+
+            Console.WriteLine("searching for port added")
+            While foundPort = False And tryCounter < 25
+
+                Dim newPorts As New Dictionary(Of String, String)
+                For Each sp As String In My.Computer.Ports.SerialPortNames
+                    If Not newPorts.ContainsKey(sp) Then
+                        newPorts.Add(sp, sp)
+                    End If
+                Next
+                Dim newComPorts As String = String.Join(", ", newPorts.Keys)
+                Dim oldComPorts As String = String.Join(", ", currentPorts.Keys)
+                Console.WriteLine("new com ports: " & newComPorts)
+                Console.WriteLine("old com ports: " & oldComPorts)
+                For Each spInitial As KeyValuePair(Of String, String) In newPorts
+                    If Not currentPorts.ContainsKey(spInitial.Key) Then
+                        portAdded = spInitial.Key
+                        foundPort = True
+                        Console.WriteLine("Found added port on " & portAdded & ", ready to receive data")
+                    End If
+                Next
+                If foundPort = False Then Console.WriteLine("no port added, continuing search")
+
+                Thread.Sleep(50)
+                tryCounter += 1
+            End While
+            'Thread.Sleep(700)
             CSDConnection.close()
-            Thread.Sleep(700)
-            Dim sps = My.Computer.Ports.SerialPortNames
+
+
+            If foundPort Then
+                Return portAdded
+            Else
+                Console.WriteLine("no new port found, trying on initial port")
+                Return initialPortToOpen
+            End If
+            'Thread.Sleep(700)
             For Each spBoot As String In My.Computer.Ports.SerialPortNames
                 If Not currentPorts.ContainsKey(spBoot) Then
                     Return spBoot

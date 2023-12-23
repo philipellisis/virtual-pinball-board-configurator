@@ -24,6 +24,8 @@ Public Class Buttons
             _userControlList.Add(userControl)
         Next
 
+        cbButtonDebounceTime.SelectedItem = (_config.buttonDebounceCounter).ToString
+
         If _config.disableButtonPressWhenKeyboardEnabled = True Then
             cbDisableJoystick.Checked = True
         Else
@@ -194,6 +196,7 @@ Public Class Buttons
             Else
                 _config.disableButtonPressWhenKeyboardEnabled = False
             End If
+            _config.buttonDebounceCounter = cbButtonDebounceTime.SelectedItem
             _board.setConfig(_config)
         Catch ex As Exception
             MessageBox.Show("Error while saving plunger values, check to ensure board is connected")
