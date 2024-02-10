@@ -234,6 +234,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClevelandSoftwareDesignLogo.ico" />
+    <None Include="resources\xbox_controller.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
