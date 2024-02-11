@@ -76,7 +76,7 @@ Public Class RS232
             sendStr += bytes(i).ToString & ","
         Next
         sendStr += bytes(bytes.Length - 1).ToString
-        'Console.WriteLine("rs232 actual send Data: " & sendStr)
+        Console.WriteLine("rs232 actual send Data: " & sendStr)
         objSerial.Write(bytes, 0, bytes.Length)
     End Sub
 
@@ -111,7 +111,7 @@ Public Class RS232
         Dim splitString = System.Text.RegularExpressions.Regex.Split(lineData.ToString, vbCrLf)
         If splitString.Length > 1 Then
             For i As Integer = 0 To splitString.Length - 2
-                'Console.WriteLine("rs232 actual Data: " & splitString(i))
+                Console.WriteLine("rs232 actual Data: " & splitString(i))
                 sendRS232Changed(New RS232ChangedArgs(splitString(i), "connected"))
             Next
             lineData.Clear()
