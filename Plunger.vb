@@ -7,6 +7,7 @@
     Private restingValue As UShort = 0
     Private restingCount As UShort = 0
     Private plungerCalibrationState = 0
+    Private calibrating As Boolean = False
     Private timer As New Stopwatch
     Public Sub New(board As BoardInterface, config As BoardConfiguration)
 
@@ -60,20 +61,17 @@
                         minvalue = e.plunger
                         lblMinValue.Text = e.plunger.ToString
                     End If
-                    If timer.ElapsedMilliseconds > 5000 Then
-                        MessageBox.Show("leave plunger in resting position, and click OK to continue")
-                        timer.Restart()
-                        plungerCalibrationState = 2
-                    End If
                 End If
                 If plungerCalibrationState = 2 Then
                     If timer.ElapsedMilliseconds > 1000 Then
                         lblRestingPoint.Text = e.plunger.ToString
                         restingValue = e.plunger
-                        plungerCalibrationState = 3
+                        plungerCalibrationState = 0
                         btnSendCalibration.Enabled = True
+                        btnStartCalibration.Enabled = True
+                        btnStartCalibration.Text = "Calibrate Plunger"
+                        lblCalibration.Visible = False
                     End If
-
                 End If
             End If
             If e.type = MESSAGE_TYPE.RESPONSE Then
@@ -127,12 +125,19 @@
     End Sub
 
     Private Sub btnStartCalibration_Click(sender As Object, e As EventArgs) Handles btnStartCalibration.Click
-        MessageBox.Show("Move plunger to max and minimum values, values will be recorded for the next 5 seconds")
-        maxValue = 0
-        minvalue = 1024
-        timer.Start()
-        timer.Restart()
-        plungerCalibrationState = 1
+        If plungerCalibrationState = 0 Then
+            btnStartCalibration.Text = "Complete"
+            maxValue = 0
+            minvalue = 1024
+            plungerCalibrationState = 1
+            btnSendCalibration.Enabled = False
+            lblCalibration.Visible = True
+        Else
+            btnStartCalibration.Enabled = False
+            plungerCalibrationState = 2
+            timer.Restart()
+        End If
+
     End Sub
 
     Private Sub formChanged(sender As Object, e As EventArgs) Handles cbLaunchButton.SelectedIndexChanged, cbAverageReadings.SelectedIndexChanged, cbDisableAccel.CheckedChanged, cbDisablePlungerNonMoving.CheckedChanged, cbPlungerQuickRelease.CheckedChanged, cbPushOnMax.CheckedChanged, cbPushOnMin.CheckedChanged

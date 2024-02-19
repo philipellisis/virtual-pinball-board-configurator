@@ -81,6 +81,7 @@ Public Class Accelerometer
 
     End Sub
     Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs)
+
         Try
             If e.type = MESSAGE_TYPE.ACCEL Then
                 currentPoint = e.accel

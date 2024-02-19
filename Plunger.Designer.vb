@@ -43,6 +43,7 @@ Partial Class Plunger
         Me.cbPlungerQuickRelease = New System.Windows.Forms.CheckBox()
         Me.cbDisablePlungerNonMoving = New System.Windows.Forms.CheckBox()
         Me.cbDisableAccel = New System.Windows.Forms.CheckBox()
+        Me.lblCalibration = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -262,11 +263,24 @@ Partial Class Plunger
         Me.cbDisableAccel.Text = "Disable Accelerometer on Movement"
         Me.cbDisableAccel.UseVisualStyleBackColor = True
         '
+        'lblCalibration
+        '
+        Me.lblCalibration.AutoSize = True
+        Me.lblCalibration.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCalibration.ForeColor = System.Drawing.Color.Firebrick
+        Me.lblCalibration.Location = New System.Drawing.Point(11, 310)
+        Me.lblCalibration.Name = "lblCalibration"
+        Me.lblCalibration.Size = New System.Drawing.Size(471, 100)
+        Me.lblCalibration.TabIndex = 50
+        Me.lblCalibration.Text = "Calibrating ... Push plunger forward and pull plunger back" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "as far as possible. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Leave plunger in resting postion " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and click ""Complete"" when finished"
+        Me.lblCalibration.Visible = False
+        '
         'Plunger
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(918, 422)
+        Me.Controls.Add(Me.lblCalibration)
         Me.Controls.Add(Me.cbDisableAccel)
         Me.Controls.Add(Me.cbDisablePlungerNonMoving)
         Me.Controls.Add(Me.cbPlungerQuickRelease)
@@ -319,4 +333,5 @@ Partial Class Plunger
     Friend WithEvents cbPlungerQuickRelease As CheckBox
     Friend WithEvents cbDisablePlungerNonMoving As CheckBox
     Friend WithEvents cbDisableAccel As CheckBox
+    Friend WithEvents lblCalibration As Label
 End Class
