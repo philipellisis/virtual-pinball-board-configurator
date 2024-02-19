@@ -94,6 +94,8 @@ Public Class Configuration
         End If
 
         cbAverageReadings.SelectedItem = (_config.plungerAverageRead).ToString
+        cbTiltSuppress.SelectedItem = (_config.tiltSuppression).ToString
+        cbAttractEnable.Checked = _config.enableLightShowAttract
 
         Me.ResumeLayout()
         tpMainOutputs.ResumeLayout()
@@ -130,6 +132,7 @@ Public Class Configuration
             _config.plungerMin = CShort(tbPlungerMin.Text)
             _config.accelerometerDeadZone = CShort(tbDeadZone.Text)
             _config.setSensitivityString(cbMultiplier.SelectedItem)
+
             Dim buttonOption As Byte = 0
             If cbPushOnMax.Checked And cbPushOnMin.Checked Then
                 buttonOption = 3
@@ -160,6 +163,8 @@ Public Class Configuration
             Else
                 _config.nightModeButton = cbNightMode.SelectedItem - 1
             End If
+            _config.tiltSuppression = cbTiltSuppress.SelectedItem.ToString
+            _config.enableLightShowAttract = cbAttractEnable.Checked
 
 
             _board.setConfig(_config)

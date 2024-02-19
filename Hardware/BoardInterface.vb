@@ -63,6 +63,9 @@ Public Class BoardConfiguration
     Public buttonKeyDebounce(24) As Byte
     Public buttonDebounceCounter As Byte
     Public enablePlunger As Byte
+    Public tiltSuppression As Byte
+    Public enableLightShowAttract As Byte
+
 
 
 
@@ -98,6 +101,8 @@ Public Class BoardConfiguration
         Array.Copy(board.buttonKeyDebounce, buttonKeyDebounce, 24)
         buttonDebounceCounter = board.buttonDebounceCounter
         enablePlunger = board.enablePlunger
+        tiltSuppression = board.tiltSuppression
+        enableLightShowAttract = board.enableLightShowAttract
     End Sub
     Public Function getOrientationString() As String
         Dim tempOrientation = orentation
@@ -173,7 +178,7 @@ Public Class BoardConfiguration
     End Function
 
     Public Function toConfigBytes(config As BoardConfiguration) As Byte()
-        Dim configString(343) As Byte
+        Dim configString(345) As Byte
         For i = 0 To 62
             configString(i) = config.toySpecialOption(i)
             configString(i + 63) = config.turnOffState(i)
@@ -228,7 +233,9 @@ Public Class BoardConfiguration
 
         configString(341) = config.buttonDebounceCounter
         configString(342) = config.enablePlunger
-        configString(343) = 42
+        configString(343) = config.tiltSuppression
+        configString(344) = config.enableLightShowAttract
+        configString(345) = 42
 
         Return configString
     End Function
@@ -286,6 +293,8 @@ Public Class BoardConfiguration
             config.buttonDebounceCounter = CByte(configString(335))
             If config.buttonDebounceCounter = 255 Then config.buttonDebounceCounter = 0
             config.enablePlunger = CBool(configString(336))
+            config.tiltSuppression = CByte(configString(337))
+            config.enableLightShowAttract = CBool(configString(338))
 
 
         Catch ex As Exception

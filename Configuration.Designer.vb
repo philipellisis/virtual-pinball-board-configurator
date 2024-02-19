@@ -66,6 +66,7 @@ Partial Class Configuration
         Me.cbButtonTrigger1 = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cbPlungerEnabled = New System.Windows.Forms.CheckBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.cbAverageReadings = New System.Windows.Forms.ComboBox()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -82,13 +83,17 @@ Partial Class Configuration
         Me.tpExpansion1 = New System.Windows.Forms.TabPage()
         Me.tpExpansion2 = New System.Windows.Forms.TabPage()
         Me.btnSave = New System.Windows.Forms.Button()
-        Me.cbPlungerEnabled = New System.Windows.Forms.CheckBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.cbTiltSuppress = New System.Windows.Forms.ComboBox()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.cbAttractEnable = New System.Windows.Forms.CheckBox()
         Me.tbMain.SuspendLayout()
         Me.tpGeneralSettings.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.SuspendLayout()
         '
         'tbMain
@@ -113,6 +118,7 @@ Partial Class Configuration
         '
         Me.tpGeneralSettings.AutoScroll = True
         Me.tpGeneralSettings.BackColor = System.Drawing.SystemColors.Control
+        Me.tpGeneralSettings.Controls.Add(Me.GroupBox5)
         Me.tpGeneralSettings.Controls.Add(Me.GroupBox4)
         Me.tpGeneralSettings.Controls.Add(Me.GroupBox3)
         Me.tpGeneralSettings.Controls.Add(Me.GroupBox2)
@@ -210,6 +216,8 @@ Partial Class Configuration
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.Label20)
+        Me.GroupBox3.Controls.Add(Me.cbTiltSuppress)
         Me.GroupBox3.Controls.Add(Me.cbSideMounted)
         Me.GroupBox3.Controls.Add(Me.Label17)
         Me.GroupBox3.Controls.Add(Me.cbTiltButton)
@@ -228,7 +236,7 @@ Partial Class Configuration
         Me.GroupBox3.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(393, 232)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(388, 451)
+        Me.GroupBox3.Size = New System.Drawing.Size(388, 478)
         Me.GroupBox3.TabIndex = 6
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Accelerometer"
@@ -261,7 +269,7 @@ Partial Class Configuration
         Me.cbTiltButton.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbTiltButton.FormattingEnabled = True
         Me.cbTiltButton.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
-        Me.cbTiltButton.Location = New System.Drawing.Point(116, 380)
+        Me.cbTiltButton.Location = New System.Drawing.Point(159, 382)
         Me.cbTiltButton.Name = "cbTiltButton"
         Me.cbTiltButton.Size = New System.Drawing.Size(76, 33)
         Me.cbTiltButton.TabIndex = 43
@@ -273,7 +281,7 @@ Partial Class Configuration
         Me.cbMultiplier.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbMultiplier.FormattingEnabled = True
         Me.cbMultiplier.Items.AddRange(New Object() {"2G (Most Sensitive)", "4G", "8G", "16G (Least Sensitive)"})
-        Me.cbMultiplier.Location = New System.Drawing.Point(116, 182)
+        Me.cbMultiplier.Location = New System.Drawing.Point(164, 182)
         Me.cbMultiplier.Name = "cbMultiplier"
         Me.cbMultiplier.Size = New System.Drawing.Size(200, 33)
         Me.cbMultiplier.TabIndex = 42
@@ -305,7 +313,7 @@ Partial Class Configuration
         '
         Me.tbMax.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbMax.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbMax.Location = New System.Drawing.Point(112, 326)
+        Me.tbMax.Location = New System.Drawing.Point(161, 326)
         Me.tbMax.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbMax.Name = "tbMax"
         Me.tbMax.Size = New System.Drawing.Size(148, 31)
@@ -327,7 +335,7 @@ Partial Class Configuration
         '
         Me.tbTilt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbTilt.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbTilt.Location = New System.Drawing.Point(112, 278)
+        Me.tbTilt.Location = New System.Drawing.Point(161, 278)
         Me.tbTilt.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbTilt.Name = "tbTilt"
         Me.tbTilt.Size = New System.Drawing.Size(148, 31)
@@ -348,7 +356,7 @@ Partial Class Configuration
         'tbDeadZone
         '
         Me.tbDeadZone.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbDeadZone.Location = New System.Drawing.Point(112, 232)
+        Me.tbDeadZone.Location = New System.Drawing.Point(161, 232)
         Me.tbDeadZone.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbDeadZone.Name = "tbDeadZone"
         Me.tbDeadZone.Size = New System.Drawing.Size(148, 31)
@@ -614,6 +622,17 @@ Partial Class Configuration
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Plunger"
         '
+        'cbPlungerEnabled
+        '
+        Me.cbPlungerEnabled.AutoSize = True
+        Me.cbPlungerEnabled.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbPlungerEnabled.Location = New System.Drawing.Point(11, 36)
+        Me.cbPlungerEnabled.Name = "cbPlungerEnabled"
+        Me.cbPlungerEnabled.Size = New System.Drawing.Size(167, 29)
+        Me.cbPlungerEnabled.TabIndex = 50
+        Me.cbPlungerEnabled.Text = "Plunger Enabled"
+        Me.cbPlungerEnabled.UseVisualStyleBackColor = True
+        '
         'Label15
         '
         Me.Label15.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -774,16 +793,49 @@ Partial Class Configuration
         Me.btnSave.Text = "Save Config"
         Me.btnSave.UseVisualStyleBackColor = True
         '
-        'cbPlungerEnabled
+        'Label20
         '
-        Me.cbPlungerEnabled.AutoSize = True
-        Me.cbPlungerEnabled.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbPlungerEnabled.Location = New System.Drawing.Point(11, 36)
-        Me.cbPlungerEnabled.Name = "cbPlungerEnabled"
-        Me.cbPlungerEnabled.Size = New System.Drawing.Size(167, 29)
-        Me.cbPlungerEnabled.TabIndex = 50
-        Me.cbPlungerEnabled.Text = "Plunger Enabled"
-        Me.cbPlungerEnabled.UseVisualStyleBackColor = True
+        Me.Label20.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.Location = New System.Drawing.Point(12, 435)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(141, 25)
+        Me.Label20.TabIndex = 47
+        Me.Label20.Text = "Tilt Suppression"
+        '
+        'cbTiltSuppress
+        '
+        Me.cbTiltSuppress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbTiltSuppress.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbTiltSuppress.FormattingEnabled = True
+        Me.cbTiltSuppress.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130", "131", "132", "133", "134", "135", "136", "137", "138", "139", "140", "141", "142", "143", "144", "145", "146", "147", "148", "149", "150", "151", "152", "153", "154", "155", "156", "157", "158", "159", "160", "161", "162", "163", "164", "165", "166", "167", "168", "169", "170", "171", "172", "173", "174", "175", "176", "177", "178", "179", "180", "181", "182", "183", "184", "185", "186", "187", "188", "189", "190", "191", "192", "193", "194", "195", "196", "197", "198", "199", "200", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215", "216", "217", "218", "219", "220", "221", "222", "223", "224", "225", "226", "227", "228", "229", "230", "231", "232", "233", "234", "235", "236", "237", "238", "239", "240", "241", "242", "243", "244", "245", "246", "247", "248", "249", "250", "251", "252", "253", "254", "255"})
+        Me.cbTiltSuppress.Location = New System.Drawing.Point(161, 427)
+        Me.cbTiltSuppress.Name = "cbTiltSuppress"
+        Me.cbTiltSuppress.Size = New System.Drawing.Size(76, 33)
+        Me.cbTiltSuppress.TabIndex = 46
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.cbAttractEnable)
+        Me.GroupBox5.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox5.Location = New System.Drawing.Point(840, 6)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(314, 217)
+        Me.GroupBox5.TabIndex = 28
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Other Settings"
+        '
+        'cbAttractEnable
+        '
+        Me.cbAttractEnable.AutoSize = True
+        Me.cbAttractEnable.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbAttractEnable.Location = New System.Drawing.Point(18, 40)
+        Me.cbAttractEnable.Name = "cbAttractEnable"
+        Me.cbAttractEnable.Size = New System.Drawing.Size(183, 29)
+        Me.cbAttractEnable.TabIndex = 51
+        Me.cbAttractEnable.Text = "Light Show Attract"
+        Me.cbAttractEnable.UseVisualStyleBackColor = True
         '
         'Configuration
         '
@@ -805,6 +857,8 @@ Partial Class Configuration
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -869,4 +923,8 @@ Partial Class Configuration
     Friend WithEvents cbShiftButton As ComboBox
     Friend WithEvents cbSideMounted As CheckBox
     Friend WithEvents cbPlungerEnabled As CheckBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents cbTiltSuppress As ComboBox
+    Friend WithEvents GroupBox5 As GroupBox
+    Friend WithEvents cbAttractEnable As CheckBox
 End Class
