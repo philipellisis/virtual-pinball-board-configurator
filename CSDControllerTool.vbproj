@@ -227,13 +227,13 @@
     </None>
     <None Include="App.config" />
     <None Include="resources\avrdude.conf" />
-    <None Include="resources\PinOne.ino.hex" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\avrdude.exe" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClevelandSoftwareDesignLogo.ico" />
+    <None Include="resources\PinOne.ino.hex" />
     <None Include="resources\xbox_controller.png" />
   </ItemGroup>
   <ItemGroup>
