@@ -82,9 +82,10 @@ Public Class Accelerometer
 
     End Sub
     Private Sub _board_BoardChanged(sender As Object, e As BoardChangedArgs)
-
+        LogMessageToFile("Recieved Message: " & e.type.ToString)
         Try
             If e.type = MESSAGE_TYPE.ACCEL Then
+
                 currentPoint = e.accel
 
                 'If (_config -> ORIENTATION == Right) Then {
@@ -110,6 +111,7 @@ Public Class Accelerometer
                 '  yValue = -temp;
                 '}
                 Dim orientation As Integer = _config.getIntegerFromOrientationString(cbOrientation.SelectedItem, cbPinsFacingUp.Checked, cbSideMounted.Checked)
+                LogMessageToFile("Orientation: " & orientation.ToString)
                 If orientation = 1 Or orientation = 9 Then
                     currentPoint.X = -e.accel.Y
                     currentPoint.Y = e.accel.X
@@ -140,6 +142,9 @@ Public Class Accelerometer
                 If Math.Abs(currentPoint.Y * multiplier) > maxSize Then
                     maxSize = Math.Abs(currentPoint.Y * multiplier) + 40
                 End If
+
+                LogMessageToFile("Max Size: " & maxSize.ToString() & " center: " & center.ToString())
+                LogMessageToFile("Current x: " & currentPoint.X.ToString() & " y: " & currentPoint.Y.ToString())
                 tbXRaw.Text = currentPoint.X
                 tbYRaw.Text = currentPoint.Y
                 tbX.Text = e.accelActual.X

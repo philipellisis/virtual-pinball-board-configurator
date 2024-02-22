@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.InteropServices.WindowsRuntime
+﻿Imports System.Globalization
+Imports System.Runtime.InteropServices.WindowsRuntime
 
 Public Enum ORIENTATION
     UP
@@ -274,7 +275,8 @@ Public Class BoardConfiguration
             config.tiltButton = CByte(configString(273))
             If config.tiltButton > 28 Then config.tiltButton = 22
             config.shiftButton = CByte(configString(274))
-            If config.shiftButton > 28 Then config.shiftButton = 2
+
+            If config.shiftButton > 28 And config.shiftButton <> 99 Then config.shiftButton = 2
             For i = 0 To 31
                 config.buttonKeys(i) = CByte(configString(i + 275))
                 If config.buttonKeys(i) = 255 Then config.buttonKeys(i) = 0
@@ -348,7 +350,7 @@ Public Class BoardChangedArgs
             Case MESSAGE_TYPE.ACCEL
                 Try
                     Dim splitMessage = Split(message, ",")
-                    accel = New Drawing.PointF(CDbl(splitMessage(0)), CDbl(splitMessage(1)))
+                    accel = New Drawing.PointF(Convert.ToDouble(splitMessage(0), CultureInfo.InvariantCulture), Convert.ToDouble(splitMessage(1), CultureInfo.InvariantCulture))
                     accelActual = New Drawing.Point(CInt(splitMessage(2)), CInt(splitMessage(3)))
                 Catch ex As Exception
                     Me.type = MESSAGE_TYPE.DEBUG
