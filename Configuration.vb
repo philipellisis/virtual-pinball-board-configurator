@@ -70,6 +70,8 @@ Public Class Configuration
         End If
         tbTilt.Text = _config.accelerometerTilt.ToString
         tbMax.Text = _config.accelerometerMax.ToString
+        tbTilty.Text = _config.accelerometerTiltY.ToString
+        tbMaxY.Text = _config.accelerometerMaxY.ToString
         If (_config.orentation > 3 And _config.orentation < 8) Or (_config.orentation > 11) Then
             cbPinsFacingUp.Checked = True
         End If
@@ -144,6 +146,8 @@ Public Class Configuration
             _config.buttonOption = buttonOption
             _config.accelerometerTilt = CShort(tbTilt.Text)
             _config.accelerometerMax = CShort(tbMax.Text)
+            _config.accelerometerTiltY = CShort(tbTilty.Text)
+            _config.accelerometerMaxY = CShort(tbMaxy.Text)
 
             'Byte plungerAverageRead = 10;
             'Byte nightModeButton = 21;

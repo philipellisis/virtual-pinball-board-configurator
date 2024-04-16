@@ -10,11 +10,12 @@ Imports System.Threading
 Public Class MainWindow
     Private configWindow As Configuration
     Private AccelerometerWindow As Accelerometer
+    Private currentComPorts = My.Computer.Ports.SerialPortNames
     Private PlungerWindow As Plunger
     Private ButtonsWindow As Buttons
     Private OutputsWindow As Outputs
 
-    Private version As Integer() = {1, 16, 0}
+    Private version As Integer() = {1, 17, 0}
     'Private WithEvents arduino As RS232
     Private Board As BoardInterface
     Private config As BoardConfiguration
@@ -25,6 +26,7 @@ Public Class MainWindow
             cbComPort.Items.Add(sp)
         Next
         cbComPort.SelectedItem = "Auto"
+        tmrComPort.Enabled = True
     End Sub
 
     Private Sub btnConnect_Click(sender As Object, e As EventArgs) Handles btnConnect.Click
@@ -32,6 +34,8 @@ Public Class MainWindow
             Board.disconnect()
             btnConnect.Text = "Connect"
             btnUpdateFirmware.Enabled = True
+            UpdateFirmwareWithoutResetToolStripMenuItem.Enabled = True
+            SoftwareResetToolStripMenuItem.Enabled = True
             cbComPort.Enabled = True
             gbMenu.Enabled = False
             connected = False
@@ -47,6 +51,8 @@ Public Class MainWindow
                 connected = True
                 btnConnect.Text = "Disconnect"
                 btnUpdateFirmware.Enabled = False
+                UpdateFirmwareWithoutResetToolStripMenuItem.Enabled = False
+                SoftwareResetToolStripMenuItem.Enabled = False
                 cbComPort.Enabled = False
                 AddHandler Board.BoardChanged, AddressOf Board_BoardChanged
                 Board.enableAdminFunction(ADMIN.SEND_CONFIG)
@@ -142,7 +148,12 @@ Public Class MainWindow
     End Sub
 
     Private Sub btnUpdateFirmware_Click(sender As Object, e As EventArgs) Handles btnUpdateFirmware.Click
-        'AVRResources.avrdude
+        'AVR
+        updateFirmware(True)
+
+    End Sub
+
+    Sub updateFirmware(reset As Boolean)
 
         If MessageBox.Show("Ensure you only have one CSD board connected before proceeding to install or you have the correct COM port selected, this will install the latest firmware. Click OK to continue", "Warning", MessageBoxButtons.OKCancel,
             Nothing, MessageBoxDefaultButton.Button1) = DialogResult.OK Then
@@ -165,7 +176,17 @@ Public Class MainWindow
             Else
                 Board = New CSDBoard
             End If
-            Dim port As String = Board.setBootloader(cbComPort.SelectedItem)
+
+            Dim port As String = cbComPort.SelectedItem
+            If reset = True Then
+                port = Board.setBootloader(cbComPort.SelectedItem)
+            End If
+
+            If port = "Auto" Then
+                MessageBox.Show("Port not found or needs to be selected before proceeding")
+                Exit Sub
+            End If
+
             If port = "MULTIPLE" Then
                 MessageBox.Show("Ensure that the PinOne is the only COM PORT device plugged into the computer before installing new firmware")
                 Exit Sub
@@ -192,7 +213,6 @@ Public Class MainWindow
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-
     End Sub
 
     Private Sub btnBackup_Click(sender As Object, e As EventArgs) Handles btnBackup.Click
@@ -240,6 +260,54 @@ Public Class MainWindow
     End Sub
 
     Private Sub btnAbout_Click(sender As Object, e As EventArgs) Handles btnAbout.Click
+
+    End Sub
+
+
+    Private Sub FileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub UpdateFirmwareWithoutResetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateFirmwareWithoutResetToolStripMenuItem.Click
+        updateFirmware(False)
+    End Sub
+
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         MessageBox.Show("Version " & version(0).ToString & "." & version(1).ToString & "." & version(2).ToString)
+    End Sub
+
+    Private Sub SoftwareResetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SoftwareResetToolStripMenuItem.Click
+        Try
+            If cbSimulation.Checked = True Then
+                Board = New DummyBoard
+            Else
+                Board = New CSDBoard
+            End If
+            Board.connect(cbComPort.SelectedItem)
+            Board.enableAdminFunction(ADMIN.RESET)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub tmrComPort_Tick(sender As Object, e As EventArgs) Handles tmrComPort.Tick
+        If Not connected Then
+            Dim names = My.Computer.Ports.SerialPortNames
+            Dim update = False
+            For Each sp As String In names
+                If Not currentComPorts.Contains(sp) Then
+                    update = True
+                End If
+            Next
+            If update Then
+                currentComPorts = names
+                cbComPort.Items.Clear()
+
+                For Each sp As String In currentComPorts
+                    cbComPort.Items.Add(sp)
+                    cbComPort.SelectedIndex = 0
+                Next
+            End If
+        End If
     End Sub
 End Class

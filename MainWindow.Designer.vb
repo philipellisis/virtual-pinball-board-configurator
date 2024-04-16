@@ -22,6 +22,7 @@ Partial Class MainWindow
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainWindow))
         Me.btnSettings = New System.Windows.Forms.Button()
         Me.btnConnect = New System.Windows.Forms.Button()
@@ -38,7 +39,15 @@ Partial Class MainWindow
         Me.cbComPort = New System.Windows.Forms.ComboBox()
         Me.lblValue = New System.Windows.Forms.Label()
         Me.btnAbout = New System.Windows.Forms.Button()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UpdateFirmwareWithoutResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SoftwareResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FileToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tmrComPort = New System.Windows.Forms.Timer(Me.components)
         Me.gbMenu.SuspendLayout()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnSettings
@@ -55,7 +64,7 @@ Partial Class MainWindow
         'btnConnect
         '
         Me.btnConnect.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnConnect.Location = New System.Drawing.Point(14, 466)
+        Me.btnConnect.Location = New System.Drawing.Point(14, 504)
         Me.btnConnect.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnConnect.Name = "btnConnect"
         Me.btnConnect.Size = New System.Drawing.Size(224, 85)
@@ -119,7 +128,7 @@ Partial Class MainWindow
         Me.gbMenu.Controls.Add(Me.btnPlunger)
         Me.gbMenu.Enabled = False
         Me.gbMenu.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gbMenu.Location = New System.Drawing.Point(12, 12)
+        Me.gbMenu.Location = New System.Drawing.Point(12, 50)
         Me.gbMenu.Name = "gbMenu"
         Me.gbMenu.Size = New System.Drawing.Size(734, 408)
         Me.gbMenu.TabIndex = 8
@@ -160,7 +169,7 @@ Partial Class MainWindow
         '
         Me.cbSimulation.AutoSize = True
         Me.cbSimulation.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbSimulation.Location = New System.Drawing.Point(20, 425)
+        Me.cbSimulation.Location = New System.Drawing.Point(20, 463)
         Me.cbSimulation.Name = "cbSimulation"
         Me.cbSimulation.Size = New System.Drawing.Size(145, 33)
         Me.cbSimulation.TabIndex = 9
@@ -171,7 +180,7 @@ Partial Class MainWindow
         'btnUpdateFirmware
         '
         Me.btnUpdateFirmware.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUpdateFirmware.Location = New System.Drawing.Point(482, 466)
+        Me.btnUpdateFirmware.Location = New System.Drawing.Point(482, 504)
         Me.btnUpdateFirmware.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnUpdateFirmware.Name = "btnUpdateFirmware"
         Me.btnUpdateFirmware.Size = New System.Drawing.Size(224, 85)
@@ -184,7 +193,7 @@ Partial Class MainWindow
         Me.cbComPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbComPort.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbComPort.FormattingEnabled = True
-        Me.cbComPort.Location = New System.Drawing.Point(713, 513)
+        Me.cbComPort.Location = New System.Drawing.Point(713, 551)
         Me.cbComPort.Name = "cbComPort"
         Me.cbComPort.Size = New System.Drawing.Size(102, 33)
         Me.cbComPort.TabIndex = 24
@@ -193,7 +202,7 @@ Partial Class MainWindow
         '
         Me.lblValue.AutoSize = True
         Me.lblValue.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblValue.Location = New System.Drawing.Point(713, 481)
+        Me.lblValue.Location = New System.Drawing.Point(713, 519)
         Me.lblValue.Name = "lblValue"
         Me.lblValue.Size = New System.Drawing.Size(100, 29)
         Me.lblValue.TabIndex = 25
@@ -202,7 +211,7 @@ Partial Class MainWindow
         'btnAbout
         '
         Me.btnAbout.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAbout.Location = New System.Drawing.Point(246, 468)
+        Me.btnAbout.Location = New System.Drawing.Point(246, 506)
         Me.btnAbout.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnAbout.Name = "btnAbout"
         Me.btnAbout.Size = New System.Drawing.Size(104, 83)
@@ -210,11 +219,58 @@ Partial Class MainWindow
         Me.btnAbout.Text = "About"
         Me.btnAbout.UseVisualStyleBackColor = True
         '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
+        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem1, Me.FileToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(827, 36)
+        Me.MenuStrip1.TabIndex = 27
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'FileToolStripMenuItem
+        '
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UpdateFirmwareWithoutResetToolStripMenuItem, Me.SoftwareResetToolStripMenuItem})
+        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(107, 32)
+        Me.FileToolStripMenuItem.Text = "Advanced"
+        '
+        'UpdateFirmwareWithoutResetToolStripMenuItem
+        '
+        Me.UpdateFirmwareWithoutResetToolStripMenuItem.Name = "UpdateFirmwareWithoutResetToolStripMenuItem"
+        Me.UpdateFirmwareWithoutResetToolStripMenuItem.Size = New System.Drawing.Size(365, 34)
+        Me.UpdateFirmwareWithoutResetToolStripMenuItem.Text = "Update Firmware Without Reset"
+        '
+        'SoftwareResetToolStripMenuItem
+        '
+        Me.SoftwareResetToolStripMenuItem.Name = "SoftwareResetToolStripMenuItem"
+        Me.SoftwareResetToolStripMenuItem.Size = New System.Drawing.Size(365, 34)
+        Me.SoftwareResetToolStripMenuItem.Text = "Software Reset"
+        '
+        'FileToolStripMenuItem1
+        '
+        Me.FileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
+        Me.FileToolStripMenuItem1.Name = "FileToolStripMenuItem1"
+        Me.FileToolStripMenuItem1.Size = New System.Drawing.Size(54, 32)
+        Me.FileToolStripMenuItem1.Text = "File"
+        '
+        'AboutToolStripMenuItem
+        '
+        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
+        Me.AboutToolStripMenuItem.Text = "About"
+        '
+        'tmrComPort
+        '
+        Me.tmrComPort.Interval = 1000
+        '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(827, 565)
+        Me.ClientSize = New System.Drawing.Size(827, 611)
         Me.Controls.Add(Me.btnAbout)
         Me.Controls.Add(Me.lblValue)
         Me.Controls.Add(Me.cbComPort)
@@ -222,11 +278,15 @@ Partial Class MainWindow
         Me.Controls.Add(Me.cbSimulation)
         Me.Controls.Add(Me.gbMenu)
         Me.Controls.Add(Me.btnConnect)
+        Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "MainWindow"
         Me.Text = "CSD Configuration Tool"
         Me.gbMenu.ResumeLayout(False)
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -247,4 +307,11 @@ Partial Class MainWindow
     Friend WithEvents lblValue As Label
     Friend WithEvents btnSaveConfig As Button
     Friend WithEvents btnAbout As Button
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents UpdateFirmwareWithoutResetToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SoftwareResetToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FileToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents tmrComPort As Timer
 End Class

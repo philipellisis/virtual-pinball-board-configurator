@@ -7,6 +7,8 @@ Public Class Accelerometer
     Private deadZone As Integer = 0
     Private tilt As Integer = 0
     Private max As Integer = 0
+    Private tilty As Integer = 0
+    Private maxy As Integer = 0
     Private recordDeadZone As Boolean = False
     Private recordTilt As Boolean = False
     Private recordMax As Boolean = False
@@ -39,6 +41,8 @@ Public Class Accelerometer
             cbTiltSuppress.SelectedItem = (_config.tiltSuppression).ToString
             tbTilt.Text = _config.accelerometerTilt
             tbMax.Text = _config.accelerometerMax
+            tbTiltY.Text = _config.accelerometerTiltY
+            tbMaxY.Text = _config.accelerometerMaxY
             If _config.accelerometerDeadZone > maxSize Then
                 maxSize = _config.accelerometerDeadZone + 40
             End If
@@ -72,8 +76,8 @@ Public Class Accelerometer
             e.Graphics.DrawLine(p2, New Point(center, 0), New Point(-center, 0))
             e.Graphics.DrawLine(p2, New Point(0, center), New Point(0, -center))
             e.Graphics.DrawRectangle(p3, New Rectangle(New Point(-deadZone / maxSize * center, -deadZone / maxSize * center), New Size(deadZone * 2 / maxSize * center, deadZone * 2 / maxSize * center)))
-            e.Graphics.DrawRectangle(p4, New Rectangle(New Point(-tilt / maxSize * center, -tilt / maxSize * center), New Size(tilt * 2 / maxSize * center, tilt * 2 / maxSize * center)))
-            e.Graphics.DrawRectangle(p5, New Rectangle(New Point(-max / maxSize * center, -max / maxSize * center), New Size(max * 2 / maxSize * center, max * 2 / maxSize * center)))
+            e.Graphics.DrawRectangle(p4, New Rectangle(New Point(-tilt / maxSize * center, -tilty / maxSize * center), New Size(tilt * 2 / maxSize * center, tilty * 2 / maxSize * center)))
+            e.Graphics.DrawRectangle(p5, New Rectangle(New Point(-max / maxSize * center, -maxy / maxSize * center), New Size(max * 2 / maxSize * center, maxy * 2 / maxSize * center)))
             e.Graphics.DrawLine(p, New Point(currentPoint.X * multiplier - 10, currentPoint.Y * multiplier), New Point(currentPoint.X * multiplier + 10, currentPoint.Y * multiplier))
             e.Graphics.DrawLine(p, New Point(currentPoint.X * multiplier, currentPoint.Y * multiplier - 10), New Point(currentPoint.X * multiplier, currentPoint.Y * multiplier + 10))
         Catch ex As Exception
@@ -164,29 +168,31 @@ Public Class Accelerometer
                 End If
 
                 If recordTilt Then
-                    If currentPoint.X * multiplier > tilt Then
-                        tbTilt.Text = currentPoint.X * multiplier
-                        tilt = currentPoint.X * multiplier
+                    If currentPoint.X * multiplier > tilt Or currentPoint.X * multiplier < -tilt Then
+                        tbTilt.Text = Math.Abs(currentPoint.X) * multiplier
+                        tilt = Math.Abs(currentPoint.X) * multiplier
                     End If
-                    If currentPoint.Y * multiplier > tilt Then
-                        tbTilt.Text = currentPoint.Y * multiplier
-                        tilt = currentPoint.Y * multiplier
+                    If currentPoint.Y * multiplier > tilty Or currentPoint.Y * multiplier < -tilty Then
+                        tbTiltY.Text = Math.Abs(currentPoint.Y) * multiplier
+                        tilty = Math.Abs(currentPoint.Y) * multiplier
                     End If
                 Else
                     tilt = CUShort(tbTilt.Text)
+                    tilty = CUShort(tbTiltY.Text)
                 End If
 
                 If recordMax Then
-                    If currentPoint.X * multiplier > max Then
-                        tbMax.Text = currentPoint.X * multiplier
-                        max = currentPoint.X * multiplier
+                    If currentPoint.X * multiplier > max Or currentPoint.X * multiplier < -max Then
+                        tbMax.Text = Math.Abs(currentPoint.X) * multiplier
+                        max = Math.Abs(currentPoint.X) * multiplier
                     End If
-                    If currentPoint.Y * multiplier > max Then
-                        tbMax.Text = currentPoint.Y * multiplier
-                        max = currentPoint.Y * multiplier
+                    If currentPoint.Y * multiplier > maxy Or currentPoint.Y * multiplier < -maxy Then
+                        tbMaxY.Text = Math.Abs(currentPoint.Y) * multiplier
+                        maxy = Math.Abs(currentPoint.Y) * multiplier
                     End If
                 Else
                     max = CUShort(tbMax.Text)
+                    maxy = CUShort(tbMaxY.Text)
                 End If
 
                 currentPoint.X = currentPoint.X / maxSize * center
@@ -238,6 +244,8 @@ Public Class Accelerometer
             _config.accelerometerDeadZone = CUShort(tbDeadZone.Text)
             _config.accelerometerTilt = CUShort(tbTilt.Text)
             _config.accelerometerMax = CUShort(tbMax.Text)
+            _config.accelerometerTiltY = CUShort(tbTiltY.Text)
+            _config.accelerometerMaxY = CUShort(tbMaxY.Text)
             _config.tiltButton = (cbTiltButton.SelectedItem - 1).ToString
             _config.tiltSuppression = cbTiltSuppress.SelectedItem.ToString
             _board.setConfig(_config)
@@ -253,7 +261,9 @@ Public Class Accelerometer
         Else
             recordTilt = True
             tbTilt.Text = "0"
+            tbTiltY.Text = "0"
             tilt = 0
+            tilty = 0
             btnTilt.Text = "Stop Tilt Value"
         End If
     End Sub
@@ -284,7 +294,9 @@ Public Class Accelerometer
         Else
             recordMax = True
             tbMax.Text = "0"
+            tbMaxY.Text = "0"
             max = 0
+            maxy = 0
             Button1.Text = "Stop Max Value"
         End If
     End Sub

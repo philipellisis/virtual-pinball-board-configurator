@@ -21,6 +21,7 @@ Public Enum ADMIN
     SAVE_CONFIG = 9
     SET_ACCEL = 10
     GET_VERSION = 11
+    RESET = 12
 End Enum
 
 Public Enum MESSAGE_TYPE
@@ -51,6 +52,8 @@ Public Class BoardConfiguration
     Public buttonOption As Byte
     Public accelerometerTilt As Int16
     Public accelerometerMax As Int16
+    Public accelerometerTiltY As Int16
+    Public accelerometerMaxY As Int16
     Public plungerAverageRead As Byte
     Public nightModeButton As Byte
     Public plungerLaunchButton As Byte
@@ -88,6 +91,8 @@ Public Class BoardConfiguration
         buttonOption = board.buttonOption
         accelerometerTilt = board.accelerometerTilt
         accelerometerMax = board.accelerometerMax
+        accelerometerTiltY = board.accelerometerTiltY
+        accelerometerMaxY = board.accelerometerMaxY
         plungerAverageRead = board.plungerAverageRead
         nightModeButton = board.nightModeButton
         plungerLaunchButton = board.plungerLaunchButton
@@ -179,7 +184,7 @@ Public Class BoardConfiguration
     End Function
 
     Public Function toConfigBytes(config As BoardConfiguration) As Byte()
-        Dim configString(345) As Byte
+        Dim configString(349) As Byte
         For i = 0 To 62
             configString(i) = config.toySpecialOption(i)
             configString(i + 63) = config.turnOffState(i)
@@ -227,16 +232,22 @@ Public Class BoardConfiguration
         configString(314) = config.enablePlungerQuickRelease
         configString(315) = config.disablePlungerWhenNotInUse
         configString(316) = config.disableButtonPressWhenKeyboardEnabled
+        Dim result8 As Byte() = BitConverter.GetBytes(config.accelerometerTiltY)
+        configString(317) = result8(1)
+        configString(318) = result8(0)
+        Dim result9 As Byte() = BitConverter.GetBytes(config.accelerometerMaxY)
+        configString(319) = result9(1)
+        configString(320) = result9(0)
 
         For i = 0 To 23
-            configString(i + 317) = config.buttonKeyDebounce(i)
+            configString(i + 321) = config.buttonKeyDebounce(i)
         Next
 
-        configString(341) = config.buttonDebounceCounter
-        configString(342) = config.enablePlunger
-        configString(343) = config.tiltSuppression
-        configString(344) = config.enableLightShowAttract
-        configString(345) = 42
+        configString(345) = config.buttonDebounceCounter
+        configString(346) = config.enablePlunger
+        configString(347) = config.tiltSuppression
+        configString(348) = config.enableLightShowAttract
+        configString(349) = 42
 
         Return configString
     End Function
@@ -286,21 +297,28 @@ Public Class BoardConfiguration
             config.enablePlungerQuickRelease = CByte(configString(308))
             config.disablePlungerWhenNotInUse = CByte(configString(309))
             config.disableButtonPressWhenKeyboardEnabled = CByte(configString(310))
+            config.accelerometerTiltY = CInt(configString(311))
+            config.accelerometerMaxY = CInt(configString(312))
 
             For i = 0 To 23
-                config.buttonKeyDebounce(i) = CByte(configString(i + 311))
+                config.buttonKeyDebounce(i) = CByte(configString(i + 313))
                 If config.buttonKeyDebounce(i) = 255 Then config.buttonKeyDebounce(i) = 0
             Next
 
-            config.buttonDebounceCounter = CByte(configString(335))
+            config.buttonDebounceCounter = CByte(configString(337))
             If config.buttonDebounceCounter = 255 Then config.buttonDebounceCounter = 0
-            config.enablePlunger = CBool(configString(336))
-            config.tiltSuppression = CByte(configString(337))
-            config.enableLightShowAttract = CBool(configString(338))
+            config.enablePlunger = CBool(configString(338))
+            config.tiltSuppression = CByte(configString(339))
+            config.enableLightShowAttract = CBool(configString(340))
+
+            If configString(341) <> "E" Then
+                Throw New Exception("error in config string returned!")
+            End If
 
 
         Catch ex As Exception
             Console.WriteLine("unable to convert data to configuration: " & ex.Message)
+            Throw New Exception("error while getting config. Maybe the PinOne is not at the right version? Update firmware and try again.")
         End Try
 
         Return config

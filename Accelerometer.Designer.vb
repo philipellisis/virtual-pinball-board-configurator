@@ -57,6 +57,8 @@ Partial Class Accelerometer
         Me.cbSideMounted = New System.Windows.Forms.CheckBox()
         Me.cbTiltSuppress = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.tbMaxY = New System.Windows.Forms.TextBox()
+        Me.tbTiltY = New System.Windows.Forms.TextBox()
         CType(Me.pbAxis, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -259,7 +261,7 @@ Partial Class Accelerometer
         Me.tbTilt.Location = New System.Drawing.Point(880, 303)
         Me.tbTilt.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbTilt.Name = "tbTilt"
-        Me.tbTilt.Size = New System.Drawing.Size(148, 31)
+        Me.tbTilt.Size = New System.Drawing.Size(64, 31)
         Me.tbTilt.TabIndex = 30
         '
         'Label1
@@ -317,7 +319,7 @@ Partial Class Accelerometer
         Me.tbMax.Location = New System.Drawing.Point(880, 345)
         Me.tbMax.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbMax.Name = "tbMax"
-        Me.tbMax.Size = New System.Drawing.Size(148, 31)
+        Me.tbMax.Size = New System.Drawing.Size(64, 31)
         Me.tbMax.TabIndex = 35
         '
         'Label2
@@ -422,11 +424,33 @@ Partial Class Accelerometer
         Me.Label4.TabIndex = 44
         Me.Label4.Text = "Tilt Suppression"
         '
+        'tbMaxY
+        '
+        Me.tbMaxY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tbMaxY.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbMaxY.Location = New System.Drawing.Point(962, 346)
+        Me.tbMaxY.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.tbMaxY.Name = "tbMaxY"
+        Me.tbMaxY.Size = New System.Drawing.Size(64, 31)
+        Me.tbMaxY.TabIndex = 45
+        '
+        'tbTiltY
+        '
+        Me.tbTiltY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tbTiltY.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbTiltY.Location = New System.Drawing.Point(962, 302)
+        Me.tbTiltY.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.tbTiltY.Name = "tbTiltY"
+        Me.tbTiltY.Size = New System.Drawing.Size(64, 31)
+        Me.tbTiltY.TabIndex = 46
+        '
         'Accelerometer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1060, 898)
+        Me.Controls.Add(Me.tbTiltY)
+        Me.Controls.Add(Me.tbMaxY)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.cbTiltSuppress)
         Me.Controls.Add(Me.cbSideMounted)
@@ -501,4 +525,6 @@ Partial Class Accelerometer
     Friend WithEvents cbSideMounted As CheckBox
     Friend WithEvents cbTiltSuppress As ComboBox
     Friend WithEvents Label4 As Label
+    Friend WithEvents tbMaxY As TextBox
+    Friend WithEvents tbTiltY As TextBox
 End Class
