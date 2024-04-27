@@ -256,6 +256,7 @@
   <ItemGroup>
     <Content Include="ClevelandSoftwareDesignLogo.ico" />
     <None Include="resources\PinOne.ino.hex" />
+    <None Include="resources\PinOneX.ino.hex" />
     <None Include="resources\xbox_controller.png" />
   </ItemGroup>
   <ItemGroup>

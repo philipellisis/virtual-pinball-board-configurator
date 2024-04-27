@@ -40,12 +40,14 @@ Partial Class MainWindow
         Me.lblValue = New System.Windows.Forms.Label()
         Me.btnAbout = New System.Windows.Forms.Button()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.FileToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UpdateFirmwareWithoutResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SoftwareResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FileToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tmrComPort = New System.Windows.Forms.Timer(Me.components)
+        Me.InstallXinputFirmwareToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InstallXinputFirmwareWithoutResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gbMenu.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -226,45 +228,57 @@ Partial Class MainWindow
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem1, Me.FileToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(827, 36)
+        Me.MenuStrip1.Size = New System.Drawing.Size(827, 33)
         Me.MenuStrip1.TabIndex = 27
         Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'FileToolStripMenuItem
-        '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UpdateFirmwareWithoutResetToolStripMenuItem, Me.SoftwareResetToolStripMenuItem})
-        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(107, 32)
-        Me.FileToolStripMenuItem.Text = "Advanced"
-        '
-        'UpdateFirmwareWithoutResetToolStripMenuItem
-        '
-        Me.UpdateFirmwareWithoutResetToolStripMenuItem.Name = "UpdateFirmwareWithoutResetToolStripMenuItem"
-        Me.UpdateFirmwareWithoutResetToolStripMenuItem.Size = New System.Drawing.Size(365, 34)
-        Me.UpdateFirmwareWithoutResetToolStripMenuItem.Text = "Update Firmware Without Reset"
-        '
-        'SoftwareResetToolStripMenuItem
-        '
-        Me.SoftwareResetToolStripMenuItem.Name = "SoftwareResetToolStripMenuItem"
-        Me.SoftwareResetToolStripMenuItem.Size = New System.Drawing.Size(365, 34)
-        Me.SoftwareResetToolStripMenuItem.Text = "Software Reset"
         '
         'FileToolStripMenuItem1
         '
         Me.FileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.FileToolStripMenuItem1.Name = "FileToolStripMenuItem1"
-        Me.FileToolStripMenuItem1.Size = New System.Drawing.Size(54, 32)
+        Me.FileToolStripMenuItem1.Size = New System.Drawing.Size(54, 29)
         Me.FileToolStripMenuItem1.Text = "File"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(164, 34)
         Me.AboutToolStripMenuItem.Text = "About"
+        '
+        'FileToolStripMenuItem
+        '
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UpdateFirmwareWithoutResetToolStripMenuItem, Me.InstallXinputFirmwareWithoutResetToolStripMenuItem, Me.InstallXinputFirmwareToolStripMenuItem, Me.SoftwareResetToolStripMenuItem})
+        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(107, 29)
+        Me.FileToolStripMenuItem.Text = "Advanced"
+        '
+        'UpdateFirmwareWithoutResetToolStripMenuItem
+        '
+        Me.UpdateFirmwareWithoutResetToolStripMenuItem.Name = "UpdateFirmwareWithoutResetToolStripMenuItem"
+        Me.UpdateFirmwareWithoutResetToolStripMenuItem.Size = New System.Drawing.Size(445, 34)
+        Me.UpdateFirmwareWithoutResetToolStripMenuItem.Text = "Update Firmware With Reset Button"
+        '
+        'SoftwareResetToolStripMenuItem
+        '
+        Me.SoftwareResetToolStripMenuItem.Name = "SoftwareResetToolStripMenuItem"
+        Me.SoftwareResetToolStripMenuItem.Size = New System.Drawing.Size(445, 34)
+        Me.SoftwareResetToolStripMenuItem.Text = "Software Reset"
         '
         'tmrComPort
         '
         Me.tmrComPort.Interval = 1000
+        '
+        'InstallXinputFirmwareToolStripMenuItem
+        '
+        Me.InstallXinputFirmwareToolStripMenuItem.Name = "InstallXinputFirmwareToolStripMenuItem"
+        Me.InstallXinputFirmwareToolStripMenuItem.Size = New System.Drawing.Size(445, 34)
+        Me.InstallXinputFirmwareToolStripMenuItem.Text = "Install x-input Firmware"
+        '
+        'InstallXinputFirmwareWithoutResetToolStripMenuItem
+        '
+        Me.InstallXinputFirmwareWithoutResetToolStripMenuItem.Name = "InstallXinputFirmwareWithoutResetToolStripMenuItem"
+        Me.InstallXinputFirmwareWithoutResetToolStripMenuItem.Size = New System.Drawing.Size(445, 34)
+        Me.InstallXinputFirmwareWithoutResetToolStripMenuItem.Text = "Install x-input Firmware With Reset Button"
         '
         'MainWindow
         '
@@ -314,4 +328,6 @@ Partial Class MainWindow
     Friend WithEvents FileToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents tmrComPort As Timer
+    Friend WithEvents InstallXinputFirmwareToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents InstallXinputFirmwareWithoutResetToolStripMenuItem As ToolStripMenuItem
 End Class

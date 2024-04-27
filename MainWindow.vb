@@ -149,17 +149,25 @@ Public Class MainWindow
 
     Private Sub btnUpdateFirmware_Click(sender As Object, e As EventArgs) Handles btnUpdateFirmware.Click
         'AVR
-        updateFirmware(True)
+        updateFirmware(True, False)
 
     End Sub
 
-    Sub updateFirmware(reset As Boolean)
+    Sub updateFirmware(reset As Boolean, xInput As Boolean)
 
-        If MessageBox.Show("Ensure you only have one CSD board connected before proceeding to install or you have the correct COM port selected, this will install the latest firmware. Click OK to continue", "Warning", MessageBoxButtons.OKCancel,
-            Nothing, MessageBoxDefaultButton.Button1) = DialogResult.OK Then
-        Else
-            Exit Sub
+        If reset = True Then
+            Dim message As String = "Ensure you only have one CSD board connected before proceeding to install or you have the correct COM port selected, this will install the latest firmware. Click OK to continue"
+            If xInput = True Then
+                message = "*** Installing x-input firmware will not allow a connection to the PinOne ***, Make sure you are ready to proceed and the plunger and accelerometer are calibrated properly. You can always go back to the normal firmware, but you need to press the reset button in order to load new firmware later"
+            End If
+
+            If MessageBox.Show(message, "Warning", MessageBoxButtons.OKCancel,
+                Nothing, MessageBoxDefaultButton.Button1) = DialogResult.OK Then
+            Else
+                Exit Sub
+            End If
         End If
+
         Try
             Using output As Stream = File.OpenWrite(System.IO.Path.Combine(Application.StartupPath(), "avrdude.exe"))
                 output.Write(AVRResources.avrdude, 0, AVRResources.avrdude.Length)
@@ -167,9 +175,16 @@ Public Class MainWindow
             Using output As Stream = File.OpenWrite(System.IO.Path.Combine(Application.StartupPath(), "avrdude.conf"))
                 output.Write(AVRResources.avrdude_conf, 0, AVRResources.avrdude_conf.Length)
             End Using
-            Using output As Stream = File.OpenWrite(System.IO.Path.Combine(Application.StartupPath(), "joystick.ino.hex"))
-                output.Write(AVRResources.PinOne_ino, 0, AVRResources.PinOne_ino.Length)
-            End Using
+            If xInput = True Then
+                Using output As Stream = File.OpenWrite(System.IO.Path.Combine(Application.StartupPath(), "joystick.ino.hex"))
+                    output.Write(AVRResources.PinOneX_ino, 0, AVRResources.PinOneX_ino.Length)
+                End Using
+            Else
+                Using output As Stream = File.OpenWrite(System.IO.Path.Combine(Application.StartupPath(), "joystick.ino.hex"))
+                    output.Write(AVRResources.PinOne_ino, 0, AVRResources.PinOne_ino.Length)
+                End Using
+            End If
+
 
             If cbSimulation.Checked = True Then
                 Board = New DummyBoard
@@ -269,7 +284,7 @@ Public Class MainWindow
     End Sub
 
     Private Sub UpdateFirmwareWithoutResetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateFirmwareWithoutResetToolStripMenuItem.Click
-        updateFirmware(False)
+        updateFirmware(False, False)
     End Sub
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
@@ -309,5 +324,13 @@ Public Class MainWindow
                 Next
             End If
         End If
+    End Sub
+
+    Private Sub InstallXinputFirmwareToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InstallXinputFirmwareToolStripMenuItem.Click
+        updateFirmware(True, True)
+    End Sub
+
+    Private Sub InstallXinputFirmwareWithoutResetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InstallXinputFirmwareWithoutResetToolStripMenuItem.Click
+        updateFirmware(False, True)
     End Sub
 End Class
