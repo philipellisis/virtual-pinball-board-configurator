@@ -35,6 +35,8 @@ Public Class MainWindow
             btnConnect.Text = "Connect"
             btnUpdateFirmware.Enabled = True
             UpdateFirmwareWithoutResetToolStripMenuItem.Enabled = True
+            InstallXinputFirmwareToolStripMenuItem.Enabled = True
+            InstallXinputFirmwareWithoutResetToolStripMenuItem.Enabled = True
             SoftwareResetToolStripMenuItem.Enabled = True
             cbComPort.Enabled = True
             gbMenu.Enabled = False
@@ -52,6 +54,8 @@ Public Class MainWindow
                 btnConnect.Text = "Disconnect"
                 btnUpdateFirmware.Enabled = False
                 UpdateFirmwareWithoutResetToolStripMenuItem.Enabled = False
+                InstallXinputFirmwareToolStripMenuItem.Enabled = False
+                InstallXinputFirmwareWithoutResetToolStripMenuItem.Enabled = False
                 SoftwareResetToolStripMenuItem.Enabled = False
                 cbComPort.Enabled = False
                 AddHandler Board.BoardChanged, AddressOf Board_BoardChanged
@@ -99,6 +103,15 @@ Public Class MainWindow
                 btnAccel.Enabled = True
             End If
             Board.enableAdminFunction(ADMIN.GET_VERSION)
+        End If
+        If e.type = MESSAGE_TYPE.DEBUG And e.message = "Config Error" Then
+            UpdateFirmwareWithoutResetToolStripMenuItem.Enabled = False
+            InstallXinputFirmwareToolStripMenuItem.Enabled = False
+            InstallXinputFirmwareWithoutResetToolStripMenuItem.Enabled = False
+            SoftwareResetToolStripMenuItem.Enabled = False
+            cbComPort.Enabled = False
+            gbMenu.Enabled = False
+            MessageBox.Show("Unable to load config due to invalid response. Most likely firmware needs to be updated first")
         End If
         If e.type = MESSAGE_TYPE.VERSION Then
             If e.version(0) < version(0) Then
@@ -275,7 +288,7 @@ Public Class MainWindow
     End Sub
 
     Private Sub btnAbout_Click(sender As Object, e As EventArgs) Handles btnAbout.Click
-
+        MessageBox.Show("Version " & version(0).ToString & "." & version(1).ToString & "." & version(2).ToString)
     End Sub
 
 

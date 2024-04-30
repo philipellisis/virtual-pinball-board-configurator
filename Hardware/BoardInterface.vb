@@ -378,6 +378,7 @@ Public Class BoardChangedArgs
                     config = BoardConfiguration.stringToConfig(message)
                 Catch ex As Exception
                     Me.type = MESSAGE_TYPE.DEBUG
+                    Me.message = "Config Error"
                 End Try
             Case MESSAGE_TYPE.VERSION
                 Dim versionString As String() = message.Split(".")
