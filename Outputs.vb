@@ -10,26 +10,36 @@
         ' Add any initialization after the InitializeComponent() call.
         _board = board
     End Sub
+
+    Dim names As String() = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "RGB Flippers Red", "RGB Flippers Green", "RGB Flippers Blue", "RGB Magna Right Red", "RGB Magna Right Green", "RGB Magna Right Blue", "RGB Magna Left Red", "RGB Magna Left Green", "RGB Magna Left Blue", "Button 5", "Button 6", "Button 7", "Button 8", "RGB Fire Red", "RGB Fire Green", "RGB Fire Blue", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""}
     Private Sub Outputs_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.SuspendLayout()
         tpMain.SuspendLayout()
 
 
 
-        For i As Integer = 0 To 30
-            Dim userControl As New Output(_board, i)
+        For i As Integer = 0 To 14
+            Dim userControl As New Output(_board, i, names(i))
             userControl.Location = New Point(1, i * 75)
             tpMain.Controls.Add(userControl)
             _userControlList.Add(userControl)
         Next
+
         For i As Integer = 0 To 15
-            Dim userControl As New Output(_board, i + 31)
+            Dim userControl As New Output(_board, i + 15, names(i + 15))
+            userControl.Location = New Point(1, i * 75)
+            tpButtons.Controls.Add(userControl)
+            _userControlList.Add(userControl)
+        Next
+
+        For i As Integer = 0 To 15
+            Dim userControl As New Output(_board, i + 31, names(i + 31))
             userControl.Location = New Point(1, i * 75)
             tpExp1.Controls.Add(userControl)
             _userControlList.Add(userControl)
         Next
         For i As Integer = 0 To 15
-            Dim userControl As New Output(_board, i + 47)
+            Dim userControl As New Output(_board, i + 47, "")
             userControl.Location = New Point(1, i * 75)
             tpExp2.Controls.Add(userControl)
             _userControlList.Add(userControl)

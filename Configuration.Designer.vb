@@ -35,6 +35,8 @@ Partial Class Configuration
         Me.Label18 = New System.Windows.Forms.Label()
         Me.cbNightMode = New System.Windows.Forms.ComboBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.tbMaxY = New System.Windows.Forms.TextBox()
+        Me.tbTilty = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.cbTiltSuppress = New System.Windows.Forms.ComboBox()
         Me.cbSideMounted = New System.Windows.Forms.CheckBox()
@@ -87,8 +89,7 @@ Partial Class Configuration
         Me.tpExpansion1 = New System.Windows.Forms.TabPage()
         Me.tpExpansion2 = New System.Windows.Forms.TabPage()
         Me.btnSave = New System.Windows.Forms.Button()
-        Me.tbTilty = New System.Windows.Forms.TextBox()
-        Me.tbMaxY = New System.Windows.Forms.TextBox()
+        Me.tpButtonOutputs = New System.Windows.Forms.TabPage()
         Me.tbMain.SuspendLayout()
         Me.tpGeneralSettings.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -105,6 +106,7 @@ Partial Class Configuration
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbMain.Controls.Add(Me.tpGeneralSettings)
         Me.tbMain.Controls.Add(Me.tpMainOutputs)
+        Me.tbMain.Controls.Add(Me.tpButtonOutputs)
         Me.tbMain.Controls.Add(Me.tpExpansion1)
         Me.tbMain.Controls.Add(Me.tpExpansion2)
         Me.tbMain.Cursor = System.Windows.Forms.Cursors.Default
@@ -266,6 +268,26 @@ Partial Class Configuration
         Me.GroupBox3.TabIndex = 6
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Accelerometer"
+        '
+        'tbMaxY
+        '
+        Me.tbMaxY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tbMaxY.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbMaxY.Location = New System.Drawing.Point(245, 325)
+        Me.tbMaxY.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.tbMaxY.Name = "tbMaxY"
+        Me.tbMaxY.Size = New System.Drawing.Size(76, 31)
+        Me.tbMaxY.TabIndex = 49
+        '
+        'tbTilty
+        '
+        Me.tbTilty.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tbTilty.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbTilty.Location = New System.Drawing.Point(245, 278)
+        Me.tbTilty.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.tbTilty.Name = "tbTilty"
+        Me.tbTilty.Size = New System.Drawing.Size(76, 31)
+        Me.tbTilty.TabIndex = 48
         '
         'Label20
         '
@@ -841,25 +863,15 @@ Partial Class Configuration
         Me.btnSave.Text = "Save Config"
         Me.btnSave.UseVisualStyleBackColor = True
         '
-        'tbTilty
+        'tpButtonOutputs
         '
-        Me.tbTilty.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tbTilty.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbTilty.Location = New System.Drawing.Point(245, 278)
-        Me.tbTilty.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tbTilty.Name = "tbTilty"
-        Me.tbTilty.Size = New System.Drawing.Size(76, 31)
-        Me.tbTilty.TabIndex = 48
-        '
-        'tbMaxY
-        '
-        Me.tbMaxY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tbMaxY.Font = New System.Drawing.Font("Impact", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbMaxY.Location = New System.Drawing.Point(245, 325)
-        Me.tbMaxY.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tbMaxY.Name = "tbMaxY"
-        Me.tbMaxY.Size = New System.Drawing.Size(76, 31)
-        Me.tbMaxY.TabIndex = 49
+        Me.tpButtonOutputs.AutoScroll = True
+        Me.tpButtonOutputs.Location = New System.Drawing.Point(4, 34)
+        Me.tpButtonOutputs.Name = "tpButtonOutputs"
+        Me.tpButtonOutputs.Padding = New System.Windows.Forms.Padding(3)
+        Me.tpButtonOutputs.Size = New System.Drawing.Size(1220, 739)
+        Me.tpButtonOutputs.TabIndex = 5
+        Me.tpButtonOutputs.Text = "Button Outputs"
         '
         'Configuration
         '
@@ -953,4 +965,5 @@ Partial Class Configuration
     Friend WithEvents cbAttractEnable As CheckBox
     Friend WithEvents tbMaxY As TextBox
     Friend WithEvents tbTilty As TextBox
+    Friend WithEvents tpButtonOutputs As TabPage
 End Class

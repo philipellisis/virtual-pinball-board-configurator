@@ -30,6 +30,7 @@ Partial Class Outputs
         Me.tbIntensity = New System.Windows.Forms.TrackBar()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblValue = New System.Windows.Forms.Label()
+        Me.tpButtons = New System.Windows.Forms.TabPage()
         Me.tcMain.SuspendLayout()
         CType(Me.tbIntensity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -40,6 +41,7 @@ Partial Class Outputs
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tcMain.Controls.Add(Me.tpMain)
+        Me.tcMain.Controls.Add(Me.tpButtons)
         Me.tcMain.Controls.Add(Me.tpExp1)
         Me.tcMain.Controls.Add(Me.tpExp2)
         Me.tcMain.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -110,6 +112,15 @@ Partial Class Outputs
         Me.lblValue.TabIndex = 4
         Me.lblValue.Text = "0"
         '
+        'tpButtons
+        '
+        Me.tpButtons.AutoScroll = True
+        Me.tpButtons.Location = New System.Drawing.Point(4, 34)
+        Me.tpButtons.Name = "tpButtons"
+        Me.tpButtons.Size = New System.Drawing.Size(1060, 775)
+        Me.tpButtons.TabIndex = 3
+        Me.tpButtons.Text = "Buttons"
+        '
         'Outputs
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -137,4 +148,5 @@ Partial Class Outputs
     Friend WithEvents tbIntensity As TrackBar
     Friend WithEvents Label1 As Label
     Friend WithEvents lblValue As Label
+    Friend WithEvents tpButtons As TabPage
 End Class

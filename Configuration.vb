@@ -20,10 +20,17 @@ Public Class Configuration
         tpMainOutputs.SuspendLayout()
 
 
-        For i As Integer = 0 To 30
+        For i As Integer = 0 To 14
             Dim userControl As New AdjustmentSlider(i, _config, _board)
             userControl.Location = New Point(1, i * 110)
             tpMainOutputs.Controls.Add(userControl)
+            _userControlList.Add(userControl)
+        Next
+
+        For i As Integer = 15 To 30
+            Dim userControl As New AdjustmentSlider(i, _config, _board)
+            userControl.Location = New Point(1, (i - 15) * 110)
+            tpButtonOutputs.Controls.Add(userControl)
             _userControlList.Add(userControl)
         Next
         '_userControlList.Item(31).Visible = False

@@ -2,6 +2,7 @@
 
 Imports System.Text
 
+
 Public Class Buttons
 
     Private _userControlList As New List(Of ucButton)
@@ -398,5 +399,53 @@ Public Class Buttons
 
     Private Sub btnCopy_Click(sender As Object, e As EventArgs) Handles btnCopy.Click
         Clipboard.SetText(tbSteamSettings.Text)
+    End Sub
+
+    Private Sub btnGetVDF_Click(sender As Object, e As EventArgs) Handles btnGetVDF.Click
+        Dim openFileDialog As New OpenFileDialog
+        openFileDialog.Filter = "VDF Files (*.vdf)|*.vdf"
+        openFileDialog.Title = "Select a VDF File"
+        If openFileDialog.ShowDialog() = DialogResult.OK Then
+            tbVDFFile.Text = openFileDialog.FileName
+        End If
+    End Sub
+
+    Private Sub btnSaveVDF_Click(sender As Object, e As EventArgs) Handles btnSaveVDF.Click
+
+        MessageBox.Show("Ensure that Steam is completely exited (not just minimized) before proceeding or the changes will not take effect")
+
+        If String.IsNullOrWhiteSpace(tbVDFFile.Text) Then
+            MessageBox.Show("Please select a file first.")
+            Return
+        End If
+        Dim filePath As String = tbVDFFile.Text
+        Dim appendString As String = tbSteamSettings.Text
+
+        ' Check if the file exists
+        If Not System.IO.File.Exists(filePath) Then
+            MessageBox.Show("File does not exist.")
+            Return
+        End If
+
+        ' Read all lines of the file
+        Dim lines As List(Of String) = System.IO.File.ReadAllLines(filePath).ToList()
+
+        ' Create a new list to store the modified lines
+        Dim modifiedLines As New List(Of String)()
+
+        ' Modify lines containing the specific string
+        For Each line As String In lines
+            If Not line.Contains("Clev Soft PinOne") Then
+                modifiedLines.Add(line)
+            End If
+
+            If line.Contains("SDL_GamepadBind") Then
+                modifiedLines.Add(tbSteamSettings.Text)
+            End If
+        Next
+
+        ' Write the modified lines back to the file
+        System.IO.File.WriteAllLines(filePath, modifiedLines)
+        MessageBox.Show("File updated successfully.")
     End Sub
 End Class

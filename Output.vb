@@ -7,7 +7,7 @@ Public Class Output
     Private _intensityValue As Byte = 0
     Private trd As Thread = New Thread(AddressOf delayRefresh)
     Private trdCount As Integer = 5
-    Public Sub New(board As BoardInterface, outputNumber As Byte)
+    Public Sub New(board As BoardInterface, outputNumber As Byte, name As String)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -15,7 +15,12 @@ Public Class Output
         ' Add any initialization after the InitializeComponent() call.
         _board = board
         _number = outputNumber
-        gbMain.Text = "Output #" & (outputNumber + 1).ToString
+        If name <> "" Then
+            gbMain.Text = "Output #" & (outputNumber + 1).ToString & " - " & name
+        Else
+            gbMain.Text = "Output #" & (outputNumber + 1).ToString
+        End If
+
         If outputNumber > 3 And outputNumber < 15 Then
             tbIntensity.Enabled = False
         End If

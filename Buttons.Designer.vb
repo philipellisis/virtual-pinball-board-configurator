@@ -25,6 +25,9 @@ Partial Class Buttons
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Buttons))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.gbXbox = New System.Windows.Forms.GroupBox()
+        Me.btnGetVDF = New System.Windows.Forms.Button()
+        Me.tbVDFFile = New System.Windows.Forms.TextBox()
+        Me.btnSaveVDF = New System.Windows.Forms.Button()
         Me.btnCopy = New System.Windows.Forms.Button()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.tbSteamSettings = New System.Windows.Forms.TextBox()
@@ -86,6 +89,9 @@ Partial Class Buttons
         '
         'gbXbox
         '
+        Me.gbXbox.Controls.Add(Me.btnGetVDF)
+        Me.gbXbox.Controls.Add(Me.tbVDFFile)
+        Me.gbXbox.Controls.Add(Me.btnSaveVDF)
         Me.gbXbox.Controls.Add(Me.btnCopy)
         Me.gbXbox.Controls.Add(Me.Label20)
         Me.gbXbox.Controls.Add(Me.tbSteamSettings)
@@ -131,17 +137,45 @@ Partial Class Buttons
         Me.gbXbox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gbXbox.Name = "gbXbox"
         Me.gbXbox.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.gbXbox.Size = New System.Drawing.Size(737, 809)
+        Me.gbXbox.Size = New System.Drawing.Size(737, 848)
         Me.gbXbox.TabIndex = 35
         Me.gbXbox.TabStop = False
         Me.gbXbox.Text = "Send Button Presses"
         '
+        'btnGetVDF
+        '
+        Me.btnGetVDF.Location = New System.Drawing.Point(684, 807)
+        Me.btnGetVDF.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnGetVDF.Name = "btnGetVDF"
+        Me.btnGetVDF.Size = New System.Drawing.Size(44, 34)
+        Me.btnGetVDF.TabIndex = 45
+        Me.btnGetVDF.Text = "..."
+        Me.btnGetVDF.UseVisualStyleBackColor = True
+        '
+        'tbVDFFile
+        '
+        Me.tbVDFFile.Location = New System.Drawing.Point(317, 813)
+        Me.tbVDFFile.Name = "tbVDFFile"
+        Me.tbVDFFile.Size = New System.Drawing.Size(361, 26)
+        Me.tbVDFFile.TabIndex = 44
+        Me.tbVDFFile.Text = "C:\Program Files (x86)\Steam\config\config.vdf"
+        '
+        'btnSaveVDF
+        '
+        Me.btnSaveVDF.Location = New System.Drawing.Point(105, 808)
+        Me.btnSaveVDF.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnSaveVDF.Name = "btnSaveVDF"
+        Me.btnSaveVDF.Size = New System.Drawing.Size(204, 34)
+        Me.btnSaveVDF.TabIndex = 43
+        Me.btnSaveVDF.Text = "Save to Steam VDF File"
+        Me.btnSaveVDF.UseVisualStyleBackColor = True
+        '
         'btnCopy
         '
-        Me.btnCopy.Location = New System.Drawing.Point(603, 771)
+        Me.btnCopy.Location = New System.Drawing.Point(14, 808)
         Me.btnCopy.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnCopy.Name = "btnCopy"
-        Me.btnCopy.Size = New System.Drawing.Size(104, 34)
+        Me.btnCopy.Size = New System.Drawing.Size(83, 34)
         Me.btnCopy.TabIndex = 42
         Me.btnCopy.Text = "Copy"
         Me.btnCopy.UseVisualStyleBackColor = True
@@ -161,7 +195,7 @@ Partial Class Buttons
         '
         Me.tbSteamSettings.Location = New System.Drawing.Point(7, 775)
         Me.tbSteamSettings.Name = "tbSteamSettings"
-        Me.tbSteamSettings.Size = New System.Drawing.Size(578, 26)
+        Me.tbSteamSettings.Size = New System.Drawing.Size(700, 26)
         Me.tbSteamSettings.TabIndex = 40
         '
         'lblPushButton
@@ -568,7 +602,7 @@ Partial Class Buttons
         '
         Me.btnSendCalibration.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSendCalibration.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSendCalibration.Location = New System.Drawing.Point(1233, 847)
+        Me.btnSendCalibration.Location = New System.Drawing.Point(1233, 874)
         Me.btnSendCalibration.Name = "btnSendCalibration"
         Me.btnSendCalibration.Size = New System.Drawing.Size(184, 82)
         Me.btnSendCalibration.TabIndex = 36
@@ -579,7 +613,7 @@ Partial Class Buttons
         '
         Me.cbDisableJoystick.AutoSize = True
         Me.cbDisableJoystick.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbDisableJoystick.Location = New System.Drawing.Point(680, 860)
+        Me.cbDisableJoystick.Location = New System.Drawing.Point(680, 887)
         Me.cbDisableJoystick.Name = "cbDisableJoystick"
         Me.cbDisableJoystick.Size = New System.Drawing.Size(338, 29)
         Me.cbDisableJoystick.TabIndex = 43
@@ -590,7 +624,7 @@ Partial Class Buttons
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(674, 903)
+        Me.Label2.Location = New System.Drawing.Point(674, 930)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(136, 25)
         Me.Label2.TabIndex = 47
@@ -602,7 +636,7 @@ Partial Class Buttons
         Me.cbButtonDebounceTime.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbButtonDebounceTime.FormattingEnabled = True
         Me.cbButtonDebounceTime.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130", "131", "132", "133", "134", "135", "136", "137", "138", "139", "140", "141", "142", "143", "144", "145", "146", "147", "148", "149", "150", "151", "152", "153", "154", "155", "156", "157", "158", "159", "160", "161", "162", "163", "164", "165", "166", "167", "168", "169", "170", "171", "172", "173", "174", "175", "176", "177", "178", "179", "180", "181", "182", "183", "184", "185", "186", "187", "188", "189", "190", "191", "192", "193", "194", "195", "196", "197", "198", "199", "200", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215", "216", "217", "218", "219", "220", "221", "222", "223", "224", "225", "226", "227", "228", "229", "230", "231", "232", "233", "234", "235", "236", "237", "238", "239", "240", "241", "242", "243", "244", "245", "246", "247", "248", "249", "250", "251", "252", "253", "254", "255"})
-        Me.cbButtonDebounceTime.Location = New System.Drawing.Point(825, 900)
+        Me.cbButtonDebounceTime.Location = New System.Drawing.Point(825, 927)
         Me.cbButtonDebounceTime.Name = "cbButtonDebounceTime"
         Me.cbButtonDebounceTime.Size = New System.Drawing.Size(76, 33)
         Me.cbButtonDebounceTime.TabIndex = 46
@@ -612,7 +646,7 @@ Partial Class Buttons
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(1445, 949)
+        Me.ClientSize = New System.Drawing.Size(1445, 1012)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.cbButtonDebounceTime)
         Me.Controls.Add(Me.cbDisableJoystick)
@@ -677,4 +711,7 @@ Partial Class Buttons
     Friend WithEvents Label20 As Label
     Friend WithEvents tbSteamSettings As TextBox
     Friend WithEvents btnCopy As Button
+    Friend WithEvents btnGetVDF As Button
+    Friend WithEvents tbVDFFile As TextBox
+    Friend WithEvents btnSaveVDF As Button
 End Class
