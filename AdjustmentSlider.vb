@@ -12,7 +12,7 @@ Public Class AdjustmentSlider
     Private _intensityValue As Byte = 0
     Private trd As Thread = New Thread(AddressOf delayRefresh)
     Private trdCount As Integer = 5
-    Public Sub New(outputNumber As Byte, config As BoardConfiguration, board As BoardInterface)
+    Public Sub New(outputNumber As Byte, config As BoardConfiguration, board As BoardInterface, name As String)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -23,7 +23,13 @@ Public Class AdjustmentSlider
         Next
         Me.outputNumber = outputNumber
         _config = config
-        gbMain.Text = "Output #" & (outputNumber + 1).ToString
+
+        If name <> "" Then
+            gbMain.Text = "Output #" & (outputNumber + 1).ToString & " - " & name
+        Else
+            gbMain.Text = "Output #" & (outputNumber + 1).ToString
+        End If
+
 
         tbMaxValue.Value = _config.maxOutputState(outputNumber)
         tbOffValue.Value = _config.turnOffState(outputNumber)

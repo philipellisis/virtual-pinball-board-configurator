@@ -6,6 +6,8 @@ Public Class Configuration
     Private _config As BoardConfiguration
     Private _board As BoardInterface
     Private _userControlList As New List(Of AdjustmentSlider)
+    Dim names As String() = {"", "", "", "", "Non-PWM", "Non-PWM", "Non-PWM", "Non-PWM", "Non-PWM", "Non-PWM", "Non-PWM", "Non-PWM", "Non-PWM", "Non-PWM", "Non-PWM", "RGB Flippers Red", "RGB Flippers Green", "RGB Flippers Blue", "RGB Magna Right Red", "RGB Magna Right Green", "RGB Magna Right Blue", "RGB Magna Left Red", "RGB Magna Left Green", "RGB Magna Left Blue", "Button 5", "Button 6", "Button 7", "Button 8", "RGB Fire Red", "RGB Fire Green", "RGB Fire Blue", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""}
+
     Sub New(board As BoardInterface, config As BoardConfiguration)
 
         ' This call is required by the designer.
@@ -21,14 +23,14 @@ Public Class Configuration
 
 
         For i As Integer = 0 To 14
-            Dim userControl As New AdjustmentSlider(i, _config, _board)
+            Dim userControl As New AdjustmentSlider(i, _config, _board, names(i))
             userControl.Location = New Point(1, i * 110)
             tpMainOutputs.Controls.Add(userControl)
             _userControlList.Add(userControl)
         Next
 
         For i As Integer = 15 To 30
-            Dim userControl As New AdjustmentSlider(i, _config, _board)
+            Dim userControl As New AdjustmentSlider(i, _config, _board, names(i))
             userControl.Location = New Point(1, (i - 15) * 110)
             tpButtonOutputs.Controls.Add(userControl)
             _userControlList.Add(userControl)
@@ -36,7 +38,7 @@ Public Class Configuration
         '_userControlList.Item(31).Visible = False
 
         For i As Integer = 31 To 46
-            Dim userControl As New AdjustmentSlider(i, _config, _board)
+            Dim userControl As New AdjustmentSlider(i, _config, _board, names(i))
             userControl.Location = New Point(1, (i - 31) * 110)
             tpExpansion1.Controls.Add(userControl)
             _userControlList.Add(userControl)
@@ -44,7 +46,7 @@ Public Class Configuration
         tpExpansion1.Cursor = Cursors.Default
 
         For i As Integer = 47 To 62
-            Dim userControl As New AdjustmentSlider(i, _config, _board)
+            Dim userControl As New AdjustmentSlider(i, _config, _board, names(i))
             userControl.Location = New Point(1, (i - 47) * 110)
             tpExpansion2.Controls.Add(userControl)
             _userControlList.Add(userControl)
@@ -105,6 +107,9 @@ Public Class Configuration
         cbAverageReadings.SelectedItem = (_config.plungerAverageRead).ToString
         cbTiltSuppress.SelectedItem = (_config.tiltSuppression).ToString
         cbAttractEnable.Checked = _config.enableLightShowAttract
+
+        cbLightShowStartTime.SelectedItem = (_config.lightShowTime).ToString
+        cbReversePolarity.Checked = _config.reverseButtonOutputPolarity
 
         Me.ResumeLayout()
         tpMainOutputs.ResumeLayout()
@@ -177,6 +182,8 @@ Public Class Configuration
             _config.tiltSuppression = cbTiltSuppress.SelectedItem.ToString
             _config.enableLightShowAttract = cbAttractEnable.Checked
 
+            _config.lightShowTime = cbLightShowStartTime.SelectedItem.ToString
+            _config.reverseButtonOutputPolarity = cbReversePolarity.Checked
 
             _board.setConfig(_config)
         Catch ex As Exception
@@ -222,4 +229,7 @@ Public Class Configuration
 
     End Sub
 
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbLightShowStartTime.SelectedIndexChanged
+
+    End Sub
 End Class

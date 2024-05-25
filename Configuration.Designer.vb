@@ -90,6 +90,9 @@ Partial Class Configuration
         Me.tpExpansion2 = New System.Windows.Forms.TabPage()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.tpButtonOutputs = New System.Windows.Forms.TabPage()
+        Me.cbReversePolarity = New System.Windows.Forms.CheckBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.cbLightShowStartTime = New System.Windows.Forms.ComboBox()
         Me.tbMain.SuspendLayout()
         Me.tpGeneralSettings.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -136,11 +139,14 @@ Partial Class Configuration
         '
         'GroupBox5
         '
+        Me.GroupBox5.Controls.Add(Me.Label21)
+        Me.GroupBox5.Controls.Add(Me.cbReversePolarity)
+        Me.GroupBox5.Controls.Add(Me.cbLightShowStartTime)
         Me.GroupBox5.Controls.Add(Me.cbAttractEnable)
         Me.GroupBox5.Font = New System.Drawing.Font("Impact", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox5.Location = New System.Drawing.Point(840, 6)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(314, 217)
+        Me.GroupBox5.Size = New System.Drawing.Size(358, 217)
         Me.GroupBox5.TabIndex = 28
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Other Settings"
@@ -873,6 +879,39 @@ Partial Class Configuration
         Me.tpButtonOutputs.TabIndex = 5
         Me.tpButtonOutputs.Text = "Button Outputs"
         '
+        'cbReversePolarity
+        '
+        Me.cbReversePolarity.AutoSize = True
+        Me.cbReversePolarity.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbReversePolarity.Location = New System.Drawing.Point(16, 131)
+        Me.cbReversePolarity.Name = "cbReversePolarity"
+        Me.cbReversePolarity.Size = New System.Drawing.Size(336, 29)
+        Me.cbReversePolarity.TabIndex = 52
+        Me.cbReversePolarity.Text = "Reverse Button Board Output Polarity"
+        Me.cbReversePolarity.UseVisualStyleBackColor = True
+        '
+        'Label21
+        '
+        Me.Label21.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label21.AutoSize = True
+        Me.Label21.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.Location = New System.Drawing.Point(14, 90)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(184, 25)
+        Me.Label21.TabIndex = 51
+        Me.Label21.Text = "Light Show Start Time"
+        '
+        'cbLightShowStartTime
+        '
+        Me.cbLightShowStartTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbLightShowStartTime.Font = New System.Drawing.Font("Impact", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbLightShowStartTime.FormattingEnabled = True
+        Me.cbLightShowStartTime.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130", "131", "132", "133", "134", "135", "136", "137", "138", "139", "140", "141", "142", "143", "144", "145", "146", "147", "148", "149", "150", "151", "152", "153", "154", "155", "156", "157", "158", "159", "160", "161", "162", "163", "164", "165", "166", "167", "168", "169", "170", "171", "172", "173", "174", "175", "176", "177", "178", "179", "180", "181", "182", "183", "184", "185", "186", "187", "188", "189", "190", "191", "192", "193", "194", "195", "196", "197", "198", "199", "200", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215", "216", "217", "218", "219", "220", "221", "222", "223", "224", "225", "226", "227", "228", "229", "230", "231", "232", "233", "234", "235", "236", "237", "238", "239", "240", "241", "242", "243", "244", "245", "246", "247", "248", "249", "250", "251", "252", "253", "254", "255"})
+        Me.cbLightShowStartTime.Location = New System.Drawing.Point(204, 87)
+        Me.cbLightShowStartTime.Name = "cbLightShowStartTime"
+        Me.cbLightShowStartTime.Size = New System.Drawing.Size(76, 33)
+        Me.cbLightShowStartTime.TabIndex = 50
+        '
         'Configuration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -966,4 +1005,7 @@ Partial Class Configuration
     Friend WithEvents tbMaxY As TextBox
     Friend WithEvents tbTilty As TextBox
     Friend WithEvents tpButtonOutputs As TabPage
+    Friend WithEvents Label21 As Label
+    Friend WithEvents cbReversePolarity As CheckBox
+    Friend WithEvents cbLightShowStartTime As ComboBox
 End Class

@@ -11,7 +11,7 @@
         _board = board
     End Sub
 
-    Dim names As String() = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "RGB Flippers Red", "RGB Flippers Green", "RGB Flippers Blue", "RGB Magna Right Red", "RGB Magna Right Green", "RGB Magna Right Blue", "RGB Magna Left Red", "RGB Magna Left Green", "RGB Magna Left Blue", "Button 5", "Button 6", "Button 7", "Button 8", "RGB Fire Red", "RGB Fire Green", "RGB Fire Blue", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""}
+    Dim names As String() = {"", "", "", "", "Non-PWM", "Non-PWM", "Non-PWM", "Non-PWM", "Non-PWM", "Non-PWM", "Non-PWM", "Non-PWM", "Non-PWM", "Non-PWM", "Non-PWM", "RGB Flippers Red", "RGB Flippers Green", "RGB Flippers Blue", "RGB Magna Right Red", "RGB Magna Right Green", "RGB Magna Right Blue", "RGB Magna Left Red", "RGB Magna Left Green", "RGB Magna Left Blue", "Button 5", "Button 6", "Button 7", "Button 8", "RGB Fire Red", "RGB Fire Green", "RGB Fire Blue", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""}
     Private Sub Outputs_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.SuspendLayout()
         tpMain.SuspendLayout()

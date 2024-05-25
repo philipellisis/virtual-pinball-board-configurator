@@ -69,6 +69,8 @@ Public Class BoardConfiguration
     Public enablePlunger As Byte
     Public tiltSuppression As Byte
     Public enableLightShowAttract As Byte
+    Public lightShowTime As Byte
+    Public reverseButtonOutputPolarity As Boolean
 
 
 
@@ -109,6 +111,9 @@ Public Class BoardConfiguration
         enablePlunger = board.enablePlunger
         tiltSuppression = board.tiltSuppression
         enableLightShowAttract = board.enableLightShowAttract
+
+        lightShowTime = board.lightShowTime
+        reverseButtonOutputPolarity = board.reverseButtonOutputPolarity
     End Sub
     Public Function getOrientationString() As String
         Dim tempOrientation = orentation
@@ -184,7 +189,7 @@ Public Class BoardConfiguration
     End Function
 
     Public Function toConfigBytes(config As BoardConfiguration) As Byte()
-        Dim configString(349) As Byte
+        Dim configString(351) As Byte
         For i = 0 To 62
             configString(i) = config.toySpecialOption(i)
             configString(i + 63) = config.turnOffState(i)
@@ -247,7 +252,11 @@ Public Class BoardConfiguration
         configString(346) = config.enablePlunger
         configString(347) = config.tiltSuppression
         configString(348) = config.enableLightShowAttract
-        configString(349) = 42
+
+        configString(349) = config.lightShowTime
+        configString(350) = config.reverseButtonOutputPolarity
+
+        configString(351) = 42
 
         Return configString
     End Function
@@ -310,8 +319,10 @@ Public Class BoardConfiguration
             config.enablePlunger = CBool(configString(338))
             config.tiltSuppression = CByte(configString(339))
             config.enableLightShowAttract = CBool(configString(340))
+            config.lightShowTime = CByte(configString(341))
+            config.reverseButtonOutputPolarity = CBool(configString(342))
 
-            If configString(341) <> "E" Then
+            If configString(343) <> "E" Then
                 Throw New Exception("error in config string returned!")
             End If
 
