@@ -87,14 +87,14 @@ Public Class Buttons
         End If
         If Not cbLeftControl.SelectedItem Is Nothing Then
             If cbLeftControl.SelectedItem = "Plunger" Then
-                str.Append("lefty:a2,")
+                str.Append("leftx:a3,lefty:a2,")
             ElseIf cbLeftControl.SelectedItem = "Nudge" Then
                 str.Append("leftx:a0,lefty:a1,")
             End If
         End If
         If Not cbRightControl.SelectedItem Is Nothing Then
             If cbRightControl.SelectedItem = "Plunger" Then
-                str.Append("righty:a2,")
+                str.Append("rightx:a3,righty:a2,")
             ElseIf cbRightControl.SelectedItem = "Nudge" Then
                 str.Append("rightx:a0,righty:a1,")
             End If

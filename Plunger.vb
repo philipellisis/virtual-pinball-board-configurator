@@ -143,4 +143,8 @@
     Private Sub formChanged(sender As Object, e As EventArgs) Handles cbLaunchButton.SelectedIndexChanged, cbAverageReadings.SelectedIndexChanged, cbDisableAccel.CheckedChanged, cbDisablePlungerNonMoving.CheckedChanged, cbPlungerQuickRelease.CheckedChanged, cbPushOnMax.CheckedChanged, cbPushOnMin.CheckedChanged
         btnSendCalibration.Enabled = True
     End Sub
+
+    Private Sub lblCalibration_Click(sender As Object, e As EventArgs) Handles lblCalibration.Click
+
+    End Sub
 End Class

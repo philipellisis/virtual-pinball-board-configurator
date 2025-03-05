@@ -44,10 +44,10 @@ Partial Class MainWindow
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UpdateFirmwareWithoutResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InstallXinputFirmwareWithoutResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InstallXinputFirmwareToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SoftwareResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tmrComPort = New System.Windows.Forms.Timer(Me.components)
-        Me.InstallXinputFirmwareToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.InstallXinputFirmwareWithoutResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gbMenu.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -73,6 +73,7 @@ Partial Class MainWindow
         Me.btnConnect.TabIndex = 3
         Me.btnConnect.Text = "Connect"
         Me.btnConnect.UseVisualStyleBackColor = True
+        Me.btnConnect.Visible = False
         '
         'btnOutputs
         '
@@ -242,7 +243,7 @@ Partial Class MainWindow
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(164, 34)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'FileToolStripMenuItem
@@ -258,6 +259,18 @@ Partial Class MainWindow
         Me.UpdateFirmwareWithoutResetToolStripMenuItem.Size = New System.Drawing.Size(445, 34)
         Me.UpdateFirmwareWithoutResetToolStripMenuItem.Text = "Update Firmware With Reset Button"
         '
+        'InstallXinputFirmwareWithoutResetToolStripMenuItem
+        '
+        Me.InstallXinputFirmwareWithoutResetToolStripMenuItem.Name = "InstallXinputFirmwareWithoutResetToolStripMenuItem"
+        Me.InstallXinputFirmwareWithoutResetToolStripMenuItem.Size = New System.Drawing.Size(445, 34)
+        Me.InstallXinputFirmwareWithoutResetToolStripMenuItem.Text = "Install x-input Firmware With Reset Button"
+        '
+        'InstallXinputFirmwareToolStripMenuItem
+        '
+        Me.InstallXinputFirmwareToolStripMenuItem.Name = "InstallXinputFirmwareToolStripMenuItem"
+        Me.InstallXinputFirmwareToolStripMenuItem.Size = New System.Drawing.Size(445, 34)
+        Me.InstallXinputFirmwareToolStripMenuItem.Text = "Install x-input Firmware"
+        '
         'SoftwareResetToolStripMenuItem
         '
         Me.SoftwareResetToolStripMenuItem.Name = "SoftwareResetToolStripMenuItem"
@@ -267,18 +280,6 @@ Partial Class MainWindow
         'tmrComPort
         '
         Me.tmrComPort.Interval = 1000
-        '
-        'InstallXinputFirmwareToolStripMenuItem
-        '
-        Me.InstallXinputFirmwareToolStripMenuItem.Name = "InstallXinputFirmwareToolStripMenuItem"
-        Me.InstallXinputFirmwareToolStripMenuItem.Size = New System.Drawing.Size(445, 34)
-        Me.InstallXinputFirmwareToolStripMenuItem.Text = "Install x-input Firmware"
-        '
-        'InstallXinputFirmwareWithoutResetToolStripMenuItem
-        '
-        Me.InstallXinputFirmwareWithoutResetToolStripMenuItem.Name = "InstallXinputFirmwareWithoutResetToolStripMenuItem"
-        Me.InstallXinputFirmwareWithoutResetToolStripMenuItem.Size = New System.Drawing.Size(445, 34)
-        Me.InstallXinputFirmwareWithoutResetToolStripMenuItem.Text = "Install x-input Firmware With Reset Button"
         '
         'MainWindow
         '

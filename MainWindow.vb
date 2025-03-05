@@ -15,7 +15,7 @@ Public Class MainWindow
     Private ButtonsWindow As Buttons
     Private OutputsWindow As Outputs
 
-    Private version As Integer() = {1, 18, 0}
+    Private version As Integer() = {1, 19, 3}
     'Private WithEvents arduino As RS232
     Private Board As BoardInterface
     Private config As BoardConfiguration
@@ -288,7 +288,7 @@ Public Class MainWindow
     End Sub
 
     Private Sub btnAbout_Click(sender As Object, e As EventArgs) Handles btnAbout.Click
-        MessageBox.Show("Version " & version(0).ToString & "." & version(1).ToString & "." & version(2).ToString)
+        MessageBox.Show("Version " & version(0).ToString & "." & version(1).ToString & "." & version(2).ToString & vbLf & "This version is only used for updating firmware. You should use the new config tool for all other activities")
     End Sub
 
 
